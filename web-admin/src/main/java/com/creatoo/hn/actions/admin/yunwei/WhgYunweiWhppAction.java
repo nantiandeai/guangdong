@@ -112,7 +112,7 @@ public class WhgYunweiWhppAction {
     /**
      * 查询详情
      * @param id
-     * @return
+     * @return 实体
      */
     @RequestMapping(value = "/srchOne")
     public ResponseBean srchOne(String id){
