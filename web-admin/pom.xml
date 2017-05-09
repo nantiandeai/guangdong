@@ -345,7 +345,7 @@
 	
 	<build>
 		<finalName>${project.name}</finalName>
-		<defaultGoal>install</defaultGoal>
+		<!--<defaultGoal>install</defaultGoal>
 		<sourceDirectory>${basedir}/src/main/java</sourceDirectory>
 		<outputDirectory>${basedir}/src/main/webapp/WEB-INF/classes</outputDirectory>
 		<resources>
@@ -354,10 +354,10 @@
 				<directory>${basedir}/src/main/resources</directory>
 				<filtering>true</filtering>
 			</resource>
-		</resources>
+		</resources>-->
 		
 		<plugins>
-			<plugin>
+			<!--<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-dependency-plugin</artifactId>
 				<version>2.10</version>
@@ -374,7 +374,7 @@
 						</configuration>
 					</execution>
 				</executions>
-			</plugin>
+			</plugin>-->
 			
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
