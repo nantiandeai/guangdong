@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.creatoo.hn.mapper.WhgAdminHomeMapper">
+
+
+	<select id="homeCount" resultType="WhgAdminHome">
+		SELECT sum(sys) as memberTotal,sum(tra) as traTotal,sum(act) as actTotal,sum(ven) venTotal FROM(
+			SELECT count(*) ven,0 act,0 tra,0 sys FROM whg_ven a where a.delstate = 0
+			UNION ALL
+			SELECT 0 ven,count(*) act, 0 tra,0 sys FROM whg_act_activity b WHERE b.state=6
+			UNION ALL
+			SELECT 0 ven,0 act,count(*) tra,0 sys FROM whg_tra c where c.state=6
+			UNION ALL
+			SELECT 0 ven,0 act,0 tra,count(*) sys FROM whg_sys_user d where d.state=1
+			) t;
+	</select>
+
+	<select id="traGroupByCult" resultType="WhgAdminHome">
+		SELECT
+			t1.cnt,
+			t2. NAME
+		FROM
+			(
+				SELECT
+					t.cultid,
+					count(t.id) cnt
+				FROM
+					whg_tra t
+				GROUP BY
+					t.cultid
+			) t1,
+			whg_sys_cult t2
+		WHERE
+			t1.cultid = t2.id
+	</select>
+
+	<select id="traGroupByArt" resultType="WhgAdminHome">
+		SELECT
+			t1.cnt,
+			t2. NAME
+		FROM
+			(
+				SELECT
+					t.arttype,
+					count(t.id) cnt
+				FROM
+					whg_tra t
+				GROUP BY
+					t.arttype
+			) t1,
+			whg_ywi_type t2
+		WHERE
+			t1.arttype = t2.id
+	</select>
+
+	<select id="actGroupByCult" resultType="WhgAdminHome">
+		SELECT
+		t1.cnt,
+		t2. NAME
+		FROM
+		(
+		SELECT
+		t.cultid,
+		count(t.id) cnt
+		FROM
+		whg_tra t
+		GROUP BY
+		t.cultid
+		) t1,
+		whg_act_activity t2
+		WHERE
+		t1.cultid = t2.id
+	</select>
+
+	<select id="actGroupByArt" resultType="WhgAdminHome">
+		SELECT
+			t1.arttype,
+			t1.cnt,
+			t2. NAME
+		FROM
+			(
+				SELECT
+					t.arttype,
+					count(t.id) cnt
+				FROM
+					whg_act_activity t
+				GROUP BY
+					t.arttype
+			) t1,
+			whg_ywi_type t2
+		WHERE
+			t1.arttype = t2.id
+	</select>
+
+</mapper>

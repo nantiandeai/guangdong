@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:p="http://www.springframework.org/schema/p" 
+	xmlns:mvc="http://www.springframework.org/schema/mvc" 
+	xmlns:context="http://www.springframework.org/schema/context" 
+	xmlns:tx="http://www.springframework.org/schema/tx" 
+	xmlns:aop="http://www.springframework.org/schema/aop" 
+	xmlns:util="http://www.springframework.org/schema/util" 
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd  
+              http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd  
+              http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd 
+              http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd
+              http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd             
+             http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.3.xsd">
+
+	<!-- 静态资源处理器 -->
+	<mvc:default-servlet-handler />
+	<mvc:resources mapping="/static/**" location="/static/" />
+
+	<!-- 启动注解驱动 -->
+	<mvc:annotation-driven>
+		<mvc:message-converters register-defaults="true">
+			<bean id="fastJsonHttpMessageConverter" class="com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter">
+				<property name="defaultCharset" value="UTF-8"></property>
+				<property name="supportedMediaTypes">
+					<list>
+						<value>text/html;charset=UTF-8</value>
+						<value>text/json;charset=UTF-8</value>
+						<value>application/json;charset=UTF-8</value>
+					</list>
+				</property>
+			</bean>
+		</mvc:message-converters>
+	</mvc:annotation-driven>
+
+	<!-- 启用spring 注解 -->
+	<context:annotation-config />
+	
+	<!-- 设置使用注解的类所在的包 -->
+	<context:component-scan base-package="com.creatoo.hn.actions" />
+	<context:component-scan base-package="com.creatoo.hn.services" />
+	<context:component-scan base-package="com.creatoo.hn.utils" />
+
+	<!-- 启动aop注解 -->
+	<aop:aspectj-autoproxy/>
+	
+	<!-- 拦截配置 -->	
+	<mvc:interceptors>
+		<bean class="com.creatoo.hn.interceptors.AllInterceptors"/>
+		<mvc:interceptor>
+	        <mvc:mapping path="/admin/**"/>
+	        <mvc:exclude-mapping path="/admin/login*"/>
+	        <mvc:exclude-mapping path="/admin/ajax*"/>
+	        <mvc:exclude-mapping path="/static/**"/>
+	        <mvc:exclude-mapping path="/comm/**"/>
+	        <bean class="com.creatoo.hn.interceptors.AdminSessionInterceptors"/>
+	    </mvc:interceptor>
+	    
+	    <mvc:interceptor>  
+	        <mvc:mapping path="/sign/**"/>
+	        <mvc:mapping path="/center/**"/>
+	        <mvc:exclude-mapping path="/sign/ajax*"/>
+	        <bean class="com.creatoo.hn.interceptors.HomeSessionInterceptors"/>
+	    </mvc:interceptor>
+	</mvc:interceptors>   
+
+	<!-- 对转向页面的路径解析。prefix：前缀， suffix：后缀 -->
+	<bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver"
+		p:viewClass="org.springframework.web.servlet.view.JstlView" p:prefix="/pages/"
+		p:suffix=".jsp" />
+</beans>

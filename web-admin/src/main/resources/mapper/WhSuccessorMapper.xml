@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.creatoo.hn.mapper.WhSuccessorMapper">
+
+	<select id="showChuancheng" resultType="hashmap">
+		SELECT
+		s.suorid 'itemId',
+		d.mlproshortitel 'project',
+		s.suorname 'title',
+		s.suorjs 'intro',
+		s.suorpic 'thumb',
+		s.suoroptime 'time'
+		FROM
+		wh_successor s,
+		wh_suorpro ss,
+		wh_decproject d
+		WHERE
+		ss.spsuorid = s.suorid
+		AND ss.spmlproid = d.mlproid
+		AND s.suorstate = 3
+	</select>
+	
+	<select id="showChuanchengDetail" resultType="hashmap">
+		SELECT
+		s.suorid 'itemId',
+		d.mlproshortitel 'project',
+		s.suorname 'title',
+		s.suorjs 'intro',
+		s.suorpic 'thumb',
+		s.suoroptime 'time',
+		t.typname 'district',
+		s.suorachv 'achieve'
+		FROM
+		wh_successor s,
+		wh_suorpro ss,
+		wh_decproject d,
+		wh_typ t
+		WHERE
+		ss.spsuorid = s.suorid
+		AND ss.spmlproid = d.mlproid
+		AND s.suorqy = t.typid
+		AND s.suorstate = 3
+		AND s.suorid = #{itemId}
+	</select>
+	
+</mapper>

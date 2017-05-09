@@ -1,0 +1,103 @@
+body{background-color:#fff;}
+.registrationInfo{margin-bottom:40px; height:270px;}
+.registrationInfo .img{width:428px; float:left; height:270px; overflow:hidden;}
+.registrationInfo .info{width:750px; float:right; height:270px; position:relative;}
+.registrationInfo .info h1{font-size:20px; margin-bottom: 12px;
+    line-height: 30px;
+    max-height: 60px;
+    overflow: hidden;
+    width: 680px;}
+.registrationInfo .info p{color:#959595; position:relative; padding-left:30px; margin-bottom:10px; font-size:16px;}
+.registrationInfo .info p .tt{float: left;margin-left:10px;width: 610px;}
+.registrationInfo .info p .desc{float: left;}
+.registrationInfo .info p .num{display:inline-block; color:#c8161d}
+.registrationInfo .info hr{margin:20px auto;}
+.registrationInfo .info h2{font-size:16px; margin-bottom:15px;}
+.registrationInfo .info h2 span{ color:#959595; font-size:12px; margin-left:10px;}
+.registrationInfo .info .cycleBg{width:390px; height:10px; background-color:#ececec; overflow:hidden; position:relative; border-radius:30px; margin-bottom:10px;}
+.registrationInfo .info .cycleBg .line{height:10px; background-color:#c8161d; position:absolute; left:0px; top:0px; border-radius:30px;}
+.registrationInfo p.teachType{padding-left:0px; color:#333; width:390px;}
+.registrationInfo .info .openTeach{margin-right:30px;}
+.registrationInfo .info .openTeach span{margin-left:5px}
+.registrationInfo .info .closeTeach{float:right;}
+.registrationInfo .info .closeTeach span{margin-left:5px}
+.registrationInfo .info .goNext{height:40px; width:150px; text-align:center; line-height:40px;padding-top: 5px;}
+.registrationInfo .info .goNext a{display:block; width:100%; height:100%;color:#fff; font-size:18px; background-color:#c8161d;border-radius:5px;}
+.registrationInfo .info .goNext a:hover{background-color:#d0242b}
+.registrationInfo .info .goNext a.open{background-color:#aaa; cursor:default;}
+.registrationInfo .info .curriculum{height:40px; width:150px; text-align:center; line-height:40px; position:absolute; right:160px; bottom:5px;}
+.registrationInfo .info .curriculum a{display:block; width:100%; height:100%;color:#fff; font-size:18px; background-color:#e6d353;border-radius:5px;}
+.registrationInfo .info .curriculum a:hover{background-color:#e8db84}
+.registrationInfo .info .curriculum a.open{background-color:#aaa; cursor:default;}
+.public-fav{right:0px; top:-104px; height:150px; transition:.5s}
+.public-fav:hover{height:165px;}
+.calendar *{box-sizing: border-box; font-family: Tahoma; font-size: 14px;}
+.calendar-sm{cursor: default;}
+.calendar{cursor: default; width: 1170px; margin:0 auto;}
+.calendar-sm .c-pad-top{padding-top: 2%;padding-bottom:2%;}
+.calendar .c-pad-top{padding-top: 3%;padding-bottom:3%;}
+.c-grid{height: inherit;}
+.c-day{width: 14.28%;*width: 14.20%; height: 13%; background-color: #f9f9f9; float: left; text-align: center;}
+.c-day-previous-month{width: 14.28%;*width: 14.20%; height: 13%; background-color: #F9FBFD; float: left; text-align: center; color: gray;}
+.c-day-next-month{width: 14.28%;*width: 14.20%; height: 13%; background-color: #F9FBFD; float: left; text-align: center; color: gray;}
+.c-week-day{width: 14.28%;*width: 14.20%; height: 10.38%; background-color: #c8161d; color: white; float: left; text-align: center; font-weight: bold; padding-top: 1%;}
+.c-next{position:absolute;top:0px;right:0px;z-index:9999; width: 80px; height: 49px;overflow:hidden; text-align: center; cursor: pointer;}
+.c-previous{z-index:9999;position:absolute;left:0px;top:0px; width: 80px; height: 49px;overflow:hidden; text-align: center; cursor: pointer;}
+.c-month{width: 100%; height: 12%; text-align: center;position:relative;}
+.c-nav-btn-over{background-color:#c8161d; font-weight: bold;}
+.c-today{background-color: #D8EAF1;}
+.c-event{background-color: #f4daad; color: #333; cursor: pointer;}
+.c-grid{float: left; width: 50%;position:relative;}
+.c-event-grid{height: inherit; width: 49.6%; float: left;}
+.c-grid-title{font-weight: bold; float: left; background-color: #d0242b; color: white;}
+.c-event-title{width: 100%; height: 12%; text-align: center; font-weight: bold; background-color: #d0242b; color: white;}
+.c-event-body{background-color: #f9f9f9; height: 88.1%;}
+.c-event-list{padding: 7 0 0 0; overflow: auto;height:345px;}
+.c-event-item > .title{color:#333; font-weight:700; margin-bottom:5px; line-height:24px; text-align:left;}
+.c-event-item > div{text-overflow: ellipsis; width: inherit;text-align:left;}
+.c-event-item{padding-left:20px; margin: 20px auto auto auto;}
+.c-event-over{background-color:#f4daad; color: #333;}
+.c-event-over > .description{font-weight: normal;margin-bottom:10px;}
+.calendar .description span{display:inline-block;margin-right:10px;}
+
+
+.on {
+    display: block!important;
+}
+.public-info-step .table{
+    padding: 20px;
+}
+table{
+    width:100%;
+    border:1px #ddd solid;
+    border-collapse: collapse;
+}
+.table table th{
+    color:#333;
+    font-size:14px;
+    height:40px;
+    line-height:40px;
+    text-align: center;
+    background-color:#f5f5f5;
+}
+.table table tr{
+}
+.table table tr td,.table table tr th{
+    text-align: center;
+    border:0px;
+    height:40px;
+    line-height:40px;
+    color:#333;
+    font-size:14px;
+    border-right:1px #ddd solid;
+    border-bottom:1px #ddd solid;
+}
+
+.public-other-notice .map {
+    padding: 20px;
+}
+.margin-bottom {
+    margin-bottom: 30px;
+    padding-bottom: 0px!important;
+}
+

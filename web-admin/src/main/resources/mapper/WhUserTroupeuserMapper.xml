@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.creatoo.hn.mapper.WhUserTroupeuserMapper" >
+  <resultMap id="BaseResultMap" type="com.creatoo.hn.model.WhUserTroupeuser" >
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="tuid" property="tuid" jdbcType="VARCHAR" />
+    <result column="tuname" property="tuname" jdbcType="VARCHAR" />
+    <result column="tupic" property="tupic" jdbcType="VARCHAR" />
+    <result column="tutroupeid" property="tutroupeid" jdbcType="VARCHAR" />
+    <result column="tuuid" property="tuuid" jdbcType="VARCHAR" />
+    <result column="tustate" property="tustate" jdbcType="INTEGER" />
+    <result column="tudesc" property="tudesc" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  
+  
+  
+ 	<select id="selTroupeUser" parameterType="java.util.HashMap" resultType="hashmap">
+		SELECT u1.tuid,
+			u1.tuname,
+			u1.tudesc,
+			u1.tupic,
+			u1.tutroupeid,
+			u1.tuuid,
+			u1.tustate,
+			u2.troupename
+		FROM wh_user_troupeuser u1,wh_user_troupe u2 
+		WHERE u1.tutroupeid = u2.troupeid 
+		<if test="troupeid != null">
+		      and u1.tutroupeid <![CDATA[=]]> #{troupeid}
+		</if>
+	</select>
+  	
+  	 <!--user 表 多条件查询 开始 -->
+	   <select id="selectUser" parameterType="java.util.HashMap" resultType="hashmap">
+	   	select * from wh_user where 1=1 
+	  	    <if test="name != null">
+		      	and name like "%"#{name}"%"
+		    </if>
+		    <if test="origo != null">
+		      	and origo like "%"#{origo}"%"
+		    </if>
+		    <if test="isrealname != null">
+		      	and isrealname <![CDATA[=]]> #{isrealname}
+		    </if>
+		     <if test="birthday != null">
+		      	and birthday = #{birthday}
+		    </if> 
+	   </select>
+  	 <!--user 表 多条件查询 结束 -->
+  	
+</mapper>

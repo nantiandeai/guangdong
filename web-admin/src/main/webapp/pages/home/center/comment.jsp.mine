@@ -1,0 +1,185 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<% String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+request.getContextPath(); request.setAttribute("basePath", basePath); %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv=”X-UA-Compatible” content=”IE=edge,chrome=1″ />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<meta name="keywords" content="">
+<meta name="author" content="">
+<title>东莞数字文化馆-用户后台</title>
+<link href="${basePath }/static/assets/css/public/reset.css" rel="stylesheet">
+<link href="${basePath }/static/assets/css/userCenter/userCenter.css" rel="stylesheet">
+<!--[if lt IE 9] >
+<script src="${basePath }/static/assets/js/plugins/ie/IE9.js"></script> 
+<! [endif]]-->
+<script src="${basePath }/static/assets/js/public/jquery-1.11.0.min.js"></script> 
+<script src="${basePath }/static/assets/js/public/jquery-migrate-1.0.0.js"></script> 
+<script src="${basePath }/static/admin/js/common.js"></script>
+<!-- core public JavaScript --> 
+
+<script>
+/** 数据加载 */
+function loadData(page, rows){
+	page = page || 1;
+	rows = rows || 5;
+	
+	$.ajax({
+		type: 'post',
+		url: '${basePath }/home/center/loadcomLoad?rmuid=${sessinUser.id}&page='+page+'&rows='+rows,
+		success: function(data){
+			//
+			var commList = data.commList;
+			//alert("==commList=="+commList);
+			var commRetryMap = data.commRetryMap;
+			alert("=commRetryMap==="+commRetryMap);
+			var total = data.total;
+			//alert("==total=="+total);
+			showData(commList, commRetryMap);
+			
+			//加载分页工具栏
+			genPagging('artPagging', page, rows, total, loadData);
+		}
+	});
+}
+
+/** 展示数据 */
+function showData(data, commentReMap){
+	var _html = '';
+	if(data.length > 0){
+		for(var i=0 ;i<data.length; i++){
+			var row = data[i];
+			_html += '<li class="item">';
+			_html += '	<a id="deletepl" class="trash js__p_orderKick_start" href="javascript:void(0);"></a>';
+			_html += '	<div class="orderCont clearfix">';
+			_html += '		<div class="orderTime">'+datetimeFMT(row.rmdate)+'2016-09-29 18:40</div>';
+			_html += '	</div>';
+			_html += '	<div class="msgInfoCont">';
+			_html += '		<h2>';
+			_html += '			<a href="'+row.rmurl+'" target="_blank">'+row.rmtitle+'</a>';
+			_html += '		</h2>';
+			_html += '		<div class="myComm">';
+			_html += '			<i></i>';
+			_html += '			<p class="comm">';
+			_html += '				<span>'+numFMT(row.phone)+' :</span>'+row.rmcontent;
+			_html += '			</p>';
+			alert(row.rmid);
+			if(commentReMap && typeof commentReMap[row.rmid] != "undefined"){
+			_html += '			<p class="reComm">';
+			_html += '				<span>'+commentReMap[row.rmid].name+' :</span>'+commentReMap[row.rmid].rmcontent;
+			_html += '			</p>';
+			}
+			
+			_html += '		</div>';
+			_html += '	</div>';
+			_html += '</li>';
+		}
+		$('.sysmsg').hide();
+		$('#dataUL').html(_html);
+	}else{
+		$('.sysmsg').show();
+		$('#dataUL').html('');
+	}
+}
+
+/**
+ * phone 格式化
+ */
+function numFMT(val, rowData, index){
+	if(!val) return val;
+	var reg = /(\d{3})\d{4}(\d{4})/;
+	return val.replace(reg,"$1****$2");;
+}
+
+/**
+ * 删除评论
+ */
+function delComment(rmid,rmuid){
+	
+}
+
+$(function(){
+	loadData();
+});
+</script>
+</head>
+<body>
+
+<!-- 公共头部开始 -->
+<%@include file="/pages/comm/szheader.jsp"%>
+<!-- 公共头部结束 -->
+
+<!-- 用户状态开始 -->
+<div class="userHeader clearfix">
+	<div class="header">
+		<div class="userInfo">
+			<h2>Hi,156****5144</h2>
+			<div class="userClass">
+				<span class="ico i-1 tipso_top" title="已绑定手机"><a href="safely-phone.html"></a></span> 
+				<span class="ico i-2 tipso_top" title="已绑定电子邮箱"><a href="safely-email.html"></a></span> 
+				<span class="ico i-3 tipso_top" title="已绑实名认证"><a href="safely-userReal.html"></a></span> 
+				<span class="ico i-4 tipso_top" title="团队账号"><a href="#"></a></span> 
+				<span class="ico i-5 unBind tipso_top" title="未认证艺术资质"><a href="#"></a></span> 
+				<span class="ico i-6 unBind tipso_top" title="未认证企业资质"><a href="#"></a></span>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- 用户状态结束 -->
+
+<div class="main clearfix">
+	<div class="leftPanel">
+		<ul>
+			<!--用户中心导航开始-->
+			<%@include file="/pages/comm/ucnav.jsp"%>
+			<!--用户中心导航结束-->
+		</ul>
+	</div>
+	
+	<div class="rightPanel">
+		<ul class="commBtn clearfix">
+			<li class="active">我的点评</li>
+		</ul>
+		
+		<!-- 无数据是显示开始 -->
+		<div class="sysmsg" style="display:none">
+			<div class="ad"></div>
+			<p>暂无点评</p>
+		</div>
+		<!-- 无数据是显示结束 -->
+		
+		<ul class="group clearfix" id="dataUL">
+		
+		</ul>
+		<!-- 分页开始 -->
+		<div class="green-black" id="artPagging"></div>
+		<!-- 分页结束 -->
+	</div>
+</div>
+
+<!--底部开始-->
+<%@include file="/pages/comm/szfooter.jsp"%>
+<!--底部结束-->
+
+<!--弹出层开始-->
+<div class="popup js__orderKick_popup js__slide_top clearfix"> <a href="#" class="p_close js__p_close" title="关闭"></a>
+  <div class="p_content">
+    <p>温馨提示</p>
+  </div>
+  <div class="p_main">
+    <div class="p_ico p_ico_2"></div>
+    <span>您确定删除此条评论吗？</span> 
+  </div>
+  <div class="p_btn goNext float-left"> <a href="javascript:void(0)">确定</a> </div>
+  <div class="p_btn goBack float-left"> <a href="javascript:void(0)" class="js__p_close">取消</a> </div>
+</div>
+<!--弹出层结束--> 
+
+<script src="${basePath }/static/assets/js/plugins/tipso.js"></script> 
+<script src="${basePath }/static/assets/js/userCenter/public.js"></script> 
+<script src="${basePath }/static/assets/js/userCenter/order.js"></script>
+<script src="${basePath }/static/assets/js/public/comm.js"></script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+.categoryChange{margin:0px auto 40px auto;}
+.categoryChange .row{padding: 15px 20px 0;background: #fff; border-bottom:1px #e5e5e5 dashed;}
+.categoryChange .border-none{border-bottom:0px; margin-bottom:0px;}
+.categoryChange .row .title{float:left; width:70px; font-size:14px; padding-top:8px;}
+.categoryChange .row .adrList{width:1050px; float:left;}
+.categoryChange .row .adrList1{width:840px; float:left;}
+.categoryChange .row .adrList .item a{color:#959595;font-size: 14px;}
+.categoryChange .row .adrList .active{background: #c8161d;}
+.categoryChange .row .adrList .active a,.categoryChange .type-row .categoryName.active a{color: #fff;font-weight:normal}
+.categoryChange .row .adrList .item{padding: 5px 20px 6px;margin-bottom: 15px;border-radius: 3px;display: inline-block;}
+.categoryChange .row .searchCont{float: right;width: 260px;height: 30px;border: 1px #ddd solid; border-radius: 5px; background-color: #fff; margin-right:-20px;}
+.categoryChange .row .searchCont input{height: 25px;line-height: 25px; border: 1px #fff solid; color: #959595; font-size: 14px;vertical-align: top; margin-left: 10px;}
+.categoryChange .row .searchCont button{height:30px; width:36px; background:url(../../img/activity/search.png) 40% 55% no-repeat; float: right;}
+.main-info-bg{padding:0px;}
+.science-cont{margin-bottom:50px;}
+.science-cont .item{border:1px #f5f5f5 solid; padding:20px; margin-bottom:30px;}
+.science-cont .item .img{float:left; width:300px; height:190px; margin-right:20px;}
+.science-cont .item .info{float:left; width:837px; height:190px; overflow:hidden;}
+.science-cont .item .info h2{margin-bottom:20px; margin-top:6px;}
+.science-cont .item .info h2 a{font-size:16px; color:#333;}
+.science-cont .item .info h2 a:hover{color:#c8161d;}
+.science-cont .item .info p{line-height:24px; font-size:13px; margin-bottom:10px; color:#959595; max-height:72px; overflow:hidden;-webkit-line-clamp: 3;-webkit-box-orient: vertical;}
+.science-cont .item .info p span{padding:0px 5px;}

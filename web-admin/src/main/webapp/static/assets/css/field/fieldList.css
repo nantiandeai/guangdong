@@ -1,0 +1,73 @@
+/*---------------------------------------------------------------------
+	* Filename:         venueList.css
+	* Description:      venue
+	* Version:          1.0.0 (2016-10-28)
+	* Website:          hn.sun3d.com
+	* Author:           JackyZeng (zrongs@vip.qq.com)
+---------------------------------------------------------------------*/
+
+.main{width:1200px; margin:0px auto;}
+.venue-ad{height:250px; margin-bottom:20px;}
+.venue-main{background-color:#fff; margin:20px auto 20px auto;}
+.venue-main-left{background-color:#fff; width:1200px; margin-bottom:20px;}
+.venue-main-left .group .item{padding-bottom:20px; margin-bottom:20px; border-bottom:1px #e5e5e5 dotted;}
+.venue-main-left .group .item .img{float:left; width:280px; height:190px; background:#f8f8f8;overflow: hidden;}
+.venue-main-left .group .item .info{float:left; width:828px; height:190px; padding-left:5px; overflow:hidden; position:relative; margin-left:15px; padding-right:30px;}
+.venue-main-left .group .item .info h2{    font-size: 20px;
+    margin-bottom: 10px;
+    margin-top: 15px;
+    line-height: 26px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;}
+.venue-main-left .group .item .info h2 a{color:#333;}
+.venue-main-left .group .item .info h2 a:hover{color:#c8161d}
+.venue-main-left .group .item .info p{font-size:13px; color:#959595; margin-bottom:10px; height:17px;}
+.venue-main-left .group .item .info p span{text-indent:10px; display:inline-block;}
+.venue-main-left .group .item .info p span.desc-text {max-width: 705px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;line-height: 13px;margin-right:5px;}
+.venue-main-left .group .item .info .adr span{}
+.venue-main-left .group .item .info .adr a{color:#61a5f2}
+.venue-main-left .group .item .info .type{height:auto;}
+.venue-main-left .group .item .info .type span{display:inline-block; margin-right:10px; text-align:center; text-indent:0px; border: solid 1px #e5e5e5; padding: 0px 13px; border-radius: 10px}
+.venue-main-left .group .item .info .type .d{background-color:#fff;margin-bottom: 5px;}
+.venue-main-left .group .item .info p span.tt {
+    float: left;
+    text-indent: 0px;
+}
+.venue-main-left .group .item .info .type .h{background-color:#fff;}
+.venue-main-left .group .item .info .type .p{background-color:#fff;}
+.venue-main-left .group .item .activityCont{position:absolute; right:-500px; top:0px; height:190px; width:514px; transition:.2s}
+.venue-main-left .group .item .activityCont .q-l{width:10px; height:190px; background:url(../../../assets/img/field/q.png) no-repeat;float:left;}
+.venue-main-left .group .item .activityCont .q-r{width:504px; height:190px; background-color:#eee; float:left;}
+.venue-main-left .group .item .info:hover .activityCont{right:0px;}
+.venue-main-left .info-main{height:81px; position:relative;}
+.venue-main-left .info-main .row-2 h3{font-size:13px; margin-top:10px;}
+.container{width: 1200px;margin: 0 auto;}
+.categoryChange{width: 1200px;margin: 40px auto;}
+.categoryChange .row{padding: 15px 20px 0;background: #fff; border-bottom:1px #e5e5e5 dashed;}
+.categoryChange .border-none{border-bottom:0px; margin-bottom:0px;}
+.categoryChange .row .title{float:left; width:70px; font-size:14px; padding-top:8px;}
+.categoryChange .row .adrList{width:1050px; float:left;}
+.categoryChange .row .adrList1{width:700px; float:left;}
+.categoryChange .row .adrList .item a{color:#959595;font-size: 14px;}
+.categoryChange .row .adrList .active{background: #c8161d;}
+.categoryChange .row .adrList .active a,.categoryChange .type-row .categoryName.active a{color: #fff;font-weight:normal}
+.categoryChange .row .adrList .item{padding: 0px 25px;margin-bottom: 15px;border-radius: 3px;display: inline-block;height: 30px;line-height: 30px;}
+.categoryChange .row .searchCont{float: right;width: 260px;height: 30px;border: 1px #ddd solid; border-radius: 5px; background-color: #fff; margin-right:0px;}
+.categoryChange .row .searchCont input{height: 25px;line-height: 25px; border: 1px #fff solid; color: #959595; font-size: 14px;vertical-align: top; margin-left: 10px;}
+.categoryChange .row .searchCont button{height:30px; width:36px; background:url(../../img/activity/search.png) 40% 55% no-repeat; float: right;}
+.err-msg{text-align:center; padding:200px 0px; line-height:30px; font-size:20px; color:#959595;}
+.err-msg i{height:56px; width:56px; background:url(../../../assets/img/public/no-show.png) no-repeat 50% 50%; display:inline-block}
+.err-msg p span{color:#f2a861}
+.activityList{float:right; height:165px; width:350px; padding-top:25px; font-size:13px;}
+.activityList a{color:#959595; font-size:13px;}
+.activityList a:hover{color:#c8161d}
+.activityList p span{color:#f2a861; margin-left:10px;}
+.act-msg{color:#959595;}
+.masterRow{height:50px;}
+.masterRow ul{padding-left:90px; border-bottom:1px #e5e5e5 solid;}
+.masterRow ul li{float:left; padding:0px 25px; line-height:50px; margin-bottom:-1px;}
+.masterRow ul .active{border:1px #e5e5e5 solid; border-bottom:1px #fff solid; background-color:#fff; border-radius:3px 3px 0; line-height:48px; padding:0px 24px; position:relative; z-index:999;}
+.masterRow ul li a{color:#333; font-size:16px;}
+.masterRow ul .active a{color:#c8161d;}
+DIV.green-black{margin-bottom:50px;}

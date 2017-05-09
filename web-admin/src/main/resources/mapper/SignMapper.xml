@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.creatoo.hn.mapper.SignMapper">
+
+<!-- 同一个人是否只报同一类型培训的查询支持 -->
+<select id="selectOneInOneType" resultType="int">
+	SELECT count(0) FROM wh_traenr t 
+	WHERE t.enruid = #{uid} 
+	AND t.enrtype = #{enrtype}
+	AND t.enrtraid IN 
+		(SELECT r.traid FROM wh_train r 
+			WHERE r.tratyp IN 
+			(SELECT rr.typid FROM wh_typ rr WHERE rr.typid=#{typid} AND rr.typbmcfg = 1))
+</select>
+
+
+<!-- 按时段ID提取相关的活动时段信息供活动报名调用 -->
+<select id="selectEventInfoToSign" resultType="hashmap">
+	SELECT * FROM wh_activity t, wh_activityitm t2 WHERE t.actvid = t2.actvrefid 
+		 AND t2.actvitmid = #{itmid}
+</select>
+
+<!-- 查询用户活动时段以团队或个人方式报名的记录数 -->
+<select id="selectEventBmSum4User" resultType="int">
+	SELECT count(0) FROM wh_activitybm t WHERE t.actbmtype = #{bmtype} AND t.actbmuid=#{uid} AND t.actvitmid = #{itmid}
+</select>
+
+<!-- 活动报名人数统计 -->
+<select id="selectEventBmCount" resultType="java.lang.Object">
+	SELECT sum(t.actbmcount) FROM wh_activitybm t WHERE t.actvitmid = #{itmid} 
+	AND t.actshstate <![CDATA[<>]]> '3' 
+	<if test="shstate != null">
+		AND t.actshstate=#{shstate}
+	</if>
+</select>
+
+<!-- 培训是否收费查询 -->
+<select id="findTraenIsmoney" resultType="hashmap">
+	select t.ismoney from wh_train t where t.traid = #{traid}
+</select>
+
+<!-- 活动条目是否收费查询 -->
+<select id="findActItmIsmoney" resultType="hashmap">
+	select t.ismoney from wh_activityitm t where t.actvitmid = #{actvitmid}
+</select>
+
+</mapper>

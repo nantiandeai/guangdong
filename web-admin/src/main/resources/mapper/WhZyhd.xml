@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.creatoo.hn.mapper.WhZyhdMapper">
+
+
+	<select id="findzyhd" resultType="hashmap">
+		SELECT
+		z1.zyhdid,
+		z1.zyhdarea,
+		z1.zyhdtype,
+		z1.zyhdtitle,
+		z1.zyhdshorttitle,
+		z1.zyhdscope,
+		z1.zyhdpic,
+		z1.zyhdbigpic,
+		z1.zyhdstart,
+		z1.zyhdaddr,
+		z1.zyhdsdate,
+		z1.zyhdedate,
+		z1.zyhdcontent,
+		z1.zyhdopttime,
+		z1.zyhdstate,
+		z1.zyhvenueid
+		FROM
+		wh_zyhd AS z1
+		where
+		1 = 1
+		<if test="zyhdarea != null">
+			and z1.zyhdarea = #{zyhdarea}
+		</if>
+		<if test="zyhdtype != null">
+			and z1.zyhdtype = #{zyhdtype}
+		</if>
+		<if test="zyhdstate != null">
+			and z1.zyhdstate = #{zyhdstate}
+		</if>
+		<if test="zyhdtitle != null">
+			and z1.zyhdtitle like "%"#{zyhdtitle}"%"
+		</if>
+		ORDER BY
+		z1.zyhdopttime desc
+	</select>
+	<!-- 接口查询志愿活動 -->
+	<select id="showzyhd" resultType="hashmap">
+		SELECT
+			z.zyhdid 'itemId',
+			z.zyhdtype 'typeId',
+			z.zyhdshorttitle 'title',
+			z.zyhdtitle 'intro',
+			z.zyhdpic 'thumb',
+			z.zyhdbigpic 'image',
+			z.zyhdstate 'time',
+			z.zyhdscope 'district',
+			z.zyhdarea 'districtId'
+		FROM
+			wh_zyhd z,wh_typ t
+		WHERE
+			z.zyhdarea = t.typid
+			AND z.zyhdstate = 3
+		<if test="district != null">
+			and z.zyhdarea = #{district}
+		</if>
+	</select>
+	<!-- 接口查询志愿活動詳情 -->
+	<select id="showzyhdDetail" resultType="hashmap">
+	select
+		z.zyhdid 'itemId',
+		z.zyhdtype 'typeId',
+		z.zyhdshorttitle 'title',
+		z.zyhdtitle 'intro',
+		z.zyhdpic 'thumb',
+		z.zyhdbigpic 'image',
+		z.zyhdsdate 'time',
+		t.typname 'district',
+		z.zyhdaddr 'source',
+		z.zyhdarea 'districtId'
+		FROM
+		wh_zyhd z,wh_typ t
+		WHERE
+		z.zyhdarea = t.typid
+		AND z.zyhdstate = 3
+		<if test="district != null">
+			and z.zyhdarea = #{district}
+		</if>
+		and z.zyhdid = #{itemId}
+	</select>
+
+	<!-- 接口查询志愿风采 项目 -->
+	<select id="showzyfcProject" resultType="hashmap">
+		SELECT
+		z.zyfcxmid 'itemId',
+		z.zyfcxmshorttitle 'title',
+		z.zyfcxmtitle 'intro',
+		z.zyfcxmpic 'thumb',
+		z.zyfcxmbigpic 'image',
+		z.zyfcxmopttime 'time',
+		z.zyfcxmscope 'district',
+		z.zyfcxmpnum 'volNum',
+		z.zyfcxmanum 'servNum',
+		z.zyfcxmssdw 'department' 
+		FROM
+		wh_zyfc_xiangmu z
+		WHERE z.zyfcxmstate = 3
+	</select>
+	
+	<!-- 接口查询志愿风采 项目 -->
+	<select id="showzyfcProjectDetail" resultType="hashmap">
+		SELECT
+		z.zyfcxmid 'itemId',
+		z.zyfcxmshorttitle 'title',
+		z.zyfcxmtitle 'intro',
+		z.zyfcxmpic 'thumb',
+		z.zyfcxmbigpic 'image',
+		z.zyfcxmopttime 'time',
+		z.zyfcxmscope 'district',
+		z.zyfcxmpnum 'volNum',
+		z.zyfcxmanum 'servNum',
+		z.zyfcxmssdw 'department' 
+		FROM
+		wh_zyfc_xiangmu z
+		WHERE z.zyfcxmstate = 3
+		and z.zyfcxmid = #{itemId}
+	</select>
+	
+	<!-- 接口查询志愿风采 先进个人 -->
+	<select id="showzyfcPerson" resultType="hashmap">
+		SELECT
+		z.zyfcgrid 'itemId',
+		z.zyfcgrtitle 'title',
+		z.zyfcgrpic 'thumb',
+		z.zyfcgrbigpic 'image',
+		z.zyfcgrjrtime 'time',
+		z.zyfcgrscope 'district'
+		FROM
+			wh_zyfc_geren z
+		WHERE z.zyfcgrstate = 3
+	</select>
+	
+	<!-- 接口查询志愿风采 先进个人詳情 -->
+	<select id="showzyfcPersonDetail" resultType="hashmap">
+	SELECT
+		z.zyfcgrid 'itemId',
+		z.zyfcgrtitle 'title',
+		z.zyfcgrcontent 'intro',
+		z.zyfcgrpic 'thumb',
+		z.zyfcgrbigpic 'image',
+		z.zyfcgrjrtime 'time',
+		z.zyfcgrscope 'district',
+		z.zyfcgrjoinact 'joinact',
+		z.zyfcgrzc 'fcgrzc',
+		z.zyfcgrworkaddr 'department',
+		z.zyfwhen 'whentime'
+	FROM
+		wh_zyfc_geren z
+	WHERE z.zyfcgrstate = 3 and z.zyfcgrid = #{itemId}
+	</select>
+	
+	<!-- 接口查询志愿风采 优秀组织 -->
+	<select id="showzyfczuzhi" resultType="hashmap">
+		SELECT
+			z.zyfczzid 'itemId',
+			z.zyfczztitle 'title',
+			z.zyfczzpic 'thumb',
+			z.zyfczzbigpic 'image',
+			z.zyfczzfwtime 'time',
+			z.zyfczzscope 'district'
+		FROM
+			wh_zyfc_zuzhi z
+		WHERE
+			z.zyfczzstate = 3
+	</select>
+	
+	<!-- 接口查询志愿风采 优秀组织詳情 -->
+	<select id="showzyfczuzhiDetail" resultType="hashmap">
+		SELECT
+		z.zyfczzid 'itemId',
+		z.zyfczztitle 'title',
+		z.zyfczzcontent 'intro',
+		z.zyfczzpic 'thumb',
+		z.zyfczzbigpic 'image',
+		z.zyfczzfwtime 'time',
+		z.zyfczzscope 'district',
+		z.zyfczzjoinact 'joinact',
+		z.zyfczzpnum 'volNum',
+		z.zyfczzanum 'servNum'
+	FROM
+		wh_zyfc_zuzhi z
+	WHERE z.zyfczzstate = 3 and z.zyfczzid = #{itemId}
+	</select>
+	
+</mapper>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.creatoo.hn.mapper.WhVenuebkedMapper">
+	<select id="findVenueOrder" resultType="hashmap">
+		SELECT
+			v1.vebid,
+			v1.vebday,
+			v1.vebstime,
+			v1.vebetime,
+			v1.vebvenid,
+			v1.vebuid,
+			v1.vebtrainid,
+			v1.vebactivid,
+			v1.vebstate,
+			v1.vebcheckmsg,
+			v1.vebtid,
+			v1.vebordertime,
+			v2.venid,
+			v2.venname,
+			v2.venarea,
+			v2.ventype,
+			v2.vencanbk,
+			v2.vencontactnum,
+			v2.vencontact,
+			v2.venscope,
+			v2.venaddr,
+			v2.venaddrx,
+			v2.venaddry,
+			v2.venaddrm1,
+			v2.venaddrm2,
+			v2.venintroduce1,
+			v2.venintroduce2,
+			v2.vencondition,
+			v2.venstate,
+			v2.venopttime,
+			v2.venpic,
+			v2.venintro
+		FROM
+			wh_venuebked AS v1 ,
+			wh_venue AS v2
+		WHERE
+			v1.vebvenid = v2.venid AND v1.vebuid=#{uid}
+			<if test="vebstate != null">
+			AND v1.vebstate = #{vebstate}
+			</if>
+		ORDER BY 
+			v1.vebid desc
+		
+	
+	</select>
+</mapper>

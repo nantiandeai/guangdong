@@ -1,0 +1,760 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.creatoo.hn.mapper.ActivityMapper">
+ 
+<!-- 广东省馆品牌活动查询 -->
+<select id="selectBrandList" resultType='hashmap' parameterType='hashmap'>
+	SELECT t1.* 
+	FROM wh_brand t1 LEFT JOIN wh_brand_act t2 ON t1.braid = t2.braid 
+	 LEFT JOIN wh_activity t3 ON t2.bracactid = t3.actvid 
+	WHERE t1.brastate =3 
+	<if test="actvarea != null and actvarea != '' ">
+	and t3.actvarea = #{actvarea}
+	</if>
+	<if test="actvtype != null and actvtype != '' ">
+	and t3.actvtype = #{actvtype}
+	</if>
+	<if test="actvarttyp != null and actvarttyp != '' ">
+	and t3.actvarttyp = #{actvarttyp}
+	</if>
+	<if test="bratitle != null and bratitle !='' ">
+	and (t1.bratitle LIKE #{bratitle} or t1.braintroduce LIKE #{bratitle})
+	</if>
+	<if test="datemark !=null and nowdate !=null ">
+		<choose>
+			<when test="datemark == 1 and lastdate != null ">
+				and t1.brasdate <![CDATA[>]]> #{nowdate} and t1.brasdate <![CDATA[<]]> #{lastdate}
+			</when>
+			<when test="datemark == 2">
+				and t1.brasdate <![CDATA[<]]> #{nowdate} and t1.braedate <![CDATA[>]]> #{nowdate}
+			</when>
+			<when test="datemark == 3">
+				and t1.braedate <![CDATA[<]]> #{nowdate}
+			</when>
+		</choose>
+	</if>
+	
+	GROUP BY t1.braid 
+	<choose>
+		<when test="sysorder !=null">
+			ORDER BY t1.brasdate desc
+		</when>
+		<otherwise>
+			ORDER BY t1.bravoptime desc
+		</otherwise>
+	</choose>
+</select>
+ 
+  <!-- 分页查询培训模板 -->
+  <select id="selectTraintpl" parameterType="java.util.HashMap" resultType="hashmap">
+    SELECT *
+	from wh_tra t1
+	where t1.traid is not null
+	<if test="tratyp != null">
+      and t1.tratyp <![CDATA[=]]> #{tratyp}
+    </if>
+    <if test="arttyp != null">
+      and t1.arttyp <![CDATA[=]]> #{arttyp}
+    </if>
+    <if test="agelevel != null">
+      and t1.agelevel <![CDATA[=]]> #{agelevel}
+    </if>
+    <if test="tralevel != null">
+      and t1.tralevel <![CDATA[=]]> #{tralevel}
+    </if>
+    <if test="teacher != null">
+      and t1.teacher like "%"#{arttyp}"%"
+    </if>
+    <if test="title != null">
+      and t1.title like "%"#{title}"%"
+    </if>
+    <if test="sort != null and order!=null">
+      order by ${sort} ${order} 
+    </if>
+  </select>
+  <!-- 分页查询培训审核与发布 -->
+  <select id="selectTrainitm" parameterType="java.util.HashMap" resultType="hashmap">
+		SELECT
+			t1.tratyp,
+			t1.arttyp,
+			t1.trapic,
+			t1.teacher,
+			t1.teacherid,
+			t1.agelevel,
+			t1.tralevel,
+			t1.isrealname,
+			t1.isfulldata,
+			t1.isattach,
+			t1.isonlyone,
+			t1.islogincomment,
+			t1.userfile,
+			t1.tratags,
+			t1.trakeys,
+			t1.traid,
+			t1.title,
+			t2.trasummary,
+			t2.enroldesc,
+			t2.traitmid,
+			t2.tratitle,
+			t2.sdate,
+			t2.edate,
+			t2.isenrol,
+			t2.enrolstime,
+			t2.enroletime,
+			t2.isenrolqr,
+			t2.state,
+			t2.enrollimit,
+			t2.isnotic,
+			t2.traitmidx,
+			t2.traitmghp
+		from wh_tra t1, wh_traitm t2
+		where t1.traid=t2.traid
+		<if test="stateArray != null">
+	      and t2.state in 
+	      <foreach item="item" index="index" collection="stateArray" open="(" separator="," close=")">
+		        #{item}
+		  </foreach>
+	    </if>
+	    <if test="traid != null">
+	      and t2.traid <![CDATA[=]]> #{traid}
+	    </if>
+    	<if test="tratyp != null">
+	      and t1.tratyp <![CDATA[=]]> #{tratyp}
+	    </if>
+	    <if test="arttyp != null">
+	      and t1.arttyp <![CDATA[=]]> #{arttyp}
+	    </if>
+	    <if test="agelevel != null">
+	      and t1.agelevel <![CDATA[=]]> #{agelevel}
+	    </if>
+	    <if test="tralevel != null">
+	      and t1.tralevel <![CDATA[=]]> #{tralevel}
+	    </if>
+	    <if test="teacher != null">
+	      and t1.teacher like "%"#{arttyp}"%"
+	    </if>
+	    <if test="title != null">
+	      and t2.tratitle like "%"#{title}"%"
+	    </if>
+	    
+		<if test="sdate_s != null">
+	      and t2.sdate <![CDATA[>=]]> #{sdate_s}
+	    </if>
+		<if test="sdate_e != null">
+	      and t2.sdate <![CDATA[<=]]> #{sdate_e}
+	    </if>
+	    <if test="edate_s != null">
+	      and t2.edate <![CDATA[>=]]> #{edate_s}
+	    </if>
+		<if test="edate_e != null">
+	      and t2.edate <![CDATA[<=]]> #{edate_e}
+	    </if>
+	    
+	    <if test="enrolstime_s != null">
+	      and t2.enrolstime <![CDATA[>=]]> #{enrolstime_s}
+	    </if>
+		<if test="enrolstime_e != null">
+	      and t2.enrolstime <![CDATA[<=]]> #{enrolstime_e}
+	    </if>
+	    <if test="enroletime_s != null">
+	      and t2.enroletime <![CDATA[>=]]> #{enroletime_s}
+	    </if>
+		<if test="enroletime_e != null">
+	      and t2.enroletime <![CDATA[<=]]> #{enroletime_e}
+	    </if>
+	    <if test="sort != null and order!=null">
+	      order by ${sort} ${order} 
+	    </if>
+  </select>
+  
+  <select id="selTraid" parameterType="String" resultType="String">
+  	select traid from wh_tra where title = #{tratitle} 
+  </select>
+
+	<!--查询所有名录-->
+  <select id="selMingLu" resultType="WhDecproject">
+  	SELECT t.mlproid,t.mlproshortitel from wh_decproject t ORDER BY t.mlprotime DESC
+  </select>
+
+  <!--activity 表 多条件查询 开始 -->
+   <select id="selectActivity" parameterType="java.util.HashMap" resultType="hashmap">
+   select * from wh_activity where 1=1 
+  	 <if test="actvstate2 !=null">
+   		and actvstate BETWEEN 2 and 3
+  	 </if>
+  	  <if test="actvstate !=null">
+   		and actvstate = #{actvstate}
+  	 </if>
+   	 <if test="actvtitle !=null">
+  	 	and (actvtitle  like "%"#{actvtitle}"%" or actvshorttitle like "%"#{actvtitle}"%")
+     </if>
+     <if test="actvarttyp !=null">
+     	and actvarttyp=#{actvarttyp}
+  	 </if>
+     <if test="actvtype !=null">
+     	and actvtype=#{actvtype}
+  	 </if>
+     <if test="actvsdate !=null">
+     and actvsdate <![CDATA[<=]]> #{actvsdate} 
+   	</if>
+  	 <if test="actvedate !=null">
+  	 and actvedate <![CDATA[>=]]> #{actvedate} 
+  	 </if>
+   	<choose>
+   		<when test="sort != null and order!=null">
+   			order by ${sort} ${order} 
+   		</when>
+   		<otherwise>
+   			order by actvopttime desc
+   		</otherwise>
+   	</choose>
+   </select>
+  <!--activity 表 多条件查询 结束 -->
+  
+  <!--activitytpl 表 多条件查询 开始 -->
+   <select id="selectActivitytpl" parameterType="java.util.HashMap" resultType="hashmap">
+   select * from wh_activitytpl where 1=1 
+  	 <if test="actvstate2 !=null">
+   		and actvstate BETWEEN 2 and 3
+  	 </if>
+  	  <if test="actvstate !=null">
+   		and actvstate = #{actvstate}
+  	 </if>
+   	 <if test="actvtitle !=null">
+  	 	and (actvtitle  like "%"#{actvtitle}"%" or actvshorttitle like "%"#{actvtitle}"%")
+     </if>
+     <if test="actvarttyp !=null">
+     	and actvarttyp=#{actvarttyp}
+  	 </if>
+     <if test="actvtype !=null">
+     	and actvtype=#{actvtype}
+  	 </if>
+     <if test="actvsdate !=null">
+     and actvsdate <![CDATA[<=]]> #{actvsdate} 
+   	</if>
+  	 <if test="actvedate !=null">
+  	 and actvedate <![CDATA[>=]]> #{actvedate} 
+  	 </if>
+  	 <choose>
+  	 	 <when test="sort != null and order!=null">
+	  	  order by ${sort} ${order} 
+	  	 </when>
+	  	 <otherwise>
+	  	  order by actvopttime desc 
+	  	 </otherwise>
+  	 </choose>
+   </select>
+  <!--activity 表 多条件查询 结束 -->
+ <!-- 前台 活动list 条件查询  开始-->
+    <select id="selecteventList" parameterType="java.util.HashMap" resultType="hashmap">
+    
+    select * from
+	(select t1.actvid,t1.actvintroduce,t1.actvshorttitle,t1.actvbigpic,t2.actvitmsdate from wh_activity t1 left join wh_activityitm t2 
+	on t1.actvid = t2.actvrefid where 1=1 and t1.actvstate=3
+	<if test="sdate !=null or actvsdate2 !=null">
+  		<choose>
+  			<when test="sdate !=null">
+				and t2.actvitmsdate<![CDATA[>=]]>#{date}  
+				and t2.actvitmsdate<![CDATA[<=]]>#{newdate} 
+		    </when>
+			<when test="actvsdate2 !=null">
+				<if test="date2 !=null">
+					and t2.actvitmsdate<![CDATA[>=]]>#{date2} 
+				</if>
+				<if test="newdate2 !=null">
+					and t2.actvitmsdate<![CDATA[<=]]>#{newdate2}
+				</if>
+				<if test="date3 !=null">
+					and t2.actvitmedate<![CDATA[<=]]>#{date3} 
+				</if> 
+				<if test="date4 !=null">
+					and t2.actvitmedate<![CDATA[>=]]>#{date4}
+					and t2.actvitmsdate<![CDATA[<=]]>#{date4}  
+				</if> 
+			</when>
+		</choose>
+	</if> 
+	<if test="actvarea !=null">
+	and t1.actvarea=#{actvarea}
+	</if>
+	<if test="actvtype !=null">
+	and t1.actvtype=#{actvtype}
+	</if>
+	<if test="actvarttyp !=null">
+	and t1.actvarttyp=#{actvarttyp}
+	</if>
+	<if test="actvshorttitle !=null">
+	and (t1.actvshorttitle like "%"#{actvshorttitle}"%" or t1.actvintroduce like "%"#{actvshorttitle}"%")
+	</if>
+	ORDER BY t2.actvitmsdate
+	) as t
+	GROUP BY t.actvid
+	</select>
+
+	<!-- 前台 活动list 条件查询 结束 -->
+	<!-- 前台 往期回顾  同类 过时 查询 开始-->
+	  <select id="selectwqAct" parameterType="java.util.HashMap" resultType="hashmap">
+			SELECT actvid,actvshorttitle,actvbigpic from wh_activity WHERE 1=1 
+			<if test="actvitmedate !=null">
+			 		and actvid in(SELECT actvrefid from wh_activityitm WHERE 1=1 
+			 		and actvitmedate<![CDATA[<]]>#{actvitmedate} order by actvitmedate desc)
+			</if>
+			<if test="actvtype !=null">
+				and actvtype=#{actvtype}
+			</if>
+			<if test="actvid !=null">
+				and actvid<![CDATA[<>]]>#{actvid}
+			</if>
+	</select>
+	<!-- 前台 往期回顾  同类 过时 查询 结束-->
+	<!-- 前台 往期回顾   专题 过时 查询 开始-->
+	  <select id="selectwqActtype" parameterType="java.util.HashMap" resultType="hashmap">
+		select t3.actvid,t3.actvshorttitle,t3.actvbigpic from wh_activity t3
+		where t3.actvid in (
+		select t2.bracactid from wh_brand_act t2 
+		<if test="actvid !=null">
+		where t2.braid in (select t1.braid from wh_brand_act t1 where t1.bracactid = #{actvid}) 
+		and t2.bracactid <![CDATA[<>]]> #{actvid} 
+		</if>
+		)
+	</select>
+	
+	<!-- 后台 活动报名  关联查询4个表 开始-->
+	 <select id="selectActivitybm" parameterType="java.util.HashMap" resultType="hashmap">
+	SELECT b.*,u.nickname,a.actvshorttitle,am.ismoney,am.actvitmsdate,am.actvitmedate,am.actvitmdpcount,am.actvitmbmcount from wh_activitybm as b 
+	LEFT JOIN wh_user as u on b.actbmuid=u.id 
+	left join wh_activity as a on b.actid=a.actvid
+	LEFT JOIN wh_activityitm as am on b.actvitmid=am.actvitmid where 1=1 
+	<if test="actvshorttitle !=null">
+		and b.actid=#{actvshorttitle}
+	</if>
+	<if test="actshstate !=null">
+		and b.actshstate=#{actshstate}
+	</if>
+	<if test="actbmstate !=null">
+		and b.actbmstate=#{actbmstate}
+	</if>
+	<choose>
+		<when test="sort != null and order!=null">
+			order by ${sort} ${order} 
+		</when>
+		<otherwise>
+			order by actbmtime desc
+		</otherwise>
+	</choose>
+	</select>
+	<!-- 后台 活动报名   关联查询4个表 结束-->
+	
+		<!-- 个人中心 我的活动  关联查询4个表 开始-->
+	 <select id="selectMyeventenroll" parameterType="java.util.HashMap" resultType="hashmap">
+	SELECT b.*,u.name,a.actvisenrol,a.actvshorttitle,a.actvaddress,am.actvitmonemax,am.actvbmsdate,am.actvbmedate,am.actvitmsdate,am.actvitmedate,am.actvitmdpcount,am.actvitmbmcount from wh_activitybm as b 
+	LEFT JOIN wh_user as u on b.actbmuid=u.id 
+	left join wh_activity as a on b.actid=a.actvid
+	LEFT JOIN wh_activityitm as am on b.actvitmid=am.actvitmid where 1=1 
+	<if test="actbmuid !=null">
+	and b.actbmuid=#{actbmuid}
+	</if>
+	
+    <if test="type0 != null">
+    and b.actbmstate = 0
+    </if>
+	
+	<if test="type1 != null">
+    and b.actbmstate=1 AND(b.actshstate=0 or b.actshstate=3)
+    </if>
+    
+    <if test="type2 != null">
+    and b.actbmstate = 1 and (b.actshstate = 1 or b.actshstate = 2)
+    </if>
+	order by b.actbmtime desc
+	</select>
+	<!-- 个人中心 我的活动    关联查询4个表 结束-->
+	<!-- 品牌活动查找  start-->
+	 <select id="loadPP" parameterType="java.util.HashMap" resultType="hashmap">
+		SELECT a.actvtype,a.actvarttyp,a.actvarea from wh_activity a,wh_brand 
+		b,wh_brand_act ba where a.actvid=ba.bracactid and b.braid=ba.braid
+		and b.brastate=3 ORDER BY ba.bracsdate
+	</select>
+	<!-- 品牌活动查找 end-->
+	
+	<!--活动 查找 首页 地址 start-->
+	 <select id="selectactadress" resultType="hashmap">
+	SELECT c.*,a.actvaddress from wh_cfg_list c,wh_activity a where c.cfgshowid=a.actvid and
+	 cfgenttype='2016101400000052' and cfgpagetype='2016102900000006' and cfgstate=1 ORDER BY cfgshowidx asc,cfgshowidx desc
+	 </select>
+    <!--活动 查找 首页 地址 end -->
+    
+    <!--活动 查找 首页 品牌类型 start-->
+	 <select id="selectpptype" resultType="hashmap">
+    SELECT c.*,t.typname from wh_cfg_list c,wh_typ t where c.cfgenttype=t.typid and c.cfgenttype='2016103100000001' 
+  	and c.cfgpagetype='2016102900000006' and c.cfgstate=1 ORDER BY c.cfgshowidx desc
+    </select>
+	<!--活动 查找 首页 品牌类型 end -->
+	<!-- dg 文化活动 list start-->
+	<!-- <select id="selectlistAct" parameterType="java.util.HashMap" resultType="hashmap">
+	select * from
+	(select t1.actvid,t1.actvintroduce,t1.actvshorttitle,t1.actvopttime,t1.actvsdate,t1.actvbigpic,t2.actvitmsdate
+	 from wh_activity t1 left join wh_activityitm t2 
+	on t1.actvid = t2.actvrefid where 1=1 and t1.actvstate=3
+	<choose>
+			<when test="sdate !=null">
+				<if test="date !=null and sdate == 1">
+					and t2.actvitmsdate<![CDATA[>]]>#{date} 
+					and t2.actvitmsdate<![CDATA[<]]>#{newdate} 
+				</if>
+				<if test="sdate == 2">
+					and t2.actvitmsdate<![CDATA[<]]>#{date}
+					and t2.actvitmedate<![CDATA[>]]>#{date}
+				</if>
+				<if test="sdate == 3">
+					and t2.actvitmedate<![CDATA[<]]>#{date}
+				</if>
+			</when>
+		</choose>
+	
+	<if test="actvarea !=null">
+	and t1.actvarea=#{actvarea}
+	</if>
+	<if test="actvtype !=null">
+	and t1.actvtype=#{actvtype}
+	</if>
+	<if test="actvarttyp !=null">
+	and t1.actvarttyp=#{actvarttyp}
+	</if>
+	<if test="actvshorttitle !=null">
+	and (t1.actvshorttitle like #{actvshorttitle} or t1.actvintroduce like #{actvshorttitle})
+	</if>
+	) as t GROUP BY t.actvid 
+	<choose>
+		<when test="sysorder !=null">
+			ORDER BY t.actvsdate desc
+		</when>
+		<otherwise>
+			ORDER BY t.actvopttime desc
+		</otherwise>
+	</choose>
+	</select> -->
+	
+	<select id="selectlistAct" parameterType="java.util.HashMap" resultType="hashmap">		
+		select t.id,t.`name`,t.crtdate,t.imgurl,t.actsummary,t.starttime,t.endtime,t.address from whg_act_activity t where t.state = 6 and t.delstate = 0
+		<if test="cultid!=null and cultid!=''">
+            and t.cultid = #{cultid}
+        </if>
+        <if test="name !=null and name != ''">
+			and (t.name like #{name} or t.actsummary like #{name})
+		</if>
+		<if test="arttype !=null"> <!-- 艺术分类 -->
+			and t.arttype like #{arttype} 
+		</if>
+		<if test="etype !=null"> <!-- 分类 -->
+			and t.etyp like #{etype} 
+		</if>
+		<if test="areaid !=null"> <!-- 区域 -->
+			and t.areaid = #{areaid}
+		</if>
+		<if test="cultid !=null"> <!-- 文化馆-->
+			and t.cultid = #{cultid}
+		</if>
+		<if test="isrecommend !=null"> <!-- 推荐-->
+			and t.isrecommend = #{isrecommend}
+		</if>
+		<choose>
+			 	<when test="sdate !=null">
+				<if test="date !=null and sdate == 1">
+					and t.starttime<![CDATA[>]]>#{date} 
+					and t.starttime<![CDATA[<]]>#{newdate} 
+				</if>
+				<if test="sdate == 2">
+					and t.starttime<![CDATA[<]]>#{date}
+					and t.endtime<![CDATA[>]]>#{date}
+				</if>
+				<if test="sdate == 3">
+					and t.endtime<![CDATA[<]]>#{date}
+				</if>
+				<if test="sdate == 4">
+					and t.isrecommend = 1
+				</if>
+			</when>
+		</choose>
+		   order by t.statemdfdate desc
+	</select>
+	<!-- dg 文化活动 list end-->
+	<!-- dg 品牌活动详情 start-->
+	<select id="selectppDetail" parameterType="java.util.HashMap" resultType="hashmap">
+	SELECT ba.*,a.actvopttime,a.actvaddress,a.actvphone from wh_activity a,wh_brand_act ba
+ 	where a.actvid=ba.bracactid and a.actvstate=3
+ 	<if test="bracactid !=null">
+ 	and ba.bracactid=#{bracactid}
+ 	</if>
+	</select>
+	<!-- dg 品牌活动详情  end-->
+	
+	<!-- dg 品牌活动详情  start-->
+	<select id="selectppwqact" parameterType="java.util.HashMap" resultType="hashmap">
+		select t1.actvbigpic,t1.actvid,t1.actvshorttitle from wh_activity t1, wh_activityitm t2, wh_brand_act t3
+		where t1.actvid = t2.actvrefid and t1.actvid = t3.bracactid 
+		and t1.actvstate = 3 
+		<if test="braid !=null">
+		and t3.braid<![CDATA[<>]]>#{braid}
+		</if>
+		<if test="nowdate !=null">
+		and t2.actvitmedate <![CDATA[<]]> #{nowdate}
+		</if>
+		GROUP BY t1.actvid
+	</select>
+	<!-- dg 品牌活动详情  end -->
+	
+	<!--后台验证 活动审核 是否有场次时间 -->
+	<select id="selectcountActitm" parameterType="java.util.HashMap" resultType="hashmap">
+	select actvrefid from wh_activityitm where actvitmstate=1
+	<if test="list != null">
+		and actvrefid in
+		<foreach item="item" index="index" collection="list" open="(" separator="," close=")">
+			#{item}
+		</foreach>
+	</if>
+	group by actvrefid
+	</select>
+	
+	
+<!-- ****************名录表/传承人xml**************** -->	
+<!--后台维护名录项目 -->
+<select id="selectminglu" parameterType="java.util.HashMap" resultType="hashmap">
+	SELECT * from wh_decproject where 1=1
+	<if test="mlproshortitel !=null">
+		and (mlproshortitel like "%"#{mlproshortitel}"%" or mlprotailtitle like "%"#{mlproshortitel}"%")
+	</if>
+	<if test="mlprotype !=null">
+	and mlprotype=#{mlprotype}
+	</if>
+	<if test="mlproitem !=null">
+	and mlproitem=#{mlproitem}
+	</if>
+	<if test="mlprolevel !=null">
+	and mlprolevel=#{mlprolevel}
+	</if>
+	<if test="mlproqy !=null">
+	and mlproqy=#{mlproqy}
+	</if>
+	<if test="mlprosbaddr !=null">
+	and mlprosbaddr=#{mlprosbaddr}
+	</if>
+	<if test="list != null">
+	      and mlproid in 
+	      <foreach item="item" index="index" collection="list" open="(" separator="," close=")">
+		        #{item}
+		  </foreach>
+	 </if>
+	<choose>
+		<when test="sort != null and order!=null">
+			order by ${sort} ${order}
+		</when>
+		<otherwise>
+   			order by mlprotime desc
+   		</otherwise>
+	</choose>
+</select>
+
+<!-- 传承人 后台维护 -->
+<select id="selectSuccessor" parameterType="java.util.HashMap" resultType="hashmap">
+	SELECT * from wh_successor where 1=1
+	<if test="suorname !=null and suorname != ''" >
+		and suorname LIKE "%"#{suorname}"%"
+	</if>
+	<if test="suorqy !=null">
+		and suorqy=#{suorqy}
+	</if>
+	<if test="mlproid !=null and mlproid != ''">
+		and proid = #{mlproid}
+	</if>
+	<if test="suorlevel !=null">
+		and suorlevel=#{suorlevel}
+	</if>
+	<if test="suoritem !=null">
+	and suoritem=#{suoritem}
+	</if>
+	<if test="suortype !=null">
+	and suortype=#{suortype}
+	</if>
+	<choose>
+		<when test="sort != null and order!=null">
+			order by ${sort} ${order}
+		</when>
+		<otherwise>
+			order by suoroptime desc
+		</otherwise>
+	</choose>
+</select>
+
+<select id="dataloadminglu" parameterType="java.util.HashMap" resultType="hashmap">
+	SELECT mlproid,mlproshortitel,mlprosmpic,mlprosbaddr from wh_decproject where mlprostate=6
+	<if test="bratitle !=null">
+		and (mlproshortitel like #{bratitle} or mlprotailtitle like #{bratitle})
+	</if>
+	<if test="mlprotype !=null">
+	and mlprotype=#{mlprotype}
+	</if>
+	<if test="mlproitem !=null">
+	and mlproitem=#{mlproitem}
+	</if>
+	<if test="mlprolevel !=null">
+	and mlprolevel=#{mlprolevel}
+	</if>
+	<if test="mlproqy !=null">
+	and mlproqy=#{mlproqy}
+	</if>
+	<if test="mlprosbaddr !=null">
+	and mlprosbaddr=#{mlprosbaddr}
+	</if>
+   	order by mlprotime desc
+</select>
+
+<!-- 传承人 列表页 -->
+<select id="dataloadsuccessor" parameterType="java.util.HashMap" resultType="hashmap">
+SELECT s.suorid,s.suorpic,s.suorname,s.suorjs,d.mlproshortitel
+	from wh_successor s
+	<!--LEFT JOIN wh_suorpro sp on s.suorid=sp.spsuorid LEFT JOIN wh_decproject d on d.mlproid=sp.spmlproid and d.mlprostate = 3-->
+	LEFT JOIN wh_decproject d ON d.mlproid = s.proid AND d.mlprostate = 6
+	where s.suorstate=6
+
+ 	<if test="suorname !=null">
+		and (s.suorname like #{suorname} or d.mlproshortitel like #{suorname})
+	</if>
+	<if test="suorqy !=null">
+		and s.suorqy=#{suorqy}
+	</if>
+	<if test="suorlevel !=null">
+		and s.suorlevel=#{suorlevel}
+	</if>
+	<if test="suoritem !=null">
+	and s.suoritem=#{suoritem}
+	</if>
+	<if test="suortype !=null">
+	and s.suortype=#{suortype}
+	</if>
+ 	GROUP BY s.suorid order by s.suoroptime desc
+</select>
+
+<!-- 传承人详情  开始-->
+<select id="suorDetail" resultType="hashmap">
+	SELECT s.*,t.name from wh_successor s,whg_ywi_type t where s.suorqy=t.id
+	<if test="suorid != null">
+	and suorid=#{suorid}
+	</if>
+</select>
+<!-- 传承人详情  结束-->
+
+<!-- 传承人详情  开始-->
+<select id="successortopro" resultType="hashmap" parameterType="java.util.HashMap">
+	SELECT d.mlproshortitel,d.mlprosmpic,d.mlproid,d.mlprotime,t.name from wh_decproject d,whg_ywi_type t where d.mlprolevel=t.id and d.mlprostate=6
+	<if test="list != null">
+	      and mlproid in 
+	      <foreach item="item" index="index" collection="list" open="(" separator="," close=")">
+		        #{item}
+		  </foreach>
+	 </if>
+	order by d.mlprotime desc
+</select>
+<!-- 传承人详情  结束-->
+<select id="successor" resultType="WhSuccessor">
+	SELECT * from wh_successor t WHERE 1=1
+	<if test="suorid != null">
+		and t.suorid = #{suorid}
+	</if>
+</select>
+<!--  推荐传承人 开始-->
+<select id="tjsuor" resultType="hashmap">
+	<!--SELECT  s.suorid,s.suorpic,d.mlproid,s.suorname,d.mlproshortitel from wh_successor s,wh_suorpro sp,wh_decproject d
+     WHERE s.suorid=sp.spsuorid and d.mlproid=sp.spmlproid and s.suorstate=3 and d.mlprostate=3-->
+	SELECT s.suorid,s.suorpic,d.mlproid,s.suorname,d.mlproshortitel from wh_successor s,wh_decproject d
+	WHERE d.mlproid=s.proid and s.recommend=1 and d.mlprostate=6
+	<if test="suorid != null">
+		AND s.suorid <![CDATA[<>]]>#{suorid}
+	</if>
+</select>
+    <!-- 推荐传承人 结束-->
+
+<!-- ===========微信端接口=============== -->
+		<!-- 个人中心 我的活动  关联查询4个表 开始-->
+ 	<select id="selectMywxevent" parameterType="java.util.HashMap" resultType="hashmap">
+	SELECT a.actvtags,a.actvid,a.actvshorttitle,a.actvintroduce,a.actvbigpic,a.actvpic,a.actvphone,a.actvaddress,am.actvitmsdate,am.actvitmedate from wh_activitybm b 
+	LEFT JOIN wh_user u on b.actbmuid=u.id 
+	left join wh_activity a on b.actid=a.actvid
+	LEFT JOIN wh_activityitm am on b.actvitmid=am.actvitmid where 1=1 
+	<if test="actbmuid !=null">
+	and b.actbmuid=#{actbmuid}
+	</if>
+    <if test="state != null and state == '1'">
+    and b.actbmstate = 0
+    </if>
+	
+	<if test="type1 != null and state == '2'">
+    and b.actbmstate=1 AND(b.actshstate=0 or b.actshstate=3)
+    </if>
+    
+    <if test="type2 != null and state == '3'">
+    and b.actbmstate = 1 and (b.actshstate = 1 or b.actshstate = 2)
+    </if>
+	order by b.actbmtime desc
+	</select>
+	<!-- 个人中心 我的活动    关联查询4个表 结束-->
+	
+	<!-- 我的收藏 活动 -->
+	<select id="selectfavact" resultType="hashmap">
+		SELECT
+		actvid itemId,
+		actvtype typeId,
+		actvintroduce intro,
+		actvbigpic thumb,
+		actvpic image,
+		actvphone phone,
+		actvtags tag,
+		actvarea district,
+		actvaddress address,
+		actvshorttitle title,
+		actvdetail,
+		actvintroduce,
+		actvenroldesc
+	FROM
+		wh_activity
+	WHERE
+		actvstate = 3
+	<if test="actvid != null">
+	and actvid=#{actvid}
+ 	</if>
+	</select>
+	
+	<!-- 我的收藏 培训-->
+	<select id="selectfavtra" resultType="hashmap">
+	select tratyp typeId,traintroduce intro,trapic thumb,trabigpic image,traphone phone,tratags tag,traarea district,traaddress address,trasdate begin,traedate end
+	from wh_train where trastate=3
+	<if test="traid != null">
+	and traid=#{traid}
+ 	</if>
+	</select>
+	
+	<!-- 我的收藏 文化场馆-->
+	<select id="selectfaven" resultType="hashmap">
+	select ventype typeId,venintro intro,venpic thumb,vencontactnum phone,ventag tag,venarea district,venaddr address
+	from wh_venue where venstate=3
+	<if test="venid != null">
+	and venid=#{venid}
+ 	</if>
+	</select>
+	
+	<!-- 我的收藏 文化展-->
+	<select id="selectfaart" resultType="hashmap">
+	select exhtype typeId,exhdesc intro,exhpic thumb,exhstime begin,exhetime end
+	from wh_art_exhibition where 1=1 
+	<if test="exhid != null">
+	and exhid=#{exhid}
+ 	</if>
+	</select>
+	
+	<!-- 我的 专题活动 -->
+	<select id="selectfavppact" resultType="hashmap">
+	select braid itemId,braintroduce intro,bratitle title,brapic thumb,brasdate begin,braedate end
+	from wh_brand where brastate=3
+	</select>
+
+</mapper>

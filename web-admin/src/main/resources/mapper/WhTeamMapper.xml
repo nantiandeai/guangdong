@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.creatoo.hn.mapper.WhTeamMapper" >
+  <resultMap id="BaseResultMap" type="com.creatoo.hn.model.WhTeam" >
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="team" property="team" jdbcType="VARCHAR" />
+  </resultMap>
+</mapper>

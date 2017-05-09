@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.creatoo.hn.mapper.ArtMapper">
+
+	<!-- 分页查询精品文化展 -->
+	<select id="searchArtJpwhz" parameterType="java.util.HashMap" resultType="hashmap">
+		select * 
+		from wh_art_exhibition
+		where exhstate='3'
+		<if test="arttyp != null">
+	      and exharttyp <![CDATA[=]]> #{arttyp}
+	    </if>
+	    <if test="title != null">
+	      and exhtitle like "%"#{title}"%"
+	    </if>
+	   ORDER BY exhidx 
+	</select>
+  
+	<!-- 分页查询个人作品展 -->
+	<select id="searchArtGrzpz" parameterType="java.util.HashMap" resultType="hashmap">
+		select t1.*, (select count(*) from wh_art where arttyp='2016101400000035' and arttypid=t1.artistid) as zpnum
+		from wh_user_artist t1
+		where t1.artiststate='3' 
+	    <if test="arttyp != null">
+	      and artistarttyp <![CDATA[=]]> #{arttyp}
+	    </if>
+	    <if test="title != null">
+	      and artistname like "%"#{title}"%"
+	    </if>
+	</select>
+	
+	<!-- 分页查询艺术团队 -->
+	<select id="searchArtYstd" parameterType="java.util.HashMap" resultType="hashmap">
+		select * 
+		from wh_user_troupe
+		where troupestate='3' 
+		<if test="arttyp != null">
+	      and troupearttyp <![CDATA[=]]> #{arttyp}
+	    </if>
+	    <if test="title != null">
+	      and troupename like "%"#{title}"%"
+	    </if>
+	</select>
+	
+	<!-- 查询艺术作品中的关键字 -->
+	<select id="searchArtKeys" parameterType="java.util.HashMap" resultType="hashmap">
+		select * 
+		from wh_key t1
+		where 1=1 
+		<if test="idArray != null">
+	      and t1.id in  
+	      <foreach item="item" index="index" collection="idArray" open="(" separator="," close=")">
+		        #{item}
+		  </foreach>
+	    </if>
+	</select>
+	
+	<!-- 查询艺术作品中的标签 -->
+	<select id="searchArtTags" parameterType="java.util.HashMap" resultType="hashmap">
+		select * 
+		from wh_tag t1
+		where 1=1 
+		<if test="idArray != null">
+	      and t1.id in  
+	      <foreach item="item" index="index" collection="idArray" open="(" separator="," close=")">
+		        #{item}
+		  </foreach>
+	    </if>
+	</select>
+	
+	<!-- 分页查询我的报名 type:0-报名中; 1-审核中; 2-已报名. -->
+	<select id="searchMyEnroll" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		select t1.enrid, t1.enrtime, t1.enrstate, t1.enrstatemsg, t2.traid, t2.traenrolstime, t2.traenroletime, t2.trashorttitle, t2.traaddress, t3.typname as tratypname, t1.enrstatemsg
+		,t2.trasdate, t2.traedate , t1.enrtype 
+		from wh_traenr t1, wh_train t2, wh_typ t3
+		where t1.enrtraid= t2.traid and t2.tratyp = t3.typid and t3.type = '2'
+		and t1.enruid = #{enruid}
+		
+	    <if test="type0 != null">
+	    and (enrisa = '0' or enrisb = '0') 
+	    and enrstepstate <![CDATA[<>]]> '1' 
+	    and enrstate <![CDATA[<>]]> '1' 
+	    and enrstate <![CDATA[<>]]> '2'
+	    </if>
+		
+		<if test="type1 != null">
+	    and (enrstate = '0' or enrstate = '3')
+	    and enrstepstate = '1'
+	    </if>
+	    
+	    <if test="type2 != null">
+	    and enrstepstate = '1'
+	    and (enrstate = '1' or enrstate = '2')
+	    </if>
+		order by t1.enrtime desc
+	</select>
+	
+	<!-- 指定天内的课程数据 -->
+	<select id="searchSkdjs" resultType="hashmap">
+		SELECT * FROM wh_traitmtime t 
+		WHERE  t.traitmid =	#{traid}
+		<if test="days != null">
+		 AND t.tradate in 
+		 	<foreach item="item" index="index" collection="days" open="(" separator="," close=")">
+		 		#{item}
+		 	</foreach>
+		</if>
+		ORDER BY t.tradate, t.stime
+	</select>
+</mapper>

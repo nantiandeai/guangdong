@@ -1,0 +1,32 @@
+.categoryChange{margin:0px auto 40px auto;}
+.categoryChange .row{padding: 15px 20px 0;background: #fff; border-bottom:1px #e5e5e5 dashed;}
+.categoryChange .border-none{border-bottom:0px; margin-bottom:0px;}
+.categoryChange .row .title{float:left; width:70px; font-size:14px; padding-top:8px;}
+.categoryChange .row .adrList{width:1050px; float:left;}
+.categoryChange .row .adrList1{width:840px; float:left;}
+.categoryChange .row .adrList .item a{color:#959595;font-size: 14px;}
+.categoryChange .row .adrList .active{background: #c8161d;}
+.categoryChange .row .adrList .active a,.categoryChange .type-row .categoryName.active a{color: #fff;font-weight:normal}
+.categoryChange .row .adrList .item{padding: 5px 20px 6px;margin-bottom: 15px;border-radius: 3px;display: inline-block;}
+.categoryChange .row .searchCont{float: right;width: 260px;height: 30px;border: 1px #ddd solid; border-radius: 5px; background-color: #fff; margin-right:-20px;}
+.categoryChange .row .searchCont input{height: 25px;line-height: 25px; border: 1px #fff solid; color: #959595; font-size: 14px;vertical-align: top; margin-left: 10px;}
+.categoryChange .row .searchCont button{height:30px; width:36px; background:url(../../img/activity/search.png) 40% 55% no-repeat; float: right;}
+.main-info-bg{padding:0px;}
+#wrap{margin:0 auto;}
+.scienceList-title{font-size:20px; text-indent:10px; margin-bottom:30px; position:relative;}
+#wrap .box{width:280px;height:auto;border:none;float:left; padding:5px;}
+#wrap .box .info{width:280px;height:auto;box-shadow:0 0 10px #ccc; background:#fff;}
+#wrap .box .info .pic{width:260px;height:auto;margin:0 auto;padding-top:10px;}
+#wrap .box .info .pic img{width:260px; transition:.5s;}
+#wrap .box .info .pic img:hover{filter:alpha(opacity=70);
+-moz-opacity:0.7;
+opacity:0.7;}
+#wrap .box .info .title{width:260px;height:24px; margin:10px auto 0px auto; line-height:24px; color:#666;font-size:14px; overflow:hidden;}
+#wrap .box .info .title a{color:#333; display:block;}
+#wrap .box .info .title a:hover{color:#c8161d}
+#wrap .box .info .time{margin:0px 10px auto 10px; font-size:13px; color:#959595; padding-bottom:15px; padding-top:5px}
+#wrap .box .info .time span{padding:0px 5px;}
+.main-info-container{padding-bottom:40px}
+.main-info-container em{position:absolute; right:7px; top:10px; font-size:14px;}
+.main-info-container em a{color:#959595;}
+.main-info-container em a:hover{color:#c8161d;}

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<meta name="keywords" content="">
+<meta name="author" content="">
+<title>广东数字文化馆-用户后台</title>
+<link href="../../assets/css/public/reset.css" rel="stylesheet">
+<link href="../../assets/css/userCenter/userCenter.css" rel="stylesheet">
+<!--[if lt IE 9] >
+<script src="../../assets/js/plugins/ie/IE9.js"></script> 
+<! [endif]]-->
+</head>
+<body>
+<!--公共主头部开始-->
+<div id="header">
+  <div class="main clearfix">
+    <div class="logo"></div>
+    <div class="rightMain">
+      <div class="sysType clearfix">
+        <div class="loginCont none"> <a href="javascript:void(0)" class="btn">登录</a> <a href="javascript:void(0)" class="btn">注册</a> </div>
+        <div class="loginIn"> <span class="userName"><i></i><a href="../userCenter/userInfo.html">张学友</a><span class="userMsg">2</span></span> <span class="quit"><a href="javascript:void(0)">退出</a></span> </div>
+        <div class="h-line"></div>
+        <div class="searchCont">
+          <input placeholder="搜点什么...">
+          <button class="s-btn"></button>
+        </div>
+      </div>
+      <ul class="nav clearfix">
+        <li><a href="../index.html">首页</a><span>/</span></li>
+        <li><a href="../museum/museum.html">馆务公开</a><span>/</span></li>
+        <li><a href="../information/notice.html">资讯动态</a><span>/</span></li>
+        <li><a href="../activity/activity.html">文化活动</a><span>/</span></li>
+        <li><a href="../field/fieldlist.html">场馆服务</a><span>/</span></li>
+        <li><a href="../train/train.html">培训驿站</a><span>/</span></li>
+        <li><a href="../resource/resourceCatalog.html" target="_blank">数字资源</a><span>/</span></li>
+        <li><a href="../science/science.html">数字展馆</a><span>/</span></li>
+        <li><a href="../intangibleheritage/feiyizhongxin.html">非遗中心</a><span>/</span></li>
+        <li><a href="../volunteer/zhiyuanfuwuIndex.html">志愿服务</a><span>/</span></li>
+        <li><a href="../union/union.html">文化馆联盟</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+<!--公共主头部结束--> 
+<div class="userHeader clearfix">
+  <div class="header">
+    <div class="userInfo">
+      <h2>Hi,156****5144</h2>
+      <div class="userClass"> <span class="ico i-1 tipso_top" title="已绑定手机"><a href="safely-phone.html"></a></span> <span class="ico i-2 tipso_top" title="已绑定电子邮箱"><a href="safely-email.html"></a></span> <span class="ico i-3 tipso_top" title="已绑实名认证"><a href="safely-userReal.html"></a></span> <span class="ico i-4 tipso_top" title="团队账号"><a href="#"></a></span> <span class="ico i-5 unBind tipso_top" title="未认证艺术资质"><a href="#"></a></span> <span class="ico i-6 unBind tipso_top" title="未认证企业资质"><a href="#"></a></span> </div>
+    </div>
+  </div>
+</div>
+<div class="main main-boder clearfix">
+  <div class="leftPanel">
+    <ul>
+      <li class="active"><a href="userInfo.html"><em class="ico i-1"></em>基本信息</a></li>
+      <li><a href="order.html"><em class="ico i-2"></em>我的订单</a></li>
+      <li><a href="activity.html"><em class="ico i-6"></em>我的活动</a></li>
+      <li><a href="curriculum.html"><em class="ico i-3"></em>我的课程</a><i></i></li>
+      <li><a href="favorite.html"><em class="ico i-8"></em>我的收藏</a></li>
+      <li><a href="comment.html"><em class="ico i-7"></em>我的点评</a><i></i></li>
+      <li><a href="message.html"><em class="ico i-4"></em>我的消息</a></li>
+      <li><a href="safely.html"><em class="ico i-5"></em>安全设置</a></li>
+    </ul>
+  </div>
+  <div class="rightPanel">
+    <ul class="commBtn clearfix">
+      <li class="active">基本信息</li>
+    </ul>
+    <div class="formContainer">
+      <dl class="clearfix">
+        <dt class="float-left">昵称</dt>
+        <dd class="float-left">
+          <input class="in-txt" placeholder="添加个性昵称">
+          <em></em> </dd>
+      </dl>
+      <dl class="clearfix">
+        <dt class="float-left">性别</dt>
+        <dd class="float-left">
+          <div class="radio radio-success">
+            <input type="radio"  value="option1" name="radioSingle1" checked id="r1">
+            <label for="r1">男</label>
+            <input type="radio"  value="option2" name="radioSingle1" id="r2">
+            <label for="r2">女</label>
+          </div>
+        </dd>
+      </dl>
+      <dl class="clearfix">
+        <dt class="float-left">民族</dt>
+        <dd class="float-left">
+          <div class="box float-left">
+            <input class="in-txt"  type="txt" placeholder="所属民族">
+          </div>
+          <em></em> </dd>
+      </dl>
+      <dl class="clearfix">
+        <dt class="float-left">籍贯</dt>
+        <dd class="float-left">
+          <div class="box float-left">
+            <input class="in-txt"  type="txt" placeholder="所属籍贯">
+          </div>
+          <em></em> </dd>
+      </dl>
+      <dl class="clearfix">
+        <dt class="float-left">出生日期</dt>
+        <dd class="float-left">
+          <div class="box float-left">
+            <input class="in-txt dateChange" placeholder="请选择" id="dateCont">
+          </div>
+          <em></em> </dd>
+      </dl>
+      <dl class="clearfix">
+        <dt class="float-left">职业</dt>
+        <dd class="float-left">
+          <div class="box float-left">
+            <select>
+              <option value="">请选择</option>
+              <option value="政府机关">政府机关</option>
+              <option value="互联网">互联网</option>
+              <option value="电子商务">电子商务</option>
+              <option value="信息传媒">信息传媒</option>
+              <option value="通信">通信</option>
+              <option value="金融">金融</option>
+              <option value="学生">学生</option>
+              <option value="其它">其它</option>
+            </select>
+          </div>
+          <em></em> </dd>
+      </dl>
+      <dl class="clearfix">
+        <dt class="float-left">工作单位</dt>
+        <dd class="float-left">
+          <div class="box float-left">
+            <input class="in-txt"  type="txt" placeholder="目前就职的单位">
+          </div>
+          <em></em> </dd>
+      </dl>
+      <dl class="clearfix">
+        <dt class="float-left">联系电话</dt>
+        <dd class="float-left">
+          <div class="box float-left">
+            <input class="in-txt"  type="txt" placeholder="联系电话">
+          </div>
+          <em></em> </dd>
+      </dl>
+      <dl class="clearfix">
+        <dt class="float-left">通讯地址</dt>
+        <dd class="float-left">
+          <div class="box float-left">
+            <input class="in-txt"  type="txt" placeholder="通讯地址">
+          </div>
+          <em></em> </dd>
+      </dl>
+      <dl class="clearfix">
+        <dt class="float-left">个人特长</dt>
+        <dd class="float-left clearfix">
+          <textarea class="in-txt"></textarea>
+          <em></em> </dd>
+      </dl>
+      <dl class="clearfix">
+        <dt class="float-left">&nbsp;</dt>
+        <dd class="float-left">
+          <div class="goNext float-left">修 改</div>
+        </dd>
+      </dl>
+    </div>
+  </div>
+</div>
+ 
+<!-- core public JavaScript --> 
+<script src="../../assets/js/public/jquery-1.11.0.min.js"></script> 
+<script src="../../assets/js/public/formUI.js"></script> 
+<script src="../../assets/js/plugins/tipso/tipso.js"></script> 
+<script src="../../assets/js/public/jquery-migrate-1.0.0.js"></script> 
+<script src="../../assets/js/public/rong-dialog.js"></script> 
+<script src="../../assets/js/userCenter/public.js"></script>
+<script src="../../assets/js/plugins/laydate.dev.min.js"></script>
+<script src="../../assets/js/userCenter/userInfo.js"></script>
+</body>
+</html>

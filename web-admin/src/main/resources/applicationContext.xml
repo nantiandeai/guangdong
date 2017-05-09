@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:p="http://www.springframework.org/schema/p" 
+	xmlns:mvc="http://www.springframework.org/schema/mvc" 
+	xmlns:context="http://www.springframework.org/schema/context" 
+	xmlns:tx="http://www.springframework.org/schema/tx" 
+	xmlns:aop="http://www.springframework.org/schema/aop" 
+	xmlns:util="http://www.springframework.org/schema/util" 
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd  
+              http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd  
+              http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd 
+              http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd 
+              http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd         
+             http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.3.xsd">
+
+	<bean id="SpringContextUtil" class="com.creatoo.hn.utils.SpringContextUtil"></bean> 
+
+	<!--引入属性文件 -->  
+    <context:property-placeholder location="classpath*:application.properties"/>
+
+    <bean id="commPropertiesService" class="com.creatoo.hn.services.comm.CommPropertiesService">
+        <property name="uploadType" value="${upload.type}" />
+        <property name="uploadLocalAddr" value="${upload.local.addr}" />
+        <property name="uploadLocalServerAddr" value="${upload.local.server.addr}" />
+        <property name="uploadOssEndpoint" value="${upload.oss.endpoint}" />
+        <property name="uploadOssAccessKeyId" value="${upload.oss.access.key.id}" />
+        <property name="uploadOssAccessKeySecret" value="${upload.oss.access.key.secret}" />
+        <property name="uploadOssBucketName" value="${upload.oss.bucket.name}" />
+        <property name="smsUrl" value="${sms.url}" />
+        <property name="smsUsername" value="${sms.username}" />
+        <property name="smsPassword" value="${sms.password}" />
+        <property name="redisHost" value="${redis.host}" />
+        <property name="redisPort" value="${redis.port}" />
+        <property name="redisPass" value="${redis.pass}" />
+        <property name="redisMaxIdle" value="${redis.maxIdle}" />
+        <property name="redisMaxActive" value="${redis.maxActive}" />
+        <property name="redisMaxWait" value="${redis.maxWait}" />
+        <property name="redisTestOnBorrow" value="${redis.testOnBorrow}" />
+    </bean>
+    
+	<!-- <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"   destroy-method="close">         
+	    <property name="driverClassName" value="${jdbc.driverClassName}" />  
+	    <property name="url" value="${jdbc.url}" />  
+	    <property name="username" value="${jdbc.username}" />     
+	    <property name="password" value="${jdbc.password}" />        
+	</bean> -->
+	<bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
+        <property name="driverClassName" value="${jdbc.driverClassName}"/>
+        <property name="url" value="${jdbc.url}"/>
+        <property name="username" value="${jdbc.username}"/>
+        <property name="password" value="${jdbc.password}"/>
+
+        <property name="filters" value="stat"/>
+
+        <property name="maxActive" value="${jdbc.maxActive}"/>
+        <property name="initialSize" value="${jdbc.initialSize}"/>
+        <property name="maxWait" value="60000"/>
+        <property name="minIdle" value="1"/>
+
+        <property name="timeBetweenEvictionRunsMillis" value="60000"/>
+        <property name="minEvictableIdleTimeMillis" value="300000"/>
+
+        <property name="validationQuery" value="${jdbc.validationQuery}"/>
+        <property name="testWhileIdle" value="true"/>
+        <property name="testOnBorrow" value="false"/>
+        <property name="testOnReturn" value="false"/>
+    </bean>
+	
+	<!-- spring和MyBatis整合，不需要mybatis的配置映射文件 -->
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<!-- 自动扫描mapping.xml文件 -->
+		<property name="mapperLocations" value="classpath*:mapper/**/*.xml"></property>
+		<property name="typeAliasesPackage" value="com.creatoo.hn.model"></property>
+		<property name="plugins">
+            <array>
+                <bean class="com.github.pagehelper.PageHelper">
+                    <!-- 这里的几个配置主要演示如何使用，如果不理解，一定要去掉下面的配置 -->
+                    <property name="properties">
+                        <value>
+                            dialect=mysql
+                            reasonable=true
+                            supportMethodsArguments=true
+                            autoRuntimeDialect=true
+                        </value>
+                    </property>
+                </bean>
+            </array>
+        </property>
+	</bean>
+	
+	<!-- DAO接口所在包名，Spring会自动查找其下的类 -->
+	<bean class="tk.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="basePackage" value="com.creatoo.hn.mapper" />
+		<!-- <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"></property> -->
+	</bean>
+	
+	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate" scope="prototype">
+        <constructor-arg index="0" ref="sqlSessionFactory"/>
+    </bean>
+
+	<!-- 事务处理 -->
+	<aop:config>
+        <aop:pointcut id="appService" expression="execution(* com.creatoo.hn.services..*Service*.*(..))"/>
+        <aop:advisor advice-ref="txAdvice" pointcut-ref="appService"/>
+    </aop:config>
+    <tx:advice id="txAdvice" transaction-manager="transactionManager">
+        <tx:attributes>
+            <tx:method name="tx_*" read-only="false"/>
+            <tx:method name="*" read-only="false" rollback-for="java.lang.Exception" />
+        </tx:attributes>
+    </tx:advice>
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+    
+    <!-- 支持上传文件 -->  
+    <!-- SpringMVC上传文件时，需要配置MultipartResolver处理器 -->  
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">  
+	    <property name="defaultEncoding" value="UTF-8"/>  
+	    <!-- 指定所上传文件的总大小,单位字节。注意maxUploadSize属性的限制不是针对单个文件，而是所有文件的容量之和 -->  
+	    <property name="maxUploadSize" value="1073741824"/>  <!-- 1G -->
+	</bean>
+
+
+</beans>

@@ -1,0 +1,114 @@
+/*---------------------------------------------------------------------
+	* Filename:         sign.css
+	* Description:      sign
+	* Version:          1.0.0 (2016-10-25)
+	* Website:          hn.sun3d.com
+	* Author:           JackyZeng (zrongs@vip.qq.com)
+---------------------------------------------------------------------*/
+body{background-color: #f9f9f9;}
+.main{padding: 1px 0px; width: 980px; margin: 0 auto 50px auto; background-color: #fff;}
+.sign-title{text-align:center;width:980px;height:24px;margin:100px auto 40px auto;font-size:24px;color:#333;}
+.crumbs{width: 980px; margin: 0 auto 30px auto; height: 50px; line-height: 50px; color: #fff; font-size: 20px;}
+.crumbs li{width: 300px; height: 50px; float: left; text-align: center; margin-right: 40px; position: relative;}
+.crumbs li .arrow{background: url(../../img/public/crumbs.png) no-repeat; position: absolute; right: -40px; height: 50px; width: 40px;bottom:0px;}
+.crumbs .last{margin-right: 0px;}
+.crumbs-1st .step-1{background-color: #c8161d}
+.crumbs-1st .step-2,.crumbs-1st .step-3{background-color: #bebebe}
+.crumbs-1st .step-1 .arrow{background-position: 0px 0px;}
+.crumbs-1st .step-2 .arrow{background-position: -41px 0px;}
+.crumbs-2nd .step-1,.crumbs-2nd .step-2{background-color: #c8161d}
+.crumbs-2nd .step-3{background-color: #bebebe}
+.crumbs-2nd .step-1 .arrow{background-position: -82px 0px;}
+.crumbs-2nd .step-2 .arrow{background-position: 0px 0px;}
+.crumbs-3rd .step-1,.crumbs-3rd .step-2{background-color: #c8161d}
+.crumbs-3rd .step-3{background-color: #008972}
+.crumbs-3rd .step-1 .arrow{background-position: -82px 0px;}
+.crumbs-3rd .step-2 .arrow{background-position: -123px 0px;}
+/**/
+.crumbs2{width: 980px; margin: 0 auto 30px auto; height: 50px; line-height: 50px; color: #fff; font-size: 20px;}
+.crumbs2 li{width: 470px; height: 50px; float: left; text-align: center; margin-right: 40px; position: relative;}
+.crumbs2 li .arrow{background: url(../../img/public/crumbs.png) no-repeat; position: absolute; right: -40px; height: 50px; width: 40px;bottom:0px;}
+.crumbs2 .last{margin-right: 0px;}
+.crumbs2-1st .step-1{background-color: #c8161d}
+.crumbs2-1st .step-2{background-color: #bebebe}
+.crumbs2-1st .step-1 .arrow{background-position: 0px 0px;}
+.crumbs2-2nd .step-1{background-color: #c8161d}
+.crumbs2-2nd .step-1 .arrow{background-position: -123px 0px;}
+.crumbs2-2nd .step-2{background-color: #008972}
+/**/
+.main{margin-bottom:120px;}
+.main .main-cont{width: 940px; margin: 150px 20px 70px 20px; color: #444; position: relative;}
+.main .main-cont .other-reg{text-align: right; width: 483px; height: 40px; line-height: 40px;}
+.main .main-cont .other-reg a{text-decoration: underline; margin-left: 5px; color: #ed7d3d}
+.main .main-cont .reLoad{position: absolute; right: 10px; top: -120px; font-size: 14px;}
+.main .main-cont .reLoad a{color: #aaa; text-decoration: underline;}
+.main .main-cont .reLoad a:hover{color: #666}
+.main .main-cont .typeChange{height: 100px; position: relative;}
+.main .main-cont .change{height: 98px; width: 410px; top: -10px; position: absolute; text-indent: 80px;}
+.main .main-cont .change a{display: block; width: 100%; height: 100%; border: 1px #e8e8e8 solid; cursor: pointer; position: absolute; left: 0px; top: 0px;}
+.main .main-cont .change a:hover{border-color: #ed7d3d; -moz-box-shadow: 1px 10px 20px #ddd; -webkit-box-shadow: 1px 10px 20px #ddd; box-shadow: 1px 10px 20px #ddd;}
+.main .main-cont .change h2{font-size: 22px; margin-top: 22px}
+.main .main-cont .change p{margin-top: -20px; font-size: 12px; color: #aaa}
+.main .main-cont .change2{height: 98px; width: 410px; top: -10px; position: absolute; text-indent: 80px;}
+.main .main-cont .change2 a{display: block; width: 100%; height: 100%; cursor:default; position: absolute; left: 0px; top: 0px;}
+.main .main-cont .change2 h2{font-size: 22px; margin-top: 22px}
+.main .main-cont .change2 p{margin-top: -20px; font-size: 12px; color: #aaa}
+.main .main-cont .typeChange .teamReg{background: url(../../img/sign/teamReg.png) no-repeat 50% 50%; right: 35px;}
+.main .main-cont .typeChange .teamReg2{background: url(../../img/sign/teamReg.png) no-repeat 50% 50%; left: 310px;top:-10px;}
+.main .main-cont .typeChange .individual{background: url(../../img/sign/individual.png) no-repeat 50% 50%; left: 35px;}
+.main .main-cont .typeChange .individual2{background: url(../../img/sign/individual.png) no-repeat 50% 50%; left: 315px;top:-10px;}
+.main .main-cont .teamReg{text-indent: 95px;}
+.main .main-cont .typeMain{height: 80px; overflow: hidden;}
+.main .main-cont .typeMain .help{height: 24px; line-height: 24px; margin: 73px auto; color: #bbb; text-align: center;}
+.main .main-cont .typeMain .m-left{padding-left: 150px;}
+.main .main-cont .typeMain .m-f{margin-left: 96px; margin-top: 10px;}
+.download-cont{text-align:center;margin-top:30px;}
+.download-cont .goNext{padding:10px 30px; text-align: center; height: 40px; line-height: 40px; background-color: #ed7d3d; color: #fff; cursor: pointer;margin:0px auto;}
+.download-cont .goNext:hover{filter: alpha(opacity=90); -moz-opacity: 0.9; opacity: 0.9;}
+.download-btn{width:800px; margin:0px auto; text-align:center; border-bottom:1px #e8e8e8 solid; padding-bottom:30px; margin-bottom:30px;}
+.download-btn a{height:58px; width:52px; background:url(../../../assets/img/sign/download.png) no-repeat 50% 0%; display:block; margin:0px auto 20px auto;}
+.upload-btn{text-align:center; margin-bottom:15px;}
+.main .reg-msg{text-align:center;padding:0px 170px 20px 170px;}
+.main .reg-msg h2{font-size:24px;font-weight:normal;margin-bottom:50px;line-height:50px;}
+.main .reg-msg h2 span{background:url(../../../assets/img/regist/success.png) no-repeat;display:inline-block;width:80px;height:80px;vertical-align:bottom;}
+.main .reg-msg p{font-size:18px;}
+.main .reg-msg p a{color:#c8161d}
+.regist-logo{height:142px;width:280px;background:url(../../../assets/img/regist/logo.png) no-repeat;margin:60px auto;}
+.webuploader-container{margin-bottom:10px;}
+#upfile_but{padding:5px 15px;}
+.rongUploadCont{background-color:#fafafa; border:1px #e8e8e8 solid; width:788px; margin:0px auto; padding:5px}
+.rongUploadCont center{padding: 50px 0px; background-color: #fff; font-size:12px;}
+.rongUploadTt{width:798px; border:1px #e8e8e8 solid; border-bottom:0px; margin:0px auto; background: -moz-linear-gradient(top, #eeeeee 0%, #ffffff 100%); background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#eeeeee), color-stop(100%,#f9f9f9)); background: -webkit-linear-gradient(top, #eeeeee 0%,#f9f9f9 100%); background: -o-linear-gradient(top, #eeeeee 0%,#f9f9f9 100%); background: -ms-linear-gradient(top, #eeeeee 0%,#f9f9f9 100%); background: linear-gradient(to bottom, #eeeeee 0%,#f9f9f9 100%);height:30px; line-height:30px;font-size:12px; color:#666;}
+.rongUploadTt .tt1{float:left; width:300px; border-right:1px #e8e8e8 solid; text-align:center;}
+.rongUploadTt .tt2{float:left; width:300px; text-align:center;border-right:1px #e8e8e8 solid;}
+.rongUploadTt .tt3{float:left; width:120px; text-align:center;border-right:1px #e8e8e8 solid;}
+.rongUploadTt .tt4{float:left; width:75px; text-align:center;}
+.rongUpload{border-bottom:1px #ddd dotted;}
+.rongUpload li{height:40px; line-height:40px; border:1px #ddd dotted; border-bottom:0px; background-color:#fff;}
+.rongUpload li .tt{float:left; text-indent:10px; width:280px; height:30px; color:#666; font-size:13px; font-weight:normal; overflow:hidden;}
+.rongUpload li .loadingLineCont{width:290px; float:left; position:relative; background-color:#f0f0f0; height:10px; overflow:hidden; margin-top:15px; margin-left:20px;}
+.rongUpload li .loadingLine{position:absolute; left:0px; top:0px; height:10px; background-color:#d0e4ad;}
+.rongUpload li .loadingInfo{float:left; width:120px; text-align:center; font-size:13px; margin-left:5px;}
+.rongUpload li .loadingDel{float:left; width:66px; margin-left:5px; font-size:13px; text-align:center; line-height:30px;}
+.rongUpload li .loadingDel a{display:block; background:url(../../../assets/img/sign/del.png) no-repeat 50% 50%; width:30px; height:30px; margin:5px auto auto auto;}
+.rongUpload li .loadingDel a:hover{filter:alpha(opacity=90);
+-moz-opacity:0.9;
+opacity:0.9;}
+.selectBtn{width:800px; margin:0px auto; text-align:right}
+.selectBtn span{font-size:13px; margin-right:10px;}
+.selectBtn a{font-size:13px;}
+.selectBtn a:hover{border-color:#999;}
+.controlCont{width:798px; border:#e8e8e8 solid 1px; border-top:0px; height:60px; background-color:#f0f0f0; margin:0px auto;}
+.controlCont .btn1{width:399px;float:left;}
+.controlCont .controlContBtn{text-align:center; margin-top:20px;}
+.controlCont .controlContBtn a{padding:5px 15px; background-color:#58a3e8; border-radius:5px; color:#fff;}
+.controlCont .controlContBtn a:hover{background-color:#4c94d6;}
+.crumbs3{width: 980px; margin: 0 auto 30px auto; height: 50px; line-height: 50px; color: #fff; font-size: 20px;}
+.crumbs3 li{width: 215px; height: 50px; float: left; text-align: center; margin-right: 40px; position: relative;}
+.crumbs3 li .arrow{background: url(../../img/public/crumbs.png) no-repeat -82px 0px; position: absolute; right: -40px; height: 50px; width: 40px; bottom:0px;}
+.crumbs3 li.step-3 .arrow{background: url(../../img/public/crumbs.png) no-repeat -123px 0px;}
+.crumbs3 .last{margin-right: 0px;}
+.crumbs-4th .step-1{background-color: #c8161d}
+.crumbs-4th .step-2{background-color: #c8161d}
+.crumbs-4th .step-3{background-color: #c8161d}
+.crumbs-4th .step-4{background-color: #008972}

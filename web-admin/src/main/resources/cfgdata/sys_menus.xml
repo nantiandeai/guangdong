@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<configs>
+    <opts>
+        <opt id="view">浏览</opt>
+        <opt id="add">添加</opt>
+        <opt id="edit">编辑</opt>
+        <opt id="del">删除</opt>
+        <opt id="undel">还原删除</opt>
+        <opt id="order">排序</opt>
+        <opt id="on">启用</opt>
+        <opt id="off">停用</opt>
+        <opt id="reset">密码重置</opt>
+        <opt id="publish">发布</opt>
+        <opt id="publishoff">取消发布</opt>
+        <opt id="checkgo">送审</opt>
+        <opt id="checkon">审核通过</opt>
+        <opt id="checkoff">审核打回</opt>
+        <opt id="back">打回编辑</opt>
+        <opt id="recommend">推荐</opt>
+        <opt id="recommendoff">取消推荐</opt>
+        <opt id="retime">设置预定时段</opt>
+        <opt id="reserve">预定管理</opt>
+        <opt id="baoming">报名管理</opt>
+        <opt id="kecheng">课程管理</opt>
+        <opt id="ccmanager">场次管理</opt>
+        <opt id="info">场次管理</opt>
+    </opts>
+    
+
+
+    <menus>
+        <!-- 系统管理 -->
+        <menu id="M_SYS" type="0" state="1" text="系统管理" iconcls="p-1">
+            <menu type="1" state="1"  href="/admin/system/cult/view/list" id="M_SYS_CULT" text="分馆管理" opts="view, add, edit, del, off, on" />
+            <menu type="1" state="1"  href="/admin/system/dept/view/list" id="M_SYS_DEPT" text="部门管理" opts="view, add, edit, del" />
+            <menu type="1" state="1"  href="/admin/system/role/view/list" id="M_SYS_ROLE" text="岗位管理" opts="view, add, edit, del, off, on" />
+            <menu type="1" state="1"  href="/admin/system/user/view/list" id="M_SYS_USER" text="管理员管理" opts="view, add, edit, del, off, on" />
+        </menu>
+        <!-- 系统管理 END -->
+
+        <!-- 系统运维 -->
+        <menu id="M_YWI" type="0" state="1" text="运维管理" iconcls="p-7">
+            <menu id="M_YWI_TYPE" type="0" state="1" text="分类配置">
+                <menu type="1" state="1" href="/admin/yunwei/type/view/list/1" id="M_YWI_TYPE_ART" text="艺术分类配置"   opts="view, add, edit, del, publish, publishoff"/>
+                <menu type="1" state="1" href="/admin/yunwei/type/view/list/2" id="M_YWI_TYPE_VENUE" text="场馆分类配置"   opts="view, add, edit, del, publish, publishoff"/>
+                <menu type="1" state="1" href="/admin/yunwei/type/view/list/3" id="M_YWI_TYPE_ROOM" text="活动室分类配置"  opts="view, add, edit, del, publish, publishoff"/>
+                <menu type="1" state="1" href="/admin/yunwei/type/view/list/4" id="M_YWI_TYPE_ACTIVITY" text="活动分类配置"  opts="view, add, edit, del, publish, publishoff"/>
+                <menu type="1" state="1" href="/admin/yunwei/type/view/list/5" id="M_YWI_TYPE_TRAIN" text="培训分类配置"  opts="view, add, edit, del, publish, publishoff"/>
+                <menu type="1" state="1" href="/admin/yunwei/type/view/list/6" id="M_YWI_TYPE_AREA" text="区域配置"  opts="view, add, edit, del, publish, publishoff"/>
+                <menu type="1" state="1" href="/admin/yunwei/type/view/list/7" id="M_YWI_TYPE_ROOMSB" text="活动室设备配置"  opts="view, add, edit, del, publish, publishoff"/>
+                <menu type="1" state="1" href="/admin/yunwei/type/view/list/8" id="M_YWI_TYPE_MLTYPE" text="名录项目类型配置"  opts="view, add, edit, del, publish, publishoff"/>
+                <menu type="1" state="1" href="/admin/yunwei/type/view/list/9" id="M_YWI_TYPE_BATCH" text="名录项目批次配置"  opts="view, add, edit, del, publish, publishoff"/>
+                <menu type="1" state="1" href="/admin/yunwei/type/view/list/10" id="M_YWI_TYPE_LEVEL" text="名录项目级别配置"  opts="view, add, edit, del, publish, publishoff"/>
+                <menu type="1" state="1" href="/admin/yunwei/type/view/list/11" id="M_YWI_TYPE_TEA" text="老师专长配置"  opts="view, add, edit, del, publish, publishoff"/>
+                <menu type="1" state="1" href="/admin/yunwei/type/view/list/12" id="M_YWI_TYPE_ZYPX" text="志愿培训类型配置"  opts="view, add, edit, del, publish, publishoff"/>
+                <menu type="1" state="1" href="/admin/yunwei/type/view/list/13" id="M_YWI_TYPE_ZYHD" text="志愿活动类型配置"  opts="view, add, edit, del, publish, publishoff"/>
+                <menu type="1" state="1" href="/admin/yunwei/type/view/list/14" id="M_YWI_TYPE_ZYFL" text="资源分类配置"  opts="view, add, edit, del, publish, publishoff"/>
+                <menu type="1" state="1" href="/admin/yunwei/type/view/list/15" id="M_YWI_TYPE_CUL" text="文化展类型配置"  opts="view, add, edit, del, publish, publishoff"/>
+
+            </menu>
+
+            <menu id="M_YWI_TAG" type="0" state="1" text="标签配置">
+                <menu type="1" state="1" href="/admin/yunwei/tag/view/list/1" id="M_YWI_TAG_ART" text="场馆标签配置"   opts="view, add, edit, del, publish, publishoff"/>
+                <menu type="1" state="1" href="/admin/yunwei/tag/view/list/2" id="M_YWI_TAG_VENUE" text="活动室标签配置"   opts="view, add, edit, del, publish, publishoff"/>
+                <menu type="1" state="1" href="/admin/yunwei/tag/view/list/3" id="M_YWI_TAG_ROOM" text="活动标签配置"  opts="view, add, edit, del, publish, publishoff"/>
+                <menu type="1" state="1" href="/admin/yunwei/tag/view/list/4" id="M_YWI_TAG_ACTIVITY" text="培训标签配置"  opts="view, add, edit, del, publish, publishoff"/>
+                <menu type="1" state="1" href="/admin/yunwei/tag/view/list/5" id="M_YWI_TAG_TRAIN" text="资讯标签配置"  opts="view, add, edit, del, publish, publishoff"/>
+            </menu>
+
+            <menu id="M_YWI_KEY" type="0" state="1" text="关键字配置">
+                <menu type="1" state="1" href="/admin/yunwei/key/view/list/1" id="M_YWI_KEY_VENUE" text="场馆关键字配置" opts="view, add, edit, del, publish, publishoff"/>
+                <menu type="1" state="1" href="/admin/yunwei/key/view/list/2" id="M_YWI_KEY_ROOM" text="活动室关键字配置" opts="view, add, edit, del, publish, publishoff"/>
+                <menu type="1" state="1" href="/admin/yunwei/key/view/list/3" id="M_YWI_KEY_ACTIVITY" text="活动关键字配置" opts="view, add, edit, del, publish, publishoff"/>
+                <menu type="1" state="1" href="/admin/yunwei/key/view/list/4" id="M_YWI_KEY_TRAIN" text="培训关键字配置" opts="view, add, edit, del, publish, publishoff"/>
+                <menu type="1" state="1" href="/admin/yunwei/key/view/list/5" id="M_YWI_KEY_ZX" text="资讯关键字配置" opts="view, add, edit, del, publish, publishoff"/>
+            </menu>
+
+            <menu id="M_YWI_LBT" type="0" state="1" text="轮播图配置">
+                <menu type="1" state="1" href="/admin/yunwei/lbt/view/list/1" id="M_YWI_LBT_PC" text="PC首页轮播图配置" opts="view, add, edit, on, off,del"/>
+                <menu type="1" state="1" href="/admin/yunwei/lbt/view/list/2" id="M_YWI_LBT_APP" text="APP首页轮播图配置" opts="view, add, edit, on, off,del"/>
+                <menu type="1" state="1" href="/admin/yunwei/lbt/view/list/3" id="M_YWI_ADV_PC" text="PC首页广告图配置" opts="view, add, edit, on, off,del"/>
+                <menu type="1" state="1" href="/admin/yunwei/lbt/view/list/4" id="M_YWI_ADV_APP" text="APP首页广告图图配置" opts="view, add, edit, on, off,del"/>
+                <menu type="1" state="1" href="/admin/yunwei/lbt/view/list/5" id="M_YWI_TRA_PC" text="PC培训首页轮播图配置" opts="view, add, edit, on, off,del"/>
+                <menu type="1" state="1" href="/admin/yunwei/lbt/view/list/6" id="M_YWI_VOL_PC" text="PC志愿服务首页风采展示" opts="view, add, edit, on, off,del"/>
+                <menu type="1" state="1" href="/admin/yunwei/lbt/view/list/7" id="M_YWI_ADV_PC_FY" text="PC非遗首页广告图配置" opts="view, add, edit, on, off,del"/>
+                <menu type="1" state="1" href="/admin/yunwei/lbt/view/list/8" id="M_YWI_ADV_PC_VOL" text="PC志愿服务首页广告图配置" opts="view, add, edit, on, off,del"/>
+                <menu type="1" state="1" href="/admin/yunwei/lbt/view/list/9" id="M_YWI_LB_PC_FY" text="PC非遗首页轮播图配置" opts="view, add, edit, on, off,del"/>
+            </menu>
+
+            <menu id="M_YWI_COMMENT" type="0" state="1" text="评论管理">
+                <menu type="1" state="1" href="/admin/yunwei/comment/view/list/1" id="M_YWI_COMMENT_ACT" text="活动评论管理" opts="view, add, edit, del, publish, publishoff"/>
+                <menu type="1" state="1" href="/admin/yunwei/comment/view/list/2" id="M_YWI_COMMENT_TRA" text="培训评论管理" opts="view, add, edit, del, publish, publishoff"/>
+                <menu type="1" state="1" href="/admin/yunwei/comment/view/list/3" id="M_YWI_COMMENT_TRA_TEACHER" text="培训师资评论管理" opts="view, add, edit, del, publish, publishoff"/>
+                <menu type="1" state="1" href="/admin/yunwei/comment/view/list/4" id="M_YWI_COMMENT_TRA_VOD" text="培训点播评论管理" opts="view, add, edit, del, publish, publishoff"/>
+                <menu type="1" state="1" href="/admin/yunwei/comment/view/list/5" id="M_YWI_COMMENT_TRA_VOLUNTARY" text="志愿培训评论管理" opts="view, add, edit, del, publish, publishoff"/>
+                <menu type="1" state="1" href="/admin/yunwei/comment/view/list/6" id="M_YWI_COMMENT_VEN" text="场馆评论管理" opts="view, add, edit, del, publish, publishoff"/>
+                <menu type="1" state="1" href="/admin/yunwei/comment/view/list/7" id="M_YWI_COMMENT_VENROOM" text="场馆活动室评论管理" opts="view, add, edit, del, publish, publishoff"/>
+            </menu>
+            <menu type="1" state="1" href="/admin/yunwei/whpp/view/list" id="M_YWI_WHPP" text="文化品牌配置" opts="view, add, edit, del, on, off"/>
+
+            <menu id="M_YWI_SMSTMP" type="1" state="1" href="/admin/yunwei/smstmp/view/list" text="短信模板管理" opts="view, add, edit, del"/>
+
+            <menu id="DIR300_L006" type="1" state="1" text="视频管理"  href="/admin/video/index" opts="view, add, edit, del, publish, publishoff"/>
+
+            <menu id="M_YWI_NOTE" type="1" state="1" text="操作日志管理"  href="/admin/yunwei/note/view/list" opts="view"/>
+        </menu>
+        <!-- 系统运维 END -->
+
+        <!-- 会员管理 -->
+        <menu id="M_USR" type="0" state="1" text="会员管理" iconcls="p-12">
+            <!--<menu type="1" state="1"  href="/admin/user" id="M_USR_CULT" text="会员列表" opts="view, add, edit, del, publish, publishoff" />-->
+            <menu type="1" state="1"  href="/admin/user/info/view/list" id="M_USR_INFO" text="会员列表" opts="view, edit, del" />
+
+            <menu type="1" state="1"  href="/admin/user/black/view/list" id="M_USR_BLACK" text="黑名单管理" opts="view, off" />
+        </menu>
+        <!-- 会员管理 END -->
+
+        <menu id="M_EXH" type="0" state="1" text="数字展览" iconcls="p-3">
+            <menu type="1" state="1"  href="/admin/exhi/exhi/view/list" id="M_EXH_INF" text="数字展览管理" opts="view, add, edit, del, off, on" />
+            <!--<menu id="DIR200_L001" type="1" state="1" text="数字展览管理"  href="/admin/arts/whexhi"        opts="view, add, edit, del, publish, publishoff"/>-->
+            <!--<menu id="DIR200_L002" type="1" state="1" text="艺术家管理"   href="/admin/user/toartistlist"  opts="view, add, edit, del, publish, publishoff"/>-->
+            <!--<menu id="DIR200_L003" type="1" state="1" text="数字作品管理"  href="/admin/arts/whzp"         opts="view, add, edit, del, publish, publishoff"/>-->
+            <!--<menu id="DIR200_L004" type="1" state="1" text="电子杂志"  href="/admin/magezine/magepage"  opts="view, add, edit, del, publish, publishoff"/>-->
+        </menu>
+
+
+        <!-- 培训驿站 -->
+        <menu id="M_TRA" type="0" state="1" text="培训驿站" iconcls="p-6">
+            <menu id="M_TRA_MGE" type="0" state="1" text="培训管理">
+                <menu id="M_TRA_MGE_ADD" type="1" state="1" text="添加培训"  href="/admin/train/view/add" opts="view"/>
+                <menu id="M_TRA_MGE_EDIT" type="1" state="1" text="培训编辑列表"  href="/admin/train/view/edit" opts="view, edit, checkgo, del, kecheng, info"/>
+                <menu id="M_TRA_MGE_CHK" type="1" state="1" text="培训审核列表"  href="/admin/train/view/check" opts="view, edit, checkon, del, back, kecheng, info, info"/>
+                <menu id="M_TRA_MGE_PUB" type="1" state="1" text="培训发布列表"  href="/admin/train/view/publish" opts="view, edit, del, publish, publishoff, back, baoming,kecheng, info"/>
+                <menu id="M_TRA_MGE_REC" type="1" state="1" text="回收站"  href="/admin/train/view/del" opts="view, undel, del"/>
+            </menu>
+            <menu id="M_TRA_TEA" type="0" state="1" text="培训师资管理">
+                <menu id="M_TRA_TEA_ADD" type="1" state="1" text="添加培训师资"  href="/admin/train/tea/view/add" opts="view"/>
+                <menu id="M_TRA_TEA_PUB" type="1" state="1" text="培训师资列表"  href="/admin/train/tea/view/list" opts="view, edit, del,checkon,back, publish, publishoff"/>
+                <!--<menu id="DIR300_L008" type="1" state="1" text="培训师资管理"  href="/admin/tea/teacher" opts="view, add, edit, del,checkon,checkoff, publish, publishoff"/>-->
+            </menu>
+
+            <menu id="M_TRA_DRSC" type="0" state="1" text="在线点播管理">
+                <menu id="M_TRA_DRSC_ADD" type="1" state="1" text="添加在线点播"  href="/admin/drsc/index/add" opts="view"/>
+                <menu id="M_TRA_DRSC_PUB" type="1" state="1" text="在线点播列表"  href="/admin/drsc/index/list" opts="view, edit, del,checkon,back, publish, publishoff"/>
+                <!--<menu id="DIR300_L008" type="1" state="1" text="培训师资管理"  href="/admin/tea/teacher" opts="view, add, edit, del,checkon,checkoff, publish, publishoff"/>-->
+            </menu>
+            <!--<menu id="DIR300_L007" type="1" state="1" text="在线点播管理"  href="/admin/drsc/index" opts="view, add, edit, del,checkon,checkoff, publish, publishoff"/>-->
+
+           <!-- <menu id="M_TRA_ROL" type="0" state="1" text="报名管理">
+                <menu id="M_TRA_ROL_ADD" type="1" state="1" text="报名管理"  href="/admin/train/enrol/view/list" opts="view"/>
+            </menu>-->
+        </menu>
+        <!-- 培训驿站 END -->
+
+        <!-- 文化活动 -->
+        <menu id="M_ACT" type="0" state="1" text="文化活动" iconcls="p-2">
+            <menu id="M_ACT_ADD" type="1" state="1" text="添加活动"  href="/admin/activity/act/view/add" opts="view,add"/> 
+            <menu id="M_ACT_EDIT" type="1" state="1" text="活动编辑列表"  href="/admin/activity/act/view/editList" opts="view, edit, ccmanager, checkgo, del, info"/>
+            <menu id="M_ACT_CHK" type="1" state="1" text="活动审核列表"  href="/admin/activity/act/view/check" opts="view, edit, ccmanager, checkon, back, del, info"/>
+            <menu id="M_ACT_PUB" type="1" state="1" text="活动发布列表"  href="/admin/activity/act/view/publish" opts="view, edit,ccmanager,publish, publishoff,back,order,recommend,recommendoff,del, info"/>
+            <menu id="M_ACT_REC" type="1" state="1" text="回收站"  href="/admin/activity/act/view/del" opts="view,undel,del"/>
+        </menu>
+        <!-- 文化活动 END -->
+
+        <!--<menu id="DIR300" type="0" state="1" text="培训驿站&#45;&#45;old" iconcls="p-6">
+            <menu id="DIR300_U001" type="0" state="1" text="培训管理">
+                <menu id="DIR300_L001" type="1" state="1" text="培训模板"  href="/admin/trainMould/showTrainTpl" opts="view, add, edit"/>
+                <menu id="DIR300_L002" type="1" state="1" text="培训管理"  href="/admin/trainManage/showTrain" opts="view, edit, del, checkgo"/>
+                <menu id="DIR300_L003" type="1" state="1" text="培训审核"  href="/admin/trainManage/checkTra" opts="view, checkon, checkoff, del"/>
+                <menu id="DIR300_L004" type="1" state="1" text="培训发布"  href="/admin/trainManage/publish" opts="view, undel, del"/>
+            </menu>
+
+            <menu id="DIR300_L005" type="1" state="1" text="培训报名管理"  href="/admin/train/enroll" opts="view, add, edit, del, publish, publishoff"/>
+            <menu id="DIR300_L006" type="1" state="1" text="视频管理"  href="/admin/video/index" opts="view, add, edit, del, publish, publishoff"/>
+            <menu id="DIR300_L007" type="1" state="1" text="数字资源管理"  href="/admin/drsc/index" opts="view, add, edit, del, publish, publishoff"/>
+
+        </menu>-->
+
+
+        <!--<menu id="DIR400" type="0" state="1" text="文化活动（old）" iconcls="p-2">
+            <menu id="DIR400_U001" type="0" state="1" text="活动预约管理">
+                <menu id="DIR400_L001" type="1" state="1" text="活动模板"  href="/admin/activity/activitytpl" opts="view, add, edit, del, publish, publishoff"/>
+                <menu id="DIR400_L002" type="1" state="1" text="活动管理"  href="/admin/activity/activity" opts="view, add, edit, del, publish, publishoff"/>
+                <menu id="DIR400_L003" type="1" state="1" text="活动审核"  href="/admin/activity/activitycheck" opts="view, add, edit, del, publish, publishoff"/>
+                <menu id="DIR400_L004" type="1" state="1" text="活动发布"  href="/admin/activity/activitypush" opts="view, add, edit, del, publish, publishoff"/>
+            </menu>
+
+            <menu id="DIR400_L005" type="1" state="1" text="品牌活动"  href="/admin/brand/showBrand" opts="view, add, edit, del, publish, publishoff"/>
+            <menu id="DIR400_L006" type="1" state="1" text="活动报名管理"  href="/admin/activity/activitybm" opts="view, add, edit, del, publish, publishoff"/>
+        </menu>-->
+
+        <!-- 场馆服务 -->
+        <menu id="M_VEN" type="0" state="1" text="场馆服务" iconcls="p-10">
+            <menu id="M_VEN_SERVICE" type="0" state="1" text="场馆管理">
+                <menu id="M_VEN_SERVICE_L1" type="1" state="1" text="添加场馆"  href="/admin/venue/view/add" opts="view"/>
+                <menu id="M_VEN_SERVICE_L2" type="1" state="1" text="场馆编辑列表"  href="/admin/venue/view/edit" opts="view, edit, checkgo, del"/>
+                <menu id="M_VEN_SERVICE_L3" type="1" state="1" text="场馆审核列表"  href="/admin/venue/view/check" opts="view, edit, checkon, back, del"/>
+                <menu id="M_VEN_SERVICE_L4" type="1" state="1" text="场馆发布列表"  href="/admin/venue/view/publish" opts="view, edit, publish,publishoff,back,recommend,recommendoff, del"/>
+                <menu id="M_VEN_SERVICE_L5" type="1" state="1" text="回收站"  href="/admin/venue/view/del" opts="view, undel, del"/>
+            </menu>
+            <menu id="M_VEN_ROOM" type="0" state="1" text="活动室管理">
+                <menu id="M_VEN_ROOM_L1" type="1" state="1" text="添加活动室"  href="/admin/venue/room/view/add" opts="view"/>
+                <menu id="M_VEN_ROOM_L2" type="1" state="1" text="活动室编辑列表"  href="/admin/venue/room/view/edit" opts="view, edit, retime, checkgo, del"/>
+                <menu id="M_VEN_ROOM_L3" type="1" state="1" text="活动室审核列表"  href="/admin/venue/room/view/check" opts="view, edit, retime, checkon, back, del"/>
+                <menu id="M_VEN_ROOM_L4" type="1" state="1" text="活动室发布列表"  href="/admin/venue/room/view/publish" opts="view, edit, retime, publish,publishoff,reserve, back,recommend,recommendoff, del"/>
+                <menu id="M_VEN_ROOM_L5" type="1" state="1" text="回收站"  href="/admin/venue/room/view/del" opts="view, undel, del"/>
+            </menu>
+            <!--<menu id="M_VENp_L001" type="1" state="0" text="场馆服务管理"  href="/admin/ven/index" opts="view, add, edit, del, publish, publishoff"/>
+            <menu id="M_VENp_L002" type="1" state="0" text="场馆预定"  href="/admin/ven/des" opts="view, add, edit, del, publish, publishoff"/>
+            <menu id="M_VENp_L003" type="1" state="0" text="分馆管理"  href="/admin/sub/index" opts="view, add, edit, del, publish, publishoff"/>-->
+        </menu>
+        <!-- 场馆服务 END -->
+
+        <menu id="DIR600" type="0" state="1" text="资讯公告" iconcls="p-4">
+            <menu id="DIR600_L001" type="1" state="1" text="栏目设置"  href="/admin/shop/muse" opts="view, add, edit, del, publish, publishoff"/>
+            <!--<menu id="DIR600_L002" type="1" state="1" text="资讯公告管理"  href="/admin/shop/colinfo" opts="view, add, edit, del, checkon, checkoff, publish, publishoff"/>-->
+            <menu id="DIR600_L002_new" type="1" state="1" text="资讯公告管理"  href="/admin/shop/view/list" opts="view, add, edit, del, checkon, checkoff, publish, publishoff"/>
+            <menu id="DIR600_L003" type="1" state="1" text="馆办团队管理"  href="/admin/arts/whtroupe" opts="view, add, edit, del, checkon, checkoff, publish, publishoff"/>
+            <!--<menu id="DIR600_L004" type="1" state="1" text="馆办团成员管理"  href="/admin/arts/troupeUser" opts="view, add, edit, del, checkon, checkoff, publish, publishoff"/>-->
+            <menu id="DIR600_L005" type="1" state="1" text="意见反馈管理"  href="/admin/shop/feed" opts="view, add, edit, del, checkon, checkoff, publish, publishoff"/>
+        </menu>
+
+
+
+        <menu id="DIR800" type="0" state="1" text="非遗管理" iconcls="p-8">
+            <!--<menu id="DIR800_L001" type="1" state="1" text="名录项目管理old"  href="/admin/feiyi/minglu" opts="view, add, checkon, checkoff, edit, del, publish, publishoff"/>-->
+            <menu id="DIR800_L003" type="1" state="1" text="名录项目管理"  href="/admin/feiyi/minglu/view/list" opts="view, add, edit, del, publish, publishoff,recommend,recommendoff, info"/>
+            <menu id="DIR800_L004" type="1" state="1" text="传承人管理"  href="/admin/feiyi/successor/view/list" opts="view, add, edit, del, publish, publishoff,recommend,recommendoff, info"/>
+            <!--<menu id="DIR800_L002" type="1" state="1" text="传承人管理old"  href="/admin/feiyi/successor" opts="view, add, edit, del, publish, publishoff"/>-->
+        </menu>
+
+        <menu id="DIR900" type="0" state="1" text="志愿服务" iconcls="p-11">
+            <menu id="DIR900_U001" type="0" state="1" text="志愿服务管理">
+                <menu id="DIR900_L001" type="1" state="1" text="志愿培训"  href="/admin/volun/index" opts="view, add, edit, del,checkon,checkoff,publish, publishoff"/>
+                <menu id="DIR900_L002" type="1" state="1" text="志愿活动"  href="/admin/zyhd/index" opts="view, add, edit, del,checkon,checkoff, publish, publishoff"/>
+                <menu id="DIR900_L003" type="1" state="1" text="优秀组织"  href="/admin/volun/org/view/list" opts="view, add, edit, del, checkon,checkoff,publish, publishoff"/>
+                <menu id="DIR900_L004" type="1" state="1" text="先进个人"  href="/admin/volun/person/view/list" opts="view, add, edit, del, checkon,checkoff,publish, publishoff"/>
+                <menu id="DIR900_L005" type="1" state="1" text="项目示范"  href="/admin/volun/projec" opts="view, add, edit, del, checkon,checkoff,publish, publishoff"/>
+            </menu>
+        </menu>
+    </menus>
+
+</configs>

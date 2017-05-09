@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.creatoo.hn.mapper.WhCollectionMapper">
+	<resultMap id="BaseResultMap" type="com.creatoo.hn.model.WhCollection">
+		<!-- WARNING - @mbg.generated -->
+		<id column="cmid" jdbcType="VARCHAR" property="cmid" />
+		<result column="cmdate" jdbcType="TIMESTAMP" property="cmdate" />
+		<result column="cmuid" jdbcType="VARCHAR" property="cmuid" />
+		<result column="cmreftyp" jdbcType="VARCHAR" property="cmreftyp" />
+		<result column="cmrefid" jdbcType="VARCHAR" property="cmrefid" />
+		<result column="cmopttyp" jdbcType="VARCHAR" property="cmopttyp" />
+	</resultMap>
+	<!-- 个人中心 之 我的活动收藏查询 -->
+	 <select id="selectMyActComm" resultType="hashMap">
+	    SELECT
+	   t1.cmdate,t1.cmreftyp,t2.sdate,t2.edate,t4.name,t4.imagesm,t4.acttype,t4.address,t4.actcalss
+	   from wh_collection t1, wh_actitm t2, wh_user t3,wh_act t4
+	   where t1.cmrefid=t2.actitmid and t1.cmuid=t3.id and t2.refactid=t4.actid and t1.cmreftyp='1' 
+	   <if test="cmuid!=null">
+		and t1.cmuid=#{cmuid}
+		</if>
+	</select> 
+	
+	<!-- 个人用户中心 之 我的培训收藏查询  -->
+	 <select id="selectMyTraitmComm" resultSets="hashmap">
+		SELECT	
+		t1.cmdate,t2.enrolstime,t2.enroletime,t3.trapic,t3.tratyp,t3.arttyp,
+		t3.agelevel,t3.tradesc,t3.tralevel
+		FROM wh_collection t1,wh_traitm t2,wh_tra t3,wh_user t4
+		WHERE t1.cmuid=t4.id and t1.cmrefid=t2.traitmid and t2.traid=t3.traid and t1.cmreftyp='2' 
+		<if test="cmuid!=null">
+		and t1.cmuid=#{cmuid}
+		</if> 
+	</select> 
+</mapper>

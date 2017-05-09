@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.creatoo.hn.mapper.WhTraitmMapper" >
+  <resultMap id="BaseResultMap" type="com.creatoo.hn.model.WhTraitm" >
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="traitmid" property="traitmid" jdbcType="VARCHAR" />
+    <result column="traid" property="traid" jdbcType="VARCHAR" />
+    <result column="tratitle" property="tratitle" jdbcType="VARCHAR" />
+    <result column="sdate" property="sdate" jdbcType="DATE" />
+    <result column="edate" property="edate" jdbcType="DATE" />
+    <result column="isenrol" property="isenrol" jdbcType="VARCHAR" />
+    <result column="enrolstime" property="enrolstime" jdbcType="DATE" />
+    <result column="enroletime" property="enroletime" jdbcType="DATE" />
+    <result column="isenrolqr" property="isenrolqr" jdbcType="VARCHAR" />
+    <result column="state" property="state" jdbcType="INTEGER" />
+    <result column="enrollimit" property="enrollimit" jdbcType="VARCHAR" />
+    <result column="isnotic" property="isnotic" jdbcType="VARCHAR" />
+    <result column="enroldesc" property="enroldesc" jdbcType="LONGVARCHAR" />
+  </resultMap>
+ 
+   <!-- 查询状态为0的培训批次 -->
+   <select id="selectTraitm" resultType="hashmap">
+   SELECT
+	t1.traitmid,
+	t1.traid,
+	t1.tratitle,
+	t1.sdate,
+	t1.edate,
+	t1.isenrol,
+	t1.enroldesc,
+	t1.enrolstime,
+	t1.enroletime,
+	t1.isenrolqr,
+	t1.state,
+	t1.enrollimit,
+	t1.isnotic,
+	t1.traitmghp,
+	t1.traitmidx,
+	t1.trasummary,
+	t2.title
+	FROM
+	wh_traitm AS t1 ,
+	wh_tra AS t2
+	WHERE
+	t1.state = 0
+   </select>
+   
+    <select id="selAllTitle" resultType="hashmap">
+    SELECT title from wh_tra where  1 = 1
+   </select>
+</mapper>

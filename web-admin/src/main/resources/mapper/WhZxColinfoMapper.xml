@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.creatoo.hn.mapper.WhZxColinfoMapper">
+
+	<select id="getZxColInfo" resultType="hashmap">
+		SELECT
+		z.clnfid 'itemId',
+		z.clnftltle 'title',
+		z.clnfauthor 'author',
+		z.clnfsource 'source',
+		z.clnfopttime 'time',
+		z.clnfpic 'thumb',
+		z.clnfbigpic 'image',
+		z.clnfintroduce 'intro',
+		z.clnfkey 'tag'
+		FROM wh_zx_colinfo z 
+		where z.clnfstata = 3 and z.clnftype = #{type} 
+	</select>
+
+	<select id="showZxDetail" resultType="hashmap">
+		SELECT
+		z.clnfid 'itemId',
+		z.clnftltle 'title',
+		z.clnfauthor 'author',
+		z.clnfsource 'source',
+		z.clnfopttime 'time',
+		z.clnfpic 'thumb',
+		z.clnfbigpic 'image',
+		z.clnfintroduce 'intro',
+		z.clnfkey 'tag',
+		z.clnfdetail 'content'
+		FROM
+		wh_zx_colinfo z
+		WHERE
+		z.clnfstata = 3
+		AND z.clnfid = #{itemId}
+	</select>
+
+	<select id="findIsTop" resultType="WhZxColinfo">
+		SELECT
+		*
+		FROM
+		wh_zx_colinfo z
+		WHERE
+		z.totop = 1 and z.clnftype=#{clnftype}
+	</select>
+
+
+</mapper>

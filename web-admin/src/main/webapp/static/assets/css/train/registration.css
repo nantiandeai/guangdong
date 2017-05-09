@@ -1,0 +1,34 @@
+body{background-color:#fff;}
+.categoryChange{margin:40px auto 20px auto;}
+.categoryChange .row{padding: 15px 20px 0;background: #fff; border-bottom:1px #e5e5e5 dashed;}
+.categoryChange .border-none{border-bottom:0px; margin-bottom:0px;}
+.categoryChange .row .title{float:left; width:70px; font-size:14px; padding-top:8px;}
+.categoryChange .row .adrList{width:1050px; float:left;}
+.categoryChange .row .adrList1{width:700px; float:left;}
+.categoryChange .row .adrList .item a{color:#959595;font-size: 14px;}
+.categoryChange .row .adrList .active{background: #c8161d;}
+.categoryChange .row .adrList .active a,.categoryChange .type-row .categoryName.active a{color: #fff;font-weight:normal}
+.categoryChange .row .adrList .item{padding: 5px 25px 6px;margin-bottom: 15px;border-radius: 3px;display: inline-block;}
+.categoryChange .row .searchCont{float: right;width: 260px;height: 30px;border: 1px #ddd solid; border-radius: 5px; background-color: #fff; margin-right:0px;}
+.categoryChange .row .searchCont input{height: 25px;line-height: 25px; border: 1px #fff solid; color: #959595; font-size: 14px;vertical-align: top; margin-left: 10px;}
+.categoryChange .row .searchCont button{height:30px; width:36px; background:url(../../img/activity/search.png) 40% 55% no-repeat; float: right;}
+.registration{margin-bottom:80px;}
+.registration .con{width: 1230px;}
+.registration .con ul li{width: 380px;background: #f5f5f5; float: left;margin: 23px 30px 7px 0;}
+.registration .con ul li div.img{width: 380px;height: 240px;overflow: hidden;position: relative;}
+.registration .con ul li div.img .mask{width: 380px;height: 240px;position:absolute;left:0;top:0;
+    /*background: url(../../img/public/mask1.png) no-repeat 50% 50%; */
+    display:none;}
+.registration .con ul li div.detail{padding: 30px 20px;}
+.registration .con ul li div.detail h2{font-size: 18px;color: #333;margin-bottom:10px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
+.registration .con ul li div.detail p{font-size: 14px;color: #959595;margin-bottom:0px;max-height: 60px;overflow: hidden;line-height:24px;}
+.registration .con ul li div.detail .page span{margin-left:5px;}
+.registration .con ul li div.detail .num span{color:#c8161d}
+.registration .con ul li div.detail .adr span{margin-left:5px;}
+.registration .con ul li div.detail .time span{margin:auto 5px;}
+.masterRow{height:50px;}
+.masterRow ul{padding-left:90px; border-bottom:1px #e5e5e5 solid;}
+.masterRow ul li{float:left; padding:0px 25px; line-height:50px; margin-bottom:-1px;}
+.masterRow ul .active{border:1px #e5e5e5 solid; border-bottom:1px #fff solid; background-color:#fff; border-radius:3px 3px 0; line-height:48px; padding:0px 24px; position:relative; z-index:999;}
+.masterRow ul li a{color:#333; font-size:16px;}
+.masterRow ul .active a{color:#c8161d;}

@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.creatoo.hn.mapper.WhVenueMapper">
+
+	<!-- 后台查找场馆 -->
+	<select id="selVenue" resultType="hashmap">
+		SELECT
+			wh_venue.venid,
+			wh_venue.venname,
+			wh_venue.venarea,
+			wh_venue.ventype,
+			wh_venue.vencanbk,
+			wh_venue.vencontactnum,
+			wh_venue.vencontact,
+			wh_venue.venscope,
+			wh_venue.venaddr,
+			wh_venue.venaddrx,
+			wh_venue.venaddry,
+			wh_venue.venaddrm1,
+			wh_venue.venaddrm2,
+			wh_venue.venintroduce1,
+			wh_venue.venintroduce2,
+			wh_venue.vencondition,
+			wh_venue.venstate,
+			wh_venue.venopttime,
+			wh_venue.venpic,
+			wh_venue.venkeys,
+			wh_venue.ismoney,
+			wh_venue.ventags,
+			wh_venue.venintro
+		FROM
+			wh_venue
+		WHERE
+			1 = 1
+			<if test="venarea != null">
+      			AND wh_venue.venarea <![CDATA[=]]> #{venarea}
+    		</if>
+			<if test="ventype != null">
+      			AND wh_venue.ventype <![CDATA[=]]> #{ventype}
+    		</if>
+			<if test="venstate != null">
+      			AND wh_venue.venstate <![CDATA[=]]> #{venstate}
+    		</if>
+    		<if test="venname != null">
+      			AND wh_venue.venname like "%"#{venname}"%"
+    		</if>
+		ORDER BY
+			wh_venue.venid DESC
+	</select>
+	
+	
+	<!-- 后台查找时段 -->
+	<select id="selTime" resultType="hashmap">
+		SELECT
+			v1.vendid,
+			v2.venid,
+			v2.vtid,
+			v2.vtstime,
+			v2.vtetime,
+			v2.vtstate,
+			v2.venueid,
+			v1.vendpid,
+			v3.venname
+		FROM
+			wh_venuedate v1 ,
+			wh_venuetime v2,
+			wh_venue v3
+		WHERE
+			v1.vendid = v2.venid
+			and v3.venid = v1.vendpid
+			and v1.vendid = #{venid}
+	</select>
+	
+	
+	<!-- 后台查找 预定信息 -->
+	<select id="seldestine" resultType="hashmap">
+		SELECT
+		v1.vebid,
+		v1.vebday,
+		v1.vebstime,
+		v1.vebetime,
+		v1.vebvenid,
+		v1.vebuid,
+		v1.vebtrainid,
+		v1.vebactivid,
+		v1.vebstate,
+		v1.vebcheckmsg,
+		v2.venname,
+		u1.name,
+		u1.nickname,
+		u1.innerdesc,
+		u1.isinner
+		FROM
+		wh_venue v2 INNER JOIN wh_venuebked v1 on v1.vebvenid = v2.venid
+		LEFT JOIN wh_user u1 on v1.vebuid = u1.id
+
+		where 1=1
+		<if test="vebstate != null">
+      			AND v1.vebstate <![CDATA[=]]> #{vebstate}
+    		</if>
+    		<if test="venname != null">
+      			AND v2.venname like "%"#{venname}"%"
+    		</if>
+    		<if test="nickname != null">
+      			AND u1.nickname like "%"#{nickname}"%"
+    		</if>
+    		<if test="vebday != null">
+		      and v1.vebday <![CDATA[=]]> #{vebday}
+		    </if>
+			<if test="vebstime != null">
+		      and v1.vebstime <![CDATA[=]]> #{vebstime}
+		    </if>
+			<if test="vebetime != null">
+		      and v1.vebetime <![CDATA[=]]> #{vebetime}
+		    </if>
+		    group by v1.vebid  
+			order by vebordertime desc 
+	</select>
+
+
+	<!-- 前台查找场馆列表页信息 -->
+	<select id="selvenueList" resultType="hashmap">
+		SELECT
+			v1.venid,
+			v1.venname,
+			v1.venarea,
+			v1.ventype,
+			v1.vencanbk,
+			v1.vencontactnum,
+			v1.vencontact,
+			v1.venscope,
+			v1.venaddr,
+			v1.venaddrx,
+			v1.venaddry,
+			v1.venaddrm1,
+			v1.venaddrm2,
+			v1.venintroduce1,
+			v1.venintroduce2,
+			v1.vencondition,
+			v1.venstate,
+			v1.venpic,
+			v1.ismoney,
+			v1.venintro,
+			v1.ventags,
+			v1.venopttime
+		FROM
+			wh_venue v1
+		WHERE v1.venstate = 3
+		<if test="venarea != null ">
+     		AND v1.venarea <![CDATA[=]]> #{venarea}
+   		</if>
+		<if test="ventype != null ">
+     		AND v1.ventype <![CDATA[=]]> #{ventype}
+   		</if>
+		<if test="vencanbk != null">
+     		AND v1.vencanbk <![CDATA[=]]> #{vencanbk}
+   		</if>
+		<if test="venname != null">
+      		AND v1.venname like "%"#{venname}"%"
+    	</if>
+		<if test="ventags != null">
+      		AND v1.ventags like "%"#{ventags}"%"
+    	</if>
+		<if test="ventag != null">
+      		AND v1.ventags like "%"#{ventag}"%"
+    	</if>
+      	order by v1.venopttime desc
+    	<!-- </if>
+		<if test="order == 1">
+      		order by v2.vendsdate desc
+    	</if> -->
+    	
+    	
+	</select>
+	
+	<!-- 通过场馆找到他的时段 -->
+	<select id="selTimeList" resultType="hashmap">
+	select 
+		v1.vtstime,
+		v1.vtetime 
+		from wh_venuetime v1 
+	where 
+		v1.venid = #{venid}
+	</select>
+	
+	
+	<!-- 通过日期标识查询日期是否被预定 -->
+	<select id="selCountDate" resultType="int">
+		SELECT count(*) 
+		from 
+			wh_venuedate v1,
+			wh_venuetime v2, 
+			wh_venuebked v3 
+		WHERE
+			v1.vendid = v2.venid 
+			and v2.vtid = v3.vebtid 
+			and (v3.vebstate = 1 or v3.vebstate = 2) 
+			and v1.vendid = #{vendid}
+	</select>
+	
+	
+	<!-- 通过日期标识查询日期是否被预定 -->
+	<select id="selDate" resultType="hashmap">
+		SELECT
+			v1.vendid,
+			v1.vendpid,
+			v1.vendsdate,
+			v1.vendedate,
+			v1.vendopttime,
+			v1.vendstate,
+			v2.venname
+		FROM
+			wh_venuedate AS v1 ,
+			wh_venue AS v2
+		WHERE
+			v1.vendpid = v2.venid AND
+			v1.vendpid = #{venid}
+	</select>
+	
+	<!-- 接口查询场馆列表 -->
+	<select id="selVenueList" resultType="hashmap">
+	select 
+		v1.venid "itemId",
+		v1.ventype "typeId", 
+		v1.venname "title", 
+		v1.venintro "intro", 
+		v1.venpic "thumb", 
+		v1.vencanbk, 
+		v1.venpic "image", 
+		v1.vencontactnum "phone", 
+		v1.venaddr "address", 
+		v1.ventags , 
+		(select t2.typname from wh_typ t2 where t2.typid=v1.ventype) 'type',
+		(select t3.typname from wh_typ t3 where t3.typid=v1.venarea) 'district',
+		(select count(*) from wh_collection c1 where c1.cmrefid=v1.venid and c1.cmopttyp=2) 'voteUp'
+		
+		from wh_venue v1
+	where 
+		v1.venstate = '3'
+		<!--
+		<if test="openId != null ">
+   			AND u1.wxopenid <![CDATA[=]]> #{openId}
+ 		</if>
+ 		-->
+		<if test="bookable != null ">
+    		AND t1.vencanbk <![CDATA[=]]> #{bookable}
+  		</if>
+		<if test="district != null ">
+    		AND t1.venaddr like "%"#{district}"%"
+  		</if>
+		<if test="type != null ">
+    		AND t1.ventype = #{type}
+  		</if>
+	</select>
+	
+	<!-- 接口查询场馆详情 -->
+	<select id="selWapVenueDetail" resultType="hashmap">
+	select 
+		v1.venid "itemId",
+		v1.ventype "typeId", 
+		v1.venname "title", 
+		v1.venintro "intro", 
+		v1.venpic "thumb", 
+		v1.vencanbk, 
+		v1.venpic "image", 
+		v1.vencontactnum "phone", 
+		v1.venaddr "address", 
+		v1.ventags , 
+		v1.venintroduce1 , 
+		v1.venintroduce2 , 
+		v1.vencondition , 
+		v1.venarea "district", 
+		(select t2.typname from wh_typ t2 where t2.typid=v1.ventype) 'type',
+		(select count(*) from wh_collection c1 where c1.cmrefid=v1.venid and c1.cmopttyp=2) 'voteUp'
+		from wh_venue v1
+	where 
+		v1.venstate = '3' and
+		v1.venid = #{itemId}
+	</select>
+	
+	
+	<!-- 移动端接口查询用户是否收藏  -->
+  <select id="selCollectionCount" resultType="int">
+		SELECT
+		    count(*)
+		FROM
+			wh_collection c1
+		WHERE
+			c1.cmopttyp = 0
+			and c1.cmrefid = #{venid}
+			AND c1.cmuid = #{id}
+	</select>
+	
+</mapper>

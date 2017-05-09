@@ -1,0 +1,232 @@
+[
+  {
+    "group": "系统管理",
+    "value": "\/admin\/dis\/showcomment",
+    "text": "评论管理"
+  },
+  {
+    "group": "文化活动",
+    "value": "\/admin\/brand\/showBrand",
+    "text": "品牌活动"
+  },
+  {
+    "group": "文化活动",
+    "value": "\/admin\/activity\/activitybm",
+    "text": "活动报名管理"
+  },
+  {
+    "group": "数字展馆",
+    "value": "\/admin\/magezine\/magepage",
+    "text": "电子杂志"
+  },
+  {
+    "group": "管理员管理",
+    "value": "\/admin\/role",
+    "text": "角色管理"
+  },
+  {
+    "group": "管理员管理",
+    "value": "\/admin\/manage",
+    "text": "管理员列表"
+  },
+  {
+    "group": "管理员管理",
+    "value": "\/admin\/user",
+    "text": "用户管理列表"
+  },
+  {
+    "group": "管理员管理",
+    "value": "\/admin\/code",
+    "text": "验证码管理列表"
+  },
+  {
+    "group": "培训驿站",
+    "value": "\/admin\/drsc\/index",
+    "text": "数字资源管理"
+  },
+  {
+    "group": "培训驿站",
+    "value": "\/admin\/tea\/teacher",
+    "text": "培训师资管理"
+  },
+  {
+    "group": "培训驿站",
+    "value": "\/admin\/video\/index",
+    "text": "视频管理"
+  },
+  {
+    "group": "培训驿站",
+    "value": "\/admin\/train\/enroll",
+    "text": "培训报名管理"
+  },
+  {
+    "group": "场馆服务",
+    "value": "\/admin\/sub\/index",
+    "text": "分馆管理"
+  },
+  {
+    "group": "场馆服务",
+    "value": "\/admin\/ven\/des",
+    "text": "场馆预定"
+  },
+  {
+    "group": "场馆服务",
+    "value": "\/admin\/ven\/index",
+    "text": "场馆服务管理"
+  },
+  {
+    "group": "非遗管理",
+    "value": "\/admin\/feiyi\/minglu",
+    "text": "名录项目管理"
+  },
+  {
+    "group": "非遗管理",
+    "value": "\/admin\/feiyi\/successor",
+    "text": "传承人管理"
+  },
+  {
+    "group": "系统运营",
+    "value": "\/admin\/adve\/cgf",
+    "text": "页面元素配置"
+  },
+  {
+    "group": "系统运营",
+    "value": "\/admin\/adve\/adverti",
+    "text": "广告配置"
+  },
+  {
+    "group": "系统运营",
+    "value": "\/admin\/adve\/operate",
+    "text": "数据采集管理"
+  },
+  {
+    "group": "系统运营",
+    "value": "\/admin\/selAllTag",
+    "text": "标签管理"
+  },
+  {
+    "group": "系统运营",
+    "value": "\/admin\/selAllkey",
+    "text": "关键字管理"
+  },
+  {
+    "group": "系统设置管理",
+    "value": "\/admin\/menulist",
+    "text": "权限菜单管理"
+  },
+  {
+    "group": "系统设置管理",
+    "value": "\/admin\/conf\/sysconfig",
+    "text": "基础配置"
+  },
+  {
+    "group": "系统设置管理",
+    "value": "\/admin\/type",
+    "text": "分类管理"
+  },
+  {
+    "group": "资讯公告",
+    "value": "\/admin\/shop\/feed",
+    "text": "意见反馈管理"
+  },
+  {
+    "group": "资讯公告",
+    "value": "\/admin\/shop\/muse",
+    "text": "栏目设置"
+  },
+  {
+    "group": "资讯公告",
+    "value": "\/admin\/shop\/minfo",
+    "text": "资讯公告管理"
+  },
+  {
+    "group": "资讯公告",
+    "value": "\/admin\/arts\/troupeUser",
+    "text": "馆办团成员管理"
+  },
+  {
+    "group": "资讯公告",
+    "value": "\/admin\/arts\/whtroupe",
+    "text": "馆办团队管理"
+  },
+  {
+    "group": "艺术管理",
+    "value": "\/admin\/arts\/whexhi",
+    "text": "艺术展览管理"
+  },
+  {
+    "group": "艺术管理",
+    "value": "\/admin\/arts\/whzp",
+    "text": "艺术作品管理"
+  },
+  {
+    "group": "艺术管理",
+    "value": "\/admin\/user\/toartistlist",
+    "text": "艺术家管理"
+  },
+  {
+    "group": "培训管理",
+    "value": "\/admin\/trainManage\/showTrain",
+    "text": "培训管理"
+  },
+  {
+    "group": "培训管理",
+    "value": "\/admin\/trainMould\/showTrainTpl",
+    "text": "培训模板"
+  },
+  {
+    "group": "培训管理",
+    "value": "\/admin\/trainManage\/checkTra",
+    "text": "培训审核"
+  },
+  {
+    "group": "培训管理",
+    "value": "\/admin\/trainManage\/publish",
+    "text": "培训发布"
+  },
+  {
+    "group": "活动预约管理",
+    "value": "\/admin\/activity\/activitycheck",
+    "text": "活动审核"
+  },
+  {
+    "group": "活动预约管理",
+    "value": "\/admin\/activity\/activity",
+    "text": "活动管理"
+  },
+  {
+    "group": "活动预约管理",
+    "value": "\/admin\/activity\/activitypush",
+    "text": "活动发布"
+  },
+  {
+    "group": "活动预约管理",
+    "value": "\/admin\/activity\/activitytpl",
+    "text": "活动模板"
+  },
+  {
+    "group": "志愿服务管理",
+    "value": "\/admin\/zyhd\/index",
+    "text": "志愿活动"
+  },
+  {
+    "group": "志愿服务管理",
+    "value": "\/admin\/volun\/exces",
+    "text": "优秀组织"
+  },
+  {
+    "group": "志愿服务管理",
+    "value": "\/admin\/volun\/personal",
+    "text": "先进个人"
+  },
+  {
+    "group": "志愿服务管理",
+    "value": "\/admin\/volun\/projec",
+    "text": "项目示范"
+  },
+  {
+    "group": "志愿服务管理",
+    "value": "\/admin\/volun\/index",
+    "text": "志愿培训"
+  }
+]

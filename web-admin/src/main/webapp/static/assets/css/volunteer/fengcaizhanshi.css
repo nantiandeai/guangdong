@@ -1,0 +1,24 @@
+body{background-color:#fff;}
+#content{background: #fff;}
+.container{width: 1200px;margin: 0 auto;}
+.categoryChange{width: 1200px;margin: 40px auto;}
+.categoryChange .row{padding: 15px 20px 0;background: #fff; border-bottom:1px #e5e5e5 dashed;}
+.categoryChange .border-none{border-bottom:0px; margin-bottom:0px;}
+.categoryChange .row .title{float:left; width:70px; font-size:14px; padding-top:6px;}
+.categoryChange .row .adrList{width:1050px; float:left;}
+.categoryChange .row .adrList1{width:700px; float:left;}
+.categoryChange .row .adrList .item a{color:#959595;font-size: 14px;}
+.categoryChange .row .adrList .active{background: #c8161d;}
+.categoryChange .row .adrList .active a,.categoryChange .type-row .categoryName.active a{color: #fff;font-weight:normal}
+.categoryChange .row .adrList .item{padding: 0px 25px;margin-bottom: 15px;border-radius: 3px;display: inline-block;height: 30px;line-height: 30px;}
+.categoryChange .row .searchCont{float: right;width: 260px;height: 30px;border: 1px #ddd solid; border-radius: 5px; background-color: #fff; margin-right:0px;}
+.categoryChange .row .searchCont input{height: 25px;line-height: 25px; border: 1px #fff solid; color: #959595; font-size: 14px;vertical-align: top; margin-left: 10px;}
+.categoryChange .row .searchCont button{height:30px; width:36px; background:url(../../img/activity/search.png) 40% 55% no-repeat; float: right;}
+/*页面主体*/
+.active-list .con{width: 1230px; margin-bottom:80px;}
+.active-list .con ul li{width: 380px;background: #f5f5f5;float: left;margin: 0px 30px 30px 0;}
+.active-list .con ul li div.img{width: 380px;height: 240px;overflow: hidden;position: relative;}
+.active-list .con ul li div.img .mask{position: absolute;left: 0;top:0; width: 380px;height: 240px;background: url(../../img/public/mask1.png) no-repeat 50% 50%;text-align: center; display:none;}
+.active-list .con ul li div.detail{padding: 30px 20px;}
+.active-list .con ul li div.detail h2{font-size: 18px;color: #333;margin: 0 0 10px 0;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
+.active-list .con ul li div.detail p{font-size: 14px;color: #959595;margin: 0 0 0px 0;height: 24px;overflow: hidden;line-height: 24px;}

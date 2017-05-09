@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.creatoo.hn.mapper.WhDrscMapper">
+	<select id="selvodList" resultType="hashmap">
+		SELECT
+			d1.drscid,
+			d1.drsctitle,
+			d1.drscfrom,
+			d1.drscpic,
+			d1.drsccrttime,
+			d1.drscpath,
+			d1.drscarttyp,
+			d1.drsctyp,
+			d1.drscstate,
+			d1.drscopttime,
+			d1.drsctime,
+			d1.drsckey,
+			d1.drscintro
+		FROM
+			wh_drsc AS d1
+		WHERE
+			d1.drscstate = 3
+		<if test="drscarttyp != null">
+      		and d1.drscarttyp <![CDATA[=]]> #{drscarttyp}
+    	</if>
+		<if test="drsctitle != null">
+      		and d1.drsctitle like "%"#{drsctitle}"%"
+    	</if>
+		<if test="order == 0">
+      		order by d1.drscopttime desc
+    	</if>
+		<if test="order == 1">
+      		order by d1.drsccrttime desc
+    	</if>
+	</select>
+	
+	
+	<select id="selVodInfo" resultType="WhDrsc">
+		SELECT
+			d1.drscid,
+			d1.drsctitle,
+			d1.drscfrom,
+			d1.drscpic,
+			d1.drsccrttime,
+			d1.drscpath,
+			d1.drscarttyp,
+			d1.drsctyp,
+			d1.drscstate,
+			d1.drscopttime,
+			d1.drsctime,
+			d1.drsckey,
+			d1.drscintro
+		FROM
+			wh_drsc AS d1
+		WHERE
+			d1.drscstate = 3
+      		and d1.drscid = #{drscid}
+	</select>
+	
+	
+	<select id="selNewVod" resultType="hashmap">
+		SELECT
+			d1.drscid,
+			d1.drsctitle,
+			d1.drscfrom,
+			d1.drscpic,
+			d1.drsccrttime,
+			d1.drscpath,
+			d1.drscarttyp,
+			d1.drsctyp,
+			d1.drscstate,
+			d1.drscopttime,
+			d1.drsctime,
+			d1.drsckey,
+			d1.drscintro
+		FROM
+			wh_drsc AS d1
+		WHERE
+			d1.drscstate = 3
+			AND d1.drscid != #{drscid}
+		order by 
+			d1.drscopttime desc
+    	
+	</select>
+	
+	<!-- 查询在线报名详情信息 -->
+	<select id="selectTrain" resultType="WhTrain">
+		SELECT
+			t1.traid,
+			t1.tratyp,
+			t1.traarttyp,
+			t1.trashorttitle,
+			t1.tratitle,
+			t1.trapic,
+			t1.trabigpic,
+			t1.trasdate,
+			t1.traedate,
+			t1.traaddress,
+			t1.traagelevel,
+			t1.tralevel,
+			t1.traislogincomment,
+			t1.tratags,
+			t1.trakeys,
+			t1.traarea,
+			t1.trateacher,
+			t1.trateacherid,
+			t1.trateacherdesc,
+			t1.traisenrol,
+			t1.traenrolstime,
+			t1.traenroletime,
+			t1.traenrollimit,
+			t1.traisenrolqr,
+			t1.traisnotic,
+			t1.traenroldesc,
+			t1.traisrealname,
+			t1.traisfulldata,
+			t1.traisattach,
+			t1.traisonlyone,
+			t1.tracanperson,
+			t1.trapersonfile,
+			t1.tracanteam,
+			t1.trateamfile,
+			t1.traintroduce,
+			t1.tracatalog,
+			t1.tradetail,
+			t1.traitmghp,
+			t1.traitmidx,
+			t1.trastate,
+			t1.trastateopttime,
+			t1.traphone
+		FROM
+			wh_train AS t1
+		WHERE
+			t1.trastate = 3 And
+			t1.traid = #{traid}
+    	
+	</select>
+	
+	
+	
+	<!-- 查询在线报名详情推荐课程 -->
+	<select id="selNewTrain" resultType="WhTrain">
+		SELECT
+			t1.traid,
+			t1.tratyp,
+			t1.traarttyp,
+			t1.trashorttitle,
+			t1.tratitle,
+			t1.trapic,
+			t1.trabigpic,
+			t1.trasdate,
+			t1.traedate,
+			t1.traaddress,
+			t1.traagelevel,
+			t1.tralevel,
+			t1.traislogincomment,
+			t1.tratags,
+			t1.trakeys,
+			t1.traarea,
+			t1.trateacher,
+			t1.trateacherid,
+			t1.trateacherdesc,
+			t1.traisenrol,
+			t1.traenrolstime,
+			t1.traenroletime,
+			t1.traenrollimit,
+			t1.traisenrolqr,
+			t1.traisnotic,
+			t1.traenroldesc,
+			t1.traisrealname,
+			t1.traisfulldata,
+			t1.traisattach,
+			t1.traisonlyone,
+			t1.tracanperson,
+			t1.trapersonfile,
+			t1.tracanteam,
+			t1.trateamfile,
+			t1.traintroduce,
+			t1.tracatalog,
+			t1.tradetail,
+			t1.traitmghp,
+			t1.traitmidx,
+			t1.trastate,
+			t1.trastateopttime,
+			t1.traphone
+		FROM
+			wh_train AS t1
+		WHERE
+			t1.trastate = 3 AND
+			t1.traid != #{traid}
+    	order by 
+			t1.trastateopttime desc 
+	</select>
+	
+	
+	<!-- 查询首页师资信息 -->
+	<select id="selTeacher" resultType="hashmap">
+		SELECT
+			t2.teacherid,
+			t2.teacheruid,
+			t2.teacherpic,
+			t2.teachername,
+			t2.teachertype,
+			t2.teacherarea,
+			t2.teacherarttyp,
+			t2.teachercourse,
+			t2.teacherintroduce,
+			t2.teacherexpdesc,
+			t2.teacherstartdesc,
+			t2.teacherregtime,
+			t2.teacheropttime,
+			t2.teacherstate
+		FROM
+			wh_user_teacher AS t2
+		WHERE
+			1 = 1
+ 
+	</select>
+
+
+	
+</mapper>

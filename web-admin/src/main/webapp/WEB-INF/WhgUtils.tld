@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<taglib xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-jsptaglibrary_2_0.xsd"
+        version="2.0">
+
+    <tlib-version>1.0</tlib-version><!-- 定义的版本 -->
+    <short-name>WhgUtils</short-name><!--这个名字可以随便取，尽量与文件名相同，这样我们知道文件在哪儿  -->
+    <uri>http://hn.creatoo.cn/WhgUtils</uri><!-- 这个地址是随便取得。到时候jsp页面引入这个地址 -->
+
+    <function>
+        <name>getImg750_500</name><!-- 自定义函数名称(随意) -->
+        <function-class>com.creatoo.hn.utils.WhgUtils</function-class><!-- 定义函数的类全名称 -->
+        <function-signature>java.lang.String getImg750_500( java.lang.String )</function-signature>
+        <!--java.lang.String：返回值类型  getImg750_500：类定义的函数名(函数类型) -->
+    </function>
+
+    <function>
+        <name>getImg300_200</name><!-- 自定义函数名称(随意) -->
+        <function-class>com.creatoo.hn.utils.WhgUtils</function-class><!-- 定义函数的类全名称 -->
+        <function-signature>java.lang.String getImg300_200( java.lang.String )</function-signature>
+        <!--java.lang.String：返回值类型  getImg750_500：类定义的函数名(函数类型) -->
+    </function>
+
+    <function>
+        <name>getImg740_555</name><!-- 自定义函数名称(随意) -->
+        <function-class>com.creatoo.hn.utils.WhgUtils</function-class><!-- 定义函数的类全名称 -->
+        <function-signature>java.lang.String getImg740_555( java.lang.String )</function-signature>
+        <!--java.lang.String：返回值类型  getImg750_500：类定义的函数名(函数类型) -->
+    </function>
+
+    <function>
+        <name>getFileName</name><!-- 自定义函数名称(随意) -->
+        <function-class>com.creatoo.hn.utils.WhgUtils</function-class><!-- 定义函数的类全名称 -->
+        <function-signature>java.lang.String getFileName( java.lang.String )</function-signature>
+        <!--java.lang.String：返回值类型  getFileName：类定义的函数名(函数类型) -->
+    </function>
+</taglib>

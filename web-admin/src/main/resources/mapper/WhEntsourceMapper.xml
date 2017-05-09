@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.creatoo.hn.mapper.WhEntsourceMapper" >
+  <resultMap id="BaseResultMap" type="com.creatoo.hn.model.WhEntsource" >
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="rid" property="rid" jdbcType="VARCHAR" />
+    <result column="rtyp" property="rtyp" jdbcType="VARCHAR" />
+    <result column="reftyp" property="reftyp" jdbcType="VARCHAR" />
+    <result column="refid" property="refid" jdbcType="VARCHAR" />
+    <result column="url" property="url" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+  </resultMap>
+</mapper>

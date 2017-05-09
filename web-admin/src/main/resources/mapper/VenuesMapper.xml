@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.creatoo.hn.mapper.VenuesMapper">
+
+
+	<!-- 查询指定天的场馆时段集 -->
+	<select id="selectVenueTimes4Day" resultType="hashmap">
+		select t1.* from wh_venuetime t1, wh_venuedate t2
+		where t1.venid = t2.vendid
+		and t1.vtstate =1
+		and t2.vendstate =1
+		and t2.vendpid = #{venid}
+		and t2.vendsdate <![CDATA[<=]]> #{day}
+		and t2.vendedate <![CDATA[>=]]> #{day}
+		ORDER BY t1.vtstime
+	</select>
+
+	<!-- 查询指定天的场馆已审核过的预定信息 -->
+	<select id="selectVenueBked4Day" resultType="hashmap">
+		SELECT t.* ,
+			(select a.tratitle from wh_train a where a.traid=t.vebtrainid) 'tratitle',
+			(select b.actvtitle from wh_activity b where b.actvid=t.vebactivid) 'acttitle'
+		FROM wh_venuebked t
+		WHERE  t.vebstate = 1
+		AND t.vebvenid = #{venid}
+		AND t.vebday = #{day}
+	</select>
+
+	<!-- 查询指定天的场馆指定用户的预定未审核信息 -->
+	<select id="selectVenueBked4DayUserBide" resultType="hashmap">
+		SELECT t.*
+		FROM wh_venuebked t WHERE  (t.vebstate <![CDATA[<>]]> 1 or t.vebstate is null)
+		AND t.vebvenid = #{venid}
+		AND t.vebuid = #{uid}
+		AND t.vebday = #{day}
+	</select>
+
+
+	<!-- 后台内定查询指定场馆的日期信息 -->
+	<select id="selectVenueDateList" resultType="hashmap">
+		select * from wh_venuedate t
+		where t.vendpid = #{venid}
+		and t.vendstate = 1
+		ORDER BY t.vendsdate
+	</select>
+
+	<!-- 后台内定查询指定日期的时段信息 -->
+	<select id="selectVenueTimeList" resultType="hashmap">
+		select * from wh_venuetime t
+		where t.venid = #{vendid}
+		and t.vtstate = 1
+		ORDER BY t.vtstime
+	</select>
+
+	<!-- 后台内定查询指定日期的时段已订信息，用于参考控制 -->
+	<select id="selectVenueTimeBkedList" resultType="hashmap">
+		select t1.* from wh_venuebked t1, wh_venuetime t2
+		where t1.vebtid = t2.vtid
+		and t2.venid = #{vendid}
+		and t1.vebstate = 1
+	</select>
+
+
+
+
+
+<!-- 查询指定ID的场馆信息 -->
+<select id="findVenue4Id" resultType="hashmap">
+	SELECT 
+		v.*, 
+		(SELECT typname FROM wh_typ WHERE typid = venarea) as 'venarearef', 
+		(SELECT typname FROM wh_typ WHERE typid = ventype) as 'ventyperef'
+	 FROM wh_venue v WHERE v.venid = #{id};
+</select>
+
+<!-- 查询指定场馆ID的时段列表 -->
+<select id="selectVenueTime" resultType="hashmap">
+	SELECT * FROM wh_venuetime t WHERE t.venid = #{venid} AND t.vtstate = 1
+</select>
+
+<!-- 查询指定时段内的场馆有效预订 -->
+<select id="selectVenueBked" resultType="hashmap">
+	SELECT t.* ,
+ 		(select a.tratitle from wh_train a where a.traid=t.vebtrainid) as 'tratitle',
+		(select b.actvtitle from wh_activity b where b.actvid=t.vebactivid) as 'acttitle'
+	FROM wh_venuebked t WHERE  t.vebstate = 1 
+	AND t.vebvenid = #{venid}
+	AND t.vebday <![CDATA[>=]]> #{bday} 
+	AND t.vebday <![CDATA[<=]]> #{eday}
+</select>
+
+<!-- 查询指定时段内的场馆 某用户未审核通过的预定 -->
+<select id="selectVenueBkedNotcheck4User" resultType="hashmap">
+	SELECT t.* 
+	FROM wh_venuebked t WHERE  (t.vebstate != 1 or t.vebstate is null) 
+	AND t.vebvenid = #{venid}
+	AND t.vebuid = #{uid}
+	AND t.vebday <![CDATA[>=]]> #{bday} 
+	AND t.vebday <![CDATA[<=]]> #{eday}
+</select>
+
+
+<!-- 查询相关场馆的资源图片列表 -->
+<select id="selectVenueEntSrc" resultType="hashmap">
+	SELECT * FROM wh_entsource s 
+	WHERE s.reftype='2016101400000053' 
+	AND s.enttype='2016101400000055' 
+	AND s.refid = #{venid}
+</select>
+
+<!-- 查询场馆信息集 -->
+<select id="selectVenueList" resultType="hashmap">
+	SELECT * FROM wh_venue t where t.venstate=3 and t.venid != #{notid} ORDER BY t.venopttime DESC
+</select>
+
+</mapper>

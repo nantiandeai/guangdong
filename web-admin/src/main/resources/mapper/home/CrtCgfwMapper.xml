@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.creatoo.hn.mapper.home.CrtCgfwMapper">
+
+    <!-- 查询场馆列表 -->
+    <select id="selectVenList" resultType="hashmap">
+        SELECT V.* FROM whg_ven V
+
+        <if test="destine !=null and destine != ''">
+          INNER JOIN whg_ven_room VR ON V.id= VR.venid
+            INNER JOIN whg_ven_room_time VRT ON VR.id = VRT.roomid
+        </if>
+
+        WHERE V.state = 6 AND V.delstate = 0
+
+        <if test="destine !=null and destine != ''">
+            AND VR.state = 6 AND VR.delstate = 0 AND VRT.state = 1
+        </if>
+
+        <if test="title != null and title != ''">
+            AND V.title like "%"#{title}"%"
+        </if>
+
+        <if test="etype != null and etype != ''">
+            AND V.etype like "%"#{etype}"%"
+        </if>
+
+        <if test="etag != null and etag != ''">
+            AND V.etag like "%"#{etag}"%"
+        </if>
+
+        <if test="cultid != null and cultid != ''">
+            AND V.cultid = #{cultid}
+        </if>
+
+        <if test="area != null and area != ''">
+            AND V.area = #{area}
+        </if>
+
+        GROUP BY V.id
+
+        ORDER BY V.statemdfdate DESC
+
+    </select>
+
+    <!--查询用户场馆预订列表-->
+    <select id="selectUserVenOrderList" resultType="hashmap">
+        SELECT vro.*, vr.title, v.address, v.phone
+        FROM whg_ven_room_order vro
+        LEFT JOIN whg_ven_room vr ON vro.roomid = vr.id
+        INNER JOIN whg_ven v on vr.venid = v.id
+        WHERE 1=1
+        <if test="userid!=null">
+            AND vro.userid = #{userid}
+        </if>
+        <choose>
+            <when test="nowtype!=null and nowtype=='old'">
+                <if test="nowday!=null and nowtime!=null">
+                    AND ( vro.timeday &lt; #{nowday}
+                    OR (vro.timeday = #{nowday} AND vro.timestart &lt; #{nowtime} ) )
+                </if>
+            </when>
+            <otherwise>
+                <if test="nowday!=null and nowtime!=null">
+                    AND ( vro.timeday &gt; #{nowday}
+                    OR (vro.timeday = #{nowday} AND vro.timestart &gt;= #{nowtime} ) )
+                </if>
+            </otherwise>
+        </choose>
+
+        GROUP BY vro.id
+        ORDER BY vro.crtdate DESC
+    </select>
+
+</mapper>

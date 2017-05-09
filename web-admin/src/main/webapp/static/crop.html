@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="/szwhgsg/static/assets/js/public/jquery-1.11.0.min.js"></script><!-- jQuery is required -->
+<link  href="/szwhgsg/static/common/js/cropper.css" rel="stylesheet">
+<script src="/szwhgsg/static/common/js/cropper.js"></script>
+<style type="text/css">
+img {
+  max-width: 100%; /* This rule is very important, please do not ignore this! */
+}
+</style>
+</head>
+<body>
+<div>
+  <img id="image" src="picture.jpg">
+</div>
+</body>
+<script type="text/javascript">
+$('#image').cropper({
+	  aspectRatio: 16 / 9,
+	  crop: function(e) {
+	    // Output the result data for cropping image.
+	    console.log(e.x);
+	    console.log(e.y);
+	    console.log(e.width);
+	    console.log(e.height);
+	    console.log(e.rotate);
+	    console.log(e.scaleX);
+	    console.log(e.scaleY);
+	  }
+	});
+</script>
+</html>

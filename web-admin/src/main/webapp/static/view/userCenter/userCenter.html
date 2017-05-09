@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<meta name="keywords" content="">
+<meta name="author" content="">
+<title>广东数字文化馆-用户后台</title>
+<link href="../../assets/css/public/reset.css" rel="stylesheet">
+<link href="../../assets/css/userCenter/userCenter.css" rel="stylesheet">
+<!--[if lt IE 9] >
+<script src="../../assets/js/plugins/ie/IE9.js"></script> 
+<! [endif]]-->
+</head>
+<body>
+<!--公共主头部开始-->
+<div id="header">
+    <div class="main-header clearfix">
+        <div class="logo"></div>
+        <div class="search-login">
+            <!--<div class="login">
+                <a href="#" class="login">登录</a>
+                <a href="#" class="register">注册</a>
+            </div>-->
+            <div class="logon">
+				<span class="userName">
+					Hi,&nbsp;<a href="${basePath }/center/userCenter">用户名</a>&nbsp;您好！
+				</span>
+                <a href="${basePath }/sessionExit" class="esc">退出</a>
+            </div>
+            <span class="line"></span>
+            <div class="search">
+                <input type="text" placeholder="搜索所需的内容">
+                <a href="#" class="icon-search"></a>
+            </div>
+        </div>
+    </div>
+    <div class="header-nav clearfix">
+        <div class="header-nav-content">
+            <ul>
+                <li class="active"><a href="#">首&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;页</a></li>
+                <li><a href="#">馆务公开</a></li>
+                <li><a href="#">资讯动态</a></li>
+                <li><a href="#">文化活动</a></li>
+                <li><a href="#">场馆服务</a></li>
+                <li><a href="#">培训驿站</a></li>
+                <li><a href="#">数字资源</a></li>
+                <li><a href="#">非遗中心</a></li>
+                <li><a href="#">志愿服务</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!--公共主头部结束--> 
+
+<div class="userHeader clearfix">
+	<div class="header">
+    	<div class="userInfo">
+        	<h2>Hi,156****5144</h2>
+            <div class="userClass">
+            	<span class="ico i-1 tipso_top" title="已绑定手机"><a href="safely-phone.html"></a></span>
+                <span class="ico i-2 tipso_top" title="已绑定电子邮箱"><a href="safely-email.html"></a></span>
+                <span class="ico i-3 tipso_top" title="已绑实名认证"><a href="safely-userReal.html"></a></span>
+                <span class="ico i-4 tipso_top" title="团队账号"><a href="#"></a></span>
+                <span class="ico i-5 unBind tipso_top" title="未认证艺术资质"><a href="#"></a></span>
+                <span class="ico i-6 unBind tipso_top" title="未认证企业资质"><a href="#"></a></span>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="main main-boder clearfix">
+ 	<div class="leftPanel">
+    	<ul>
+            <li class="active"><a href="userCenter.html"><em class="ico i-9"></em>账户概况</a></li>
+<li><a href="userInfo.html"><em class="ico i-1"></em>基本信息</a></li>
+            <li><a href="order.html"><em class="ico i-2"></em>我的订单</a></li>
+            
+            <li><a href="activity.html"><em class="ico i-6"></em>我的活动</a></li>
+      <li><a href="curriculum.html"><em class="ico i-3"></em>我的课程</a></li>
+      <li><a href="favorite.html"><em class="ico i-8"></em>我的收藏</a></li>
+      <li><a href="comment.html"><em class="ico i-7"></em>我的点评</a></li>
+<li><a href="message.html"><em class="ico i-4"></em>我的消息</a></li>
+            <li><a href="safely.html"><em class="ico i-5"></em>安全设置</a></li>
+            
+        </ul>
+    </div>
+    <div class="rightPanel">
+    	<div class="qkJoin clearfix">
+        	<!--<div class="qkBtn tuan already">
+            	<a href="javascript:void(0)">已完成</a>
+            </div>-->
+            <!--如果已经升级，就加个already样式，改变文字内容为“已完成”-->
+            <div class="qkBtn tuan">
+            	<a href="javascript:void(0)">升级团队账号</a>
+            </div>
+            <div class="qkBtn qi">
+            	<a href="javascript:void(0)">升级企业账号</a>
+            </div>
+        </div>
+        <div class="msg none">没有找到您的消息，快去<a href="#" target="_blank">参加活动</a>吧</div>
+        <div class="activity">
+            <ul class="centered" >
+            	<li class="item">
+                    <h2><a href="">培训课程： 2016年度环卫工人未成年子女免费艺术培训</a></h2>
+                    <p>讲师 :<span>谢东林</span></p>
+                    <P>电话 :<span>13233334444</span></P>
+                    <P>地址  :<span>广东省文化馆</span></P>
+                    <P class="tickets">课程周期 :<span>2016-11-28 至 2016-12-16 </span></P>
+                </li>
+                <li class="item">
+                    <h2><a href="">场馆预定： 菊园新区社区文化活动中心</a></h2>
+                    <p>类型 :<span>体育馆</span></p>
+                    <P>电话  :<span>0733-258652210</span></P>
+                    <P>地址 :<span>广州市八一路3302号</span></P>
+                    <P class="timeIn">预定时间段 :<span>2016-12-25 15:30-17:30</span></P>
+                </li>
+            </ul>
+            
+            <div class="arrow prev"></div>
+            <div class="arrow next"></div>
+        </div>
+        <div class="scrollbar">
+					<div class="handle"></div>
+		</div>
+    </div>
+</div>
+
+<!-- core public JavaScript --> 
+<script src="../../assets/js/public/jquery-1.11.0.min.js"></script> 
+<script src="../../assets/js/public/sly.js"></script>
+<script src="../../assets/js/plugins/tipso/tipso.js"></script>
+<script src="../../assets/js/public/jquery-migrate-1.0.0.js"></script> 
+<script src="../../assets/js/userCenter/public.js"></script>
+<script src="../../assets/js/userCenter/userCenter.js"></script>
+</body>
+</html>

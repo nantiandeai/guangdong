@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.creatoo.hn.mapper.WhTraintplMapper" >
+  <resultMap id="BaseResultMap" type="com.creatoo.hn.model.WhTraintpl" >
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="tratplid" property="tratplid" jdbcType="VARCHAR" />
+    <result column="traid" property="traid" jdbcType="VARCHAR" />
+    <result column="tratyp" property="tratyp" jdbcType="VARCHAR" />
+    <result column="traarttyp" property="traarttyp" jdbcType="VARCHAR" />
+    <result column="tratitle" property="tratitle" jdbcType="VARCHAR" />
+    <result column="trapic" property="trapic" jdbcType="VARCHAR" />
+    <result column="trabigpic" property="trabigpic" jdbcType="VARCHAR" />
+    <result column="trasdate" property="trasdate" jdbcType="DATE" />
+    <result column="traedate" property="traedate" jdbcType="DATE" />
+    <result column="traaddress" property="traaddress" jdbcType="VARCHAR" />
+    <result column="traagelevel" property="traagelevel" jdbcType="VARCHAR" />
+    <result column="tralevel" property="tralevel" jdbcType="VARCHAR" />
+    <result column="traislogincomment" property="traislogincomment" jdbcType="INTEGER" />
+    <result column="tratags" property="tratags" jdbcType="VARCHAR" />
+    <result column="trakeys" property="trakeys" jdbcType="VARCHAR" />
+    <result column="traarea" property="traarea" jdbcType="VARCHAR" />
+    <result column="trateacher" property="trateacher" jdbcType="VARCHAR" />
+    <result column="trateacherid" property="trateacherid" jdbcType="VARCHAR" />
+    <result column="traisenrol" property="traisenrol" jdbcType="INTEGER" />
+    <result column="traenrolstime" property="traenrolstime" jdbcType="DATE" />
+    <result column="traenroletime" property="traenroletime" jdbcType="DATE" />
+    <result column="traenrollimit" property="traenrollimit" jdbcType="VARCHAR" />
+    <result column="traisenrolqr" property="traisenrolqr" jdbcType="INTEGER" />
+    <result column="traisnotic" property="traisnotic" jdbcType="INTEGER" />
+    <result column="traisrealname" property="traisrealname" jdbcType="INTEGER" />
+    <result column="traisfulldata" property="traisfulldata" jdbcType="INTEGER" />
+    <result column="traisattach" property="traisattach" jdbcType="INTEGER" />
+    <result column="traisonlyone" property="traisonlyone" jdbcType="INTEGER" />
+    <result column="tracanperson" property="tracanperson" jdbcType="INTEGER" />
+    <result column="trapersonfile" property="trapersonfile" jdbcType="VARCHAR" />
+    <result column="tracanteam" property="tracanteam" jdbcType="INTEGER" />
+    <result column="trateamfile" property="trateamfile" jdbcType="VARCHAR" />
+    <result column="traintroduce" property="traintroduce" jdbcType="VARCHAR" />
+    <result column="trateacherdesc" property="trateacherdesc" jdbcType="LONGVARCHAR" />
+    <result column="traenroldesc" property="traenroldesc" jdbcType="LONGVARCHAR" />
+    <result column="tracatalog" property="tracatalog" jdbcType="LONGVARCHAR" />
+    <result column="tradetail" property="tradetail" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  
+  <select id="selectTraintpl" parameterType="java.util.HashMap" resultType="hashmap">
+  	SELECT 
+		t1.tratplid,
+		t1.traid,
+		t1.tratyp,
+		t1.traarttyp,
+		t1.tratitle,
+		t1.trashorttitle,
+		t1.trapic,
+		t1.trabigpic,
+		t1.trasdate,
+		t1.traedate,
+		t1.traaddress,
+		t1.traagelevel,
+		t1.tralevel,
+		t1.traislogincomment,
+		t1.tratags,
+		t1.trakeys,
+		t1.traarea,
+		t1.trateacher,
+		t1.trateacherid,
+		t1.trateacherdesc,
+		t1.traisenrol,
+		t1.traenrolstime,
+		t1.traenroletime,
+		t1.traenrollimit,
+		t1.traisenrolqr,
+		t1.traisnotic,
+		t1.traenroldesc,
+		t1.traisrealname,
+		t1.traisfulldata,
+		t1.traisattach,
+		t1.traisonlyone,
+		t1.tracanperson,
+		t1.trapersonfile,
+		t1.tracanteam,
+		t1.trateamfile,
+		t1.traintroduce,
+		t1.tracatalog,
+		t1.tradetail,
+		t1.traphone,
+		t1.ismoney,
+		t1.tracontact
+	FROM
+		wh_traintpl AS t1 
+	WHERE
+		t1.tratplid IS NOT NULL
+	<if test="tratyp != null">
+      and t1.tratyp <![CDATA[=]]> #{tratyp}
+    </if>
+    <if test="traarttyp != null">
+      and t1.traarttyp <![CDATA[=]]> #{traarttyp}
+    </if>
+    <if test="traagelevel != null">
+      and t1.traagelevel <![CDATA[=]]> #{traagelevel}
+    </if>
+    <if test="tralevel != null">
+      and t1.tralevel <![CDATA[=]]> #{tralevel}
+    </if>
+    <if test="tratitle != null">
+      and t1.tratitle like "%"#{tratitle}"%"
+    </if>
+   	ORDER BY
+		t1.tratplid DESC
+  </select>
+</mapper>

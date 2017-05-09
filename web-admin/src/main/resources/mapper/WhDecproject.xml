@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.creatoo.hn.mapper.WhDecprojectMapper">
+
+	<select id="showProject" resultType="hashmap">
+		SELECT
+		d.mlproid 'itemId',
+		d.mlproshortitel 'project',
+		d.mlprosbaddr 'prosbaddr',
+		d.mlprosource 'source',
+		d.mlprotailtitle 'intro',
+		d.mlproshortitel 'title',
+		d.mlprosmpic 'thumb',
+		d.mlprobigpic 'imgage',
+		d.mlprokey 'tag'
+		FROM
+		wh_decproject d where d.mlprostate = 3
+	</select>
+	
+	<select id="showProjectDetail" resultType="hashmap">
+		SELECT
+		d.mlproid 'itemId',
+		d.mlproshortitel 'project',
+		d.mlprosbaddr 'prosbaddr',
+		d.mlprosource 'source',
+		d.mlprotailtitle 'intro',
+		d.mlproshortitel 'title',
+		d.mlprosmpic 'thumb',
+		d.mlprobigpic 'imgage',
+		d.mlprokey 'tag',
+		d.mlprotime 'time'
+		FROM
+		wh_decproject d where d.mlprostate = 3 and d.mlproid = #{itemId}
+	</select>
+
+</mapper>

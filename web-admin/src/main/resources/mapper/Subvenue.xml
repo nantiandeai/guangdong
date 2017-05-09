@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.creatoo.hn.mapper.WhSubvenueMapper" >
+	
+	
+	
+	<select id="selSub" resultType="hashmap">
+		SELECT
+			s1.subid,
+			s1.subname,
+			s1.subpic,
+			s1.subbigpic,
+			s1.subintroduce,
+			s1.subpid,
+			s1.subregtime,
+			s1.subcontact,
+			s1.subcontactnum,
+			s1.subcontactemail,
+			s1.substate,
+			s1.subopttime
+		FROM
+			wh_subvenue AS s1 
+		WHERE
+			1 = 1
+			<if test="subpid != null">
+		      and s1.subpid <![CDATA[=]]> #{subpid}
+		    </if>
+	</select>
+
+
+
+</mapper>

@@ -1,0 +1,18 @@
+.public-left-main .video-detail{padding: 0 20px 20px 20px;background: #fff;}
+.public-left-main .video-detail h1{font-size: 18px;color: #333;margin: 0 0 20px 0;}
+.public-left-main .video-detail .detail>div{float: left;color: #959595;font-size: 14px;margin-right: 30px;}
+.public-left-main .video-detail .detail{margin-bottom: 20px;}
+.public-left-main .video-detail .detail>div.label span{border: solid 1px #e5e5e5;padding: 0px 13px;border-radius: 10px;}
+.public-left-main .video-detail .video1{width: 800px;height: 525px;background: #fff;margin-top: 10px; margin-bottom:20px;}
+.public-left-main .jianjie{padding: 20px;background: #fff;margin-top: 20px;}
+.public-left-main .jianjie h2{padding: 0px 0 20px 0;border-bottom: solid 1px #e5e5e5;font-size: 16px;color: #333;margin: 0;}
+.public-left-main .jianjie p{margin: 20px 0;font-size: 14px;color: #959595;text-indent: 2em;}
+.public-left-main .pinglun{padding: 20px;background: #fff;margin-top: 20px;}
+.public-left-main .pinglun h2{padding: 0px 0 20px 0;border-bottom: solid 1px #e5e5e5;font-size: 16px;color: #333;margin: 0;}
+.public-left-main .pinglun .pinglun-list ul li{border-bottom: dashed 1px #e5e5e5;padding-bottom: 20px;}
+.public-left-main .pinglun .pinglun-list ul li div.detail p{margin: 10px 0;font-size: 14px;color: #959595;}
+.public-left-main .pinglun .pinglun-list ul li div.name{margin: 20px 0 0 0; color: #333333;}
+.public-left-main .pinglun .pinglun-list ul li div.time{margin: 10px 0 0 0; color: #959595;font-size: 12px;}
+.public-left-main .pinglun .pinglun-input{margin: 20px 0;}
+.public-left-main .pinglun .pinglun-input textarea{border: solid 1px #e5e5e5;width:758px;height: 120px;padding: 15px 20px;}
+.public-left-main .pinglun .pinglun-input a{float: right;padding: 6px 50px;background: #c8161d;color: #fff;margin: 20px 0 0 0;border-radius: 3px;}

@@ -1,0 +1,54 @@
+.on{display: block!important;}
+.bg-color{background: #fff;}
+.news-cont .img{float:left; width:480px; height:370px; overflow: hidden;position: relative;}
+.news-cont .img ul li{position:relative;height:370px; overflow:hidden;width: 480px;float: left;}
+.news-cont .img img{width: 480px;height: 370px;overflow: hidden;}
+.news-cont .img .mask a{color: #fff;display: block;}
+.news-cont .img .mask a:hover{text-decoration: underline;}
+.news-cont .img .mask{height: 40px;width: 100%;position: absolute;left: 0px;bottom: 0px;line-height: 40px;text-indent: 20px;background: url(../../../assets/img/public/b.png) repeat;}
+.news-cont .newsGroups{float:right; width:700px; height:445px;}
+.news-cont .newsGroups .tab{line-height: 40px;height: 40px;border-bottom: #ececec solid 1px;}
+.news-cont .newsGroups .tab ul li{cursor:pointer;float: left;font-size: 16px;color: #333;line-height: 40px;padding: 0px 20px;text-align: center;height: 40px;}
+.news-cont .newsGroups .tab ul li.active{border-bottom: solid 1px #c8161d;color: #c8161d;}
+.news-cont .newsGroups .detail{display: none;}
+.news-cont .newsGroups .detail ul li{text-align: left;position: relative;text-indent: 20px;border-bottom: dashed 1px #ececec;height: 54px;line-height: 54px;padding: 0 10px 0 20px;}
+.news-cont .newsGroups .detail ul li a{font-size: 14px;color: #333;margin-left: 5px;max-width: 530px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;display: block; float: left;}
+.news-cont .newsGroups .detail ul li span{float: right;font-size: 14px;color: #959595;}
+.news-cont .newsGroups .detail ul li i{display: block;position: absolute;width: 14px;height: 14px;background: url(../../../assets/img/activity/li-logo.png);top: 21px;}
+.news-cont .newsGroups .detail ul li:hover i{background: url(../../../assets/img/activity/li-logo.png) -15px 0px;}
+.news-cont .newsGroups .detail ul li:hover a{color: #c8161d;}
+.news-cont .newsGroups .more{height: 32px; margin-top: 40px;}
+.news-cont .newsGroups .more a{margin: 0 auto;}
+/*品牌活动*/
+.event-con .event-left{width: 360px;height: 480px;float: left;background: #c8161d;overflow: hidden;}
+.event-con .event-left h2{text-align: center;font-size: 18px;color: #fff;margin: 50px 0 40px 0;display: block;}
+.event-con .event-left ul{padding: 0 20px;}
+.event-con .event-left ul li{font-size: 14px;color: #fff;margin: 0px 0 10px 0;text-align: left;line-height: 24px;}
+.event-con .event-right{width: 840px;height: 480px;float: right;background: url(../../../assets/img/activity/event-right-bg.png) no-repeat;}
+.event-con .event-right ul{overflow: hidden;}
+.event-con .event-right ul li{width: 227px;height: 330px;float: left;margin-right: 40px;}
+.event-con .event-right ul li div.img{width: 227px;height: 280px;overflow: hidden;}
+.event-con .event-right ul li div.img a img{width: 227px;height: 280px;vertical-align: top;}
+.event-con .event-right ul li div.detail{width: 227px;height: 50px;line-height: 50px;color: #333;text-align: center;}
+.event-con .event-right .event-right-list{width: 760px;height: 330px;margin-left: 40px;margin-top: 100px;overflow: hidden;}
+.event-con .event-right .arrow{width: 80px;height: 20px;margin: 5px auto 0 auto;}
+.event-con .event-right .arrow .arrow-left{float: left;cursor: pointer;}
+.event-con .event-right .arrow .arrow-right{float: right;cursor: pointer;}
+.event-con .event-right .arrow .arrow-left i{overflow:hidden;display: block;width: 20px;height: 20px;background: url(../../../assets/img/activity/arrow.png) 0px 0px;}
+.event-con .event-right .arrow .arrow-left:hover i{background: url(../../../assets/img/activity/arrow.png) 0px -21px;}
+.event-con .event-right .arrow .arrow-right i{overflow:hidden;display: block;width: 20px;height: 20px;background: url(../../../assets/img/activity/arrow.png) -22px 0px;}
+.event-con .event-right .arrow .arrow-right:hover i{background: url(../../../assets/img/activity/arrow.png) -22px -21px;}
+/*文化活动*/
+.cul-cont div.label{margin-top: -50px;}
+.cul-cont div.label ul{text-align: center;}
+.cul-cont div.label ul li{display: inline;margin: 0 10px;}
+.cul-cont div.label ul li a{border-radius: 15px;font-size: 14px;border: solid 1px #fff;padding: 4px 30px;color: #959595;}
+.cul-cont div.label ul li a:hover{border: solid 1px #c8161d;color: #c8161d;}
+.cul-cont div.list-detail{margin-top: 40px;}
+.cul-cont div.list-detail ul{width: 1260px;}
+.cul-cont div.list-detail ul li{width: 360px;background: #f0f0f0;float: left;margin-right: 60px;}
+.cul-cont div.list-detail ul li div.img{width: 360px;height: 225px;overflow: hidden;}
+.cul-cont div.list-detail ul li div.img a img{width: 360px;height: 225px;vertical-align: top;}
+.cul-cont div.list-detail ul li div.detail{width: 360px;height: 120px;}
+.cul-cont div.list-detail ul li div.detail>div{padding: 15px 5px 0 5px;font-size: 14px;color: #959595;text-align: center;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
+.cul-cont div.list-detail ul li div.detail div.title span{font-size: 16px;color: #333;}

@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.creatoo.hn.mapper.WhMagezineMapper">
+
+	<!-- 后台查询电子杂志 -->
+	<select id="selmagezine" resultType="hashMap">
+		SELECT
+			m1.mageid,
+			m1.magetitle,
+			m1.magenum,
+			m1.magepic,
+			m1.magedesc,
+			m1.magearttyp,
+			m1.magestate,
+			m1.mageopttime
+		FROM
+			wh_magezine AS m1
+		WHERE
+			m1.mageid IS NOT null
+		<if test="magearttyp != null">
+	      and m1.magearttyp <![CDATA[=]]> #{magearttyp}
+	    </if>
+	    <if test="magestate != null">
+	      and m1.magestate <![CDATA[=]]> #{magestate}
+	    </if>
+	    <if test="magetitle != null">
+	      and m1.magetitle like "%"#{magetitle}"%"
+	    </if>
+		ORDER BY
+			m1.mageid DESC
+	</select>
+	<!-- 后台查询页码 -->
+	<select id="selMagezinePage" resultType="hashMap">
+		SELECT
+			m1.pageid,
+			m1.pagemageid,
+			m1.pagepic,
+			m1.pagetitle,
+			m1.pagedesc,
+			m1.pageidx,
+			m1.pagestate,
+			m2.magetitle
+		FROM
+			wh_magepage AS m1,
+			wh_magezine AS m2
+		WHERE
+			m1.pagemageid = m2.mageid AND
+			m1.pagemageid = #{pagemageid} 
+			
+	    <if test="pagestate != null">
+	      and m1.pagestate <![CDATA[=]]> #{pagestate}
+	    </if>
+	    <if test="pagetitle != null">
+	      and m1.pagetitle like "%"#{pagetitle}"%"
+	    </if>
+		ORDER BY
+			m1.pageid DESC
+	</select>
+	
+	<!-- 前台查询电子杂志 -->
+	<select id="selDetail" resultType="WhMagezine">
+		SELECT
+			m1.mageid,
+			m1.magetitle,
+			m1.magenum,
+			m1.magepic,
+			m1.magedesc,
+			m1.magearttyp,
+			m1.magestate,
+			m1.mageopttime
+		FROM
+			wh_magezine AS m1
+		WHERE
+			m1.magestate = 3
+	</select>
+	
+	<!-- 前台查询电子杂志 -->
+	<select id="selDetailIdx" resultType="WhMagepage">
+		SELECT
+			m1.pageid,
+			m1.pagemageid,
+			m1.pagepic,
+			m1.pagetitle,
+			m1.pagedesc,
+			m1.pageidx,
+			m1.pagestate
+		FROM
+			wh_magepage AS m1
+		WHERE
+			m1.pagemageid = #{pagemageid}
+	</select>
+	
+	<!-- 前台查询页码 -->
+	<select id="selMagePage" resultType="WhMagepage">
+		SELECT
+			m1.pageid,
+			m1.pagemageid,
+			m1.pagepic,
+			m1.pagetitle,
+			m1.pagedesc,
+			m1.pageidx,
+			m1.pagestate
+		FROM
+			wh_magepage AS m1
+		WHERE
+			m1.pagestate = 1 AND
+			m1.pagemageid = #{pagemageid}
+		ORDER BY
+			m1.pageidx ASC
+
+	</select>
+</mapper>

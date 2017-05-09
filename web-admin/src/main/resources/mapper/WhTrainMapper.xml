@@ -1,0 +1,377 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.creatoo.hn.mapper.WhTrainMapper" >
+  <resultMap id="BaseResultMap" type="com.creatoo.hn.model.WhTrain" >
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="traid" property="traid" jdbcType="VARCHAR" />
+    <result column="tratyp" property="tratyp" jdbcType="VARCHAR" />
+    <result column="traarttyp" property="traarttyp" jdbcType="VARCHAR" />
+    <result column="tratitle" property="tratitle" jdbcType="VARCHAR" />
+    <result column="trapic" property="trapic" jdbcType="VARCHAR" />
+    <result column="trabigpic" property="trabigpic" jdbcType="VARCHAR" />
+    <result column="trasdate" property="trasdate" jdbcType="DATE" />
+    <result column="traedate" property="traedate" jdbcType="DATE" />
+    <result column="traaddress" property="traaddress" jdbcType="VARCHAR" />
+    <result column="traagelevel" property="traagelevel" jdbcType="VARCHAR" />
+    <result column="tralevel" property="tralevel" jdbcType="VARCHAR" />
+    <result column="traislogincomment" property="traislogincomment" jdbcType="INTEGER" />
+    <result column="tratags" property="tratags" jdbcType="VARCHAR" />
+    <result column="trakeys" property="trakeys" jdbcType="VARCHAR" />
+    <result column="traarea" property="traarea" jdbcType="VARCHAR" />
+    <result column="trateacher" property="trateacher" jdbcType="VARCHAR" />
+    <result column="trateacherid" property="trateacherid" jdbcType="VARCHAR" />
+    <result column="traisenrol" property="traisenrol" jdbcType="INTEGER" />
+    <result column="traenrolstime" property="traenrolstime" jdbcType="DATE" />
+    <result column="traenroletime" property="traenroletime" jdbcType="DATE" />
+    <result column="traenrollimit" property="traenrollimit" jdbcType="VARCHAR" />
+    <result column="traisenrolqr" property="traisenrolqr" jdbcType="INTEGER" />
+    <result column="traisnotic" property="traisnotic" jdbcType="INTEGER" />
+    <result column="traisrealname" property="traisrealname" jdbcType="INTEGER" />
+    <result column="traisfulldata" property="traisfulldata" jdbcType="INTEGER" />
+    <result column="traisattach" property="traisattach" jdbcType="INTEGER" />
+    <result column="traisonlyone" property="traisonlyone" jdbcType="INTEGER" />
+    <result column="tracanperson" property="tracanperson" jdbcType="INTEGER" />
+    <result column="trapersonfile" property="trapersonfile" jdbcType="VARCHAR" />
+    <result column="tracanteam" property="tracanteam" jdbcType="INTEGER" />
+    <result column="trateamfile" property="trateamfile" jdbcType="VARCHAR" />
+    <result column="traintroduce" property="traintroduce" jdbcType="VARCHAR" />
+    <result column="traitmghp" property="traitmghp" jdbcType="INTEGER" />
+    <result column="traitmidx" property="traitmidx" jdbcType="INTEGER" />
+    <result column="trastate" property="trastate" jdbcType="INTEGER" />
+    <result column="trateacherdesc" property="trateacherdesc" jdbcType="LONGVARCHAR" />
+    <result column="traenroldesc" property="traenroldesc" jdbcType="LONGVARCHAR" />
+    <result column="tracatalog" property="tracatalog" jdbcType="LONGVARCHAR" />
+    <result column="tradetail" property="tradetail" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  
+  <select id="selectTrain" parameterType="java.util.HashMap" resultType="hashmap">
+  		SELECT
+			t1.traid,
+			t1.tratyp,
+			t1.traarttyp,
+			t1.trashorttitle,
+			t1.tratitle,
+			t1.trapic,
+			t1.trabigpic,
+			t1.trasdate,
+			t1.traedate,
+			t1.traaddress,
+			t1.traagelevel,
+			t1.tralevel,
+			t1.traislogincomment,
+			t1.tratags,
+			t1.trakeys,
+			t1.traarea,
+			t1.trateacher,
+			t1.trateacherid,
+			t1.trateacherdesc,
+			t1.traisenrol,
+			t1.traenrolstime,
+			t1.traenroletime,
+			t1.traenrollimit,
+			t1.traisenrolqr,
+			t1.traisnotic,
+			t1.traenroldesc,
+			t1.traisrealname,
+			t1.traisfulldata,
+			t1.traisattach,
+			t1.traisonlyone,
+			t1.tracanperson,
+			t1.trapersonfile,
+			t1.tracanteam,
+			t1.trateamfile,
+			t1.traintroduce,
+			t1.tracatalog,
+			t1.tradetail,
+			t1.traitmghp,
+			t1.traitmidx,
+			t1.trastate,
+			t1.traphone,
+			t1.tracontact,
+			t1.ismoney,
+			t1.trastateopttime
+		FROM
+			wh_train AS t1 
+		WHERE
+			1 = 1
+		<if test="stateArray != null">
+	      and t1.trastate in 
+	      <foreach item="item" index="index" collection="stateArray" open="(" separator="," close=")">
+		        #{item}
+		  </foreach>
+	    </if>
+	    <if test="traid != null">
+	      and t1.traid <![CDATA[=]]> #{traid}
+	    </if>
+    	<if test="tratyp != null">
+	      and t1.tratyp <![CDATA[=]]> #{tratyp}
+	    </if>
+	    <if test="traarttyp != null">
+	      and t1.traarttyp <![CDATA[=]]> #{traarttyp}
+	    </if>
+	    <if test="traagelevel != null">
+	      and t1.traagelevel <![CDATA[=]]> #{traagelevel}
+	    </if>
+	    <if test="tralevel != null">
+	      and t1.tralevel <![CDATA[=]]> #{tralevel}
+	    </if>
+	    <if test="tratitle != null">
+	      and t1.tratitle or t1.trashorttitle like "%"#{tratitle}"%" 
+	    </if>
+	    <if test="sdate_s != null">
+	      and t1.trasdate <![CDATA[>=]]> #{sdate_s}
+	    </if>
+		<if test="sdate_e != null">
+	      and t1.trasdate <![CDATA[<=]]> #{sdate_e}
+	    </if>
+	    <if test="edate_s != null">
+	      and t1.traedate <![CDATA[>=]]> #{edate_s}
+	    </if>
+		<if test="edate_e != null">
+	      and t1.traedate <![CDATA[<=]]> #{edate_e}
+	    </if>
+		<if test="trastate != null">
+	      and t1.trastate <![CDATA[=]]> #{trastate}
+	    </if>
+	    ORDER BY
+			t1.traid DESC
+  </select>
+  
+  <!-- 查找状态 -->
+  <select id="selState" resultType="hashmap">
+  	select * from wh_train where trastate=2 or trastate=3
+  </select>
+  
+  <!-- 是否能够取消发布 -->
+  <select id="isPublish" resultType="int">
+		SELECT
+			count(*)
+		FROM
+			wh_cfg_list AS c1
+		WHERE
+			c1.cfgstate = 1 AND
+			c1.cfgshowid = #{traid}
+	</select>
+	
+	
+	
+  <!-- 是否能够送审  -->
+  <select id="isCanCheck" resultType="int">
+		SELECT
+			count(*)
+			FROM
+			wh_traitmtime AS t1
+		WHERE
+			t1.traitmid = #{traid}
+	</select>
+	
+	<!-- 查询已报名人数  -->
+  <select id="selectEnrollCount" resultType="int">
+		SELECT
+			count(*)
+			FROM
+			wh_traenr t1
+		WHERE
+			t1.enrtraid = #{traid}
+			and enrstate <![CDATA[<>]]> '3' 
+	</select>
+	
+	<!-- 查询历史培训  -->
+  <select id="selOldTra" resultType="hashmap">
+		SELECT
+			*
+		FROM
+			wh_train t1 ,
+			wh_traenr t2
+		WHERE
+			t1.traid = t2.enrtraid AND
+			(t2.enrstate = '1' or t2.enrstate = '2') AND
+			t2.enruid = #{uid} 
+	</select>
+	
+	<!-- 查询历史场馆  -->
+  <select id="selOldVen" resultType="hashmap">
+		SELECT
+			*
+		FROM
+			wh_venue v1 ,
+			wh_venuebked v2
+		WHERE
+			v1.venid = v2.vebvenid AND
+			v2.vebuid = #{uid} AND
+			v2.vebstate = '1' 
+	</select>
+	
+	<!-- 查询历史活动  -->
+  <select id="selOldAct" resultType="hashmap">
+		SELECT
+			*
+		FROM
+			wh_activitybm a1 ,
+			wh_activity a2
+		WHERE
+			a1.actid = a2.actvid AND
+			a1.actbmuid = #{uid} AND
+			(a1.actshstate = '1' or a1.actshstate = '2')
+	</select>
+	
+  	<!-- 移动端接口查询培训列表数据  -->
+  <select id="selTrainList" resultType="hashmap">
+		SELECT
+		    t1.traid "itemId",
+			t1.tratyp "typeId",
+			t1.tratitle "title",
+			t1.traintroduce "intro",
+			t1.trapic "thumb",
+			t1.trabigpic "image",
+			t1.traphone "phone",
+			t1.trasdate "begin",
+			t1.traedate "end",
+			t1.traaddress "address",
+			t1.tratags, 
+			(select t2.typname from wh_typ t2 where t2.typid=t1.tratyp) as 'type',
+			(select count(*) from wh_collection c1 where c1.cmrefid=t1.traid and c1.cmopttyp=2) as 'voteUp'
+		FROM
+			wh_train t1
+		WHERE
+			t1.trastate = '3'
+			
+			<if test="keywords != null ">
+     			AND t1.trakeys like "%"#{typeId}"%"
+   			</if>
+			<if test="art != null ">
+     			AND t1.traarttyp = #{art}
+   			</if>
+   			<if test="typeId != null ">
+     			AND t1.tratyp = #{typeId}
+   			</if>
+			<if test="district != null ">
+     			AND t1.traarea = #{district}
+   			</if>
+			<if test="newActivity == true ">
+     			AND t1.trasdate <![CDATA[<=]]> SYSDATE()
+   			</if>
+			<if test="newActivity == false ">
+     			and t1.trasdate <![CDATA[>=]]> SYSDATE()  and t1.traedate <![CDATA[<=]]> SYSDATE()
+   			</if>
+	</select>
+	
+	
+	<!-- 移动端接口查询培训详情数据  -->
+  <select id="selTrainDetail" resultType="hashmap">
+		SELECT
+		    t1.traid "itemId",
+			t1.tratyp "typeId",
+			t1.tratitle "title",
+			t1.traintroduce "intro",
+			t1.trapic "thumb",
+			t1.trabigpic "image",
+			t1.traphone "phone",
+			t1.trasdate "begin",
+			t1.traedate "end",
+			t1.traaddress "address",
+			t1.traisattach "attachment",
+			t1.tradetail , 
+			t1.tracatalog, 
+			t1.traenroldesc, 
+			t1.tratags, 
+			(select t2.typname from wh_typ t2 where t2.typid=t1.tratyp) 'type',
+			(select count(*) from wh_collection c1 where c1.cmrefid=t1.traid and c1.cmopttyp=2) 'voteUp' 
+		FROM
+			wh_train t1
+		WHERE
+			t1.trastate = '3'
+			AND t1.traid = #{itemId}
+	</select>
+	
+	<!-- 移动端接口查询用户是否收藏  -->
+  <select id="selCollectionCount" resultType="int">
+		SELECT
+		    count(*)
+		FROM
+			wh_collection c1
+		WHERE
+			c1.cmopttyp = 0
+			and c1.cmrefid = #{traid}
+			AND c1.cmuid = #{id}
+	</select>
+  
+  
+  
+  		<!-- 移动端接口查询我的培训数据  -->
+  <select id="selMyEnroll" resultType="hashmap">
+ 		SELECT
+			t1.enrid "itemId",
+			t2.traid,
+			t2.tratyp "typeId",
+			t2.tratitle "title",
+			t2.traintroduce "intro",
+			t2.trapic "thumb",
+			t2.trabigpic "image",
+			t2.traphone "phone",
+			t2.traaddress "address",
+			t2.trasdate	"begin",
+			t2.traedate "end",
+			t2.tratags "tag",
+			(select t3.typname from wh_typ t3 where t3.typid=t2.tratyp) 'type',
+			(select count(*) from wh_collection c1 where c1.cmrefid=t2.traid and c1.cmopttyp=2) 'voteUp' 
+		FROM
+			wh_traenr AS t1 ,
+			wh_train AS t2
+		WHERE
+			t1.enrtraid = t2.traid
+		<if test="state == 0  ">
+     		and 1=1
+   		</if>
+		<if test="state == 1  ">
+     		and (t1.enrisa = '0' or t1.enrisb = '0') 
+		    and t1.enrstepstate <![CDATA[<>]]> '1' 
+		    and t1.enrstate <![CDATA[<>]]> '1' 
+		    and t1.enrstate <![CDATA[<>]]> '2'
+   		</if>
+		<if test="state == 2  ">
+     		and (t1.enrstate = '0' or t1.enrstate = '3')
+	    	and t1.enrstepstate = '1'
+   		</if>
+		<if test="state == 3  ">
+     		and t1.enrstepstate = '1'
+	    	and (t1.enrstate = '1' or t1.enrstate = '2')
+   		</if>
+	</select>
+	
+	
+  		<!-- 移动端接口查询我的场馆数据  -->
+  <select id="selMyVenue" resultType="hashmap">
+ 		select 
+			v1.venid "itemId",
+			v1.ventype "typeId", 
+			v1.venname "title", 
+			v1.venintro "intro", 
+			v1.venpic "thumb", 
+			v1.venpic "image", 
+			v1.vencontactnum "phone", 
+			v1.venaddr "address", 
+			v1.ventags, 
+			(select t3.typname from wh_typ t3 where t3.typid=v1.venarea) 'district',
+			(select t2.typname from wh_typ t2 where t2.typid=v1.ventype) 'type',
+			(select count(*) from wh_collection c1 where c1.cmrefid=v1.venid and c1.cmopttyp=2) 'voteUp'
+		from 
+			wh_venue v1,wh_venuebked AS v2 
+		WHERE
+			v2.vebvenid = v1.venid
+		<if test="state == 0  ">
+			and 1=1
+   		</if>
+		<if test="state == 1  ">
+		    and v1.vebstate = 0
+   		</if>
+		<if test="state == 2  ">
+     		and v1.vebstate = 1
+   		</if>
+		<if test="state == 3  ">
+     		and v1.vebstate = 2
+   		</if>
+	</select>
+</mapper>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.creatoo.hn.mapper.WhUserTeacherMapper">
+
+
+
+<!-- 查询用户活动时段以团队或个人方式报名的记录数 -->
+<select id="selTeacher" resultType="hashmap">
+	SELECT
+		t1.teacherid,
+		t1.teacheruid,
+		t1.teacherpic,
+		t1.teachername,
+		t1.teachertype,
+		t1.teacherarea,
+		t1.teacherarttyp,
+		t1.teachercourse,
+		t1.teacherintroduce,
+		t1.teacherexpdesc,
+		t1.teacherstartdesc,
+		t1.teacherregtime,
+		t1.teacheropttime,
+		t1.teacherstate
+	FROM
+		wh_user_teacher AS t1
+	WHERE
+		1 = 1
+	<if test="teacherarttyp != null">
+      and t1.teacherarttyp like "%"#{teacherarttyp}"%"
+    </if>
+	<if test="teacherarea != null">
+      and t1.teacherarea = #{teacherarea}
+    </if>
+	<if test="teacherstate != null">
+      and t1.teacherstate = #{teacherstate}
+    </if>
+    <if test="teachername != null">
+      and t1.teachername like "%"#{teachername}"%"
+    </if>
+	order by teacheropttime desc
+</select>
+
+</mapper>

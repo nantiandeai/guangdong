@@ -1,0 +1,49 @@
+/*---------------------------------------------------------------------
+	* Filename:         login.css
+	* Description:      login
+	* Version:          1.0.0 (2016-10-20)
+	* Website:          hn.sun3d.com
+	* Author:           JackyZeng (zrongs@vip.qq.com)
+---------------------------------------------------------------------*/
+body{background: #f5f5f5;}
+.main{padding: 1px 0px; width: 978px; margin: 0 auto 200px auto; background-color: #fff;border:1px #e8e8e8 solid;}
+.regist-logo{height:155px;width:280px;background:url(../../../assets/img/regist/logo.png) no-repeat;margin:60px auto;}
+.main .login-cont{width:580px; height:500px; float:left;}
+.main .line-middle{width:1px; border-right:1px #e8e8e8 dashed; height:500px; float:left; position:relative;}
+.main .other-cont{width:395px; height:500px; float:left;}
+.main .login-cont .form-cont{margin:90px auto auto 70px;}
+.main .login-cont .form-cont h1{font-size:20px; color:#c8161d; margin-bottom:45px;}
+.main .login-cont .form-cont .input-row{width:325px; height:40px; line-height:40px; border:1px #e8e8e8 solid; background-color:#f8f8f8; margin-bottom:25px; border-radius:3px; position:relative;}
+.main .login-cont .form-cont .input-row .msg{position:absolute; height:40px; line-height:40px; color:#c8161d; width:160px; right:-160px; bottom:0px; font-size:12px; text-indent:10px}
+.main .login-cont .form-cont .find-pwd{width:325px; height:40px; line-height:40px; text-align:right; margin-bottom:5px; margin-top:-20px;}
+.main .login-cont .form-cont .find-pwd a{font-size:13px; color:#c8161d}
+.main .login-cont .form-cont .login-btn{background-color:#c8161d; color:#fff; text-align:center; width:325px; height:40px; line-height:40px; border-radius:3px; margin-bottom:20px;}
+.main .login-cont .form-cont .login-btn:hover{background-color: #ff0000;}
+.main .login-cont .form-cont .regist-btn{color:#959595; font-size:13px;}
+.main .login-cont .form-cont .regist-btn a{color:#c8161d}
+.main .login-cont .form-cont .regist-btn a:hover{text-decoration:underline}
+.login-input{height:36px; line-height:36px; margin-left:40px; width:270px; background-color:#f5f5f5;}
+.main .line-middle em{height:20px; width:20px; color:#ccc; font-size:12px; position:absolute; left:-8px; top:240px; background-color:#fff;}
+.main .other-cont .third-party{margin:120px auto auto 70px;}
+.main .other-cont .third-party h2{font-size:16px; color:#888; margin-bottom:20px;}
+.main .other-cont .third-party ul li{float:left; width:52px; height:80px; text-align:center; font-size:13px; margin-right:38px;}
+.main .other-cont .third-party ul li em{background-image:url(../../../assets/img/regist/login-ico.png); width:48px; height:48px; display:block; margin:0px auto 7px auto; transition:.5s}
+.main .other-cont .third-party ul li span{height:22px; line-height:22px; text-align:center;}
+.main .other-cont .third-party ul li a{color:#888;}
+.main .other-cont .third-party ul .ico-1 em{background-position:0px 0px;}
+.main .other-cont .third-party ul .ico-2 em{background-position:0px -48px;}
+.main .other-cont .third-party ul .ico-3 em{background-position:0px -96px;}
+.main .other-cont .third-party ul li em:hover{filter:alpha(opacity=80);-moz-opacity:0.8;opacity:0.8;}
+.main .login-cont .id-bg{background:url(../../../assets/img/regist/userFace.png) no-repeat 12px 50%;}
+.main .login-cont .pwd-bg{background:url(../../../assets/img/regist/lock.png) no-repeat 12px 50%;}
+.main .login-cont .form-cont .active{background-color:#fff; border-color:#959595}
+.main .login-cont .form-cont .active .login-input{background-color:#fff;}
+
+.main .other-cont .third-party div.img {
+    width: 200px;
+    height: 200px;
+}
+.main .other-cont .third-party div.img img {
+    width: 100%;
+    height: 100%;
+}

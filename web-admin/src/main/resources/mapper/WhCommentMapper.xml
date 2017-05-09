@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.creatoo.hn.mapper.WhCommentMapper">
+	<resultMap id="BaseResultMap" type="com.creatoo.hn.model.WhComment">
+		<!-- WARNING - @mbg.generated -->
+		<id column="rmid" jdbcType="VARCHAR" property="rmid" />
+		<result column="rmdate" jdbcType="TIMESTAMP" property="rmdate" />
+		<result column="rmuid" jdbcType="VARCHAR" property="rmuid" />
+		<result column="rmcontent" jdbcType="VARCHAR" property="rmcontent" />
+		<result column="rmreftyp" jdbcType="VARCHAR" property="rmreftyp" />
+		<result column="rmrefid" jdbcType="VARCHAR" property="rmrefid" />
+		<result column="rmtyp" jdbcType="INTEGER" property="rmtyp" />
+	</resultMap>
+	
+	<!-- 个人中心 之 我的活动点评查询 -->
+	 <select id="selectMyActComm" resultType="hashMap">
+	   SELECT
+	   t1.rmdate,t1.rmreftyp,t2.sdate,t2.edate,t4.name,t4.imagesm,t4.acttype,t4.address,t4.actcalss
+	   from wh_comment t1, wh_actitm t2, wh_user t3,wh_act t4
+	   where t1.rmrefid=t2.actitmid and t1.rmuid=t3.id and t2.refactid=t4.actid and t1.rmreftyp='1' 
+	   and t1.rmuid=#{rmuid} 
+	</select> 
+	
+	<!-- 个人用户中心 之 我的培训点评查询  -->
+	 <select id="selectMyTraitmComm" resultSets="hashmap">
+		SELECT	
+		t1.rmdate,t2.enrolstime,t2.enroletime,t3.trapic,t3.tratyp,t3.arttyp,
+		t3.agelevel,t3.tradesc,t3.tralevel
+		FROM wh_comment t1,wh_traitm t2,wh_tra t3,wh_user t4
+		WHERE t1.rmuid=t4.id and t1.rmrefid=t2.traitmid and t2.traid=t3.traid and t1.rmreftyp='2' 
+		and t1.rmuid=#{rmuid}
+	</select> 
+	
+	<select id="selectdisList" parameterType="java.util.HashMap" resultType="hashmap">
+	select * from wh_comment where 1=1 
+	<if test="rmreftyp!=null">
+	and rmrefid IN (select rmid from wh_comment 
+	where rmreftyp=#{rmreftyp}
+	) or  rmreftyp=#{rmreftyp}
+	</if>
+	<if test="sort != null and order!=null">
+      order by ${sort} ${order} 
+    </if>
+	</select>
+	
+	<!-- 查询评论 -->
+	<select id="searchComment" parameterType="java.util.HashMap" resultType="hashmap">
+		select *
+		from wh_comment t1, wh_user t2
+		where t1.rmuid= t2.id
+		and t1.rmtyp= 0
+		and t1.rmstate = 1 
+	    <if test="reftyp != null">
+	      and t1.rmreftyp <![CDATA[=]]> #{reftyp}
+	    </if>
+	    <if test="refid != null">
+	      and t1.rmrefid <![CDATA[=]]> #{refid}
+	    </if>
+	</select>
+	<!-- 查询回复 -->
+	<select id="searchCommentHuifu" resultType="hashmap">
+		SELECT * FROM wh_comment t1 LEFT JOIN whg_sys_user t2 on t1.rmuid = t2.id
+		where t1.rmtyp= 1
+		and t1.rmpltype = 1
+		<if test="rmids != null">
+	      and t1.rmrefid in  
+	      <foreach item="item" index="index" collection="rmids" open="(" separator="," close=")">
+		        #{item}
+		  </foreach>
+	    </if>
+	</select>
+	
+	
+	
+	<!--个人用户中心 评论查找 -->
+	<select id="searchMyComment" resultType="hashmap">
+		SELECT u.name,u.phone,c.rmid,c.rmuid,c.rmdate,c.rmcontent,c.rmtitle,c.rmurl,
+		c.rmreftyp,c.rmrefid,c.rmtyp,c.rmstate 
+		from wh_comment c, wh_user u 
+		where rmtyp = '0' and c.rmuid=u.id 
+		<if test="rmuid !=null">
+		and rmuid = #{rmuid}
+		</if>
+		<if test="rmreftyp !=null">
+		and rmreftyp = #{rmreftyp}
+		</if>
+		order by rmdate desc
+	</select>
+	
+	<!--个人用户中心 回复查找 -->
+	<select id="searchMyCommentRetry" resultType="hashmap">
+		select c.*, u.account
+		from wh_comment c, whg_sys_user u
+		where rmtyp = '1' and c.rmuid=u.id
+		<if test="idArray != null">
+	      and c.rmrefid in  
+	      <foreach item="item" index="index" collection="idArray" open="(" separator="," close=")">
+		        #{item}
+		  </foreach>
+	    </if>
+	    order by rmdate desc
+	</select>
+	<!--评论后台查询 评论-->
+	<select id="selecthdComment" resultType="hashmap" parameterType="java.util.HashMap">
+	select t1.*,u.nickname, ( select count(*) from wh_comment t where t.rmtyp='1' and
+    t.rmreftyp='2016102200000003' and t.rmrefid=t1.rmid) ishf 
+	from wh_comment t1,wh_user u 
+	where t1.rmtyp = '0' and u.id=t1.rmuid
+	<if test="rmreftyp !=null">
+	and rmreftyp=#{rmreftyp}
+	</if>
+	<if test="rmcontent !=null">
+	and rmcontent like '%${rmcontent}%'
+	</if>
+	<choose>
+		<when test="sort != null and order!=null">
+	      order by ${sort} ${order} 
+	    </when>
+		<otherwise>
+		 order by t1.rmdate desc
+		</otherwise>
+	</choose>
+	</select>
+	<!--评论后台查询 评论(根据模块区分)-->
+	<select id="selecthdCommentByType" resultType="hashmap" parameterType="java.util.HashMap">
+		select t1.*,u.nickname, ( select count(*) from wh_comment t where t.rmtyp='1' and t.rmrefid=t1.rmid) ishf
+		from wh_comment t1,wh_user u
+		where t1.rmtyp = '0' and u.id=t1.rmuid and rmreftyp=#{rmreftyp}
+		<if test="rmcontent !=null">
+			and rmcontent like '%${rmcontent}%'
+		</if>
+		<choose>
+			<when test="sort != null and order!=null">
+				order by ${sort} ${order}
+			</when>
+			<otherwise>
+				order by t1.rmdate desc
+			</otherwise>
+		</choose>
+	</select>
+    <!--评论后台查询 回复  -->
+	<select id="selecthdCommentHF" resultType="hashmap" parameterType="java.util.HashMap">
+		SELECT c.*,IFNULL(m.account,'超级管理员') as account from wh_comment c LEFT JOIN whg_sys_user m  on c.rmuid = m.id
+		WHERE c.rmtyp=1
+		<if test="rmrefid !=null">
+		 AND rmrefid=#{rmrefid}
+		</if>
+		order by c.rmdate
+	</select>
+</mapper> 

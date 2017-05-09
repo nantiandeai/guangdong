@@ -1,0 +1,245 @@
+.sshd-main{
+    width:1200px;
+    margin:0px auto;
+}
+.sshd-main .title{
+    padding:60px 0px;
+    height:60px;
+    text-align: center;
+    position:relative;
+    background:url(../../../assets/img/science/tt.png) no-repeat 50% 50%;
+}
+.sshd-main .title .more{
+    bottom:20px;
+    right:0px;
+    text-align: center;
+    border:1px #e0e0e0 solid;
+    -webkit-border-radius:50px;
+    -moz-border-radius:50px;
+    border-radius:50px;
+    padding:10px 50px;
+    position:absolute;
+    color:#959595;
+    height:12px;
+}
+.sshd-main .title .more a{
+    display: block;
+    width:100%;
+    height:100%;
+    position:absolute;
+    right:0px;
+    top:0px;
+    font-size:12px;
+    line-height:32px;
+}
+.sshd-main .info{
+    height:1080px;
+    background:url(../../../assets/img/science/line.png) no-repeat 50% 0%;
+}
+.sshd-main .info ul.l{
+    margin-top:40px;
+    float:left;
+    width:599px;
+}
+.sshd-main .info ul.r{
+    margin-top:100px;
+    float:right;
+    width:599px;
+}
+.sshd-main .info ul li{
+    height:420px;
+    position:relative;
+}
+.sshd-main .info ul li+li{
+    margin-top:60px;
+}
+/* jQuery jcImgScroll */
+.banner-content {
+    width: 100%;
+    height: 800px;
+    background: url("../../../assets/img/science/banner-bg1.jpg") 50% 50%;
+}
+
+.banner-content > .title {
+    width: 246px;
+    height: 50px;
+    margin: 50px auto;
+}
+
+.banner-content > .title > img {
+    margin: 60px auto;
+}
+
+
+/* focus_Box */
+#focus_Box {
+    position: relative;
+    width: 1200px;
+    height: 600px;
+    margin: 20px auto;
+}
+
+#focus_Box ul {
+    position: relative;
+    width: 1200px;
+    height: 600px;
+}
+
+#focus_Box li {
+    z-index: 0;
+    position: absolute;
+    width: 0px;
+    background: #787878;
+    height: 0px;
+    top: 146px;
+    cursor: pointer;
+    left: 377px;
+    border-radius: 4px;
+}
+
+#focus_Box li img {
+    width: 100%;
+    background: url(../../../assets/img/science/loading.gif) no-repeat center 50%;
+    height: 100%;
+    vertical-align: top
+}
+
+#focus_Box .prev, #focus_Box .next {
+    display: block;
+    z-index: 100;
+    overflow: hidden;
+    cursor: pointer;
+    position: absolute;
+    width: 240px;
+    height: 500px;
+    top: 0px;
+}
+
+#focus_Box .prev {
+    left: 0px
+}
+
+#focus_Box .next {
+    right: 0px
+}
+
+#focus_Box .prev:hover {
+    background-image: url("../../../assets/img/public/b1.png");
+}
+
+#focus_Box .next:hover {
+    background-image: url("../../../assets/img/public/b1.png");
+}
+
+
+.sshd-main .info ul li .ss-main{
+    width:540px;
+    height:420px;
+    background-color:#f5f5f5;
+    position:absolute;
+}
+.sshd-main .info ul li .ss-main em{
+    width:22px;
+    height:36px;
+    background:url(../../../assets/img/science/ar.png) no-repeat 50% 50%;
+    position:absolute;
+    top:192px;
+}
+.sshd-main .info .l li .ss-main{
+    left:0px;
+}
+.sshd-main .info .r li .ss-main{
+    right:0px;
+}
+.sshd-main .info .l li .ss-main em{
+    right:-22px;
+}
+.sshd-main .info .r li .ss-main em{
+    background:url(../../../assets/img/science/ar2.png) no-repeat 50% 50%;
+    left:-22px;
+}
+
+.sshd-main .info ul li .ss-main .img{
+    width:500px;
+    height:220px;
+    overflow: hidden;
+    margin:20px;
+    background-color:#ddd;
+    position:relative;
+}
+
+.sshd-main .info ul li .ss-main h2{
+    padding:0px 20px;
+    font-size:18px;
+    line-height:28px;
+    margin-bottom:10px;
+    height:28px;
+    overflow: hidden;
+}
+.sshd-main .info ul li .ss-main p{
+    padding:0px 20px;
+    font-size:14px;
+    line-height:24px;
+    margin-bottom:10px;
+    color:#999;
+}
+.sshd-main .info ul li .ss-main .t{
+    height:24px;
+    overflow: hidden;
+}
+
+.sshd-main .info ul li .ss-main .i{
+    height:72px;
+    overflow: hidden;
+}
+
+.sshd-main .info ul li .ss-main .img img{
+    position:absolute;
+    height:375px;
+    width:500px;
+    left:0px;
+    bottom:-155px;
+    transition: 1s;
+}
+.sshd-main .info ul li .ss-main:hover .img img{
+    bottom:0px;
+}
+.sshd-main .info ul li a{
+    display: block;
+    width:100%;
+    height:100%;
+    position:absolute;
+    left:0px;
+    top:0px;
+    z-index: 99999;
+}
+
+.sshd-main h1{ text-align: center; font-size:24px; margin-bottom:20px;}
+.sshd-main .other-info{ text-align: center; font-size:14px; color:#959595;margin-bottom:40px;}
+.sshd-main .ss-img{margin-bottom:40px; width:1200px; height:500px;  overflow:hidden; background-color:#eee;}
+.sshd-main .ss-img img{width:1200px; height:500px; }
+
+.sshd-main .nav-ul{height:60px; line-height:60px; text-align: center; font-size:24px; border-bottom:1px #ddd solid; margin-bottom:50px;}
+.sshd-main .nav-ul span{ display:inline-block; padding:0px 40px; color:#666; cursor: pointer}
+.sshd-main .nav-ul .active{ color:#c8161d; border-bottom:4px #c8161d solid; line-height:54px;}
+
+.sshd-main .detail{ line-height:24px; color:#333;}
+.sshd-main .detail ul li{width:276px; height:340px; position:relative; background-color:#fff; margin-right:32px; margin-bottom:32px; float:left;}
+.sshd-main .detail ul .last{margin-right:0px;}
+.sshd-main .detail ul li a{
+    position:absolute;
+    width:100%;
+    height:100%;
+    display: block;
+    top:0px;
+    left:0px;
+}
+.sshd-main .detail ul li .img{width:276px; height:207px; text-align: center;
+    overflow: hidden;}
+.sshd-main .detail ul li .img img{
+    height:207px;
+}
+.sshd-main .detail ul li h2{font-size:18px; height:28px; line-height: 28px;
+    overflow: hidden; width:236px; margin:15px 20px 10px 20px; border-bottom:1px #ddd dashed; padding-bottom:10px;}
+.sshd-main .detail ul li p{width:236px; margin:auto 20px; font-size:14px; line-height:24px; height:24px;
+    overflow: hidden; color:#999}

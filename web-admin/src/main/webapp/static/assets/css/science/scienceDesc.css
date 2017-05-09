@@ -1,0 +1,19 @@
+.main-info-bg{padding:0px;}
+.noticeInfo-main .info-main img{margin:0px auto;}
+.topImg{margin-bottom:13px;}
+.bottomImgList{position:relative;}
+.bottomImgList ul{height:100px; overflow:hidden; margin-bottom:30px;}
+.bottomImgList ul li{float:left; width:190px; height:100px; background-color:#eee; margin-right:13px; margin-bottom:13px; overflow:hidden;}
+.bottomImgList ul li img{width:190px; transition:1s;}
+.bottomImgList ul li img:hover{filter:alpha(opacity=50); -moz-opacity:0.5; opacity:0.5;}
+.bottomImgList ul .last{margin-right:0px;}
+.bottomImgList .more{position:absolute; right:1px; top:0px; height:100px; width:190px; background:url(../../../assets/img/science/more.png) no-repeat 50% 50% #aaa; z-index:999; transition:.5s}
+.bottomImgList .more:hover{background-color:#bbb; cursor:pointer;}
+.voteCont a{display:block; width:140px; height:40px; line-height:40px; background-color:#c8161d; color:#fff; border-radius:5px; text-align:center; margin:0px auto 30px auto;}
+.voteCont a:hover{background-color:#d0242b}
+.public-right-main .public-other-notice p{text-indent:20px;}
+
+.page-cont{ text-align:center; font-size:14px; margin-top:30px; margin-bottom:30px; }
+.page-cont a{ color:#666;}
+.page-cont a:hover{ color:#ff6745}
+.page-cont .next,.page-cont .prev{ margin: auto 10px;}

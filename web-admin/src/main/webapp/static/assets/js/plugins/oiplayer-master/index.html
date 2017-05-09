@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <title>OIPlayer jQuery Plugin - Open Images Platform</title>
+  <script src="js/jquery-1.5.1.min.js" type="text/javascript"><!-- help ie --></script>
+  <script src="plugins/flowplayer-3.2.6.min.js" type="text/javascript"><!-- help ie --></script>
+  <script src="js/jquery.oiplayer.js" type="text/javascript"><!-- help ie --></script>
+  <link href="css/oiplayer.css" rel="stylesheet" type="text/css" />
+  <script type="text/javascript">
+  $(document).ready(function() {
+      $('body.oiplayer-example').oiplayer({
+          server : 'http://www.openimages.eu', /* msie (or java) has issues with just a dir */
+          jar : '/oiplayer/plugins/cortado-ovt-stripped-0.6.0.jar',
+          flash : '/oiplayer/plugins/flowplayer-3.2.7.swf',
+          controls : 'top',
+          log : 'info'
+      });
+  });
+  </script>
+</head>
+<body class="oiplayer-example">
+
+<div class="main">
+  <!-- div#clientcaps is needed for Java detection in MSIE -->
+
+  
+  <!-- video embed tag copied from http://www.openimages.eu/media/9728#share with added width and height attributes -->
+  <div class="oip_media" >
+    <video width="512" height="288" poster="http://www.openimages.eu/images/599192/WEEKNUMMER364-HRE0000D9C6.png" controls>
+      <source type="video/webm; codecs=vp8" src="http://www.openimages.eu/files/09/88068.9730.WEEKNUMMER364-HRE0000D9C6.webm" />
+      <source type="video/ogg; codecs=theora" src="http://www.openimages.eu/files/09/9734.9730.WEEKNUMMER364-HRE0000D9C6.ogv" />
+      <source type="video/ogg; codecs=theora" src="http://www.openimages.eu/files/09/88071.9730.WEEKNUMMER364-HRE0000D9C6.ogv" />
+      <source type="video/mp4; codecs=avc1.42E01E,mp4a.40.2" src="http://www.openimages.eu/files/09/9740.9730.WEEKNUMMER364-HRE0000D9C6.mp4" />
+      <source type="video/mp4; codecs=avc1.42E01E,mp4a.40.2" src="http://www.openimages.eu/files/09/88065.9730.WEEKNUMMER364-HRE0000D9C6.mp4" />
+      <source type="application/x-mpegurl" src="http://www.openimages.eu/files/09/35026.9730.WEEKNUMMER364-HRE0000D9C6.m3u8" />
+    </video>
+  </div>
+</div>
+
+</body>
+</html>

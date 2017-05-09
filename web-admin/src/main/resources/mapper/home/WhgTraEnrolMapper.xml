@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.creatoo.hn.mapper.WhgTraEnrolMapper">
+  <select id="getTraEnrolListByUserId" resultType="hashmap" parameterType="hashmap">
+    select t.*,t1.title,t1.address,t1.starttime,t1.id 'trainid' from whg_tra_enrol t LEFT JOIN whg_tra t1 on t.traid = t1.id
+    <if test="type == 1">
+      where t1.endtime &gt;= NOW()
+    </if>
+    <if test="type == 0">
+      where t1.endtime &lt;= NOW()
+    </if>
+    <if test="userid != null and userid != ''">
+      and t.userid = #{userid}
+    </if>
+    order by  t.crttime desc
+  </select>
+</mapper>

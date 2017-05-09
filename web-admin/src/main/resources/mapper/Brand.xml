@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.creatoo.hn.mapper.WhBrandMapper">
+
+<select id="selBrand" resultType="hashmap">
+	SELECT 
+		wh_brand.braid,
+		wh_brand.bratitle,
+		wh_brand.braintroduce,
+		wh_brand.brapic,
+		wh_brand.brabigpic,
+		wh_brand.bradetail,
+		wh_brand.brastate,
+		wh_brand.brasdate,
+		wh_brand.braedate,
+		wh_brand.brashorttitle
+	FROM
+	wh_brand where 1=1
+	<if test="bratitle != null">
+		and wh_brand.bratitle or wh_brand.brashorttitle like "%"#{bratitle}"%"
+	</if>
+	<if test="brastate != null">
+		and wh_brand.brastate <![CDATA[=]]> #{brastate}
+	</if>
+</select>
+
+<select id="selBrandPage" resultType="hashmap">
+	SELECT
+		wh_brand.braid,
+		wh_brand.bratitle,
+		wh_brand.braintroduce,
+		wh_brand.brapic,
+		wh_brand.brabigpic,
+		wh_brand.bradetail,
+		wh_brand.brastate,
+		wh_brand.brasdate,
+		wh_brand.braedate,
+		wh_brand.brashorttitle
+	FROM
+		wh_brand
+	where wh_brand.brastate = 3
+</select>
+</mapper>

@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.creatoo.hn.mapper.GypxMapper">
+
+
+<!-- 查询公益培训的页面广告信息 -->
+<select id="selectGypxAdv" resultType="hashmap">
+	SELECT * FROM wh_cfg_adv as t 
+	WHERE t.cfgadvpagetype = '2016102800000002' AND t.cfgadvstate=1
+	ORDER BY t.cfgadvidx
+</select>
+
+<!-- 查询公益培训模块首页的资讯动态信息配置 -->
+<select id="selectGypxZx" resultType="hashmap">
+SELECT * FROM wh_cfg_list t  
+WHERE t.cfgpagetype='2016102800000002' 
+AND t.cfgenttype='2016102800000001'  
+AND t.cfgentclazz='2016102700000007' 
+AND t.cfgstate = 1
+</select>
+
+
+<!-- 公益培训详情页查询 -->
+<select id="findGypxInfo" parameterType="java.lang.String" resultType="hashmap">
+	SELECT * FROM wh_train t WHERE t.traid = #{id} AND t.trastate=3
+</select>
+
+<!-- 公益培训首页展示列表查询  -->
+<select id="selectHpList" resultType="hashmap">
+	SELECT * FROM wh_cfg_list t 
+	WHERE 
+	t.cfgpagetype = '2016102800000002' 
+	AND t.cfgenttype = '2016101400000051' 
+	AND t.cfgstate = 1;
+</select>
+
+<!-- 公益培训列表页查询 -->
+<select id="selectGypxList" parameterType="java.util.HashMap" resultType="hashmap">
+	SELECT 
+	 t.traid,
+	 t.tratyp,
+	 t.traarttyp,
+	 t.trashorttitle,
+	 t.trapic,
+	 t.trasdate,
+	 t.traedate,
+	 t.traintroduce 
+	FROM wh_train t 
+	
+	WHERE t.trastate = 3
+	<if test="tratyp != null">
+		AND t.tratyp = #{tratyp}
+	</if>
+	<if test="traarttyp != null">
+		AND t.traarttyp = #{traarttyp}
+	</if>
+	<if test="traarea != null">
+		AND t.traarea = #{traarea}
+	</if>
+	<if test="searchvalue != null">
+		AND (
+			t.trashorttitle like "%"#{searchvalue}"%" 
+			OR t.traintroduce like "%"#{searchvalue}"%"
+		)
+	</if>
+	<if test="datePart !=null and nowdate !=null">
+		<choose>
+		    <when test="datePart == 1">
+		      AND t.trasdate <![CDATA[<=]]> #{nowdate} 
+		      AND t.traedate <![CDATA[>=]]> #{nowdate}
+		    </when>
+		    <when test="datePart == 2">
+		      AND t.trasdate <![CDATA[>=]]> #{nowdate} 
+		    </when>
+		    <when test="datePart == 3">
+		      AND t.traedate <![CDATA[<]]> #{nowdate} 
+		    </when>
+		    <otherwise>
+		      
+		    </otherwise>
+		</choose>
+	</if>
+	
+	ORDER BY t.trasdate DESC
+</select>
+
+<!-- 查询相关时间段内课程安排日期集 -->
+<select id="selectTradate4Month" resultType="hashmap">
+	SELECT t.tradate FROM wh_traitmtime t , wh_train r 
+	WHERE t.traitmid = r.traid  AND r.trastate = 3
+	AND t.tradate <![CDATA[>=]]> #{begin} AND t.tradate <![CDATA[<=]]> #{end} 
+	AND t.tradate IS NOT NULL 
+	GROUP BY t.tradate
+</select>
+
+<!-- 按指定课程日期查询相关的培训信息集 -->
+<select id="selectGypx4Day" resultType="hashmap">
+	SELECT 
+		 t.traid,
+		 t.tratyp,
+		 t.traarttyp,
+		 t.trashorttitle,
+		 t.trapic,
+		 t.trasdate,
+		 t.traedate,
+		 t.traintroduce 
+	FROM wh_train t 
+	
+	WHERE t.trastate = 3
+	AND t.traid in (SELECT c.traitmid FROM wh_traitmtime c WHERE c.tradate=#{day});
+</select>
+
+<select id="selectPXTimes" resultType="hashmap">
+	SELECT * FROM wh_traitmtime t WHERE t.traitmid = #{traitmid} ORDER BY t.tradate, t.stime
+</select>
+
+<!-- 培训报名查询 -->
+<select id="selectEnroll" resultType="hashmap">
+	SELECT
+		t1.enrid,
+		t1.enruid,
+		t1.enrtraid,
+		t1.enrtype,
+		t1.enrisa,
+		t1.enrisb,
+		t1.enrfilepath,
+		t1.enrtime,
+		t1.enrstate,
+		t1.enrstatemsg,
+		t1.enrstepstate,
+		t2.tratitle,
+		t2.traisnotic,
+		t2.traenrollimit,
+		u1.nickname
+	FROM
+	wh_traenr t1 ,
+	wh_user u1 ,
+	wh_train t2
+	where t1.enruid = u1.id and t1.enrtraid = t2.traid
+	<if test="traid != null">
+      and t1.enrtraid <![CDATA[=]]> #{traid}
+    </if>
+   	<if test="enrstate != null">
+      and t1.enrstate <![CDATA[=]]> #{enrstate}
+    </if>
+	order by enrid desc
+</select>
+
+
+<!-- 后台报名通过数量查询-->
+<select id="selEnrollCount" resultType="int">
+	select 
+		count(*) 
+	from 
+		wh_traenr 
+	where 
+		enrtraid = #{enrtraid}
+	and (enrstate = 2 
+	or enrstate = 1)
+
+</select>
+
+</mapper>

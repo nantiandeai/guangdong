@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.creatoo.hn.mapper.WhZypxMapper">
+ 
+  <select id="selectZypx" resultType="hashmap">
+  	SELECT
+		z1.zypxid,
+		z1.zypxtype,
+		z1.zypxkey,
+		z1.zypxtitle,
+		z1.zypxshorttitle,
+		z1.zypxfrom,
+		z1.zypxpic,
+		z1.zypxvideo,
+		z1.zypxvideolen,
+		z1.zypxcontent,
+		z1.zypxopttime,
+		z1.zypxstate,
+		z1.zyvenueid
+	FROM
+		wh_zypx AS z1
+	where 1 = 1 
+  	<if test="zypxtype != null">
+      and z1.zypxtype = #{zypxtype}
+    </if>
+  	<if test="zypxstate != null">
+      and z1.zypxstate = #{zypxstate}
+    </if>
+    <if test="zypxtitle != null">
+      and z1.zypxtitle like "%"#{zypxtitle}"%"
+    </if>
+    ORDER BY 
+		z1.zypxopttime desc 
+  </select>
+  
+    <select id="selectPersonal" resultType="hashmap">
+  	SELECT
+		g1.zyfcgrid,
+		g1.zyfcgrtitle,
+		g1.zyfcgrshorttitle,
+		g1.zyfcgrpic,
+		g1.zyfcgrbigpic,
+		g1.zyfcgrzc,
+		g1.zyfcgrworkaddr,
+		g1.zyfcgrjoinact,
+		g1.zyfcgrjrtime,
+		g1.zyfcgrscope,
+		g1.zyfcgrfwtime,
+		g1.zyfcgrcontent,
+		g1.zyfwhen,
+		g1.zyfcgropttime,
+		g1.zyfcgrstate
+	FROM
+		wh_zyfc_geren AS g1
+	where 1 = 1 
+  	<if test="zyfcgrstate != null">
+      and g1.zyfcgrstate = #{zyfcgrstate}
+    </if>
+    <if test="zyfcgrtitle != null">
+      and g1.zyfcgrtitle like "%"#{zyfcgrtitle}"%"
+    </if>
+    ORDER BY 
+		g1.zyfcgropttime desc 
+  </select>
+  
+  
+
+
+</mapper>

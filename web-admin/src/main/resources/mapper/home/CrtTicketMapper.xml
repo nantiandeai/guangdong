@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.creatoo.hn.mapper.home.CrtTicketMapper">
+
+	<!-- 根据活动订单ID查询活动订单 -->
+	<select id="queryActOrder" resultType="hashmap">
+		SELECT
+		wao.id,
+		wao.activityid,
+		wao.userid,
+		wao.ordernumber,
+		wao.ordersms,
+		wao.ordersmstime,
+		wao.ordersmsstate,
+		wao.ordername,
+		wao.orderphoneno,
+		wao.ordersummary,
+		wao.orderisvalid,
+		wao.ordercreatetime,
+		wao.eventid,
+		wao.ticketcode,
+		wao.ticketstatus,
+		wao.printtime,
+		wao.printtickettimes,
+		(
+		select name from whg_act_activity waa where id = wao.activityid
+		) AS name,
+		(
+		select address from whg_act_activity waa where id = wao.activityid
+		) AS address,
+		(select date_format(wat.playstarttime,'%Y-%m-%d %H:%m:%s') from whg_act_time wat where wat.id = wao.eventid) AS playstarttime
+		FROM whg_act_order wao
+		WHERE
+		1 = 1
+		<if test="#{orderId} != null">
+			AND wao.ordernumber = #{orderId}
+		</if>
+	</select>
+
+	<!-- 获取活动订单票信息 -->
+	<select id="queryActTicket" resultType="hashmap">
+		SELECT
+			wat.id,
+			wat.orderid,
+			wat.printtime,
+			wat.ticketstatus,
+			wat.seatid,
+			wat.seatcode
+		FROM  whg_act_ticket wat
+		WHERE
+			wat.orderid = #{orderId}
+	</select>
+
+	<select id="queryVenOrder" resultType="hashmap">
+		SELECT
+		wvro.id,
+		wvro.roomid,
+		wvro.orderid,
+		wvro.userid,
+		wvro.ordercontact,
+		wvro.ordercontactphone,
+		wvro.ordersummary,
+		wvro.crtdate,
+		wvro.state,
+		wvro.timeday,
+		wvro.timestart,
+		wvro.timeend,
+		wvro.printtime,
+		wvro.printtickettimes,
+		wvro.ticketcheckstate,
+		wvro.ticketcheckdate,
+		wvro.ticketstatus,
+		wvr.title AS room_title,
+		wv.title AS ven_title,
+		wv.address
+		FROM whg_ven_room_order wvro,whg_ven_room wvr,whg_ven wv
+		WHERE
+		wvro.roomid = wvr.id AND
+		wvr.venid = wv.id
+		<if test="#{orderId} != null">
+			AND wvro.orderid = #{orderId}
+		</if>
+	</select>
+
+	<update id="updateActOrderPrintTimes">
+		UPDATE whg_act_order wao
+		SET
+			wao.printtime = current_timestamp(),
+			wao.ticketstatus = 2,
+			wao.printtickettimes = #{times}
+		<where>
+			wao.id = #{orderId}
+		</where>
+	</update>
+
+	<update id="updateVenOrderPrintTimes">
+		UPDATE whg_ven_room_order wvro
+		SET
+			wvro.printtime = current_timestamp(),
+			wvro.ticketstatus = 2,
+			wvro.printtickettimes = #{times}
+		<where>
+			wvro.id = #{orderId}
+		</where>
+	</update>
+
+</mapper>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.creatoo.hn.mapper.IndexPageMapper">
+
+<!-- 查找首页广告图集合，可以传入场馆ID -->
+<select id="selectBannerList" resultType="hashmap">
+	SELECT * FROM wh_cfg_adv t 
+	WHERE t.cfgadvpagetype = '2016122100000001'
+	and t.cfgadvstate = 1
+	<if test="venueid != null">
+		and t.cfgavenueid = #{venueid}
+	</if>
+	order by t.cfgadvidx
+</select>
+
+<!-- 查找首页活动页面配置项 -->
+<select id="selectWhhdList" resultType="hashmap">
+	SELECT * FROM wh_cfg_list t 
+	WHERE t.cfgpagetype = '2016101900000001' 
+	AND t.cfgenttype = '2016101400000052' 
+	AND t.cfgstate = 1 
+	<if test="venueid != null">
+		and t.cfgvenueid = #{venueid}
+	</if>
+	ORDER BY t.cfgshowidx
+	
+</select>
+
+<!-- 查找首页非遗配置项 -->
+<select id="selectFeiyiList" resultType="hashmap">
+	SELECT * FROM wh_cfg_list t 
+	WHERE t.cfgpagetype = '2016101900000001' 
+	AND t.cfgenttype = '2016112900000007' 
+	AND t.cfgstate = 1 
+	<if test="venueid != null">
+		and t.cfgvenueid = #{venueid}
+	</if>
+	ORDER BY t.cfgshowidx
+	
+</select>
+
+<!-- 查找首页培训数据，需要处理记录数限制 -->
+<select id="selectPxyzList" resultType="hashmap">
+	SELECT t.traid, t.trashorttitle, t.tratitle, t.trapic 
+	FROM wh_train t 
+	WHERE t.trastate = 3 
+	<if test="venueid != null">
+		and t.travenueid = #{venueid}
+	</if>
+	ORDER BY t.trasdate DESC
+</select>
+
+<!--  首页 文化联盟 -->
+<select id="selectVenue" resultType="hashmap">
+	SELECT subid,subname,subpic from wh_subvenue where substate=3 ORDER BY subopttime DESC
+</select>
+</mapper>

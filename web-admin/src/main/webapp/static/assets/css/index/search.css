@@ -1,0 +1,31 @@
+/*---------------------------------------------------------------------
+	* Filename:         search.css
+	* Description:      search
+	* Version:          1.0.0 (2016-12-01)
+	* Website:          hn.sun3d.com
+	* Author:           JackyZeng (zrongs@vip.qq.com)
+---------------------------------------------------------------------*/
+.search-bg{height:400px; overflow:hidden; background:url(../../img/index/search-bg.png) no-repeat 50% 50%;}
+.search-cont{width:450px; height:40px; background-color:#fff;position:relative; border-radius:3px; filter:alpha(opacity=90);
+-moz-opacity:0.9;
+opacity:0.9;
+transition:.5s;}
+.search-cont .search-input{width:350px; position:absolute; left:10px; top:0px; height:36px; line-height:36px; background-color:#fff; border:1px #fff solid;filter:alpha(opacity=90);
+-moz-opacity:0.9;
+opacity:0.9;
+transition:.5s;}
+.search-cont .search-button{width:40px; height:40px; background:url(../../img/index/search-button.png) no-repeat 50% 50%; position:absolute; right:0px; top:0px;}
+.search-mask{filter:alpha(opacity=50);
+-moz-opacity:0.5;
+opacity:0.5;
+background-color:#000;}
+.search-mask .search-input{background-color:#000; border-color:#000; color:#fff;}
+.search-border{border:1px #fff solid; height:40px; width:450px; margin:180px auto; border-radius:3px;}
+.search-info h1{font-size:18px; color:#333; margin-bottom:32px;}
+.search-info h1 span{padding:0px 5px; color:#c8161d; font-size:20px;}
+.search-info ul{border-bottom:1px #ddd dashed;}
+.search-info ul li{height:46px; line-height:46px; font-size:16px; border-top:1px #ddd dashed; position:relative;}
+.search-info ul li a{color:#959595; display:block;}
+.search-info ul li a span{color:#c8161d;}
+.search-info ul li a:hover{color:#c8161d}
+.search-info ul li em{display:block; position:absolute; right:0px; top:0px; height:46px; line-height:46px; color:#959595; font-size:16px;}

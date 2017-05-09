@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.creatoo.hn.mapper.WhBrandActMapper">
+
+	<select id="selBrandAct" resultType="hashmap">
+		SELECT
+			b1.bracid,
+			b1.bracactid,
+			b1.bracsdate,
+			b1.bracedate,
+			b1.bracstime,
+			b1.bractelephone,
+			b1.bracaddr,
+			b1.bracstate,
+			b1.braid,
+			a1.actvtitle,
+			a1.actvarttyp,
+			a1.actvtype
+		FROM
+			wh_brand_act AS b1 ,
+			wh_activity AS a1 ,
+			wh_brand AS b2
+		WHERE
+			b1.braid = b2.braid AND
+			b1.bracactid = a1.actvid AND
+			b1.braid = #{bracid}
+	<!-- 活动分类 -->
+    <if test="actvtype != null">
+      AND a1.actvtype = #{actvtype} 
+    </if>
+    <!-- 艺术分类 -->
+    <if test="actvarttyp != null">
+      AND a1.actvarttyp = #{actvarttyp} 
+    </if>
+	</select>
+	
+	
+	
+	<select id="selBrandinfo" resultType="hashMap">
+		SELECT
+			b1.bracid,
+			b1.bracactid,
+			b1.bracsdate,
+			b1.bracstime,
+			b1.bractelephone,
+			b1.bracaddr,
+			b1.bracstate,
+			b1.braid,
+			b1.bracedate,
+			a1.actvpic,
+			a1.actvtitle
+		FROM
+			wh_brand_act AS b1 ,
+			wh_activity AS a1
+		WHERE
+			b1.braid = #{braid} AND
+			b1.bracactid = a1.actvid
+		ORDER BY
+			b1.bracsdate ASC
+	</select>
+	
+	<select id="selZX" resultType="hashMap">
+		SELECT
+			c1.cfgid,
+			c1.cfgpagetype,
+			c1.cfgenttype,
+			c1.cfgentclazz,
+			c1.cfgshowtitle,
+			c1.cfgshowtime,
+			c1.cfgshowintroduce,
+			c1.cfgshowpic,
+			c1.cfgshowlink,
+			c1.cfgshowidx,
+			c1.cfgstate,
+			c1.cfgshowid
+		FROM
+			wh_cfg_list AS c1
+		WHERE
+			c1.cfgenttype = 2016102800000001 AND
+			c1.cfgentclazz = 2016110700000002 AND
+			c1.cfgstate = 1
+	</select>
+	
+	
+	<select id="selectAct" resultType="hashMap">
+		SELECT
+			wh_activity.actvid,
+			wh_activity.actvtype,
+			wh_activity.actvarttyp,
+			wh_activity.actvshorttitle,
+			wh_activity.actvtitle,
+			wh_activity.actvpic,
+			wh_activity.actvbigpic,
+			wh_activity.actvsdate,
+			wh_activity.actvedate,
+			wh_activity.actvaddress,
+			wh_activity.actvhost,
+			wh_activity.actvagelevel,
+			wh_activity.actvislogincomment,
+			wh_activity.actvisyp,
+			wh_activity.actvtags,
+			wh_activity.actvkeys,
+			wh_activity.actvarea,
+			wh_activity.actvintroduce,
+			wh_activity.actvdetail,
+			wh_activity.actvisenrol,
+			wh_activity.actvenrolstime,
+			wh_activity.actvenroletime,
+			wh_activity.actvenrollimit,
+			wh_activity.actvisenrolqr,
+			wh_activity.actvenroldesc,
+			wh_activity.actvisrealname,
+			wh_activity.actvisfulldata,
+			wh_activity.actvisattach,
+			wh_activity.actvisonlyone,
+			wh_activity.actvcanperson,
+			wh_activity.actvpersonfile,
+			wh_activity.actvcanteam,
+			wh_activity.actvteamfile,
+			wh_activity.actvitmghp,
+			wh_activity.actvitmidx,
+			wh_activity.actvstate,
+			wh_activity.actvopttime
+		FROM
+			wh_activity
+		WHERE
+			wh_activity.actvstate = 3
+	</select>
+	
+	<select id="isPublish" resultType="hashMap">
+		SELECT
+			c1.cfgid,
+			c1.cfgpagetype,
+			c1.cfgenttype,
+			c1.cfgentclazz,
+			c1.cfgshowtitle,
+			c1.cfgshowtime,
+			c1.cfgshowintroduce,
+			c1.cfgshowpic,
+			c1.cfgshowlink,
+			c1.cfgshowidx,
+			c1.cfgstate,
+			c1.cfgshowid
+		FROM
+			wh_cfg_list AS c1
+		WHERE
+			c1.cfgstate = 1 AND
+			c1.cfgshowid = #{braid}
+	</select>
+	
+</mapper>

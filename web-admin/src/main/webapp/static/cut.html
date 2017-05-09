@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<title></title>
+<script src="/szwhgsg/static/assets/js/public/jquery-1.11.0.min.js"></script><!-- jQuery is required -->
+<link  href="/szwhgsg/static/common/js/cropper.css" rel="stylesheet">
+<script src="/szwhgsg/static/common/js/cropper.js"></script>
+<script type="text/javascript" src="/szwhgsg/static/assets/js/public/jquery-migrate-1.0.0.js""></script>
+<style type="text/css">
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h1 class="page-header">Cropper in a Bootstrap modal</h1>
+
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary btn-lg" data-target="#modal" data-toggle="modal">
+      Launch demo modal
+    </button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="modal" aria-labelledby="modalLabel" role="dialog" tabindex="-1">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="modalLabel">Crop the image</h4>
+          </div>
+          <div class="modal-body">
+            <div>
+              <img id="image" src="../assets/img/picture.jpg" alt="Picture">
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+<script type="text/javascript">
+$(function () {
+    var $image = $('#image');
+    var cropBoxData;
+    var canvasData;
+
+    $('#modal').on('shown.bs.modal', function () {
+      $image.cropper({
+        autoCropArea: 0.5,
+        built: function () {
+          $image.cropper('setCanvasData', canvasData);
+          $image.cropper('setCropBoxData', cropBoxData);
+        }
+      });
+    }).on('hidden.bs.modal', function () {
+      cropBoxData = $image.cropper('getCropBoxData');
+      canvasData = $image.cropper('getCanvasData');
+      $image.cropper('destroy');
+    });
+  });
+
+</script>
+</html>

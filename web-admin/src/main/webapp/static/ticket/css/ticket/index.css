@@ -1,0 +1,129 @@
+body{ font-family: \5FAE\8F6F\96C5\9ED1;}
+input{ font-family: \5FAE\8F6F\96C5\9ED1;}
+a{ color: #444444;}
+#top{ width: 100%; height: 40px; background: #F7F7F7; border-bottom: solid 1px #EEEEEE;}
+#top .top{ width: 1200px; height: 40px; line-height: 40px; color: #666666; margin: 0 auto; background: #F7F7F7;}
+#top .top a{ vertical-align: top; color: #666666;}
+#top .top a:hover{ text-decoration: underline;}
+#top .top .top-l{ margin-left: 15px;}
+#top .top .top-l em{ padding: 0 2px;}
+#top .top .link_old{ display: block; padding: 0 10px; height: 24px; line-height: 24px; color: #ffffff; background: #769FC9; margin: 8px 22px 0 0;}
+#top .top .link_old:hover{ text-decoration: none;}
+#top .top .top-r{ margin-right: 15px;}
+#top .top .top-r a{ margin-left: 10px;}
+#top .top .login-info a{}
+#header{ width: 100%; height: 90px; background: #FFFFFF;}
+#header .header{ width: 1200px; height: 52px; padding: 18px 0 20px; margin: 0 auto;}
+#header .header .logo{ width: 170px; height: 52px;}
+#header .header .main-nav{ width: 610px; height: 22px; line-height: 22px; margin: 15px 0 0 22px;}
+#header .header .main-nav a{ display: block; float: left; height: 22px; line-height: 22px; color: #000000; font-size: 14px; margin: 0 16px;}
+#header .header .main-nav a.last{ color: #555555; font-size: 12px;}
+#header .header .main-nav a:hover,#header .header .main-nav a.curr{ color: #1786BD; font-weight: bold;}
+#header .header .search-box{ width: 176px; height: 20px; overflow: hidden; padding: 6px 12px; border: solid 1px #CCCCCC; margin-top: 8px;}
+#header .header .search-box .search-input{ float: left; width: 150px; height: 20px; line-height: 20px; overflow: hidden; color: #BBBBBB; padding-right: 10px; border: none; background: #FFFFFF;}
+#header .header .search-box .search-input:focus{ outline: none;}
+.icon1{ background: url("../image/sprite-icon1.png") no-repeat;}
+#header .header .search-box .search-btn{ float: left; width: 16px; height: 16px; border: none; cursor: pointer; margin-top: 2px; background-position:0 0;}
+#header .header .mobile-btn{ width: 90px; height: 32px; border: solid 1px #CCCCCC; margin: 8px 0 0 8px;}
+#header .header .mobile-btn a{ display: block; width: 60px; height: 18px; line-height: 18px; overflow: hidden; color: #666666; padding: 7px 0 7px 30px; background: url("../image/mobile-icon1.png") no-repeat 14px 8px;}
+#in-banner{ width: 100%; height: 398px; overflow: hidden; background: #000000;}
+#in-banner .in-banner{ width: 100%; height: 398px; overflow: hidden; position: relative; min-width: 1200px;}
+#in-banner .in-banner .bigImg .tempWrap { overflow: visible !important;}
+#in-banner .in-banner .bigImg{ width: 1200px; height: 398px; position: absolute; left: 50%; margin-left: -600px;}
+#in-banner .in-banner .bigImg li{ width: 1200px; height: 398px; overflow: hidden; border-left: solid 1px #ffffff; background-repeat: no-repeat; background-position: center center;}
+#in-banner .in-banner .bigImg li a{ display: block; width: 1200px; height: 398px; overflow: hidden;}
+#in-banner .in-banner .icon-btn{ width: 100%; height: 14px; position: absolute; top: 364px; text-align: center;}
+#in-banner .in-banner .icon-btn li{ display: inline-block; *display:inline; zoom: 1; vertical-align: top; width: 14px; height: 14px; line-height: 50px; overflow: hidden; margin: 0 8px; background: url("../image/banner-icon1.png") no-repeat; cursor: pointer;}
+#in-banner .in-banner .icon-btn li.on{ background-position: 0 -14px;}
+#in-banner .in-banner .pnBtn{  position:absolute; z-index:1; top:0; width:100%;  height:398px; cursor:pointer;}
+#in-banner .in-banner .prevBtn{ left:-50%; margin-left:-600px;  }
+#in-banner .in-banner .nextBtn{ left:50%;  margin-left:602px;  }
+#in-banner .in-banner .pnBtn .blackBg{ display:block;  position:absolute; left:0; top:0; width:100%; height:530px; background:#000; filter:alpha(opacity=50); opacity:0.5;}
+#in-content{ width: 100%; min-width: 1200px; height: auto; overflow: hidden; padding-top: 50px; background: url("../image/index-bg.jpg") no-repeat center top fixed #FFFFFF;}
+#in-content a:hover{ color: #1786BD;}
+#in-content .in-content{ width: 1000px; height: auto; overflow: hidden; margin: 0 auto; padding-bottom: 140px; background: #FFFFFF;}
+#in-content .in-content .in-part1{ padding: 58px 30px 35px;}
+#in-content .in-content .in-culture{ width: 580px; height: auto; overflow: hidden;}
+#in-content .in-content .in-tit{ height: 40px; line-height: 40px; overflow: hidden; color: #666666; font-weight: bold;}
+#in-content .in-content .in-tit em{ float: left; display: inline-block; font-size: 32px; font-family: Arial, Helvetica, Verdana;}
+#in-content .in-content .in-tit span{ float: left; display: inline-block; height: 26px; line-height: 26px; margin: 7px 0 0 18px; vertical-align: top; font-size: 20px;}
+#in-content .in-culture .tab{ width: 100%; height: 44px; overflow: hidden; margin-top: 20px;}
+#in-content .in-culture .tab li{ float: left; width: 116px; height: 40px; line-height: 40px; overflow: hidden; text-align: center; color: #222222; font-size: 14px; border-bottom: solid 4px #CCCCCC; cursor: pointer;}
+#in-content .in-culture .tab li.on{ border-bottom: solid 4px #769FC9;}
+#in-content .in-culture .content{ width: 100%; padding-bottom: 0;}
+#in-content .in-culture .tab-cont{ width: 100%;}
+#in-content .in-culture .tab-cont li{ width: 100%; height: 100px; overflow: hidden; margin-top: 25px;}
+#in-content .in-culture .tab-cont li .img{ float: left; display: block; width: 140px; height: 93px; overflow: hidden;}
+#in-content .in-culture .tab-cont li .info{ float: left; width: 350px; margin-left: 12px;}
+#in-content .in-culture .tab-cont li .info h3{ height: 24px; line-height: 24px; overflow: hidden; margin: 2px 0 10px;}
+#in-content .in-culture .tab-cont li .info a{ font-size: 16px;}
+#in-content .in-culture .tab-cont li .info p{ height: 24px; line-height: 22px; /*overflow: hidden;*/ color: #444444;}
+.book-btn{ display: block; width: 66px; height: 26px; line-height: 26px; overflow: hidden; color: #FFFFFF; text-align: center; background: #769FC9;}
+.book-btn:hover{ color: #FFFFFF !important; background: #FF7A4D;}
+#in-content .in-culture .tab-cont li .in-book-btn{ float: right;}
+#in-content .in-content .in-hot{ width: 330px; height: auto; overflow: hidden;}
+#in-content .in-hot .hot-img{ width: 330px; height: 242px; overflow: hidden; margin-top: 30px; position: relative;}
+#in-content .in-hot .hot-img .txt-bg{ width: 330px; height: 40px; overflow: hidden; background: #000000; opacity: 0.6; filter: alpha(opacity=60); position: absolute; bottom: 0; left: 0;}
+#in-content .in-hot .hot-img .txt{ width: 310px; height: 40px; line-height: 40px; overflow: hidden; color: #FFFFFF; font-size: 14px; padding: 0 10px; position: absolute; bottom: 0; left: 0;}
+#in-content .in-hot .hot-cont{ width: 100%; height: auto; margin-top: 20px;}
+#in-content .in-hot .hot-cont li{ width: 100%; height: 72px; overflow: hidden; border-top: solid 1px #EEEEEE;}
+#in-content .in-hot .hot-cont li:first-child{ border-top: none;}
+#in-content .in-hot .hot-cont li span{ display: block; float: left; width: 26px; height: 55px; overflow: hidden; margin-top: 12px; text-align: center; color: #FF7A4D; font: italic bold 40px/55px Arial, Helvetica, Verdana;}
+#in-content .in-hot .hot-cont .num4 span,#in-content .in-hot .hot-cont .num5 span{ color: #769FC9;}
+#in-content .in-hot .hot-cont li .info{ width: 280px; float: right; padding: 15px 10px 0 0;}
+#in-content .in-hot .hot-cont li h3{ height: 24px; line-height: 24px; overflow: hidden; font-size: 16px;}
+#in-content .in-hot .hot-cont li p{ height: 20px; line-height: 20px; overflow: hidden; margin-top: 2px; color: #444444; font-size: 14px;}
+#in-content .in-exhibition{ width: 580px;}
+#in-content .in-exhibition .exhibition-slide{ width: 580px; height: 422px; margin-top: 30px;}
+#in-content .in-exhibition .slide-img{ width: 580px; height: 395px; overflow: hidden;}
+#in-content .in-exhibition .slide-icon{ width: 580px; height: 10px; overflow: hidden; margin-top: 17px;}
+#in-content .in-exhibition .slide-icon li{ width: 60px; height: 10px; float: left; margin-left: 4px; background: #CCCCCC; cursor: pointer;}
+#in-content .in-exhibition .slide-icon li:first-child{ margin-left: 0px;}
+#in-content .in-exhibition .slide-icon li.on{ width: 132px; background: #769FC9;}
+#in-content .in-venue{ width: 330px;}
+#in-content .in-venue .venue-icon{ float: right; width: 84px; height: 20px; overflow: hidden; margin-top: 10px;}
+#in-content .in-venue .venue-icon li{ display: inline-block; float: left; width: 20px; height: 20px; line-height: 20px; overflow: hidden; vertical-align: top; text-align: center; margin-left: 4px; color: #FFFFFF; font-weight: normal; background: #666666; border-radius: 10px; -webkit-border-radius: 10px; -moz-border-radius: 10px; cursor: pointer;}
+#in-content .in-venue .venue-icon li.on{ background: #769FC9;}
+#in-content .venue-cont{ width: 100%; max-height: 440px; overflow: hidden;}
+#in-content .venue-cont li{ width: 100%; height: 80px; margin-top: 30px; position: relative;}
+#in-content .venue-cont li .img{ display: block; float: left; width: 120px; height: 80px; overflow: hidden;}
+#in-content .venue-cont li .info{ float: right; width: 198px;}
+#in-content .venue-cont li .group-book{ position: absolute; right: 0; bottom: 4px;}
+#in-content .venue-cont li h3{ height: 22px; line-height: 22px; overflow: hidden; font-size: 14px;}
+#in-content .venue-cont li p{ height: 35px; line-height: 20px; overflow: hidden; margin-top: 4px; color: #444444;}
+#in-content .venue-cont li .phone-num{ width: 120px; word-break: break-all; word-wrap: break-word;}
+.txt-c{ text-align: center;}
+#in-content .in-online{ padding: 0 2px; margin-top: 30px;}
+#in-content .in-online .img{ float: left; width: 156px; height: 156px; overflow: hidden;}
+#in-content .in-online .img .link{ display: block; width: 156px; height: 156px; overflow: hidden; position: relative;}
+#in-content .in-online .img span{ display: block; width: 156px; height: 156px; overflow: hidden;}
+#in-content .in-online .img .txt{ line-height: 156px; text-align: center; color: #FFFFFF; font-size: 14px; background: #AAAAAA;}
+#in-content .in-online .img .enter{ position: absolute; left: 156px; top: 0; background: url("../image/online-enter.jpg") no-repeat;}
+#in-content .in-recommend{ width: 100%; overflow: hidden; margin-top: 30px;}
+#in-content .in-recommend .cont{ float: left; width: 470px; height: 284px;}
+.w180{ width: 180px;}
+.w290{ width: 290px;}
+#in-content .in-recommend .cont .img{ float: left;}
+#in-content .in-recommend .cont .enter{ display: block; float: left; width: 100%; height: 66px; background: #9DA5B7; position: relative;}
+#in-content .in-recommend .cont .enter p{ height: 25px; line-height: 25px; overflow: hidden; margin: 14px 0 0 12px; color: #FFFFFF; font-size: 18px;}
+#in-content .in-recommend .cont .enter b{ display: inline-block; position: absolute; right: 14px; bottom: 10px; width: 22px; height: 22px; background-position: -20px 0;}
+#in-content .in-recommend .cont .tit{ height: 40px; padding: 14px 16px 20px; background: #E1E4E9;}
+#in-content .in-recommend .cont .tit h3{ height: 22px; line-height: 22px; overflow: hidden;}
+#in-content .in-recommend .cont .tit p{ height: 18px; line-height: 18px; overflow: hidden; color: #444444;}
+#in-content .in-recommend .cont .list{ width: 100%;}
+#in-content .in-recommend .cont .list li{ height: 50px; line-height: 50px; overflow: hidden; font-size: 14px; padding: 0 16px 0 42px; border-top: solid 1px #DDDDDD; background: url("../image/dot-icon1.gif") no-repeat 16px 22px;}
+#in-content .in-recommend .gray .enter{ background: #AAAAAA;}
+#in-content .in-recommend .gray .tit{ background: #F2F2F2;}
+#footer{ width: 100%; min-width: 1200px; height: 100px; background: #666666;}
+#footer .footer{ width: 1000px; padding-top: 14px; margin: 0 auto; text-align: center;}
+#footer .footer p{ line-height: 1.8em; color: #FFFFFF;}
+/*popLayer*/
+#body_bg,#login_body_bg{ width: 100%; height: 100%; position: fixed; top: 0; left: 0; z-index: 10; background: #E2E7E7;}
+#body_bg.opacity50,#login_body_bg.opacity50{ background: #333333; opacity: 0.8; filter: alpha(opacity=80);}
+#body_bg>img,#login_body_bg>img{ width: 100px; height: 100px; position: absolute; top: 50%; left: 50%; margin-left: -50px; margin-top: -50px;}
+#layer_bg,#login_layer_bg{ width: 100%; height: 100%; position: fixed; top: 0; left: 0; z-index: 12;}
+#pop_layer,#login_pop_layer{ width: 100%; height: 100%; overflow-y: auto; overflow-x: hidden;}
+#layer_bg .close-btn,#login_layer_bg .close-btn{ display: block; width: 70px; height: 70px; background: url("../image/close-icon1.jpg") no-repeat; position: absolute; right: 17px; top: 0;}
+#login_body_bg{ z-index: 20;}
+#login_layer_bg{ z-index: 22;}
+#close-login-btn.close-btn{ width: 32px; height: 33px; top: 50%; left: 50%; z-index: 22; margin-left: 230px; margin-top: -195px; background: url("../image/close-login-icon.png") no-repeat;}

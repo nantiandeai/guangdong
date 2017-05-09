@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.creatoo.hn.mapper.admin.CrtWhgActivityMapper">
+
+<!-- 活动后台管理列表 查询 -->
+    <select id="srchListActivity" resultType="hashmap">
+        SELECT t.*
+        FROM whg_act_activity t
+        WHERE 1=1
+
+        <if test="name != null and name != ''">
+            AND t.name like "%"#{name}"%"
+        </if>
+
+        <if test="state != null">
+            AND t.state = #{state}
+        </if>
+
+        <if test="states != null">
+            AND t.state IN
+            <foreach item="item" index="index" collection="states" open="(" separator="," close=")">
+                #{item}
+            </foreach>
+        </if>
+        <if test="delstate != null">
+        	AND t.delstate = #{delstate}
+        </if>
+        <if test="delstate == null">
+        	AND t.delstate = 0 
+        </if>
+       <choose>
+            <when test="sort != null">
+                ORDER BY t.${sort}
+                <if test="order!=null"> ${order} </if>
+            </when>
+            <otherwise>
+                ORDER BY t.crtdate DESC
+            </otherwise>
+        </choose>
+    </select>
+
+    <select id="getActOrderForBackManager" resultType="hashmap">
+        SELECT
+           wao.id AS id,
+          wao.ordernumber AS ordernumber,
+          waa.name AS actname,
+          wao.ordername AS ordername,
+          wao.orderphoneno AS orderphoneno,
+          wao.ordersmsstate AS ordersmsstate,
+          wao.ordercreatetime AS ordercreatetime,
+          wao.orderisvalid AS orderisvalid,
+		  wao.activityid ,
+	      wat_.playstime,
+		  wat_.playetime,
+		  wat_.playdate,
+		  wat.ticketstatus as state,
+          waa.endtime as endtime,
+          waa.starttime as starttime,
+          wao.ticketstatus AS ticketstatus,
+          curdate() as nowDate  
+        FROM whg_act_order wao,whg_act_activity waa,whg_act_ticket wat ,whg_act_time wat_ 
+        <where>
+            wao.activityid = waa.id and wao.id = wat.orderid  and wao.activityid = wat_.actid and wao.eventid = wat_.id
+            <if test="activityId != null">
+                AND wao.activityid = #{activityId}
+            </if>
+            <if test="starttime != null">
+                AND waa.starttime &gt;= #{starttime}
+            </if>
+            <if test="endtime != null">
+                AND waa.endtime &lt;= #{endtime}
+            </if>
+            <if test="orderphoneno != null">
+                AND wao.orderphoneno LIKE "%"#{orderphoneno}"%"
+            </if>
+            <if test="ordernumber != null">
+                AND wao.ordernumber LIKE "%"#{ordernumber}"%"
+            </if>
+             GROUP BY wao.id
+        </where>
+        ORDER BY wao.ordercreatetime DESC
+    </select>
+</mapper>

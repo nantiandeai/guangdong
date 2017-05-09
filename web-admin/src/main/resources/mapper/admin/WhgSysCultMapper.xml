@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.creatoo.hn.mapper.admin.CrtWhgSysCultMapper">
+
+    <!-- 查询文化联盟 -->
+    <select id="srchListCult" resultType="hashmap" parameterType="java.util.HashMap">
+        select t1.*
+        from whg_sys_cult t1
+        left join whg_ywi_type t2 on t1.area=t2.id
+        <if test="area != null">
+            where t1.area = #{area}
+        </if>
+        order by t2.idx
+    </select>
+
+</mapper>

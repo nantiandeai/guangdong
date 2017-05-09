@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.creatoo.hn.mapper.WhArtExhibitionMapper" >
+  <resultMap id="BaseResultMap" type="com.creatoo.hn.model.WhArtExhibition" >
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="exhid" property="exhid" jdbcType="VARCHAR" />
+    <result column="exhtitle" property="exhtitle" jdbcType="VARCHAR" />
+    <result column="exharttyp" property="exharttyp" jdbcType="VARCHAR" />
+    <result column="exhtype" property="exhtype" jdbcType="VARCHAR" />
+    <result column="exhpic" property="exhpic" jdbcType="VARCHAR" />
+    <result column="exhdesc" property="exhdesc" jdbcType="VARCHAR" />
+    <result column="exhstime" property="exhstime" jdbcType="TIMESTAMP" />
+    <result column="exhetime" property="exhetime" jdbcType="TIMESTAMP" />
+    <result column="exhghp" property="exhghp" jdbcType="INTEGER" />
+    <result column="exhidx" property="exhidx" jdbcType="INTEGER" />
+    <result column="exhstate" property="exhstate" jdbcType="INTEGER" />
+  </resultMap>
+  
+  <!-- 分页查询移动文化展 -->
+	<select id="selectcategory" parameterType="java.util.HashMap" resultType="hashmap">
+	select t1.exhid "itemId",
+		t1.exharttyp "typeId",
+		t1.exhtype "type",
+		t1.exhtitle "title",
+		t1.exhdesc "intro",	
+		t1.exhpic "thumb",	
+		t1.exhstime "begin",	
+		t1.exhetime "end",	
+		 (select count(*) from wh_art where arttypid=t1.exhid) amount
+	from wh_art_exhibition t1
+		where t1.exhstate= '3'
+	</select>
+	
+	 <!-- 分页查询移动文化展详情 -->
+	<select id="selectdetail" parameterType="java.util.HashMap" resultType="hashmap">
+	select t1.artid "itemId",
+		t1.arttyp "typeId",
+		t1.arttypid "parentTypeId",
+		t1.arttitle "title",
+		t1.artartistdesc "intro",	
+		t1.artpic "thumb",
+		t1.artpic2 "image",
+		t1.artstime "begin",	
+		t1.artetime "end",
+		t1.artkeys "tag",	
+		 (select count(*) from wh_art where arttypid=arttypid) amount,
+		 (select typname FROM wh_typ  WHERE typid =arttyp) type
+		from wh_art t1
+		where t1.artstate= '3'
+			and t1.artid = #{itemId}
+	</select>
+	
+	 <!-- 分页查询精品资源-->
+	<select id="selectlist" parameterType="java.util.HashMap" resultType="hashmap">
+		select t1.drscid "itemId",
+		t1.drscarttyp "type",
+		t1.drscpic "thumb"
+		from wh_drsc t1
+		where t1.drscstate= '3'
+	</select>
+	
+		
+	 <!-- 查询广告-->
+	<select id="selectadvlist" parameterType="java.util.HashMap" resultType="hashmap">
+		select t1.cfgadvid "itemId",
+		t1.cfgadvpagetype "typeId",
+		t1.cfgadvpic "image"
+		from wh_cfg_adv t1
+		where t1.cfgadvstate= '1'
+	</select>
+	
+	 <!-- 查询区域字典-->
+	<select id="selectdistrict" parameterType="java.util.HashMap" resultType="hashmap">
+		select t1.subid "itemId",
+		t1.subname "name"
+		from wh_subvenue t1
+		where t1.substate= '3'
+	</select>
+	<!-- 分页搜索-->
+	<select id="searchContent" parameterType="java.util.HashMap" resultType="hashmap">
+		select itemId,key, title, typeId, type,intro,thumb,image,address,begin,end,tag from (
+		      select t1.actvkeys as key ,t1.actvid as itemId, t1.actvtitle as title,t1.actvintroduce as intro, t1.actvbigpic as thumb,t1.actvpic as image,t1.actvaddress as address,t1.actvtags tag,t1.actvsdate begin,t1.actvedate as end '文化预告' as type, '1' as typeId from wh_activity t1 where t1.actvstate = '3'
+		      union
+		      select t2.trakeys as key, t2.traid as itemId, t2.tratitle as title,t2.traintroduce as intro,t2.trapic as thumb,t2.trabigpic as image,t2.traaddress as address,t2.trasdate as begin,t2.traedate as end,t2.tratags as tag,'市民艺术大学' as type, '2' as typeId from wh_train t2 where t2.trastate = '3'
+		      union
+		      select t3.venid as itemId, t3.venname as title,t3.venintro as intro,t3.venpic as thumb,t3.venaddr as address,'场馆预定' as type, '3' as typeId from wh_venue t3 where t3.venstate = '3'
+		      union 
+		      select t4.exhid as itemId, t4.exhtitle as title,t4.exhdesc as intro,t4.exhpic as thumb,t4.exhstime as begin,t4.exhetime as image, '精品文化展' as type, '4' as typeId from wh_art_exhibition t4 where t4.exhstate = '3'
+		      union 
+		      select t5.artistid as itemId, t5.artistname as title, t5. as intro, t5.artpic as thumb,t5.artpic2 as image,t5.artaddr  as address,t5.artstime as begin,t5.artetime as end,t5.arttags as tag, '个人文化展' as type, '5' as typeId from wh_user_artist t5 where t5.artiststate = '3'
+		      union 
+		      select t6.mageid as id, t6.magetitle as title,t6.magedesc as intro, t6.magepic as thumb, '电子杂志' as type, '6' as typeId from wh_magezine t6 where t6.magestate = '3'
+		) t 
+		<if test="srchkey != null">
+	      where t.title like #{keyword}
+	    </if>
+	    
+	</select>
+	
+	 <!-- 查询banner-->
+	<select id="selectadBanner" parameterType="java.util.HashMap" resultType="hashmap">
+		SELECT
+			c.cfgshowid 'itemId',
+			c.cfgshowtitle 'title',
+			c.cfgshowpic 'image',
+			c.cfgshowtime 'time',
+			c.cfgshowintroduce 'intro'
+		FROM
+			wh_cfg_list c
+		WHERE
+			c.cfgpagetype = #{pageType}
+		AND c.cfgenttype = #{entType}
+		AND c.cfgstate = 1
+	</select>
+  
+</mapper>

@@ -1,0 +1,79 @@
+/*---------------------------------------------------------------------
+	* Filename:         regist.css
+	* Description:      regist
+	* Version:          1.0.0 (2016-08-29)
+	* Website:          hn.sun3d.com
+	* Author:           JackyZeng (zrongs@vip.qq.com)
+---------------------------------------------------------------------*/
+body{background-color: #f5f5f5;}
+.main{padding: 1px 0px; width: 980px; margin: 0 auto 50px auto; background-color: #fff;}
+.crumbs{width: 980px; margin: 0 auto 30px auto; height: 50px; line-height: 50px; color: #fff; font-size: 20px;}
+.crumbs li{width: 300px; height: 50px; float: left; text-align: center; margin-right: 40px; position: relative;}
+.crumbs li .arrow{background: url(../../../assets/img/public/crumbs.png) no-repeat; position: absolute; right: -40px; height: 50px; width: 40px;bottom:0px;}
+.crumbs .last{margin-right: 0px;}
+.crumbs-1st .step-1{background-color: #e52729}
+.crumbs-1st .step-2,.crumbs-1st .step-3{background-color: #bebebe}
+.crumbs-1st .step-1 .arrow{background-position: 0px 0px;}
+.crumbs-1st .step-2 .arrow{background-position: -41px 0px;}
+.crumbs-2nd .step-1,.crumbs-2nd .step-2{background-color: #e52729}
+.crumbs-2nd .step-3{background-color: #bebebe}
+.crumbs-2nd .step-1 .arrow{background-position: -82px 0px;}
+.crumbs-2nd .step-2 .arrow{background-position: 0px 0px;}
+.crumbs-3rd .step-1,.crumbs-3rd .step-2{background-color: #e52729}
+.crumbs-3rd .step-3{background-color: #2ccc15}
+.crumbs-3rd .step-1 .arrow{background-position: -82px 0px;}
+.crumbs-3rd .step-2 .arrow{background-position: -123px 0px;}
+.main .main-cont{width: 940px; margin: 50px 20px; color: #444; position: relative;}
+.main .main-cont .other-reg{text-align: right; width: 483px; height: 40px; line-height: 40px;}
+.main .main-cont .other-reg a{text-decoration: underline; margin-left: 5px; color: #ed7d3d}
+.main .main-cont dl{height: 40px; line-height: 40px; margin-bottom: 20px;}
+.main .main-cont dl dt{width: 150px; text-align: right; margin-right: 20px;}
+.main .main-cont dl dd{position: relative; width: 313px;}
+.main .main-cont dl dd .in-txt{height: 40px; line-height: 40px; width: 300px; padding-left: 10px; border: 1px #ddd solid; font-size: 14px;}
+.main .main-cont dl dd .code{width: 120px; height: 42px; position: absolute; right: 2px; border-left: 1px #ddd solid; top: 1px; text-align: center; overflow: hidden;}
+.main .main-cont dl dd .numAdd{width: 170px; text-align: center; height: 42px; background-color: #f4f4f4; color: #666; position: absolute; right: 2px; top: 1px; font-size: 14px; border-left: 1px #ddd solid;}
+.main .main-cont dl dd .numAdd span{padding: 0px 2px; font-weight: 700;}
+.main .main-cont dl dd .postCode{color: #fff; background-color: #0067a6; cursor: pointer;}
+.main .main-cont dl dd .locking{color: #333; font-weight: 700; cursor: default; font-size: 20px; border-color: #fff;}
+.main .main-cont dl dd .readonly{background-color: #f4f4f4;}
+.main .main-cont dl dd em{position: absolute; right: -465px; width: 450px; height: 42px; line-height: 42px; top: 0px; font-size: 14px; cursor: default;}
+.main .main-cont .reLoad{position: absolute; right: 10px; top: -20px; font-size: 14px;}
+.main .main-cont .reLoad a{color: #aaa; text-decoration: underline;}
+.main .main-cont .reLoad a:hover{color: #666}
+.main .main-cont dl dd em.fail{color: #c8161d;}
+.main .main-cont dl dd label{vertical-align: middle; line-height: 17px; margin-right: 15px;}
+.main .main-cont dl dd .goNext{width: 120px; text-align: center; height: 40px; line-height: 40px; background-color: #ed7d3d; color: #fff; cursor: pointer; margin-top: -5px;}
+.main .main-cont dl dd .goNext:hover{filter: alpha(opacity=90); -moz-opacity: 0.9; opacity: 0.9;}
+.main .main-cont dl dd .goNext a{color: #fff; text-decoration: none;}
+.main .main-cont dl .readPosition{position: relative; height: 40px;}
+.main .main-cont dl dd .readClause{height: 40px; line-height: 40px; background-color: #a5a5a5; color: #fff; text-align: center; width: 311px; position: absolute; overflow: hidden; z-index: 9998;}
+.main .main-cont dl dd .abBtn{height: 40px; line-height: 40px; color: #fff; text-align: center; width: 311px; position: absolute; z-index: 9999; cursor: pointer;}
+.main .main-cont dl dd .readClause .readCont{padding: 30px 20px; height: 450px;}
+.main .main-cont dl dd .readClause .readCont iframe{height: 270px; overflow-y: scroll; width: 100%;}
+.main .main-cont dl dd .readClause .closeRead{height: 20px; width: 20px; background: url(../../../assets/img/regist/close.gif) no-repeat 50% 50%; position: absolute; right: 20px; top: 20px;}
+.main .main-cont dl dd .readClause .closeRead:hover{filter: alpha(opacity=50); -moz-opacity: 0.5; opacity: 0.5; cursor: pointer;}
+.main .main-cont dl dd .readClause .agree{text-align: left; font-size: 12px; line-height: 24px; margin-top: 20px; padding-left: 5px;}
+.main .main-cont dl dd .readClause .agree .ck_agree{margin-right: 5px;}
+.main .main-cont dl dd .readClause .agree *{vertical-align: middle;}
+.mask{position: fixed; width: 100%; height: 100%; left: 0px; top: 0px; background-color: #fff; z-index: 999; filter: alpha(opacity=90); -moz-opacity: 0.9; opacity: 0.9;*display:none;}
+.main .main-cont .typeChange{height: 100px; position: relative;}
+.main .main-cont .change{height: 98px; width: 410px; top: -10px; position: absolute; text-indent: 80px;}
+.main .main-cont .change a{display: block; width: 100%; height: 100%; border: 1px #ddd solid; cursor: pointer; position: absolute; left: 0px; top: 0px;}
+.main .main-cont .change a:hover{border-color: #ed7d3d; -moz-box-shadow: 1px 10px 20px #ddd; -webkit-box-shadow: 1px 10px 20px #ddd; box-shadow: 1px 10px 20px #ddd;}
+.main .main-cont .change h2{font-size: 22px; margin-top: 22px}
+.main .main-cont .change p{margin-top: -20px; font-size: 12px; color: #aaa}
+.main .main-cont .typeChange .emailFind{background: url(../../../assets/img/regist/widthmail.png) no-repeat 50% 50%; right: 35px;}
+.main .main-cont .typeChange .mobileFind{background: url(../../../assets/img/regist/widthmobile.png) no-repeat 50% 50%; left: 35px;}
+.main .main-cont .emailFind{text-indent: 95px;}
+.main .main-cont .typeMain{height: 170px; overflow: hidden;}
+.main .main-cont .typeMain .help{height: 24px; line-height: 24px; margin: 73px auto; color: #bbb; text-align: center;}
+.main .main-cont .typeMain .m-left{padding-left: 150px;}
+.main .main-cont .typeMain .m-f{margin-left: 96px; margin-top: 10px;}
+.main .main-cont .typeChange .locationP{left: 92px; top: -10px;}
+.main .main-cont .typeChange .locationE{left: 78px; top: -10px;}
+.main .reg-msg{text-align:center;padding:170px;}
+.main .reg-msg h2{font-size:24px;font-weight:700;margin-bottom:50px;line-height:50px;}
+.main .reg-msg h2 span{background:url(../../../assets/img/regist/success.png) no-repeat;display:inline-block;width:80px;height:80px;vertical-align:bottom;}
+.main .reg-msg p{font-size:18px;}
+.main .reg-msg p a{color:#c8161d;}
+.regist-logo{height:155px;width:280px;background:url(../../../assets/img/regist/logo.png) no-repeat;margin:60px auto;}
