@@ -109,6 +109,18 @@ public class CommService {
 	private WhgYwiNoteMapper whgYwiNoteMapper;
 
 	/**
+	 * 资讯信息关联mapper
+	 */
+	@Autowired
+	private WhgPubInfoMapper whgPubInfoMapper;
+
+	/**
+	 * 资讯信息mapper
+	 */
+	@Autowired
+	private WhZxColinfoMapper whZxColinfoMapper;
+
+	/**
 	 * 保存系统的操作日志
 	 * @param note 操作日志对象
 	 * @throws Exception
@@ -463,5 +475,27 @@ public class CommService {
 		example.createCriteria().andEqualTo("enttype", enttype).andEqualTo("reftype", reftype).andEqualTo("refid",refid);
 		example.setOrderByClause("redate desc");
 		return whgComResourceMapper.selectByExample(example);
+	}
+
+	/**
+	 * 查询实体关联的资讯信息
+	 * @param entityid 实体ID
+	 * @param clnftype 栏目ID
+     * @return
+     */
+	public List<WhZxColinfo> findColinfo(String entityid, String clnftype){
+		WhZxColinfo colinfo = new WhZxColinfo();
+		List<WhZxColinfo> list = new ArrayList<>();
+		Example example = new Example(WhgPubInfo.class);
+		example.createCriteria().andEqualTo("entityid",entityid).andEqualTo("clnftype",clnftype);
+		List<WhgPubInfo> Info = whgPubInfoMapper.selectByExample(example);
+		if(Info.size() > 0){
+			for(int i = 0; i < Info.size(); i++){
+				String clnfid = Info.get(i).getClnfid();
+				colinfo = whZxColinfoMapper.selectByPrimaryKey(clnfid);
+				list.add(colinfo);
+			}
+		}
+		return list;
 	}
 }
