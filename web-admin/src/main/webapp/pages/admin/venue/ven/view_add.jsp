@@ -115,9 +115,11 @@
     <div class="whgff-row">
         <div class="whgff-row-label">场馆关键字：</div>
         <div class="whgff-row-input">
-            <div class="checkbox checkbox-primary whg-js-data"
+            <%--<div class="checkbox checkbox-primary whg-js-data"
                  name="ekey" value="${whgVen.ekey}" js-data="WhgComm.getVenueKey">
-            </div>
+            </div>--%>
+            <select class="easyui-combobox" name="ekey" style="width:600px; height:32px"
+                   data-options="multiple:true, valueField:'text',textField:'text', value:'${whgVen.ekey}', data:WhgComm.getVenueKey()" ></select>
         </div>
     </div>
 
