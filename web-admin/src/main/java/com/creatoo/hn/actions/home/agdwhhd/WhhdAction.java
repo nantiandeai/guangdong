@@ -365,7 +365,11 @@ public class WhhdAction {
 			//活动推荐
 			List<WhActivity> acttj = this.WhhdService.acttjian(request);
 			view.addObject("acttj", acttj);
-			
+
+            //相关资讯
+            List colinfolist = this.commservice.findColinfo(actvid,"2016111900000018");
+            view.addObject("wh_zx_colinfo_ref", colinfolist);
+
 		} catch (Exception e) {
 			log.error(e.getMessage(), e);
 		}
@@ -422,7 +426,7 @@ public class WhhdAction {
 	
 	/**
 	 * 活动报名界面
-	 * @param actId
+	 * @param actvId
 	 * @return
 	 */
 	@RequestMapping("/actBaoMing")
