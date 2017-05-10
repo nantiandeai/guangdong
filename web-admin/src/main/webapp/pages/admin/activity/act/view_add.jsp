@@ -212,7 +212,9 @@
 		<div class="whgff-row">
 			<div class="whgff-row-label">关键字：</div>
 			<div class="whgff-row-input" data-check="false" target="ekey" err-msg="请至少选择一个关键字">
-		    	<div class="checkbox checkbox-primary whg-js-data" name="ekey" js-data="WhgComm.getActivityKey"></div>
+		    	<%--<div class="checkbox checkbox-primary whg-js-data" name="ekey" js-data="WhgComm.getActivityKey"></div>--%>
+				<input class="easyui-combobox" name="ekey" style="width:500px; height:32px" data-options="multiple:true,editable:true,valueField:'id',textField:'text', data:WhgComm.getActivityKey(),prompt:'请填写关键字'"/>
+				<span>（如需手动输入，请用英文逗号隔开！）</span>
 			</div>
 		</div>
 

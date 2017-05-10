@@ -195,7 +195,9 @@
 	<div class="whgff-row">
 		<div class="whgff-row-label">关键字：</div>
 		<div class="whgff-row-input">
-	    	<div class="checkbox checkbox-primary whg-js-data" name="ekey" value="${act.ekey}" js-data="WhgComm.getActivityKey"></div>
+	    	<%--<div class="checkbox checkbox-primary whg-js-data" name="ekey" value="${act.ekey}" js-data="WhgComm.getActivityKey"></div>--%>
+			<input class="easyui-combobox" name="ekey" value="${act.ekey}" style="width:500px; height:32px" data-options="multiple:true,editable:true,valueField:'id',textField:'text', data:WhgComm.getActivityKey()"/>
+			<span>（如需手动输入，请用英文逗号隔开！）</span>
 		</div>
 	</div>
 	
