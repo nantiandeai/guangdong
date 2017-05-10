@@ -379,7 +379,7 @@ public class PxyzAction {
 			WhgTra train = this.service.selTrain(traid);
 			if (train != null) {
 				view.addObject("train", train);
-				if(train.getAge() != null){
+				if(!"".equals(train.getAge()) && train.getAge() != null){
 					String[] age = train.getAge().split(",");
 					view.addObject("age1",age[0]);
 					view.addObject("age2",age[1]);
