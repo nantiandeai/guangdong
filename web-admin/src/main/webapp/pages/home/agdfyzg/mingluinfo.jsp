@@ -192,7 +192,21 @@ $(function() {
                   </c:otherwise>
               </c:choose>
           </div>
-      </div>
+		  <!-- 相关资讯-->
+		  <c:if test="${not empty info}">
+			  <div class="public-other-notice" style="margin-top: 20px">
+				  <h2>相关资讯</h2>
+				  <ul>
+					  <c:forEach items="${info }" var="row" varStatus="s">
+						  <li>
+							  <a href="${basePath }/agdfyzg/newsinfo?id=${row.clnfid}">${row.clnftltle }</a>
+							  <p class="time"><fmt:formatDate value="${row.clnfcrttime}" pattern="yyyy-MM-dd" /></p>
+						  </li>
+					  </c:forEach>
+				  </ul>
+			  </div>
+		  </c:if>
+	  </div>
   </div>
 </div>
 <!--主体结束-->

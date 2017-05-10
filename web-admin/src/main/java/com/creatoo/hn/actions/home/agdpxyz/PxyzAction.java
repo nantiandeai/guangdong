@@ -425,6 +425,10 @@ public class PxyzAction {
 			String clazz="3";
 			List<WhgComResource> audio= this.commservice.findRescource(clazz,reftype,traid);
 			view.addObject("audio", audio);
+
+			//关联资讯
+			List<WhZxColinfo> info = this.commservice.findColinfo(traid,"2016111900000021");
+			view.addObject("info", info);
 		} catch (Exception e) {
 			log.error(e.getMessage(), e);
 		}
