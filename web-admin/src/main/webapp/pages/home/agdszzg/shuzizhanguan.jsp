@@ -24,7 +24,7 @@
         <div class="header-nav">
             <div class="logo-small"> <a href="${basePath}/home"><img src="${basePath}/static/assets/img/public/logoSmall.png"></a> </div>
             <ul>
-                <li class="active"><a href="${basePath }/agdszzg/index">数字展馆</a></li>
+                <li class="active last"><a href="${basePath }/agdszzg/index">数字展馆</a></li>
                 <%--<li class="last"><a href="${basePath }/agdszzg/list">赛事活动</a></li>--%>
             </ul>
         </div>
