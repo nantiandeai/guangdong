@@ -392,6 +392,10 @@ public class FyzgAction {
 			//名录推荐
 			List<WhDecproject> tjminglu = this.feiyiService.tuijianminglu(mlproid);
 			view.addObject("tjminglu", tjminglu);
+
+			//关联资讯
+			List<WhZxColinfo> info = this.commservice.findColinfo(mlproid,"2016112200000005");
+			view.addObject("info", info);
 			
 		} catch (Exception e) {
 			log.error(e.getMessage(), e);
