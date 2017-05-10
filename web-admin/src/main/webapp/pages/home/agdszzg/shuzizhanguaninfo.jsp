@@ -42,7 +42,7 @@
         <span>主办：${whgExh.organizer}</span>
     </p>
     <div class="ss-img">
-        <img src="${imgServerAddr}/${whgExh.exhpic}">
+        <img src="${imgServerAddr}/${whg:getImg750_500(whgExh.exhpic)}">
     </div>
     <div class="nav-ul">
         <span class="active">活动介绍</span>

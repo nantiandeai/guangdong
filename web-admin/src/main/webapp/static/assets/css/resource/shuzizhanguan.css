@@ -236,6 +236,7 @@
 .sshd-main .detail ul li .img{width:276px; height:207px; text-align: center;
     overflow: hidden;}
 .sshd-main .detail ul li .img img{
+    width:276px;
     height:207px;
 }
 .sshd-main .detail ul li h2{font-size:18px; height:28px; line-height: 28px;
