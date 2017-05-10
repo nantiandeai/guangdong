@@ -119,7 +119,7 @@
                  name="ekey" value="${whgVen.ekey}" js-data="WhgComm.getVenueKey">
             </div>--%>
             <select class="easyui-combobox" name="ekey" style="width:600px; height:32px"
-                   data-options="multiple:true, valueField:'text',textField:'text', value:'${whgVen.ekey}', data:WhgComm.getVenueKey()" ></select>
+                   data-options="multiple:true, valueField:'text', textField:'text', value:'${whgVen.ekey}', data:WhgComm.getVenueKey()" ></select>
         </div>
     </div>
 

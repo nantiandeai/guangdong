@@ -96,7 +96,7 @@
                  js-data="WhgComm.getRoomKey">
             </div>--%>
             <select class="easyui-combobox" name="ekey" style="width:600px; height:32px"
-                    data-options="multiple:true, valueField:'text',textField:'text', value:'${whgVenRoom.ekey}', data:WhgComm.getRoomKey()" ></select>
+                    data-options="multiple:true, valueField:'text', textField:'text', value:'${whgVenRoom.ekey}', data:WhgComm.getRoomKey()" ></select>
         </div>
     </div>
 
