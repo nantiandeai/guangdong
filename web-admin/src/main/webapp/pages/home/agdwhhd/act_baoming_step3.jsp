@@ -64,7 +64,7 @@
             </div>
             <div class="compltet-order-msg">
                 <p>恭喜您，${order.name }</p>
-                <span>已报名成功 ！请持短信订单号到相关场馆的取票机领取活动门票。</span>
+                <span>已报名成功 ！请持短信订单号到相关场馆的取票机领取活动门票。如需退票，请在活动开始两天前取消订单，感谢您支持。</span>
                 <c:if test="${order.hasfees == 1 }">
                 	<span>请与活动管理员联系，联系电话：${order.telphone} </span>
                 </c:if>
