@@ -92,9 +92,11 @@
     <div class="whgff-row">
         <div class="whgff-row-label">活动室关键字：</div>
         <div class="whgff-row-input">
-            <div class="checkbox checkbox-primary whg-js-data" name="ekey" value="${whgVenRoom.ekey}"
+            <%--<div class="checkbox checkbox-primary whg-js-data" name="ekey" value="${whgVenRoom.ekey}"
                  js-data="WhgComm.getRoomKey">
-            </div>
+            </div>--%>
+            <select class="easyui-combobox" name="ekey" style="width:600px; height:32px"
+                    data-options="multiple:true, valueField:'text', textField:'text', value:'${whgVenRoom.ekey}', data:WhgComm.getRoomKey()" ></select>
         </div>
     </div>
 
