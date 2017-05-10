@@ -86,7 +86,10 @@ $(function(){
 <div class="special-bg">
     <div class="activity-main">
         <div class="public-crumbs">
-            <span><a href="${basePath }/agdwhhd/index">首页</a></span><span></span><span><a href="${basePath }/agdwhhd/index">文化活动</a></span><span></span><span><a href="${basePath }/agdwhhd/activitylist">活动预约</a></span><span></span><span>${actdetail.name}</span>
+            <span><a href="${basePath }">首页</a></span><span>></span>
+            <%--<span><a href="${basePath }/agdwhhd/index">文化活动</a></span><span>></span>--%>
+            <span><a href="${basePath }/agdwhhd/activitylist">活动预约</a></span><span>></span>
+            <span>${actdetail.name}</span>
         </div>
         <div class="special-head">
             <div class="special-head-left">
@@ -255,6 +258,17 @@ $(function(){
 	                    </c:otherwise>
 	                </c:choose>
                 </div>
+
+                <c:if test="${not empty wh_zx_colinfo_ref}">
+                <div class="public-other-notice" style="margin-top: 20px;">
+                    <h2>相关咨讯</h2>
+                        <ul>
+                            <c:forEach items="${wh_zx_colinfo_ref }" var="row" varStatus="s">
+                                <li><a href="${basePath }/agdwhhd/newsinfo?id=${row.clnfid}">${row.clnftltle }</a><p class="time"><fmt:formatDate value="${row.clnfcrttime}" pattern="yyyy-MM-dd" /></p></li>
+                            </c:forEach>
+                        </ul>
+                </div>
+                </c:if>
             </div>
         </div>
     </div>
