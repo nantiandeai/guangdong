@@ -259,7 +259,7 @@ Gridopts.prototype = {
             if (r){
                 $.messager.progress();
                 $.ajax({
-                    url: mmx.modeUrl+'/edit',
+                    url: mmx.modeUrl+'/recommend',
                     data: {id: row.id, recommend:1},
                     type: 'post',
                     dataType: 'json',
@@ -281,7 +281,7 @@ Gridopts.prototype = {
             if (r){
                 $.messager.progress();
                 $.ajax({
-                    url: mmx.modeUrl+'/edit',
+                    url: mmx.modeUrl+'/recommend',
                     data: {id: row.id, recommend:0},
                     type: 'post',
                     dataType: 'json',

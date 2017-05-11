@@ -149,7 +149,7 @@
              onInit:initSeatValue}"></div>
     </div>
     <div class="whgff-row">
-        <div class="whgff-row-label"><i>*</i>位置：</div>
+        <div class="whgff-row-label"><i>*</i>地址：</div>
         <div class="whgff-row-input">
             <input class="easyui-textbox" name="location" value="${whgVenRoom.location}" style="width:600px; height:32px"
                    data-options="required:true,validType:['length[1,60]'], prompt:'请输入位置信息，如：1栋108室'">

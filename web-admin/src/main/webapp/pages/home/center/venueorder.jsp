@@ -147,12 +147,12 @@
                     infoCont.find(".ordersummary").hide();
                 }
 
-                if (row.state==0){
-                    infoCont.find("a.orderKick").text("取消预订").show().on("click", {orderid: row.id}, unOrder)
-                }else if (row.state==1){
+                infoCont.find("a.orderKick").hide().off("click");
+                if (row.state==1){
                     infoCont.find("a.orderKick").text("删除").show().on("click", {orderid: row.id}, delOrder)
-                }else{
-                    infoCont.find("a.orderKick").hide().off("click")
+                }
+                if (row.state==0 && row.hasfees != 1){
+                    infoCont.find("a.orderKick").text("取消预订").show().on("click", {orderid: row.id}, unOrder)
                 }
 
                 item.show();

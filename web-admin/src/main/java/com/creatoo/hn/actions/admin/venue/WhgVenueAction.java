@@ -188,6 +188,27 @@ public class WhgVenueAction {
         return rb;
     }
 
+    @RequestMapping("/recommend")
+    @ResponseBody
+    @WhgOPT(optType = EnumOptType.VEN, optDesc = {"取消推荐","推荐"}, valid = {"recommend=0","recommend=1"})
+    public Object recommend(WhgVen ven, HttpSession session){
+        ResponseBean rb = new ResponseBean();
+        if (ven.getId() == null){
+            rb.setSuccess(ResponseBean.FAIL);
+            rb.setErrormsg("场馆主键信息丢失");
+            return rb;
+        }
+        try {
+            WhgSysUser sysUser = (WhgSysUser) session.getAttribute("user");
+            this.venueService.t_edit(ven, sysUser);
+        }catch (Exception e){
+            rb.setSuccess(ResponseBean.FAIL);
+            rb.setErrormsg("场馆信息保存失败");
+            log.error(rb.getErrormsg(), e);
+        }
+        return rb;
+    }
+
     /**
      * 删除场馆
      * @param id
