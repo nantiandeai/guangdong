@@ -128,10 +128,10 @@
     </div>
 
     <div class="whgff-row">
-        <div class="whgff-row-label"><label style="color: red">*</label>所属文化馆：</div>
+        <div class="whgff-row-label"><label style="color: red">*</label>所属单位：</div>
         <div class="whgff-row-input">
             <select class="easyui-combobox" name="cultid" style="width:500px; height:32px"
-                    data-options="editable:false, required:true, valueField:'id', textField:'text', value:'${whgTra.cultid}', data:WhgComm.getCult(),prompt:'请选择文化馆'"></select>
+                    data-options="editable:false, required:true, valueField:'id', textField:'text', value:'${whgTra.cultid}', data:WhgComm.getCult(),prompt:'请选择所属单位'"></select>
         </div>
     </div>
 

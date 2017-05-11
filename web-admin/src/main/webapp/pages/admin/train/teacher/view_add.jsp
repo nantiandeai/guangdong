@@ -75,7 +75,8 @@
     <div class="whgff-row">
         <div class="whgff-row-label"><label style="color: red">*</label>专长类型：</div>
         <div class="whgff-row-input">
-            <div class="radio radio-primary whg-js-data" name="teachertype" value="${tea.teachertype}" js-data="WhgComm.getTEAType"></div>
+            <div class="checkbox checkbox-primary whg-js-data" value="${tea.teachertype}" name="teachertype" js-data="WhgComm.getTEAType"></div>
+            <%--<div class="radio radio-primary whg-js-data" name="teachertype" value="${tea.teachertype}" js-data="WhgComm.getTEAType"></div>--%>
         </div>
     </div>
 
