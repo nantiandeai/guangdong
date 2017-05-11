@@ -45,7 +45,7 @@
 
     <!--查询用户场馆预订列表-->
     <select id="selectUserVenOrderList" resultType="hashmap">
-        SELECT vro.*, vr.title, v.address, v.phone
+        SELECT vro.*, vr.title, vr.hasfees, v.address, v.phone
         FROM whg_ven_room_order vro
         LEFT JOIN whg_ven_room vr ON vro.roomid = vr.id
         INNER JOIN whg_ven v on vr.venid = v.id

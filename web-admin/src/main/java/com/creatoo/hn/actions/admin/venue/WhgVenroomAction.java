@@ -189,6 +189,23 @@ public class WhgVenroomAction {
         return rb;
     }
 
+    @RequestMapping("/recommend")
+    @ResponseBody
+    @WhgOPT(optType = EnumOptType.ROOM, optDesc = {"取消推荐","推荐"}, valid = {"recommend=0","recommend=1"})
+    public Object recommend(HttpSession session, WhgVenRoom room){
+        ResponseBean rb = new ResponseBean();
+        try {
+            WhgSysUser sysUser = (WhgSysUser) session.getAttribute("user");
+
+            this.whgVenroomService.t_edit(room, sysUser);
+        } catch (Exception e) {
+            rb.setSuccess(ResponseBean.FAIL);
+            rb.setErrormsg("活动室信息保存失败");
+            log.error(rb.getErrormsg(), e);
+        }
+        return rb;
+    }
+
     @RequestMapping("/del")
     @ResponseBody
     @WhgOPT(optType = EnumOptType.ROOM, optDesc = {"删除活动室"})

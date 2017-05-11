@@ -52,13 +52,13 @@
         </div>
     </div>
 
-    <div class="whgff-row">
+    <%--<div class="whgff-row">
         <div class="whgff-row-label"><i>*</i>场馆级别：</div>
         <div class="whgff-row-input" style="height:60px;padding-left:10px;">
             <input class="easyui-slider" name="level" value="${whgVen.level}" style="width:300px;"
                    data-options="showTip:true,rule:['1','2','3','4','5'],max:5,min:1">
         </div>
-    </div>
+    </div>--%>
 
     <div class="whgff-row">
         <div class="whgff-row-label"><i>*</i>图片：</div>
