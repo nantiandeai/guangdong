@@ -24,47 +24,50 @@
 	      where t.title like #{srchkey}
 	    </if> -->
 	    select id, title, srchtype, type from (
-			select t1.id as id, t1.`name` as title, '文化活动' as srchtype, '1' as type
-			from whg_act_activity t1 where t1.state = 6
+			select t1.id as id, t1.`name` as title, '文化活动' as srchtype, '1' as type, t1.ekey as ekey, t1.actsummary as doc
+			from whg_act_activity t1 where t1.state = 6 and t1.delstate = 0
 			union
-			select t2.id as id, t2. title as title, '培训驿站' as srchtype, '2' as type
-			from whg_tra t2 where t2.state = 6
+			select t2.id as id, t2. title as title, '培训驿站' as srchtype, '2' as type, t2.ekey as ekey, t2.coursedesc as doc
+			from whg_tra t2 where t2.state = 6 and t2.delstate = 0
 			union
-			select t3.id as id, t3.title as title, '场馆预定' as srchtype, '3' as type
-			from whg_ven t3 where t3.state = 6 
-			union
-			select t4.clnfid as id, t4.clnftltle as title, '活动资讯' as srchtype, '4' as type
+			select t3.id as id, t3.title as title, '场馆预定' as srchtype, '3' as type, t3.ekey as ekey, t3.summary as doc
+			from whg_ven t3 where t3.state = 6 and t3.delstate = 0
+        union
+        select t33.id as id, t33.title as title, '活动室' as srchtype, '33' as type, t33.ekey as ekey, t33.summary as doc
+        from whg_ven_room t33 where t33.state = 6 and t33.delstate = 0
+        union
+			select t4.clnfid as id, t4.clnftltle as title, '活动资讯' as srchtype, '4' as type, t4.clnfkey as ekey, t4.clnfintroduce as doc
 			from wh_zx_colinfo t4 where t4.clnfstata = 3 and t4.clnftype = '2016111900000018' 
 			union
-			select t5.id as id, t5.`name` as title, '文化品牌' as srchtype, '5' as type
-			from whg_ywi_whpp t5 where t5.state = 1 and t5.delstate = 0 
+			select t5.id as id, t5.`name` as title, '文化品牌' as srchtype, '5' as type, '' as ekey, t5.shortname as doc
+        from whg_ywi_whpp t5 where t5.state = 1 and t5.delstate = 0
 			union
-			select t6.id as id, t6.`name` as title, '文化馆' as srchtype, '6' as type
+			select t6.id as id, t6.`name` as title, '文化馆' as srchtype, '6' as type, '' as ekey, t6.introduction as doc
 			from whg_sys_cult t6 where t6.state = 1 and t6.delstate = 0 
 			UNION 
-			select t7.clnfid as id, t7.clnftltle as title, '资讯公告' as srchtype, '7' as type
-			from wh_zx_colinfo t7 where t7.clnfstata = 3 and t7.clnftype = '2016111900000014'    
+			select t7.clnfid as id, t7.clnftltle as title, '资讯公告' as srchtype, '7' as type, t7.clnfkey as ekey, t7.clnfintroduce as doc
+        from wh_zx_colinfo t7 where t7.clnfstata = 3 and t7.clnftype = '2016111900000014'
 			UNION 
-			select t8.clnfid as id, t8.clnftltle as title, '资讯动态' as srchtype, '8' as type
-			from wh_zx_colinfo t8 where t8.clnfstata = 3 and t8.clnftype = '2016111900000002' 
+			select t8.clnfid as id, t8.clnftltle as title, '资讯动态' as srchtype, '8' as type, t8.clnfkey as ekey, t8.clnfintroduce as doc
+        from wh_zx_colinfo t8 where t8.clnfstata = 3 and t8.clnftype = '2016111900000002'
 			UNION 
-			select t9.clnfid as id, t9.clnftltle as title, '培训公告' as srchtype, '9' as type
-			from wh_zx_colinfo t9 where t9.clnfstata = 3 and t9.clnftype = '2016111900000020'  
+			select t9.clnfid as id, t9.clnftltle as title, '培训公告' as srchtype, '9' as type, t9.clnfkey as ekey, t9.clnfintroduce as doc
+        from wh_zx_colinfo t9 where t9.clnfstata = 3 and t9.clnftype = '2016111900000020'
 			UNION 
-			select t10.clnfid as id, t10.clnftltle as title, '培训资讯' as srchtype, '10' as type
-			from wh_zx_colinfo t10 where t10.clnfstata = 3 and t10.clnftype = '2016111900000021' 
+			select t10.clnfid as id, t10.clnftltle as title, '培训资讯' as srchtype, '10' as type, t10.clnfkey as ekey, t10.clnfintroduce as doc
+        from wh_zx_colinfo t10 where t10.clnfstata = 3 and t10.clnftype = '2016111900000021'
 			UNION 
-			select t11.clnfid as id, t11.clnftltle as title, '非遗公告' as srchtype, '11' as type
-			from wh_zx_colinfo t11 where t11.clnfstata = 3 and t11.clnftype = '2016112200000004' 
+			select t11.clnfid as id, t11.clnftltle as title, '非遗公告' as srchtype, '11' as type, t11.clnfkey as ekey, t11.clnfintroduce as doc
+        from wh_zx_colinfo t11 where t11.clnfstata = 3 and t11.clnftype = '2016112200000004'
 			UNION 
-			select t12.clnfid as id, t12.clnftltle as title, '志愿资讯' as srchtype, '12' as type
-			from wh_zx_colinfo t12 where t12.clnfstata = 3 and t12.clnftype = '2016112200000009' 
+			select t12.clnfid as id, t12.clnftltle as title, '志愿资讯' as srchtype, '12' as type, t12.clnfkey as ekey, t12.clnfintroduce as doc
+        from wh_zx_colinfo t12 where t12.clnfstata = 3 and t12.clnftype = '2016112200000009'
 			UNION 
-			select t13.drscid as id, t13.drsctitle as title, '在线点播' as srchtype, '13' as type 
+			select t13.drscid as id, t13.drsctitle as title, '在线点播' as srchtype, '13' as type, '' as ekey, t13.drscintro as doc
 			from wh_drsc t13 where t13.drscstate = 3  
 			) t  
 			<if test="srchkey != null">
-		      where t.title like #{srchkey}
+		      where t.title like #{srchkey} OR t.ekey like #{srchkey} OR t.doc like #{srchkey}
 		    </if>
 	</select>
 </mapper>
