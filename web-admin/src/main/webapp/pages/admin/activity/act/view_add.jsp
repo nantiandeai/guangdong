@@ -104,8 +104,11 @@
         <div class="whgff-row">
             <div class="whgff-row-label">文化品牌：</div>
             <div class="whgff-row-input">
-               <div class="checkbox checkbox-primary whg-js-data" name="ebrand"
+               <%--<div class="checkbox checkbox-primary whg-js-data" name="ebrand"
 					js-data="WhgComm.getBrand" >
+				</div>--%>
+				<div class="whgff-row-input">
+					<div class="radio radio-primary whg-js-data"  name="ebrand"  js-data="WhgComm.getBrand"></div>
 				</div>
             </div>
         </div>
@@ -308,7 +311,7 @@
 		
 		<div class="whgff-row">
 			<div class="whgff-row-label">
-				<label style="color: red">*</label>在线售票：
+				<label style="color: red">*</label>活动类型：
 			</div>
 			<div class="whgff-row-input">
 		    	<div class="radio radio-primary whg-js-data" name="sellticket"  id="sellticket"  onclick="isCheck()"
