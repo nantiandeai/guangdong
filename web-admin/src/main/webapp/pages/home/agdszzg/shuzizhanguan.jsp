@@ -44,25 +44,25 @@
                 <c:when test="${exh != null && fn:length(exh) > 0}">
                     <c:forEach items="${exh}" var="row" varStatus="s" begin="0" end="5">
                         <li>
-                            <a href="${basePath}/agdszzg/info?exhid=${row.exhid}"><img width="445" height="308" alt="这个时代 你所追求的是什么？" src="${imgServerAddr}/${row.exhpic}"/></a>
+                            <a href="${basePath}/agdszzg/info?exhid=${row.exhid}"><img width="445" height="308" alt="${row.exhtitle}" src="${imgServerAddr}/${row.exhpic}"/></a>
                         </li>
                     </c:forEach>
                 </c:when>
                 <c:otherwise>
                     <li>
-                        <a href="../index.html"><img width="445" height="308" alt="这个时代 你所追求的是什么？" src="http://www.17sucai.com/preview/11/2013-05-02/ZoomPic/images/1.jpg" /></a>
+                        <a href="javascript:void(0)"><img width="445" height="308" alt="这个时代 你所追求的是什么？" src="http://www.17sucai.com/preview/11/2013-05-02/ZoomPic/images/1.jpg" /></a>
                     </li>
                     <li>
-                        <a href="../index.html"><img width="445" height="308" alt="我们所追求的不是拥有一切，而是拥有值得的一切" src="http://www.17sucai.com/preview/11/2013-05-02/ZoomPic/images/2.jpg" /></a>
+                        <a href="javascript:void(0)"><img width="445" height="308" alt="我们所追求的不是拥有一切，而是拥有值得的一切" src="http://www.17sucai.com/preview/11/2013-05-02/ZoomPic/images/2.jpg" /></a>
                     </li>
                     <li>
-                        <a href="../index.html"><img width="445" height="308" alt="一段旅程，两个城市，潮流正在被重塑" src="http://www.17sucai.com/preview/11/2013-05-02/ZoomPic/images/3.jpg" /></a>
+                        <a href="javascript:void(0)"><img width="445" height="308" alt="一段旅程，两个城市，潮流正在被重塑" src="http://www.17sucai.com/preview/11/2013-05-02/ZoomPic/images/3.jpg" /></a>
                     </li>
                     <li>
-                        <a href="../index.html"><img width="445" height="308" alt="你的眼光、激情、创意和内涵，也在重塑着城市的潮流" src="http://www.17sucai.com/preview/11/2013-05-02/ZoomPic/images/4.jpg" /></a>
+                        <a href="javascript:void(0)"><img width="445" height="308" alt="你的眼光、激情、创意和内涵，也在重塑着城市的潮流" src="http://www.17sucai.com/preview/11/2013-05-02/ZoomPic/images/4.jpg" /></a>
                     </li>
                     <li>
-                        <a href="../index.html"><img width="445" height="308" alt="在这里，抛开重重限制，释放真实自我" src="http://www.17sucai.com/preview/11/2013-05-02/ZoomPic/images/5.jpg" /></a>
+                        <a href="javascript:void(0)"><img width="445" height="308" alt="在这里，抛开重重限制，释放真实自我" src="http://www.17sucai.com/preview/11/2013-05-02/ZoomPic/images/5.jpg" /></a>
                     </li>
                 </c:otherwise>
             </c:choose>
