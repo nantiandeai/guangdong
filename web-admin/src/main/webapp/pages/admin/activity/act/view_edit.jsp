@@ -98,9 +98,12 @@
 	<div class="whgff-row">
 		<div class="whgff-row-label">文化品牌：</div>
 		<div class="whgff-row-input">
-			<div class="checkbox checkbox-primary whg-js-data" name="ebrand" value="${act.ebrand}"
+			<%--<div class="checkbox checkbox-primary whg-js-data" name="ebrand" value="${act.ebrand}"
 					js-data="WhgComm.getBrand" >
-		</div>
+			</div>--%>
+			<div class="whgff-row-input">
+				<div class="radio radio-primary whg-js-data"  name="ebrand" value="${act.ebrand}"  js-data="WhgComm.getBrand"></div>
+			</div>
 	</div>
 	</div>
     
@@ -196,7 +199,7 @@
 		<div class="whgff-row-label">关键字：</div>
 		<div class="whgff-row-input">
 	    	<%--<div class="checkbox checkbox-primary whg-js-data" name="ekey" value="${act.ekey}" js-data="WhgComm.getActivityKey"></div>--%>
-			<input class="easyui-combobox" name="ekey" value="${act.ekey}" style="width:500px; height:32px" data-options="multiple:true,editable:true,valueField:'id',textField:'text', data:WhgComm.getActivityKey()"/>
+			<input class="easyui-combobox" name="ekey" value="${act.ekey}" style="width:500px; height:32px" data-options="multiple:true,editable:true,valueField:'text',textField:'text', data:WhgComm.getActivityKey()"/>
 			<span>（如需手动输入，请用英文逗号隔开！）</span>
 		</div>
 	</div>
@@ -245,7 +248,6 @@
 		<div class="whgff-row-input">
 	    	<div class="radio radio-primary whg-js-data" name="integral" id="integral" value="${act.integral }"  onclick="isIntegral()" 
                 js-data='[{"id":"1","text":"默认"},{"id":"2","text":"积分"}]'>
-                <input id="sellticketSelection" type="hidden" value="1">
            </div>
            <span id="integralCount" style="display:none">该活动需要消耗积分<input class="easyui-numberspinner" name="integralnum" value="${act.integralnum }" id="integralnum" style="width: 50px; height: 25px" data-options="required:false,min:0,max:999">分 </span>
 		</div>
@@ -263,7 +265,7 @@
 	</div>
 	
 	<div class="whgff-row">
-		<div class="whgff-row-label"><i>*</i>在线售票：</div>
+		<div class="whgff-row-label"><i>*</i>活动类型：</div>
 		<div class="whgff-row-input">
 	    	<div class="radio radio-primary whg-js-data" name="sellticket" id="sellticket" value="${act.sellticket }"  onclick="setSeat()" 
                 js-data='[{"id":"1","text":"不可预定"},{"id":"2","text":"自由入座"},{"id":"3","text":"在线选座"}]'>
