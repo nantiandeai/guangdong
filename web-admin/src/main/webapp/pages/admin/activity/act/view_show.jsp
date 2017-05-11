@@ -309,7 +309,13 @@
         WhgMap.init({basePath:'${basePath}', addrFieldId:'address', xpointFieldId:'actlon', ypointFieldId:'actlat', getPointBtnId:'getXYPointBtn'});
 
         //初始化富文本
-        var ue_remark =  UE.getEditor('remark');
+        var ueConfig = {
+            scaleEnabled: false,
+            autoFloatEnabled: false,
+            elementPathEnabled:false,
+            readonly: true
+        };
+        var ue_remark =  UE.getEditor('remark',ueConfig);
 
         //查看状态下表单元素不能编辑
         if($('#whgff input[name="onlyshow"]').val() == "1"){

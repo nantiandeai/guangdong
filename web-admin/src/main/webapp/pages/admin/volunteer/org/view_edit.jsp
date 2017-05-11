@@ -99,6 +99,7 @@
     var ueConfig = {
         scaleEnabled: false,
         autoFloatEnabled: false,
+        elementPathEnabled:false,
         readonly: '${targetShow}'? true: false//富文本编辑器设为只读
     };
     var ue_catalog = UE.getEditor('catalog', ueConfig);

@@ -356,7 +356,8 @@
 		//初始化富文本
 	    var ueConfig = {
 	        scaleEnabled: false,
-	        autoFloatEnabled: false
+	        autoFloatEnabled: false,
+            elementPathEnabled:false
 	    };
 		var remark = UE.getEditor('remark', ueConfig);
         

@@ -132,7 +132,7 @@
     var mydescUE;
     $(function () {
         //UEditor
-        mydescUE = UE.getEditor('traeditor', {scaleEnabled: false, autoFloatEnabled: false, readonly:false});
+        mydescUE = UE.getEditor('traeditor', {scaleEnabled: false, autoFloatEnabled: false,elementPathEnabled:false, readonly:false});
 
         //图片初始化
         WhgUploadImg.init({basePath: '${basePath}', uploadBtnId: 'imgUploadBtn1', hiddenFieldId: 'hide_picture1', previewImgId: 'previewImg1', needCut:true, cutWidth:380, cutHeight:240});

@@ -84,7 +84,9 @@
 				url = '/agdpxyz/traininfo?traid='+id;
 			}else if(type && type == '3'){//场馆
 				url = '/agdcgfw/venueinfo?venid='+id;
-			}else if(type && type == '4'){//活动资讯
+			}else if(type && type == '33'){//活动室
+                url = '/agdcgfw/venroominfo?roomid='+id;
+            }else if(type && type == '4'){//活动资讯
 				url = '/agdwhhd/newsinfo?id='+id;
 			}else if(type && type == '5'){//文化品牌
 				url = '/agdwhhd/brandinfo?braid='+id;
