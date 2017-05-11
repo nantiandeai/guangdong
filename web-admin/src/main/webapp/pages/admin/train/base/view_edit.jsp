@@ -541,6 +541,7 @@
     var ueConfig = {
         scaleEnabled:true,
         autoFloatEnabled: false,
+        elementPathEnabled:false,
         readonly: '${targetShow}'? true: false
     };
     var teacherIntro = UE.getEditor('teacherIntro', ueConfig);

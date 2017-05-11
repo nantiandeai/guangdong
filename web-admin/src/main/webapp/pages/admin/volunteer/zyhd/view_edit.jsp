@@ -137,7 +137,7 @@
     $(function () {
         //UEditor
         var _readonly = '${param.onlyshow}' == '1';
-        mydescUE = UE.getEditor('traeditor', {scaleEnabled: false, autoFloatEnabled: false, readonly:_readonly});
+        mydescUE = UE.getEditor('traeditor', {scaleEnabled: false, autoFloatEnabled: false,elementPathEnabled:false, readonly:_readonly});
         mydescUE.ready(function(){  mydescUE.setContent('${zyhdinfo.zyhdcontent}') });
 
         //图片初始化

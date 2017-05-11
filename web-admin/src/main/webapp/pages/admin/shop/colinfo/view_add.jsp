@@ -119,6 +119,7 @@
     var ueConfig = {
         scaleEnabled: false,
         autoFloatEnabled: false,
+        elementPathEnabled:false,
         readonly: '${targetShow}'? true: false
     };
 

@@ -110,7 +110,8 @@
 		//初始化富文本
 		var ueConfig = {
 	        scaleEnabled: false,
-	        autoFloatEnabled: false
+	        autoFloatEnabled: false,
+            elementPathEnabled:false
 	    };
 		UE.getEditor('troupecontent', ueConfig);
 		

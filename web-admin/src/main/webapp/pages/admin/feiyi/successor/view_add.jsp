@@ -97,7 +97,8 @@
      */
     var ueConfig = {
         scaleEnabled: false,
-        autoFloatEnabled: false
+        autoFloatEnabled: false,
+        elementPathEnabled:false
     };
     var ue_catalog = UE.getEditor('catalog', ueConfig);
 

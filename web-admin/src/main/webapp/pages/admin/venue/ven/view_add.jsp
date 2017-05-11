@@ -197,6 +197,7 @@
     var ueConfig = {
         scaleEnabled: false,
         autoFloatEnabled: false,
+        elementPathEnabled:false,
         readonly: '${targetShow}'? true: false
     };
     var ue_description = UE.getEditor('description', ueConfig);
