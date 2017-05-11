@@ -237,28 +237,22 @@ $(function(){
 
             </div>
             <div class="public-right-main">
-                <div class="public-other-notice">
-                    <h2>推荐活动</h2>
-                      <c:choose>
-                    	<c:when test="${not empty acttj}">
-		                     <c:forEach items="${acttj}" var="item">
-	                   			<div class="item clearfix">
-			                        <div class="right-img">
-			                            <a href="${basePath }/agdwhhd/activityinfo?actvid=${item.id}"><img src="${imgServerAddr}${ item.imgurl}" width="130" height="90" onerror="showDefaultIMG(this, '${basePath }/static/assets/img/img_demo/1.jpg')"></a>
-			                        </div>
-			                        <div class="right-detail">
-			                            <a href="${basePath }/agdwhhd/activityinfo?actvid=${item.id}"><h3>${item.name}</h3></a>
-			                            <p class="time"><fmt:formatDate value="${item.starttime}" pattern="yyyy-MM-dd"/></p>
-			                        </div>
-			                    </div>
-		                     </c:forEach>
-	                    </c:when>
-	                    <c:otherwise>
-	                    	<div class='public-no-message'></div>
-	                    </c:otherwise>
-	                </c:choose>
-                </div>
-
+				<c:if test="${not empty acttj}">
+					<div class="public-other-notice">
+						<h2>推荐活动</h2>
+						 <c:forEach items="${acttj}" var="item">
+							<div class="item clearfix">
+								<div class="right-img">
+									<a href="${basePath }/agdwhhd/activityinfo?actvid=${item.id}"><img src="${imgServerAddr}${ item.imgurl}" width="130" height="90" onerror="showDefaultIMG(this, '${basePath }/static/assets/img/img_demo/1.jpg')"></a>
+								</div>
+								<div class="right-detail">
+									<a href="${basePath }/agdwhhd/activityinfo?actvid=${item.id}"><h3>${item.name}</h3></a>
+									<p class="time"><fmt:formatDate value="${item.starttime}" pattern="yyyy-MM-dd"/></p>
+								</div>
+							</div>
+						 </c:forEach>
+					</div>
+				</c:if>
                 <c:if test="${not empty wh_zx_colinfo_ref}">
                 <div class="public-other-notice" style="margin-top: 20px;">
                     <h2>相关咨讯</h2>
