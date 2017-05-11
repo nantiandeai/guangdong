@@ -344,7 +344,7 @@
 	</dependencies>
 	
 	<build>
-		<finalName>${project.name}</finalName>
+		<finalName>ROOT</finalName>
 		<!--<defaultGoal>install</defaultGoal>
 		<sourceDirectory>${basedir}/src/main/java</sourceDirectory>
 		<outputDirectory>${basedir}/src/main/webapp/WEB-INF/classes</outputDirectory>
