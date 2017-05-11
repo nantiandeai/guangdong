@@ -34,7 +34,7 @@
     <tr>
         <th data-options="field:'teachername', width:100">老师名称</th>
         <th data-options="field:'teacherpic', width:100, formatter:WhgComm.FMTImg">老师照片</th>
-        <th data-options="field:'teachertype', width:100, formatter:WhgComm.FMTTEAType">专长类型</th>
+        <%--<th data-options="field:'teachertype', width:100, formatter:WhgComm.FMTTEAType">专长类型</th>--%>
         <th data-options="field:'teacherarea', width:100, formatter:WhgComm.FMTAreaType">区域</th>
         <th data-options="field:'teacherstate', width:100, formatter:traStateFMT" >状态</th>
         <th data-options="field:'_opt', width:400, formatter:WhgComm.FMTOpt,fixed:true, optDivId:'whgdg-opt'">操作</th>

@@ -1,10 +1,6 @@
 package com.creatoo.hn.services.home.agdgwgk;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import com.creatoo.hn.mapper.*;
 import com.creatoo.hn.model.*;
@@ -150,10 +146,16 @@ public class GwgkService {
 		for(int i = 0; i< list.size(); i++){
 			String teachertype = list.get(i).getTeachertype();
 			Example example1 = new Example(WhgYwiType.class);
-			example1.createCriteria().andEqualTo("id",teachertype);
+			example1.createCriteria().andIn("id", Arrays.asList(teachertype.split(",")));
 			List<WhgYwiType> whgYwiType = this.whgYwiTypeMapper.selectByExample(example1);
+			String a = "";
+			String b = "";
 			if(whgYwiType.size() >0){
-				list.get(i).setTeachertype(whgYwiType.get(0).getName());
+				for(int j = 0; j<Arrays.asList(teachertype.split(",")).size(); j++){
+					a += b+whgYwiType.get(j).getName();
+					b = ",";
+				}
+				list.get(i).setTeachertype(a);
 			}
 
 		}
@@ -184,10 +186,16 @@ public class GwgkService {
 		for(int i = 0; i< list.size(); i++){
 			String teachertype = list.get(i).getTeachertype();
 			Example example1 = new Example(WhgYwiType.class);
-			example1.createCriteria().andEqualTo("id",teachertype);
+			example1.createCriteria().andIn("id", Arrays.asList(teachertype.split(",")));
 			List<WhgYwiType> whgYwiType = this.whgYwiTypeMapper.selectByExample(example1);
+			String a = "";
+			String b = "";
 			if(whgYwiType.size() >0){
-				list.get(i).setTeachertype(whgYwiType.get(0).getName());
+				for(int j = 0; j<Arrays.asList(teachertype.split(",")).size(); j++){
+					a += b+whgYwiType.get(j).getName();
+					b = ",";
+				}
+				list.get(i).setTeachertype(a);
 			}
 
 		}
