@@ -426,7 +426,7 @@ public class WhhdAction {
 	
 	/**
 	 * 活动报名界面
-	 * @param actvId
+	 * @param
 	 * @return
 	 */
 	@RequestMapping("/actBaoMing")
@@ -452,7 +452,7 @@ public class WhhdAction {
 	/**
 	 * 场次更改时，重新加载活动座位信息
 	 * @param actId
-	 * @param seatId
+	 * @param
 	 * @return
 	 */
 	@RequestMapping("/changeSeat")
@@ -627,5 +627,21 @@ public class WhhdAction {
     	return res;
     	
     }
-	
+
+	/**
+	 * 根据 活动场次id 查找 余票/人数
+	 * @return
+	 */
+	@RequestMapping("/validCode")
+	public ResponseBean validCode(HttpServletRequest request, HttpSession session){
+		ResponseBean res = new ResponseBean();
+		String yanzhen = request.getParameter("yanzhen");
+		String rand = (String) session.getAttribute("rand");
+		if (!yanzhen.equals(rand)) {
+			res.setSuccess(ResponseBean.FAIL);
+			res.setErrormsg("验证码不正确！");
+			return res;
+		}
+		return res;
+	}
 }

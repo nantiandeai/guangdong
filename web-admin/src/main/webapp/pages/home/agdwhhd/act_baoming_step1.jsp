@@ -109,7 +109,21 @@
 	
 	$(function () {
         $('.submit').on("click", 'a.submit-order.red', function(){
-        	showDivStep2();
+			var yzCode = $("#yzCode").val();
+			$.ajax({
+				type: "POST",
+				url: "${basePath }/agdwhhd/validCode",
+				data: {yanzhen : yzCode},
+				success: function(data){
+					if (!data.success || data.success != "1"){
+						rongDialog({ type : false, title : "验证码有误，请重填", time : 3*1000 });
+						return;
+					}else{
+						showDivStep2();
+					}
+				}
+			});
+
         })
     });
 	
@@ -126,6 +140,10 @@
 		var dateText = $("#dateCont option:checked").text();
 		var ordername = $("#ordername").val();
 		var seats = $("#seats").val();
+		var yzCode = $("#yzCode").val();
+		if (yzCode == '' ) {
+			return rongDialog({ type : false, title : "操作失败,请填写验证码!", time : 3*1000 });
+		}
 		if (dateCont == '' ) {
 			return rongDialog({ type : false, title : "操作失败,请选择活动日期!", time : 3*1000 });
 		}
@@ -370,7 +388,7 @@
                 <p>为了能顺利取票，请确保您的手机号码无误</p>
                 <p><span>手机号码：</span><input type="text" value="${sessionUser.phone }" maxlength="11" id="orderphoneno" name="orderphoneno" readonly="readonly"><span class="color">*必填项</span></p>
                 <p><span>姓名：</span><input type="text" value="${sessionUser.name }" placeholder="请输入订票人名称" maxlength="30" id="ordername" name="ordername"><span class="color">*必填项</span></p>
-                <%-- <p><span>验证码：</span><input type="text" placeholder="验证码" class="yz-code" name="yanzhen"><img  id="yanzhen" src="${basePath }/authImage?t=1" width="88" height="34"></p> --%>
+                <p><span>验证码：</span><input type="text" placeholder="验证码" id="yzCode" class="yz-code" name="yanzhen"><img  id="yanzhen" src="${basePath }/authImage?t=1" width="88" height="34"></p>
             </div>
         <div class="explain">
             <div class="explain-desc">
