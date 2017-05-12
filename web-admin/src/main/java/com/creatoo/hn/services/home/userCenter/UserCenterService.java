@@ -243,8 +243,8 @@ public class UserCenterService {
 			if(ticketList.size() > 0){
 				map.put("state", ticketList.get(0).getTicketstatus());
 			}
-			WhgActActivity act = whgActActivityMapper.selectByPrimaryKey(map.get("activityid").toString());
-			if(act != null){
+//			WhgActActivity act = whgActActivityMapper.selectByPrimaryKey(map.get("activityid").toString());
+//			if(act != null){
 				Date dNow = new Date();   //当前时间
 				Date dAffore = new Date();
 				Calendar calendar = Calendar.getInstance(); //得到日历
@@ -252,8 +252,9 @@ public class UserCenterService {
 				calendar.add(Calendar.DAY_OF_MONTH, +2);  //设置为后两天
 				dAffore = calendar.getTime();   //得到前两天的时间
 				map.put("dAffore",dAffore);
-				map.put("strTime", act.getStarttime());
-			}
+				//map.put("strTime", act.getStarttime());
+				map.put("strTime", map.get("playstarttime"));
+//			}
 		}
 		return new PageInfo(list);
 	}
