@@ -66,10 +66,11 @@ public class VenueOrderAction {
 	 * 取消预定
 	 */
 	@RequestMapping("/unOrder")
-	public Object delVenueOrder(String orderid){
+	public Object delVenueOrder(String orderid, HttpSession session){
 		Map<String, Object> res = new HashMap();
 		try {
-			int count = this.service.unOrder(orderid);
+            WhUser user = (WhUser) session.getAttribute(WhConstance.SESS_USER_KEY);
+			int count = this.service.unOrder(orderid, user.getId());
             res.put("success", count>0);
 		} catch (Exception e) {
 			log.error(e.getMessage(), e);

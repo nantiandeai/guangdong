@@ -64,7 +64,7 @@ RoomOrderTool.prototype = {
         }
         var that = this;
         $.ajax({
-            url : this.settings.basePath+'/agdcgfw//checkRoomOrder',
+            url : this.settings.basePath+'/agdcgfw/checkRoomOrder',
             data : {roomtimeid: that.selectValue.id},
             dataType : "json",
             success : function(data){

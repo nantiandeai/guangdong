@@ -6,17 +6,16 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.creatoo.hn.mapper.WhgVenRoomMapper;
-import com.creatoo.hn.mapper.WhgVenRoomOrderMapper;
+import com.creatoo.hn.ext.emun.EnumOrderType;
+import com.creatoo.hn.mapper.*;
 import com.creatoo.hn.mapper.home.CrtCgfwMapper;
-import com.creatoo.hn.model.WhgVenRoom;
-import com.creatoo.hn.model.WhgVenRoomOrder;
+import com.creatoo.hn.model.*;
+import com.creatoo.hn.services.comm.CommService;
 import com.creatoo.hn.services.comm.SMSService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.creatoo.hn.mapper.WhVenuebkedMapper;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import tk.mybatis.mapper.entity.Example;
@@ -35,6 +34,17 @@ public class VenueOrderService {
 
     @Autowired
     private SMSService smsService;
+
+    @Autowired
+    private WhgUsrUnorderMapper whgUsrUnorderMapper;
+    @Autowired
+    private CommService commService;
+
+    @Autowired
+    private WhgUsrBacklistMapper whgUsrBacklistMapper;
+
+    @Autowired
+    private WhUserMapper whUserMapper;
 
 	/**
 	 * 查询场馆预定信息
@@ -73,7 +83,7 @@ public class VenueOrderService {
 	 * @param id
 	 * @return
 	 */
-	public int unOrder(String id) throws Exception {
+	public int unOrder(String id, String userid) throws Exception {
 		WhgVenRoomOrder order = new WhgVenRoomOrder();
         order.setState(1);
 
@@ -92,6 +102,43 @@ public class VenueOrderService {
             this.smsService.t_sendSMS(order.getOrdercontactphone(), "VEN_ORDER_UNADD", data);
         } catch (Exception e) {
             log.error("roomOrderUnAdd sendSMS error", e);
+        }
+
+        //与黑名单相关的操作
+        if (userid != null){
+            try {
+                //当前用户场馆订单取消记数
+                WhgUsrUnorder uuo = new WhgUsrUnorder();
+                uuo.setUserid(userid);
+                uuo.setOrdertype(EnumOrderType.ORDER_VEN.getValue());
+
+                int currUnCount = this.whgUsrUnorderMapper.selectCount(uuo);
+                if (currUnCount>0){
+                    //超过一次了这就是第二次以上，记黑名单，清除记录
+                    WhgUsrBacklist ubl = new WhgUsrBacklist();
+                    ubl.setUserid(uuo.getUserid());
+                    ubl.setState(1);
+                    int ublcount = this.whgUsrBacklistMapper.selectCount(ubl);
+                    if (ublcount == 0){
+                        WhUser user = this.whUserMapper.selectByPrimaryKey(uuo.getUserid());
+                        ubl.setId(this.commService.getKey("whgusrbacklist"));
+                        ubl.setUserphone(user.getPhone());
+                        ubl.setType(1);
+                        ubl.setJointime(new Date());
+                        this.whgUsrBacklistMapper.insert(ubl);
+                    }
+
+                    this.whgUsrUnorderMapper.delete(uuo);
+                }else{
+                    //记入取消记录
+                    uuo.setOrderid(order.getId());
+                    uuo.setUntime(new Date());
+                    uuo.setId(this.commService.getKey("whgusrunorder"));
+                    this.whgUsrUnorderMapper.insert(uuo);
+                }
+            } catch (Exception e) {
+                log.error("取消场馆订单处理黑名单失败", e);
+            }
         }
 
         return count;
