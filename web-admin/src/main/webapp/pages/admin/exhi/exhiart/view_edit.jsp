@@ -38,12 +38,12 @@
     <input type="hidden" name="artid" value="${artid}">
 
     <div class="whgff-row">
-        <div class="whgff-row-label"><label style="color: red">*</label>作品标题：</div>
+        <div class="whgff-row-label"><label style="color: red">*</label>标题：</div>
         <div class="whgff-row-input"><input class="easyui-textbox" name="arttitle" value="${exhiart.arttitle}" style="width:600px; height:32px" data-options="required:true, validType:'length[1,30]'"></div>
     </div>
 
     <div class="whgff-row">
-        <div class="whgff-row-label"><label style="color: red">*</label>作者：</div>
+        <div class="whgff-row-label"><label style="color: red">*</label>责任者：</div>
         <div class="whgff-row-input"><input class="easyui-textbox" name="artauthor" value="${exhiart.artauthor}" style="width:600px; height:32px" data-options="required:true, validType:'length[1,8]'"></div>
     </div>
 

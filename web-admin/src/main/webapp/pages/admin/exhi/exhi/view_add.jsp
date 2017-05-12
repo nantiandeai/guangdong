@@ -47,8 +47,19 @@
     </div>
 
     <div class="whgff-row">
-        <div class="whgff-row-label"><label style="color: red">*</label>主办：</div>
-        <div class="whgff-row-input"><input class="easyui-textbox" name="organizer" style="width:600px; height:32px" data-options="required:true, validType:'length[1,30]'"></div>
+        <div class="whgff-row-label"><label style="color: red">*</label>主办单位：</div>
+        <div class="whgff-row-input"><input class="easyui-textbox" name="organizer" style="width:600px; height:32px" data-options="required:true, validType:'length[1,500]'">
+            <span>（如需输入多个，请用英文逗号隔开！）</span>
+        </div>
+
+    </div>
+
+    <div class="whgff-row">
+        <div class="whgff-row-label"><label style="color: red">*</label>协办单位：</div>
+        <div class="whgff-row-input"><input class="easyui-textbox" name="exhcoorganizer" style="width:600px; height:32px" data-options="required:true, validType:'length[1,500]'">
+            <span>（如需输入多个，请用英文逗号隔开！）</span>
+        </div>
+
     </div>
 
     <div class="whgff-row">

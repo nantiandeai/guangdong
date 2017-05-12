@@ -97,6 +97,11 @@ public class WhgExhArt {
     private String artcontent;
 
     /**
+     * 责任方式
+     */
+    private String artdutyway;
+
+    /**
      * 获取主键
      *
      * @return artid - 主键
@@ -418,5 +423,13 @@ public class WhgExhArt {
      */
     public void setArtcontent(String artcontent) {
         this.artcontent = artcontent;
+    }
+
+    public String getArtdutyway() {
+        return artdutyway;
+    }
+
+    public void setArtdutyway(String artdutyway) {
+        this.artdutyway = artdutyway;
     }
 }
