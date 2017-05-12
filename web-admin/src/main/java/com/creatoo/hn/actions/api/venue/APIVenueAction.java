@@ -128,9 +128,9 @@ public class APIVenueAction {
 
     /**
      * 场馆预订取消申请
-     * GET url: http://IP[:prot][/APP]/api/ven/unorder?orderid=*
-     * POST: {url: http://IP[:prot][/APP]/api/ven/unorder, data:{orderid:'*'}}
-     * @param orderid 订单记录ID
+     * GET url: http://IP[:prot][/APP]/api/ven/unorder?orderid=*&userid=uid
+     * POST: {url: http://IP[:prot][/APP]/api/ven/unorder, data:{orderid:'*',userid:'uid'}}
+     * @param orderid 订单记录ID; userid 用户记录表用户ID
      * @return {success : true | false}
      */
     @CrossOrigin
