@@ -90,6 +90,11 @@ public class WhgExh {
      * 主办
      */
     private String organizer;
+
+    /**
+     * 协办单位
+     */
+    private String exhcoorganizer;
     /**
      * 获取主键
      *
@@ -384,5 +389,13 @@ public class WhgExh {
 
     public void setOrganizer(String organizer) {
         this.organizer = organizer;
+    }
+
+    public String getExhcoorganizer() {
+        return exhcoorganizer;
+    }
+
+    public void setExhcoorganizer(String exhcoorganizer) {
+        this.exhcoorganizer = exhcoorganizer;
     }
 }
