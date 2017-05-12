@@ -62,7 +62,7 @@
                                 <img src="${imgServerAddr}/${row.artpic}">
                             </div>
                             <h2>${row.arttitle}</h2>
-                            <p>作者：${row.artauthor}</p>
+                            <p>责任者：${row.artauthor}</p>
                             <p>时间：<fmt:formatDate value="${row.artcrttime}" pattern="yyyy-MM-dd"/></p>
                         </li>
                     </c:forEach>
