@@ -1,10 +1,7 @@
 package com.creatoo.hn.services.home.agdcgfw;
 
 import com.creatoo.hn.ext.emun.EnumOrderType;
-import com.creatoo.hn.mapper.WhgVenMapper;
-import com.creatoo.hn.mapper.WhgVenRoomMapper;
-import com.creatoo.hn.mapper.WhgVenRoomOrderMapper;
-import com.creatoo.hn.mapper.WhgVenRoomTimeMapper;
+import com.creatoo.hn.mapper.*;
 import com.creatoo.hn.mapper.home.CrtCgfwMapper;
 import com.creatoo.hn.model.*;
 import com.creatoo.hn.services.admin.venue.WhgVenueService;
@@ -50,6 +47,9 @@ public class CgfwService {
 
     @Autowired
     private SMSService smsService;
+
+    @Autowired
+    private WhgUsrBacklistMapper whgUsrBacklistMapper;
 
 
     /**
@@ -347,6 +347,15 @@ public class CgfwService {
         WhgVenRoomTime time = this.findWhgVenroomtime4Id(roomtimeid);
         WhgVenRoom room = this.findWhgVenroom4Id(time.getRoomid());
         WhgVen ven = this.findWhgVen4Id(room.getVenid());
+
+        //是否为黑名单
+        WhgUsrBacklist ubl = new WhgUsrBacklist();
+        ubl.setUserid(user.getId());
+        ubl.setState(1);
+        int ublcount = this.whgUsrBacklistMapper.selectCount(ubl);
+        if (ublcount>0){
+            throw new Exception("errcode1111 ### 您已经被系统限制执行操作，如需了解详细情况，请联系管理员！");
+        }
 
         //是否有不存在的或不可用的关连
         if(room==null || room.getDelstate().compareTo(new Integer(0))!=0 || room.getState().compareTo(new Integer(6))!=0){

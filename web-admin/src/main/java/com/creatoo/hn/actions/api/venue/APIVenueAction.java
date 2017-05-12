@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -55,6 +56,7 @@ public class APIVenueAction {
      * 1002 ： 用户信息获取失败
      * 1003 ： 目标为通过审核的预订时段
      * 1004 ： 重复申请
+     * 1111 ： 黑名单限制
      * 9999 ： 系统异常
      */
     @CrossOrigin
@@ -126,17 +128,18 @@ public class APIVenueAction {
 
     /**
      * 场馆预订取消申请
-     * GET url: http://IP[:prot][/APP]/api/ven/unorder?orderid=*
-     * POST: {url: http://IP[:prot][/APP]/api/ven/unorder, data:{orderid:'*'}}
-     * @param orderid 订单记录ID
+     * GET url: http://IP[:prot][/APP]/api/ven/unorder?orderid=*&userid=uid
+     * POST: {url: http://IP[:prot][/APP]/api/ven/unorder, data:{orderid:'*',userid:'uid'}}
+     * @param orderid 订单记录ID; userid 用户记录表用户ID
      * @return {success : true | false}
      */
     @CrossOrigin
     @RequestMapping("/unorder")
-    public Object unorder(String orderid){
+    public Object unorder(String orderid, HttpServletRequest request){
         Map<String, Object> rest = new HashMap();
         try {
-            int count = this.venueOrderService.unOrder(orderid);
+            String userid = request.getParameter("userid");
+            int count = this.venueOrderService.unOrder(orderid, userid);
             rest.put("success", count>0);
         } catch (Exception e) {
             log.error(e.getMessage(), e);
