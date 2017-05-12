@@ -270,7 +270,6 @@ public class WhhdService {
 	
 	/**
 	 * 活动首页 加载 活动分类数据
-	 * @param cfgenttype
 	 * @return
 	 */
 	@SuppressWarnings("unchecked")
@@ -379,8 +378,6 @@ public class WhhdService {
 	
 	/**
 	 * dg 活动详情推荐
-	 * @param page
-	 * @param rows
 	 * @param request
 	 * @return
 	 * @throws Exception
@@ -494,7 +491,6 @@ public class WhhdService {
 	
 	/**
 	 * 获取场次信息
-	 * @param actvitmid
 	 * @return
 	 */
 	public WhgActTime selectOnePlay(String eventId){
@@ -545,7 +541,6 @@ public class WhhdService {
 	
 	/**
 	 *品牌详情页	根据品牌活动id 查详情
-	 * @param actvid
 	 * @return
 	 */
 	public WhBrand selectppDetail(String braid){
@@ -565,7 +560,6 @@ public class WhhdService {
 	
 	/**
 	 * 品牌详情页 往期回顾
-	 * @param braid
 	 * @return
 	 */
 	public List<Map> selectppwqact(WebRequest request){
@@ -578,7 +572,6 @@ public class WhhdService {
 	}
 	/**
 	 * 品牌详情页	根据活动id 查活动详情
-	 * @param braid
 	 * @return
 	 */
 	public List<Map> selectactDetail(WebRequest request){
@@ -591,7 +584,6 @@ public class WhhdService {
 	
 	/**
 	 * 活动首页大广告
-	 * @param type
 	 * @return
 	 * @throws Exception
 	 */
@@ -728,8 +720,6 @@ public class WhhdService {
 	/**
 	 * 查询座位信息
 	 * @param actId
-	 * @param row
-	 * @param col
 	 * @return
 	 */
 	public WhgActSeat getWhgActTicket4ActId(String actId,String seatNum){
@@ -836,5 +826,16 @@ public class WhhdService {
 			list = java.util.Arrays.asList(arr);
 		}
 		return list;
+	}
+
+	/**
+	 * 查询用户是否在黑名单内
+	 * @param id
+	 * @return
+     */
+	public int selBlackCount(String id) {
+		Example example = new Example(WhgUsrBacklist.class);
+		example.createCriteria().andEqualTo("userid",id).andEqualTo("state",1);
+		return this.whgUsrBacklistMapper.selectCountByExample(example);
 	}
 }
