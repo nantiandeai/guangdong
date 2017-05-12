@@ -602,23 +602,27 @@ public class WhhdAction {
 			List<WhgActOrder> actOrderList = WhhdService.findOrderList4Id(actId, user.getId());
 			//查询该用户取消的所有活动次数
 			List<WhgActOrder> orderList = WhhdService.findOrderList4Id(null, user.getId());
-			//如果用户一个活动取消两次或者一个用户统计取消活动订单超过10次则加入黑名单
-			if(actOrderList.size()>=2 || orderList.size() >= 10 ){
-				WhgUsrBacklist userBack = new WhgUsrBacklist();
-				userBack.setUserid(user.getId());
-				userBack.setState(1);
-				List<WhgUsrBacklist> userBackList = WhhdService.findWhgUsrBack4UserId(userBack);
-				if(userBackList.size() < 1){
-					userBack.setId(this.commservice.getKey("WhgUsrBacklist"));
-					userBack.setState(1);
-					userBack.setJointime(new Date());
-					userBack.setType(1);
+			//如果已经加入了黑名单责不加入
+			int count = this.WhhdService.selBlackCount(user.getId());
+			if(count == 0){
+				//如果用户一个活动取消两次或者一个用户统计取消活动订单超过10次则加入黑名单
+				if(actOrderList.size()>=2 || orderList.size() >= 10 ){
+					WhgUsrBacklist userBack = new WhgUsrBacklist();
 					userBack.setUserid(user.getId());
-					userBack.setUserphone(user.getPhone());
-					WhhdService.addUserBack(userBack);
+					userBack.setState(1);
+					List<WhgUsrBacklist> userBackList = WhhdService.findWhgUsrBack4UserId(userBack);
+					if(userBackList.size() < 1){
+						userBack.setId(this.commservice.getKey("WhgUsrBacklist"));
+						userBack.setState(1);
+						userBack.setJointime(new Date());
+						userBack.setType(1);
+						userBack.setUserid(user.getId());
+						userBack.setUserphone(user.getPhone());
+						WhhdService.addUserBack(userBack);
+					}
+					res.setSuccess(ResponseBean.FAIL);
+					res.setErrormsg("您已经被系统限制执行操作，如需了解详细情况，请联系管理员！");
 				}
-				res.setSuccess(ResponseBean.FAIL);
-				res.setErrormsg("您已经被系统限制执行操作，如需了解详细情况，请联系管理员！");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
