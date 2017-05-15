@@ -68,7 +68,7 @@
         <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-undo" onclick="WhgComm.editDialogClose();">返 回</a>
         <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-search" onclick="WhgComm.search('#whgdg', '#whgdg-tb');">查 询</a>
         <a href="javascript:void(0)" class="easyui-linkbutton checkon" iconCls="icon-add" onclick="allcheckon();">批量审核</a>
-        <a href="${basePath}/admin/train/enrol/exportExcel" class="easyui-linkbutton checkon" iconCls="icon-add">导出</a>
+        <%--<a href="${basePath}/admin/train/enrol/exportExcel" class="easyui-linkbutton checkon" iconCls="icon-add">导出</a>--%>
         <c:if test="${isbasicclass == 1}">
             <a href="javascript:void(0)" class="easyui-linkbutton " iconCls="icon-add" onclick="ramEnroll();">随机录取</a>
         </c:if>
