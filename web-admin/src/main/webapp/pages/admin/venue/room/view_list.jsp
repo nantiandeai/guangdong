@@ -86,8 +86,8 @@
         <shiro:hasPermission name="${resourceid}:edit"><a plain="true" method="whgListTool.resource">资源管理</a></shiro:hasPermission>
         <shiro:hasPermission name="${resourceid}:reserve"><a plain="true" method="whgListTool.reserve" validKey="state" validVal="6">订单管理</a></shiro:hasPermission>
 
-        <shiro:hasPermission name="${resourceid}:recommend"><a plain="true" method="whgListTool.recommend" validFun="whgListTool.recommendVfun">推荐</a></shiro:hasPermission>
-        <shiro:hasPermission name="${resourceid}:recommendoff"><a plain="true" method="whgListTool.recommendoff" validFun="whgListTool.recommendOffVfun">取消推荐</a></shiro:hasPermission>
+       <%-- <shiro:hasPermission name="${resourceid}:recommend"><a plain="true" method="whgListTool.recommend" validFun="whgListTool.recommendVfun">推荐</a></shiro:hasPermission>
+        <shiro:hasPermission name="${resourceid}:recommendoff"><a plain="true" method="whgListTool.recommendoff" validFun="whgListTool.recommendOffVfun">取消推荐</a></shiro:hasPermission>--%>
 
         <shiro:hasPermission name="${resourceid}:undel"><a plain="true" method="whgListTool.undel" validKey="delstate" validVal="1">还原</a></shiro:hasPermission>
         <c:choose>

@@ -2,6 +2,7 @@
 <%@ taglib prefix="shiro" uri="http://shiro.apache.org/tags" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt_rt" %>
+<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <% request.setAttribute("basePath", request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath());%>
 <% request.setAttribute("resourceid", request.getParameter("rsid")); %>
 <!DOCTYPE html>
@@ -118,8 +119,8 @@
             <%--<div class="checkbox checkbox-primary whg-js-data"
                  name="ekey" value="${whgVen.ekey}" js-data="WhgComm.getVenueKey">
             </div>--%>
-            <select class="easyui-combobox" name="ekey" style="width:600px; height:32px"
-                   data-options="multiple:true, valueField:'text', textField:'text', value:'${whgVen.ekey}', data:WhgComm.getVenueKey()" ></select>
+            <select class="easyui-combobox" name="ekey" style="width:600px; height:32px" validType="notQuotes"
+                   data-options="multiple:true, valueField:'text', textField:'text', value:'${fn:replace(fn:replace(whgVen.ekey,'"',"''"),"'","\\'")}', data:WhgComm.getVenueKey()" ></select>
             (多于2个关键字之间用半角逗号分隔)
         </div>
     </div>

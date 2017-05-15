@@ -103,11 +103,11 @@ function seladd(){
                     ids += _split+rows[i].clnfid;
                     _split = ",";
                 }
-                $.messager.confirm("确认信息", "确认要添加所选择的资讯公告信息吗？", function(r){
+                $.messager.confirm("确认信息", "确认要添加所选择的资讯信息吗？", function(r){
                     if (r){
                         $.messager.progress();
                         $.post('${basePath}/admin/info/seladd', {ids: ids,entityid:entityid}, function(data){
-                            $("#whgdg").datagrid('reload');
+                            $("#whgdg-add").datagrid('reload');
                             $('#whgwin-add').dialog('close')
                             if (!data.success || data.success != "1"){
                                 $.messager.alert("错误", data.errormsg||'操作失败', 'error');

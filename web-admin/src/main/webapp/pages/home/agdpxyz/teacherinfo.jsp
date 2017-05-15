@@ -133,6 +133,25 @@
 					</c:choose>
 				</div>
 			</c:if>
+
+			<!--相关课程-->
+			<c:if test="${not empty train}">
+				<div class="public-other-notice" style="margin-top: 20px">
+					<h2>相关课程</h2>
+					<c:forEach items="${train }" var="row" varStatus="s">
+						<div class="item clearfix">
+							<div class="right-img">
+								<a href="${basePath }/agdpxyz/traininfo?traid=${row.id }"><img src="${imgServerAddr}${row.trainimg}" width="130" height="90"></a>
+							</div>
+							<div class="right-detail">
+								<a href="${basePath }/agdpxyz/traininfo?traid=${row.id }"><h3>${row.title}</h3></a>
+								<p class="time"><fmt:formatDate value="${row.starttime}" pattern="yyyy-MM-dd" /></p>
+							</div>
+						</div>
+					</c:forEach>
+				</div>
+			</c:if>
+			<!--相关课程  END-->
 		</div>
 	</div>
 </div>

@@ -4,9 +4,18 @@ import com.creatoo.hn.ext.annotation.WhgOPT;
 import com.creatoo.hn.ext.bean.ResponseBean;
 import com.creatoo.hn.ext.emun.EnumOptType;
 import com.creatoo.hn.model.WhgSysUser;
+import com.creatoo.hn.model.WhgTraEnrol;
 import com.creatoo.hn.services.admin.train.WhgTrainEnrolService;
 import com.github.pagehelper.PageInfo;
 import org.apache.log4j.Logger;
+import org.jxls.area.Area;
+import org.jxls.builder.AreaBuilder;
+import org.jxls.builder.xls.XlsCommentAreaBuilder;
+import org.jxls.common.CellRef;
+import org.jxls.common.Context;
+import org.jxls.expression.JexlExpressionEvaluator;
+import org.jxls.transform.Transformer;
+import org.jxls.util.TransformerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,9 +24,13 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.util.ArrayList;
-import java.util.List;
+import java.io.File;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 /**
  * * 培训报名管理action
@@ -136,5 +149,44 @@ public class WhgTrainEnrolAction {
             log.error(res.getErrormsg()+" formstate: "+fromstate+" tostate:"+tostate+" ids: "+ids, e);
         }
         return res;
+    }
+
+    /**
+     * 下载
+     * @param response
+     * @return
+     */
+    @RequestMapping("/exportExcel")
+    public ResponseBean exportExcel(HttpServletResponse response){
+        ResponseBean res = new ResponseBean();
+        try {
+            preProcessing(response, "报名管理清单");
+            InputStream is = this.getClass().getClassLoader().getResourceAsStream("template" + File.separator + "报名管理清单.xls");
+            OutputStream os = response.getOutputStream();
+            Transformer transformer = TransformerFactory.createTransformer(is, os);
+            JexlExpressionEvaluator evaluator = (JexlExpressionEvaluator) transformer.getTransformationConfig().getExpressionEvaluator();
+            Map<String, Object> functionMap = new HashMap<>();
+            evaluator.getJexlEngine().setFunctions(functionMap);
+            List<WhgTraEnrol> detailList =whgTrainEnrolService.serch();
+            Context context = new Context();
+            context.putVar("detailList", detailList);
+            AreaBuilder areaBuilder = new XlsCommentAreaBuilder(transformer);
+            List<Area> xlsAreaList = areaBuilder.build();
+            Area xlsArea = xlsAreaList.get(0);
+            xlsArea.applyAt(new CellRef("结果!A1"), context);
+            transformer.write();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return res;
+    }
+
+    //公用导出方法
+    public void preProcessing(HttpServletResponse response, String fileName) throws Exception {
+        response.setContentType("application/x-download");
+        SimpleDateFormat t = new SimpleDateFormat("yyyyMMddHHmmss");
+        response.setContentType("application/vnd.ms-excel");
+        response.setHeader("content-disposition", "attachment;filename=" + new String(fileName.getBytes("gb2312"), "ISO8859-1") + t.format(new Date()) + ".xls");
+        response.setBufferSize(2048);
     }
 }

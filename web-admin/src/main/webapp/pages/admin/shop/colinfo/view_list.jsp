@@ -272,6 +272,7 @@
                                     $('#whgdg').datagrid('reload');
                                     $.messager.alert('提示', '操作成功!');
                                     optDialog.dialog('close');
+                                    optDialog.remove();
                                 }else{
                                     $.messager.alert('提示', '操作失败!');
                                 }
@@ -282,7 +283,7 @@
                 },{
                     text:'取消',
                     iconCls: 'icon-no',
-                    handler:function(){ optDialog.dialog('close')}
+                    handler:function(){ optDialog.dialog('close');optDialog.remove();}
                 }]
             });
         },

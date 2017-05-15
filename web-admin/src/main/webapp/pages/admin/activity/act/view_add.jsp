@@ -117,7 +117,7 @@
 	       <div class="whgff-row-label">场馆：</div>
 	       <div class="whgff-row-input">
 	       	<input class="easyui-combobox" name="venueid" id="venueid" panelHeight="auto" style="width:500px; height:32px"
-                   data-options="required:true,editable:true,limitToList:true,
+                   data-options="editable:true,limitToList:true,
                    valueField:'id', textField:'title', url:'${basePath}/admin/venue/srchList?state=6&delstate=0',
                    onChange : changeVen,
                    onSelect:function(rec){
@@ -216,7 +216,7 @@
 			<div class="whgff-row-label">关键字：</div>
 			<div class="whgff-row-input" data-check="false" target="ekey" err-msg="请至少选择一个关键字">
 		    	<%--<div class="checkbox checkbox-primary whg-js-data" name="ekey" js-data="WhgComm.getActivityKey"></div>--%>
-				<input class="easyui-combobox" name="ekey" style="width:500px; height:32px" data-options="multiple:true,editable:true,valueField:'text',textField:'text', data:WhgComm.getActivityKey(),prompt:'请填写关键字'"/>
+				<input class="easyui-combobox" name="ekey" style="width:500px; height:32px" validType="notQuotes" data-options="multiple:true,editable:true,valueField:'text',textField:'text', data:WhgComm.getActivityKey(),prompt:'请填写关键字'"/>
 				<span>（如需手动输入，请用英文逗号隔开！）</span>
 			</div>
 		</div>

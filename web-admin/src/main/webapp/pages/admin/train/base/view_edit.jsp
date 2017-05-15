@@ -2,6 +2,7 @@
 <%@ taglib prefix="shiro" uri="http://shiro.apache.org/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <% request.setAttribute("basePath", request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath());%>
 <% request.setAttribute("resourceid", request.getParameter("rsid")); %>
 <!DOCTYPE html>
@@ -210,7 +211,7 @@
         <div class="whgff-row-label"><label style="color: red"></label>关键字：</div>
         <div class="whgff-row-input">
             <%--<div class="checkbox checkbox-primary whg-js-data" value="${whgTra.ekey}" name="ekey" js-data="WhgComm.getTrainKey"></div>--%>
-            <input class="easyui-combobox" name="ekey" value="${whgTra.ekey}" style="width:500px; height:32px" data-options="multiple:true,editable:true,valueField:'text',textField:'text', data:WhgComm.getTrainKey()"/>
+            <input class="easyui-combobox" name="ekey" style="width:500px; height:32px" validType="notQuotes" data-options="multiple:true,editable:true,value:'${fn:replace(fn:replace(whgTra.ekey,'"',"''"),"'","\\'")}',valueField:'text',textField:'text', data:WhgComm.getTrainKey()"/>
             <span>（如需手动输入，请用英文逗号隔开！）</span>
         </div>
     </div>

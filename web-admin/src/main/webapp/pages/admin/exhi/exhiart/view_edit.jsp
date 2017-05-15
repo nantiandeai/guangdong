@@ -2,6 +2,7 @@
 <%@ taglib prefix="shiro" uri="http://shiro.apache.org/tags" %>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt_rt" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %>
+<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <% request.setAttribute("basePath", request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath());%>
 <% request.setAttribute("resourceid", request.getParameter("rsid")); %>
 <!DOCTYPE html>
@@ -56,9 +57,11 @@
 
     <div class="whgff-row">
         <div class="whgff-row-label"><label style="color: red">*</label>关键字：</div>
-        <div class="whgff-row-input"><input class="easyui-combobox " name="artkeys" value="${exhiart.artkeys}"
+        <div class="whgff-row-input"><input class="easyui-combobox " name="artkeys"
                                             style="height:32px;width: 600px;"
-                                            data-options="editable:true, valueField:'id',textField:'text',data:WhgComm.getZxKey(),required:true"/></div>
+                                            data-options="editable:true, valueField:'id',value:'${fn:replace(fn:replace(exhiart.artkeys,'"',"''"),"'","\\'")}',textField:'text',data:WhgComm.getZxKey(),required:true"/>
+            <span>（如需手动输入，请用半角逗号隔开！）</span>
+        </div>
     </div>
 
     <div class="whgff-row">
@@ -120,7 +123,7 @@
     });
 
     $(function () {
-        WhgUploadImg.init({basePath: '${basePath}', uploadBtnId: 'imgUploadBtn1', hiddenFieldId: 'cult_picture1', previewImgId: 'previewImg1'});
+        WhgUploadImg.init({basePath: '${basePath}', uploadBtnId: 'imgUploadBtn1', hiddenFieldId: 'cult_picture1', previewImgId: 'previewImg1',needCut:false});
 
         $('#whgff').form({
             novalidate: true,

@@ -7,7 +7,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.creatoo.hn.ext.emun.EnumTypeClazz;
+import com.creatoo.hn.model.WhgTra;
 import com.creatoo.hn.model.WhgYwiType;
+import com.creatoo.hn.services.home.agdpxyz.PxyzService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -43,6 +45,12 @@ public class PxszAction {
 	 */
 	@Autowired
 	public GwgkService gwgkService;
+
+	/**
+	 * 培训驿站service
+	 */
+	@Autowired
+	private PxyzService pxyzService;
 	
 	/**
 	 * 培训老师列表
@@ -118,6 +126,12 @@ public class PxszAction {
 			
 			//推荐课程
 			view.addObject("trainList", this.gwgkService.queryTeacherTrain(id));
+
+			//相关培训
+			List<WhgTra> list = this.pxyzService.selTrainByTeacher(id);
+			if(list.size() > 0){
+				view.addObject("train",list);
+			}
 		} catch (Exception e) {
 			log.error(e.getMessage(), e);
 		}

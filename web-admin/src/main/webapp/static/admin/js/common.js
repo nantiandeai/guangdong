@@ -793,4 +793,14 @@ $.extend($.fn.validatebox.defaults.rules, {
 			return true;
         }, message: ''
     }
+
+    ,notQuotes:{
+        validator: function (value, param) {
+            if(/['"]+/.test(value)){
+                return false;
+            }
+            return true;
+        },
+        message: '不能包含\"或\'符号'
+    }
 });

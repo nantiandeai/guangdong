@@ -2,6 +2,7 @@
 <%@ taglib prefix="shiro" uri="http://shiro.apache.org/tags" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt_rt" %>
+<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <% request.setAttribute("basePath", request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath());%>
 <!DOCTYPE html>
 <html>
@@ -58,7 +59,7 @@
         <div class="whgff-row-input">
             <%--<div class="checkbox checkbox-primary whg-js-data" name="clnfkey" value="${info.clnfkey}"--%>
                  <%--js-data="WhgComm.getZxKey" textVal="1">--%>
-            <input id="clnfkey" class="easyui-combobox" name="clnfkey" value="${info.clnfkey}" multiple="true" style="width: 600px;height:32px;" data-options="required:true,prompt:'请输入关键字', panelHeight:'auto',editable:true, valueField:'text',textField:'text', data: WhgComm.getZxKey(), multiple:true"/>
+            <input id="clnfkey" class="easyui-combobox" name="clnfkey" multiple="true" style="width: 600px;height:32px;" validType="notQuotes" data-options="required:true,prompt:'请输入关键字', panelHeight:'auto',editable:true, value:'${fn:replace(fn:replace(info.clnfkey,'"',"''"),"'","\\'")}', valueField:'text',textField:'text', data: WhgComm.getZxKey(), multiple:true"/>
             </div>
         </div>
     </div>

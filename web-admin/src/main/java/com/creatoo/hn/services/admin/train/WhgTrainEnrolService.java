@@ -75,6 +75,10 @@ public class WhgTrainEnrolService {
         return pageInfo;
     }
 
+    public List<WhgTraEnrol> serch(){
+       return this.whgTraEnrolMapper.selectAll();
+    }
+
     /**
      * 修改状态
      * @param ids

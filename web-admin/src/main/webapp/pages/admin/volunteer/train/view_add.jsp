@@ -36,7 +36,7 @@
     <div class="whgff-row">
 		<div class="whgff-row-label">关键字：</div>
 		<div class="whgff-row-input">
-			<input id="zypxkey" class="easyui-combobox" name="zypxkey" multiple="true" style="width:500px;height:32px;" data-options="panelHeight:'auto',editable:true,valueField:'text',textField:'text',data: WhgComm.getTrainKey(), multiple:true"/>
+			<input id="zypxkey" class="easyui-combobox" name="zypxkey" multiple="true" style="width:500px;height:32px;" validType="notQuotes" data-options="panelHeight:'auto',editable:true,valueField:'text',textField:'text',data: WhgComm.getTrainKey(), multiple:true"/>
 		</div>
 	</div>
 	

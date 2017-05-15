@@ -404,4 +404,15 @@ public class PxyzService {
 
 		return name;
 	}
+
+	/**
+	 * 根据老师ID查询关联培训信息
+	 * @param id
+	 * @return
+     */
+	public List<WhgTra> selTrainByTeacher(String id) throws Exception {
+		Example example = new Example(WhgTra.class);
+		example.createCriteria().andLike("teacherid",id).andEqualTo("state",6);
+		return whTrainMapper.selectByExample(example);
+	}
 }
