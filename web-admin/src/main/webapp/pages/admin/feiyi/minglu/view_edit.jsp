@@ -67,6 +67,7 @@
     <div class="whgff-row">
         <div class="whgff-row-label"><label style="color: red"></label>关键字：</div>
         <div class="whgff-row-input"><input class="easyui-combobox" name="mlprokey" value="${ml.mlprokey}" multiple="true" style="width:600px;height:32px;" data-options="required:true,missingMessage:'请用英文逗号分隔', panelHeight:'auto',editable:true,valueField:'text',textField:'text',data: WhgComm.getZxKey(), multiple:true"/>
+            <span>（如需输入多个，请用英文逗号隔开！）</span>
         </div>
     </div>
     <div class="whgff-row">
