@@ -46,7 +46,7 @@
     <div class="whgff-row">
         <div class="whgff-row-label"><label style="color: red">*</label>关键字：</div>
         <div class="whgff-row-input"><input class="easyui-combobox " name="artkeys"
-                                            style="height:32px;width: 600px;"
+                                            style="height:32px;width: 600px;" validType="notQuotes"
                                             data-options="editable:true, valueField:'id',textField:'text',data:WhgComm.getZxKey(),required:true"/>
             <span>（如需手动输入，请用半角逗号隔开！）</span>
         </div>

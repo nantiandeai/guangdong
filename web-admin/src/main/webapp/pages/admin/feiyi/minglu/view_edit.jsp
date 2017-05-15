@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="shiro" uri="http://shiro.apache.org/tags" %>
+<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <% request.setAttribute("basePath", request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath());%>
 <% request.setAttribute("resourceid", request.getParameter("rsid")); %>
 <!DOCTYPE html>
@@ -66,7 +67,7 @@
     </div>
     <div class="whgff-row">
         <div class="whgff-row-label"><label style="color: red"></label>关键字：</div>
-        <div class="whgff-row-input"><input class="easyui-combobox" name="mlprokey" value="${ml.mlprokey}" multiple="true" style="width:600px;height:32px;" data-options="required:true,missingMessage:'请用英文逗号分隔', panelHeight:'auto',editable:true,valueField:'text',textField:'text',data: WhgComm.getZxKey(), multiple:true"/>
+        <div class="whgff-row-input"><input class="easyui-combobox" name="mlprokey" multiple="true" style="width:600px;height:32px;" data-options="required:true,missingMessage:'请用英文逗号分隔', panelHeight:'auto',editable:true,value:'${fn:replace(fn:replace(ml.mlprokey,'"',"''"),"'","\\'")}',valueField:'text',textField:'text',data: WhgComm.getZxKey(), multiple:true"/>
             <span>（如需输入多个，请用英文逗号隔开！）</span>
         </div>
     </div>

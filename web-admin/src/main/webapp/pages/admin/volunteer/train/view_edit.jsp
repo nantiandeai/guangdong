@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="shiro" uri="http://shiro.apache.org/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <% request.setAttribute("basePath", request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath());%>
 <% request.setAttribute("resourceid", request.getParameter("rsid")); %>
 <!DOCTYPE html>
@@ -39,7 +40,7 @@
     <div class="whgff-row">
 		<div class="whgff-row-label">关键字：</div>
 		<div class="whgff-row-input">
-			<select id="zypxkey" class="easyui-combobox" name="zypxkey"  multiple="true" style="width:500px;height:32px;" data-options="panelHeight:'auto',editable:true,valueField:'text',value:'${train.zypxkey}',textField:'text',data: WhgComm.getTrainKey(), multiple:true"></select>
+			<select id="zypxkey" class="easyui-combobox" name="zypxkey" style="width:500px;height:32px;" validType="notQuotes" data-options="panelHeight:'auto', editable:true,valueField:'text',value:'${fn:replace(fn:replace(train.zypxkey,'"',"''"),"'","\\'")}',textField:'text',data: WhgComm.getTrainKey(), multiple:true"></select>
 		</div>
 	</div>
 	
