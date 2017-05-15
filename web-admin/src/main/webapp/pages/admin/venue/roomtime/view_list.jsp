@@ -71,23 +71,50 @@
 
     var whgListTool = new Gridopts();
 
+    function myParseDay(daystr, timestr){
+        var _day = new Date();
+
+        var dstrs = /(\d{4})-(\d{1,2})-(\d{1,2})/.exec(daystr);
+        if (dstrs){
+            _day.setFullYear( dstrs[1] );
+            _day.setMonth(parseInt(dstrs[2])-1);
+            _day.setDate( dstrs[3] );
+        }
+        if (timestr){
+            var timestrs = /(\d{2}):(\d{2})/.exec(timestr);
+            if (timestrs){
+                _day.setHours(timestrs[1]);
+                _day.setMinutes(timestrs[2]);
+                _day.setSeconds(0);
+            }
+        }else{
+            _day.setHours(0);
+            _day.setMinutes(0);
+            _day.setSeconds(0);
+        }
+        return _day;
+    }
+
     $.extend($.fn.validatebox.defaults.rules, {
         afterDate: {
             validator: function(value, param){
                 var preValue = $(param[0]).datebox('getValue');
                 if (!preValue) return true;
 
-                var currDate = new Date( Date.parse(value) );
-                var preDate = new Date( Date.parse(preValue) );
-                var lastDate = new Date( Date.parse(preValue) );
+                var currDate = myParseDay(value);//new Date( Date.parse(value) );
+                var preDate = myParseDay(preValue);//new Date( Date.parse(preValue) );
+                var lastDate = myParseDay(preValue);//new Date( Date.parse(preValue) );
                 lastDate.setDate(lastDate.getDate()+30);
-                return currDate > preDate && currDate < lastDate;
+                return currDate >= preDate && currDate <= lastDate;
             },
             message: '请选择前一个日期之后30天内的日期'
         },
         startDate: {
             validator: function(value, param){
-                return Date.parse(value) >= Date.parse(param[0]);
+                //return Date.parse(value) >= Date.parse(param[0]);
+                var vd = myParseDay(value);
+                var pd = myParseDay(param[0]);
+                return vd >= pd;
             },
             message: '日期不能小于{0}'
         },
@@ -212,6 +239,7 @@
                         success: function(data){
                             mmx.__ajaxSuccess(data);
                             addDialog.dialog('close');
+                            addDialog.remove()
                         },
                         error: function(xhr, ts, e){ mmx.__ajaxError(xhr, ts, e) }
                     });
@@ -219,17 +247,18 @@
             },{
                 text:'关闭',
                 iconCls: 'icon-no',
-                handler:function(){ addDialog.dialog('close')}
+                handler:function(){ addDialog.dialog('close'); addDialog.remove()}
             }]
         });
 
+        addDialog.find('.dialog-content-add').empty();
         addDialog.find('.dialog-content-add').append('\
         从：<input class= "easyui-datebox valid-statrDay" data-options="width:120,required:true"/>\
         至 <input class= "easyui-datebox" validType="afterDate[\'.valid-statrDay\']" data-options="width:120,required:true"/>\
         ');
 
         $.messager.progress();
-        $.getJSON('${basePath}/admin/venue/roomtime/ajaxAddStartDay', {roomid: roomid}, function(data){
+        $.getJSON('${basePath}/admin/venue/roomtime/ajaxAddStartDay?t='+(new Date()).getTime(), {roomid: roomid}, function(data){
             $.messager.progress('close');
             var sday = new Date(data);
             var eday = new Date(data);
@@ -284,6 +313,7 @@
                         success: function(data){
                             mmx.__ajaxSuccess(data);
                             optDialog.dialog('close');
+                            optDialog.remove();
                         },
                         error: function(xhr, ts, e){ mmx.__ajaxError(xhr, ts, e) }
                     });
@@ -291,7 +321,7 @@
             },{
                 text:'关闭',
                 iconCls: 'icon-no',
-                handler:function(){ optDialog.dialog('close')}
+                handler:function(){ optDialog.dialog('close');optDialog.remove();}
             }]
         });
 

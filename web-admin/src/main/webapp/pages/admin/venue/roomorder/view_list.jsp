@@ -132,6 +132,7 @@
                         success: function(data){
                             mmx.__ajaxSuccess(data);
                             addDialog.dialog('close');
+                            addDialog.remove();
                         },
                         error: function(xhr, ts, e){ mmx.__ajaxError(xhr, ts, e) }
                     });
@@ -139,7 +140,7 @@
             },{
                 text:'关闭',
                 iconCls: 'icon-no',
-                handler:function(){ addDialog.dialog('close')}
+                handler:function(){ addDialog.dialog('close');addDialog.remove();}
             }]
         });
 

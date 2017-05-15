@@ -186,8 +186,13 @@ public class WhgVenroomtimeService {
                             vrt.setTimeday(c.getTime());
                             vrt.setTimestart( tms );
                             vrt.setTimeend( tme );
-                            vrt.setState(0);
                             vrt.setRoomid(roomid);
+                            int count = this.whgVenRoomTimeMapper.selectCount(vrt);
+                            if (count > 0){
+                                continue;
+                            }
+
+                            vrt.setState(0);
                             vrt.setId(commService.getKey("whgvenroomtime"));
                             this.whgVenRoomTimeMapper.insert(vrt);
                         } catch (Exception e) {

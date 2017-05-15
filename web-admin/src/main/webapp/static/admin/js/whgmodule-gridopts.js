@@ -169,11 +169,12 @@ Gridopts.prototype = {
                     var optTime = optDialog.find(".easyui-datetimebox:eq(0)").datetimebox('getValue');
                     mmx.__updateStateSend(row.id, "2,4", 6, optTime);
                     optDialog.dialog('close');
+                    optDialog.remove();
                 }
             },{
                 text:'取消',
                 iconCls: 'icon-no',
-                handler:function(){ optDialog.dialog('close')}
+                handler:function(){ optDialog.dialog('close');optDialog.remove();}
             }]
         });
 
