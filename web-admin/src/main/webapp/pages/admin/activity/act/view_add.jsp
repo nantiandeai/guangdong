@@ -117,7 +117,7 @@
 	       <div class="whgff-row-label">场馆：</div>
 	       <div class="whgff-row-input">
 	       	<input class="easyui-combobox" name="venueid" id="venueid" panelHeight="auto" style="width:500px; height:32px"
-                   data-options="required:true,editable:true,limitToList:true,
+                   data-options="editable:true,limitToList:true,
                    valueField:'id', textField:'title', url:'${basePath}/admin/venue/srchList?state=6&delstate=0',
                    onChange : changeVen,
                    onSelect:function(rec){
