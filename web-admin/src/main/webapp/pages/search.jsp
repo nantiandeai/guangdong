@@ -106,6 +106,10 @@
 				url = '/agdzyfw/newsinfo?id='+id;
 			}else if(type && type == '13'){//在线点播
 				url = '/agdpxyz/vodinfo?drscid='+id;
+			}else if(type && type == '14'){//志愿培训
+				url = '/agdzyfw/peixuninfo?zypxid='+id;
+			}else if(type && type == '15'){//名录项目
+				url = '/agdfyzg/mingluinfo?mlproid='+id;
 			}
 			return url;
 		}
