@@ -8,6 +8,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.creatoo.hn.mapper.*;
+import com.creatoo.hn.model.*;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,42 +17,9 @@ import org.springframework.web.context.request.WebRequest;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
-import com.creatoo.hn.mapper.ActivityMapper;
-import com.creatoo.hn.mapper.WhActivitybmMapper;
-import com.creatoo.hn.mapper.WhActivityitmMapper;
-import com.creatoo.hn.mapper.WhBrandActMapper;
-import com.creatoo.hn.mapper.WhBrandMapper;
-import com.creatoo.hn.mapper.WhCfgAdvMapper;
-import com.creatoo.hn.mapper.WhCfgListMapper;
-import com.creatoo.hn.mapper.WhTagMapper;
-import com.creatoo.hn.mapper.WhZxColinfoMapper;
-import com.creatoo.hn.mapper.WhgActActivityMapper;
-import com.creatoo.hn.mapper.WhgActOrderMapper;
-import com.creatoo.hn.mapper.WhgActSeatMapper;
-import com.creatoo.hn.mapper.WhgActTicketMapper;
-import com.creatoo.hn.mapper.WhgActTimeMapper;
-import com.creatoo.hn.mapper.WhgComResourceMapper;
-import com.creatoo.hn.mapper.WhgUsrBacklistMapper;
 import com.creatoo.hn.mapper.home.CrtWeiXinMapper;
 import com.creatoo.hn.mapper.home.CrtWhhdActTimeMapper;
 import com.creatoo.hn.mapper.home.CrtWhhdMapper;
-import com.creatoo.hn.model.WhActivity;
-import com.creatoo.hn.model.WhActivitybm;
-import com.creatoo.hn.model.WhActivityitm;
-import com.creatoo.hn.model.WhBrand;
-import com.creatoo.hn.model.WhBrandAct;
-import com.creatoo.hn.model.WhCfgAdv;
-import com.creatoo.hn.model.WhCfgList;
-import com.creatoo.hn.model.WhTag;
-import com.creatoo.hn.model.WhZxColinfo;
-import com.creatoo.hn.model.WhgActActivity;
-import com.creatoo.hn.model.WhgActOrder;
-import com.creatoo.hn.model.WhgActSeat;
-import com.creatoo.hn.model.WhgActTicket;
-import com.creatoo.hn.model.WhgActTime;
-import com.creatoo.hn.model.WhgComResource;
-import com.creatoo.hn.model.WhgUsrBacklist;
-import com.creatoo.hn.model.WhgUsrWeixin;
 import com.creatoo.hn.services.comm.CommService;
 import com.creatoo.hn.utils.ReqParamsUtil;
 import com.creatoo.hn.utils.WhConstance;
@@ -183,6 +152,9 @@ public class WhhdService {
 	 */
 	@Autowired
 	private WhgUsrBacklistMapper whgUsrBacklistMapper;
+
+	@Autowired
+	private WhUserMapper whUserMapper;
 	
 	
 	private final  String SUCCESS="0";//成功
@@ -837,5 +809,14 @@ public class WhhdService {
 		Example example = new Example(WhgUsrBacklist.class);
 		example.createCriteria().andEqualTo("userid",id).andEqualTo("state",1);
 		return this.whgUsrBacklistMapper.selectCountByExample(example);
+	}
+
+	/**
+	 * 根据主键查询用户
+	 * @param uid
+	 * @return
+     */
+	public WhUser selUser(String uid) {
+		return whUserMapper.selectByPrimaryKey(uid);
 	}
 }

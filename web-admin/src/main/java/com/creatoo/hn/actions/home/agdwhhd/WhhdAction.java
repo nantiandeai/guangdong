@@ -599,7 +599,9 @@ public class WhhdAction {
 				res.setErrormsg("该活动已下架！");
 			}
 			//实名认证
-			if(whgAct.getIsrealname()== 1 && user.getIsrealname() != 1 ){
+			String uid = user.getId();
+			WhUser userlist = this.WhhdService.selUser(uid);
+			if(whgAct.getIsrealname()== 1 && userlist.getIsrealname() != 1 ){
 				res.setSuccess(ResponseBean.FAIL);
 				res.setErrormsg("该活动需实名认证后才可报名，请先进行实名认证！");
 			}
