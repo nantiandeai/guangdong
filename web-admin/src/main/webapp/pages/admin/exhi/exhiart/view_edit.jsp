@@ -58,8 +58,8 @@
     <div class="whgff-row">
         <div class="whgff-row-label"><label style="color: red">*</label>关键字：</div>
         <div class="whgff-row-input"><input class="easyui-combobox " name="artkeys"
-                                            style="height:32px;width: 600px;"
-                                            data-options="editable:true, valueField:'id',value:'${fn:replace(fn:replace(exhiart.artkeys,'"',"''"),"'","\\'")}',textField:'text',data:WhgComm.getZxKey(),required:true"/>
+                                            style="height:32px;width: 600px;" validType="notQuotes"
+                                            data-options="multiple:true,editable:true, valueField:'id',value:'${fn:replace(fn:replace(exhiart.artkeys,'"',"''"),"'","\\'")}',textField:'text',data:WhgComm.getZxKey(),required:true"/>
             <span>（如需手动输入，请用半角逗号隔开！）</span>
         </div>
     </div>
@@ -81,6 +81,14 @@
                 <i><a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-save" id="imgUploadBtn1">选择图片</a></i>
                 <i>图片格式为jpg、png、gif，建议图片尺寸 750*500，大小为2MB以内</i>
             </div>
+        </div>
+    </div>
+
+    <div class="whgff-row">
+        <div class="whgff-row-label"><i>*</i>责任方式：</div>
+        <div class="whgff-row-input">
+            <input class="easyui-textbox" name="artdutyway" value="${exhiart.artdutyway}" multiline="true" style="width:600px;height: 100px;"
+            data-options="required:true,validType:['length[0,500]']">
         </div>
     </div>
 
