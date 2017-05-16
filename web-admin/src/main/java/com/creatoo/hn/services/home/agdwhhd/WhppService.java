@@ -5,11 +5,9 @@ import com.creatoo.hn.ext.emun.EnumDelState;
 import com.creatoo.hn.ext.emun.EnumState;
 import com.creatoo.hn.mapper.WhgActActivityMapper;
 import com.creatoo.hn.mapper.WhgComResourceMapper;
+import com.creatoo.hn.mapper.WhgTraMapper;
 import com.creatoo.hn.mapper.WhgYwiWhppMapper;
-import com.creatoo.hn.model.WhgActActivity;
-import com.creatoo.hn.model.WhgComResource;
-import com.creatoo.hn.model.WhgSysCult;
-import com.creatoo.hn.model.WhgYwiWhpp;
+import com.creatoo.hn.model.*;
 import com.creatoo.hn.utils.ReqParamsUtil;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
@@ -51,6 +49,12 @@ public class WhppService {
      * 图片视频音频DAO
      */
     private WhgComResourceMapper whgComResourceMapper;
+
+    /**
+     * 培训mapper
+     */
+    @Autowired
+    private WhgTraMapper whgTraMapper;
 
     /**
      * 查找图片视频音频资源
@@ -160,5 +164,20 @@ public class WhppService {
         c.andLike("ebrand", brandid);
         example.setOrderByClause("statemdfdate desc");
         return this.whgActActivityMapper.selectByExample(example);
+    }
+
+    /**
+     * 根据品牌活动ID查找关联培训
+     * @param braid
+     * @return
+     */
+    public List<WhgTra> findTra(String braid) throws Exception {
+        Example example = new Example(WhgTra.class);
+        Example.Criteria c = example.createCriteria();
+        c.andEqualTo("state", EnumBizState.STATE_PUB.getValue());
+        c.andEqualTo("delstate", EnumDelState.STATE_DEL_NO.getValue());
+        c.andLike("ebrand", "%"+braid+"%");
+        example.setOrderByClause("statemdfdate desc");
+        return this.whgTraMapper.selectByExample(example);
     }
 }

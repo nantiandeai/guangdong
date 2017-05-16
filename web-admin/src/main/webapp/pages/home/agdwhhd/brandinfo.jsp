@@ -72,6 +72,22 @@
 			</ul>
 		</div>
 
+		<!--品牌培训-->
+		<div class="groups">
+			<ul class="clearfix">
+				<c:forEach items="${traList}" var="row" varStatus="s">
+					<li>
+						<a href="${basePath}/agdpxyz/traininfo?traid=${row.id}">
+							<img width="255" height="148" src="${imgServerAddr}${row.trainimg}">
+							<h2>${row.title}</h2>
+							<p>时间：<span><fmt:formatDate value="${row.starttime}" pattern="yyyy-MM-dd"/>至<fmt:formatDate value="${row.endtime}" pattern="yyyy-MM-dd"/></span></p>
+							<p>地址：<span>${row.address}</span></p>
+						</a>
+					</li>
+				</c:forEach>
+			</ul>
+		</div> <!--品牌培训 END-->
+
 
 
 		<!-- 图片视频资源 -->
