@@ -316,7 +316,13 @@ public class SzzgService {
 		Criteria c = example.createCriteria();
 		c.andEqualTo("artexhid",exhid);
 		c.andEqualTo("artstate",1);//1启用状态
-		return this.whgExhArtMapper.selectByExample(example);
+		List<WhgExhArt> list = this.whgExhArtMapper.selectByExample(example);
+		for (WhgExhArt whgExh : list) {
+			String exhDesc = whgExh.getArtcontent();
+			exhDesc = exhDesc.replaceAll("<[^>]*>", "");
+			whgExh.setArtcontent(exhDesc);
+		}
+		return list;
 
 	}
 	
