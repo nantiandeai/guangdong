@@ -64,10 +64,17 @@
         from wh_zx_colinfo t12 where t12.clnfstata = 3 and t12.clnftype = '2016112200000009'
 			UNION 
 			select t13.drscid as id, t13.drsctitle as title, '在线点播' as srchtype, '13' as type, '' as ekey, t13.drscintro as doc
-			from wh_drsc t13 where t13.drscstate = 3  
+			from wh_drsc t13 where t13.drscstate = 3
+        UNION
+        select t14.zypxid as id, t14.zypxshorttitle as title, '志愿培训' as srchtype, '14' as type, t14.zypxkey as ekey, t14.zypxtitle as doc
+        from wh_zypx t14 where t14.zypxstate = 3
+        UNION
+        select t15.mlproid as id, t15.mlproshortitel as title, '名录项目' as srchtype, '15' as type, t15.mlprokey as ekey, t15.mlprotailtitle as doc
+        from wh_decproject t15 where t15.mlprostate = 6
 			) t  
 			<if test="srchkey != null">
 		      where t.title like #{srchkey} OR t.ekey like #{srchkey} OR t.doc like #{srchkey}
+                OR t.ekey in (select id FROM whg_ywi_key where name like #{srchkey})
 		    </if>
 	</select>
 </mapper>
