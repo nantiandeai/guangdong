@@ -247,13 +247,13 @@ public class WhgActActivity {
     /**
      * 是否需要实名认证 1：是 0：否
      */
-    private int isrealname;
+    private Integer isrealname;
 
-    public int getIsrealname() {
+    public Integer getIsrealname() {
 		return isrealname;
 	}
 
-	public void setIsrealname(int isrealname) {
+	public void setIsrealname(Integer isrealname) {
 		this.isrealname = isrealname;
 	}
 
@@ -1043,6 +1043,10 @@ public class WhgActActivity {
         whgActActivity.setAreaid(request.getParameter("areaid"));
         whgActActivity.setVenueid(request.getParameter("venueid"));
         whgActActivity.setRoomid(request.getParameter("roomid"));
+        if(!"".equals(request.getParameter("isrealname")) && request.getParameter("isrealname") != null){
+            whgActActivity.setIsrealname(Integer.parseInt(request.getParameter("isrealname")));
+        }
+
 //        whgActActivity.setEbrand(request.getParameter("ebrand"));
         whgActActivity.setHost(request.getParameter("host"));
         whgActActivity.setOrganizer(request.getParameter("organizer"));
