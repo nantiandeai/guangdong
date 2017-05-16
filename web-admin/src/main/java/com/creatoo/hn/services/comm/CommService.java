@@ -23,6 +23,7 @@ import tk.mybatis.mapper.entity.Example.Criteria;
  * @author wangxl
  * @version 20160928
  */
+@SuppressWarnings("ALL")
 @Service
 public class CommService {
 	/**
@@ -310,6 +311,18 @@ public class CommService {
 		//分页信息
 		int page = Integer.parseInt((String)param.get("page"));
 		int rows = Integer.parseInt((String)param.get("rows"));
+
+        //查找所有相关的 关键字 id
+        Example example = new Example(WhgYwiKey.class);
+        example.createCriteria().andLike("name", param.get("srchkey").toString());
+        List<WhgYwiKey> keys = this.whgYwiKeyMapper.selectByExample(example);
+        if (keys!=null && keys.size()>0){
+            List<String> ekeys = new ArrayList();
+            for(WhgYwiKey key : keys){
+                ekeys.add(key.getId());
+            }
+            param.put("ekeys", ekeys);
+        }
 
 		//带条件的分页查询
 		PageHelper.startPage(page, rows);

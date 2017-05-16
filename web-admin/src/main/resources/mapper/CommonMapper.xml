@@ -74,7 +74,11 @@
 			) t  
 			<if test="srchkey != null">
 		      where t.title like #{srchkey} OR t.ekey like #{srchkey} OR t.doc like #{srchkey}
-                OR t.ekey in (select id FROM whg_ywi_key where name like #{srchkey})
 		    </if>
+        <if test="ekeys != null">
+            <foreach collection="ekeys" item="item" index="index" open=" " separator=" " close=" ">
+              OR t.ekey like "%"#{item}"%"
+            </foreach>
+        </if>
 	</select>
 </mapper>
