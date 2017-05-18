@@ -42,7 +42,7 @@
                 <th data-options="width:100, sortable: true, field:'hasfees', formatter:FMThasfees ">收费</th>
                 <th data-options="width:100, sortable: true, field:'state', formatter:WhgComm.FMTBizState ">状态</th>
                 <th data-options="width:120, sortable: true, field:'statemdfdate', formatter:WhgComm.FMTDateTime ">状态变更时间</th>
-                <th data-options="width:'${type eq 'publish'?'540':'300'}', field:'id', fixed:true, formatter:WhgComm.FMTOpt, optDivId:'whgdg-opt'">操作</th>
+                <th data-options="width:'${type eq 'publish'?'540':'350'}', field:'id', fixed:true, formatter:WhgComm.FMTOpt, optDivId:'whgdg-opt'">操作</th>
             </tr>
         </thead>
     </table>
