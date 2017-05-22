@@ -16,6 +16,8 @@
     <script type="text/javascript" src="${basePath}/static/plupload/lib/plupload-2.1.2/js/plupload.full.min.js"></script>
     <script type="text/javascript" src="${basePath}/static/plupload/upload-img.js"></script>
     <!-- 图片上传相关-END -->
+
+    <script type="text/javascript" src="${basePath}/static/plupload/upload-file.js"></script>
 </head>
 <body>
 
@@ -29,6 +31,7 @@
             <option value="1">图片</option>
             <option value="2">视频</option>
             <option value="3">音频</option>
+            <option value="4">文档</option>
         </select>
     </div>
     <div class="whgff-row">
@@ -41,6 +44,18 @@
         <div class="whgff-row-input">
             <input class="easyui-combobox" name="entdir" id="video_entdir" style="height:35px;width:190px" data-options="prompt:'请选择目录',editable:true,limitToList:true,valueField:'text',textField:'text',url:'${basePath}/admin/video/srchPagging?srchDir=1'"/>
             <input class="easyui-combobox" name="enturl" id="video_enturl" style="height:35px;width:400px" data-options="prompt:'请选择音视频',editable:true,limitToList:true,valueField:'addr',textField:'key'"/>
+        </div>
+    </div>
+
+    <div class="whgff-row doc_wrap">
+        <div class="whgff-row-label">上传附件：</div>
+        <div class="whgff-row-input">
+            <input type="hidden" id="whg_file_upload" name="doc_enturl">
+            <div class="whgff-row-input-fileview" id="whg_file_pload_view"></div>
+            <div class="whgff-row-input-filefile">
+                <i><a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-save" id="fileUploadBtn2">选择附件</a></i>
+                <i>附件格式为doc,docx,xls,xlsx,zip,pdf,建议文件大小为10MB以内</i>
+            </div>
         </div>
     </div>
 
@@ -99,17 +114,27 @@
                 if(newv == 1){//图片
                     $(".picture_warp").show();
                     $(".video_wrap").hide();
+                    $(".doc_wrap").hide();
                 }else if(newv == 2){//视频
                     $(".video_wrap").show();
                     $(".picture_warp").hide();
+                    $(".doc_wrap").hide();
                 }else if (newv == 3){//音频
                     $(".video_wrap").show();
                     $("#spfm").hide();
                     $(".picture_warp").hide();
+                    $(".doc_wrap").hide();
+                }else if (newv == 4){//文档
+                    $(".picture_warp").hide();
+                    $(".video_wrap").hide();
+                    $(".doc_wrap").show();
+
                 }
             }
         });
 
+        <!--文件上传控件 -->
+        WhgUploadFile.init({basePath: '${basePath}', uploadBtnId: 'fileUploadBtn2', hiddenFieldId: 'whg_file_upload',previewFileId:'whg_file_pload_view'});
         //初始图片上传
         WhgUploadImg.init({basePath: '${basePath}', uploadBtnId: 'imgUploadBtn1', hiddenFieldId: 'cult_picture1', previewImgId: 'previewImg1',needCut:true});
         WhgUploadImg.init({basePath: '${basePath}', uploadBtnId: 'imgUploadBtn2', hiddenFieldId: 'cult_picture2', previewImgId: 'previewImg2',needCut:false});
@@ -123,12 +148,16 @@
                 if($("[name=enttype]").val() == ""){
                     _valid = false;
                     $.messager.alert('提示', '请选择资源类型');
-                }else if($("[name=enttype]").val() != 1 && $("[name = enturl]").val() == ""){
+                }else if($("[name=enttype]").val() != 1 && $("[name=enttype]").val() != 4 && $("[name = enturl]").val() == ""){
                     _valid = false;
                     $.messager.alert('提示', '请选择资源地址');
                 }else if($("[name=enttype]").val() == 1 && $("[name = penturl]").val() == ""){
                     _valid = false;
                     $.messager.alert('提示', '请选择资源图片');
+                }
+                else if($("[name=enttype]").val() == 4 && $("#whg_file_upload").val() == ""){
+                    _valid = false;
+                    $.messager.alert('提示', '请选择文档');
                 }
                 if(_valid){
                     $.messager.progress();

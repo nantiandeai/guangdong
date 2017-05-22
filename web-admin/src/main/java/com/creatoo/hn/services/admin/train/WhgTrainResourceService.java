@@ -137,6 +137,9 @@ public class WhgTrainResourceService {
         if (penturl != null && !"".equals(penturl)) {
             whgComResource.setEnturl(penturl);
         }
+        if(!"".equals(request.getParameter("doc_enturl")) && request.getParameter("doc_enturl") != null){
+            whgComResource.setEnturl(request.getParameter("doc_enturl"));
+        }
 
         if (wcr.getEnttype() != null && !"".equals(wcr.getEnttype())) {
             whgComResource.setEnttype(wcr.getEnttype());
@@ -172,6 +175,10 @@ public class WhgTrainResourceService {
         String penturl = (String) paramMap.get("penturl");
         if (penturl != null && !"".equals(penturl)) {
             wcr.setEnturl(penturl);
+        }
+        String docenturl = (String) paramMap.get("doc_enturl");
+        if (docenturl != null && !"".equals(docenturl)) {
+            wcr.setEnturl(docenturl);
         }
         wcr.setRedate(new Date());
         int result = this.whgComResourceMapper.updateByPrimaryKeySelective(wcr);

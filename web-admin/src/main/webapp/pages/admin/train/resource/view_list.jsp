@@ -27,7 +27,7 @@
         <%--<th data-options="field:'entid', width:60">资源ID</th>--%>
         <th data-options="field:'entname', width:60">资源名</th>
         <%--<th data-options="field:'enttype', width:60">资源类型</th>--%>
-        <th data-options="field:'enttype',width:60,formatter:function(val) {return ['图片','视频','音频'][parseInt(val)-1]}">资源类型</th>
+        <th data-options="field:'enttype',width:60,formatter:function(val) {return ['图片','视频','音频','文档'][parseInt(val)-1]}">资源类型</th>
         <%--<th data-options="field:'reftype', width:60">实体类型</th>--%>
         <th data-options="field:'reftype',width:60,formatter:function(val) {return ['培训','活动','场馆','场馆活动室','名录','传承人','志愿活动','优秀组织','项目示范','先进个人','资讯公告','馆办团队','文化品牌','数字展览作品'][parseInt(val)-1]}">实体类型</th>
         <%--<th data-options="field:'refid', width:60">实体ID</th>--%>
@@ -82,6 +82,9 @@
         if("1" == enttype){
             return WhgComm.FMTImg(val);
         }else if("2" == enttype){
+            return val;//return WhgComm.FMTImg(data.deourl);
+        }
+        else if("4" == enttype){
             return val;//return WhgComm.FMTImg(data.deourl);
         }
         return "";

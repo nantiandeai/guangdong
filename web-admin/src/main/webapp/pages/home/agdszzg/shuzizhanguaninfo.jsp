@@ -64,6 +64,7 @@
                             <h2>${row.arttitle}</h2>
                             <p>责任者：${row.artauthor}</p>
                             <p>时间：<fmt:formatDate value="${row.artcrttime}" pattern="yyyy-MM-dd"/></p>
+                            <p class="info1">描述：${row.artcontent}</p>
                         </li>
                     </c:forEach>
                 </c:if>

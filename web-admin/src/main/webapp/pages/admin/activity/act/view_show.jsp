@@ -268,6 +268,16 @@
 
     <div class="whgff-row">
         <div class="whgff-row-label">
+            <label style="color: red">*</label>是否需要实名：
+        </div>
+        <div class="whgff-row-input">
+            <div class="radio radio-primary whg-js-data" name="isrealname" id="isrealname" value="${act.isrealname }" js-data='[{"id":"0","text":"否"},{"id":"1","text":"是"}]'>
+            </div>
+        </div>
+    </div>
+
+    <div class="whgff-row">
+        <div class="whgff-row-label">
             活动类型：
         </div>
         <div class="whgff-row-input">

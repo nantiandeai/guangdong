@@ -99,6 +99,10 @@ public class WhppAction {
             List<WhgActActivity> actList = this.whppService.findActActivity(braid);
             view.addObject("actList", actList);
 
+            //关联培训
+            List<WhgTra> traList = this.whppService.findTra(braid);
+            view.addObject("traList", traList);
+
             //文化品牌活动图片
 //            Map<String,List<WhgComResource>> map = this.whppService.findCommResource(braid);
 //            view.addObject("imgList", map.get("img"));

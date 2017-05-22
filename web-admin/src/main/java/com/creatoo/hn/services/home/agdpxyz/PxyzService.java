@@ -412,7 +412,7 @@ public class PxyzService {
      */
 	public List<WhgTra> selTrainByTeacher(String id) throws Exception {
 		Example example = new Example(WhgTra.class);
-		example.createCriteria().andLike("teacherid",id).andEqualTo("state",6);
+		example.createCriteria().andLike("teacherid","%"+id+"%").andEqualTo("state",6);
 		return whTrainMapper.selectByExample(example);
 	}
 }

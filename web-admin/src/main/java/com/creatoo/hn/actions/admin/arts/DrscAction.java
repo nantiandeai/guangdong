@@ -163,7 +163,7 @@ public class DrscAction {
 	 * @return
 	 */
 	@RequestMapping("/del")
-	public Object edit(String id, HttpServletRequest req){
+	public Object del(String id, HttpServletRequest req){
 		Map<String, String> rtnMap = new HashMap<String, String>();
 		String success = "0";
 		String errmsg = "";

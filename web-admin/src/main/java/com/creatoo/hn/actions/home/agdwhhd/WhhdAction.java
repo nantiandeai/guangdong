@@ -591,13 +591,22 @@ public class WhhdAction {
 	@RequestMapping(value= "/checkActPublish")
     public Object checkActPublish(HttpServletRequest request,String actId,HttpSession session){
     	ResponseBean res = new ResponseBean();
+		WhUser user = (WhUser) session.getAttribute(WhConstance.SESS_USER_KEY);
     	try {
 			WhgActActivity whgAct = WhhdService.getActDetail(actId);
 			if(whgAct.getState() != 6){
 				res.setSuccess(ResponseBean.FAIL);
 				res.setErrormsg("该活动已下架！");
 			}
-			WhUser user = (WhUser) session.getAttribute(WhConstance.SESS_USER_KEY);
+			//实名认证
+			String uid = user.getId();
+			WhUser userlist = this.WhhdService.selUser(uid);
+			if(whgAct.getIsrealname()== 1 && userlist.getIsrealname() != 1 ){
+				res.setSuccess(ResponseBean.FAIL);
+				res.setErrormsg("该活动需实名认证后才可报名，请先进行实名认证！");
+			}
+
+
 			//查询当前活动下，该用户取消次数
 			List<WhgActOrder> actOrderList = WhhdService.findOrderList4Id(actId, user.getId());
 			//查询该用户取消的所有活动次数

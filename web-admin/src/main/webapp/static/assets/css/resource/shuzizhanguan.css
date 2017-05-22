@@ -223,7 +223,7 @@
 .sshd-main .nav-ul .active{ color:#c8161d; border-bottom:4px #c8161d solid; line-height:54px;}
 
 .sshd-main .detail{ line-height:24px; color:#333;}
-.sshd-main .detail ul li{width:276px; height:340px; position:relative; background-color:#fff; margin-right:32px; margin-bottom:32px; float:left;}
+.sshd-main .detail ul li{width:276px; position:relative; background-color:#fff; margin-right:32px; margin-bottom:32px; float:left;}
 .sshd-main .detail ul .last{margin-right:0px;}
 .sshd-main .detail ul li a{
     position:absolute;
@@ -243,3 +243,8 @@
     overflow: hidden; width:236px; margin:15px 20px 10px 20px; border-bottom:1px #ddd dashed; padding-bottom:10px;}
 .sshd-main .detail ul li p{width:236px; margin:auto 20px; font-size:14px; line-height:24px; height:24px;
     overflow: hidden; color:#999}
+.sshd-main .detail ul li p.info1 {
+    height: 48px;
+    overflow: hidden;
+    margin-bottom: 15px;
+}

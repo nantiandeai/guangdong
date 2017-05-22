@@ -15,6 +15,8 @@
     <script type="text/javascript" src="${basePath}/static/plupload/lib/plupload-2.1.2/js/plupload.full.min.js"></script>
     <script type="text/javascript" src="${basePath}/static/plupload/upload-img.js"></script>
     <!-- 图片上传相关-END -->
+
+    <script type="text/javascript" src="${basePath}/static/plupload/upload-file.js"></script>
 <body>
 
 <form id="whgff" class="whgff" method="post">
@@ -27,6 +29,7 @@
             <option value="1">图片</option>
             <option value="2">视频</option>
             <option value="3">音频</option>
+            <option value="4">文档</option>
         </select>
     </div>
     <div class="whgff-row">
@@ -47,6 +50,17 @@
         <div class="whgff-row-input"><input class="easyui-timespinner" name="enttimes" value="${wcr.enttimes}" style="width:300px; height:32px" data-options="showSeconds:true"></div>
     </div>
 
+    <div class="whgff-row doc_wrap">
+        <div class="whgff-row-label">上传附件：</div>
+        <div class="whgff-row-input">
+            <input type="hidden" id="whg_file_upload" name="doc_enturl">
+            <div class="whgff-row-input-fileview" id="whg_file_pload_view"></div>
+            <div class="whgff-row-input-filefile">
+                <i><a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-save" id="fileUploadBtn2">选择附件</a></i>
+                <i>附件格式为doc,docx,xls,xlsx,zip,pdf,建议文件大小为10MB以内</i>
+            </div>
+        </div>
+    </div>
 
     <div class="whgff-row picture_warp" style="display:none">
         <div class="whgff-row-label"><i>*</i>资源图片：</div>
@@ -87,6 +101,7 @@
         var isInitImg = wcr_enttype == '1';//图片
         var isInitVod = wcr_enttype == '2';//视频
         var isInitAud = wcr_enttype == '3';//音频
+        var isInitdoc = wcr_enttype == '4';//文档
         var initAddr = '${wcr.enturl}';//视频音频地址
 
         //选择资源目录后级连资源地址
@@ -123,6 +138,10 @@
         if(isInitImg){
             $('#cult_picture2').val('${wcr.enturl}');
         }
+        if(isInitdoc){
+            $('#whg_file_upload').val('${wcr.enturl}');
+        }
+
 
         //编辑视频资源
         if(isInitVod || isInitAud){
@@ -144,7 +163,8 @@
             $('#video_entdir').combobox('setValue', dirVal);
         }
 
-
+        <!--文件上传控件 -->
+        WhgUploadFile.init({basePath: '${basePath}', uploadBtnId: 'fileUploadBtn2', hiddenFieldId: 'whg_file_upload',previewFileId:'whg_file_pload_view'});
         //初始图片上传
         WhgUploadImg.init({basePath: '${basePath}', uploadBtnId: 'imgUploadBtn1', hiddenFieldId: 'cult_picture1', previewImgId: 'previewImg1',needCut:true});
         WhgUploadImg.init({basePath: '${basePath}', uploadBtnId: 'imgUploadBtn2', hiddenFieldId: 'cult_picture2', previewImgId: 'previewImg2',needCut:false});
@@ -195,15 +215,23 @@
             if (newv == 1) {
                 $(".picture_warp").show();
                 $(".video_wrap").hide();
+                $(".doc_wrap").hide();
             } else if (newv == 2) {
                 $(".video_wrap").show();
                 $(".picture_warp").hide();
+                $(".doc_wrap").hide();
                 <%--$("[name=deourl]").val("${wcr.deourl}");--%>
             } else if (newv == 3) {
                 $(".video_wrap").show();
                 $("#spfm").hide();
                 $(".picture_warp").hide();
+                $(".doc_wrap").hide();
 //                $("[name=deourl]").val("");
+            }else if (newv == 4){//文档
+                $(".picture_warp").hide();
+                $(".video_wrap").hide();
+                $(".doc_wrap").show();
+
             }
         }
         selectLoad("${wcr.enttype}");
