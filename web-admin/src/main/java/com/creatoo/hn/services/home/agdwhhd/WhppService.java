@@ -7,7 +7,10 @@ import com.creatoo.hn.mapper.WhgActActivityMapper;
 import com.creatoo.hn.mapper.WhgComResourceMapper;
 import com.creatoo.hn.mapper.WhgTraMapper;
 import com.creatoo.hn.mapper.WhgYwiWhppMapper;
-import com.creatoo.hn.model.*;
+import com.creatoo.hn.model.WhgActActivity;
+import com.creatoo.hn.model.WhgComResource;
+import com.creatoo.hn.model.WhgTra;
+import com.creatoo.hn.model.WhgYwiWhpp;
 import com.creatoo.hn.utils.ReqParamsUtil;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
@@ -127,7 +130,8 @@ public class WhppService {
             }
             example.setOrderByClause(sb.toString());
         } else {
-            example.setOrderByClause("statemdfdate desc");
+//            example.setOrderByClause("statemdfdate desc");
+            example.setOrderByClause("crtdate desc");
         }
 
         //分页查询
