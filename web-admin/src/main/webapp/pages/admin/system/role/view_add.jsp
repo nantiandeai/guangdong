@@ -67,9 +67,9 @@
     /** 单个资源全选 */
     function chiocePMS(rcid){
         if( $('#pmsAll-'+rcid).prop("checked") ){
-            $('#pmsAll-'+rcid).parents('div').find("input[type='checkbox'][id^='"+rcid+"']").prop("checked", true);
+            $('#pmsAll-'+rcid).parents('div').find("input[type='checkbox'][id^='"+rcid+"-']").prop("checked", true);
         }else{
-            $('#pmsAll-'+rcid).parents('div').find("input[type='checkbox'][id^='"+rcid+"']").prop("checked", false);
+            $('#pmsAll-'+rcid).parents('div').find("input[type='checkbox'][id^='"+rcid+"-']").prop("checked", false);
         }
     }
 
