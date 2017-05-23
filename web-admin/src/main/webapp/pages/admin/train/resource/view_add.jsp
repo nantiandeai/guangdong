@@ -47,7 +47,7 @@
         </div>
     </div>
 
-    <div class="whgff-row doc_wrap">
+    <div class="whgff-row doc_wrap" style="display: none">
         <div class="whgff-row-label">上传附件：</div>
         <div class="whgff-row-input">
             <input type="hidden" id="whg_file_upload" name="doc_enturl">
