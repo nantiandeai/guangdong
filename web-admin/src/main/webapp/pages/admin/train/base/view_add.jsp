@@ -212,7 +212,7 @@
         <div class="whgff-row-label"><label style="color: red"></label>关键字：</div>
         <div class="whgff-row-input">
             <%--<div class="checkbox checkbox-primary whg-js-data" value="${whgTra.ekey}" name="ekey" js-data="WhgComm.getTrainKey"></div>--%>
-            <input class="easyui-combobox" name="ekey" value="${whgTra.ekey}" style="width:500px; height:32px" validType="notQuotes" data-options="multiple:true,editable:true,valueField:'text',textField:'text', data:WhgComm.getTrainKey(),prompt:'请填写关键字'"/>
+            <input class="easyui-combobox" id="ekey" style="width:500px; height:32px" validType="notQuotes" data-options="multiple:true,editable:true,valueField:'text',textField:'text', data:WhgComm.getTrainKey(),prompt:'请填写关键字'"/>
             <span>（如需手动输入，请用英文逗号隔开！）</span>
         </div>
     </div>
@@ -715,7 +715,7 @@
                         frm.submit();
                     });
                 }
-
+                param.ekey = $("#ekey").combobox("getText");
                 return isValid;
 
             },

@@ -45,7 +45,7 @@
 
     <div class="whgff-row">
         <div class="whgff-row-label"><label style="color: red">*</label>关键字：</div>
-        <div class="whgff-row-input"><input class="easyui-combobox " name="artkeys"
+        <div class="whgff-row-input"><input class="easyui-combobox " id="artkeys"
                                             style="height:32px;width: 600px;" validType="notQuotes"
                                             data-options="editable:true,multiple:true, valueField:'text',textField:'text',data:WhgComm.getZxKey(),required:true"/>
             <span>（如需手动输入，请用半角逗号隔开！）</span>
@@ -141,6 +141,7 @@
                     $.messager.progress('close');
                     $('#whgwin-add-btn-save').off('click').one('click', function () { $('#whgff').submit(); });
                 }
+                param.artkeys = $("#artkeys").combobox('getText');
                 return _valid;
             },
             success : function(data) {

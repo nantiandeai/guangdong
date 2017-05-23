@@ -59,7 +59,7 @@
         <div class="whgff-row-input">
             <%--<div class="checkbox checkbox-primary whg-js-data" name="clnfkey" value="${info.clnfkey}"--%>
                  <%--js-data="WhgComm.getZxKey" textVal="1">--%>
-            <input id="clnfkey" class="easyui-combobox" name="clnfkey" multiple="true" style="width: 600px;height:32px;" validType="notQuotes" data-options="required:true,prompt:'请输入关键字', panelHeight:'auto',editable:true, value:'${fn:replace(fn:replace(info.clnfkey,'"',"''"),"'","\\'")}', valueField:'text',textField:'text', data: WhgComm.getZxKey(), multiple:true"/>
+            <input id="clnfkey" class="easyui-combobox" id="clnfkey" multiple="true" style="width: 600px;height:32px;" validType="notQuotes" data-options="required:true,prompt:'请输入关键字', panelHeight:'auto',editable:true, valueField:'text',textField:'text', data: WhgComm.getZxKey(), multiple:true"/>
             </div>
         </div>
     </div>
@@ -125,6 +125,7 @@
     };
 
     $(function(){
+        $("#clnfkey").combobox("setValue","${info.clnfkey}");
         var id = '${id}';
         var targetShow = '${targetShow}';
         var frm = $("#whgff");
@@ -177,6 +178,7 @@
                     $.messager.progress('close');
                     oneSubmit();
                 }
+                param.clnfkey = $("#clnfkey").combobox("getText");
                 return isValid;
             },
             success: function (data) {

@@ -36,7 +36,7 @@
     <div class="whgff-row">
 		<div class="whgff-row-label">关键字：</div>
 		<div class="whgff-row-input">
-			<input id="zypxkey" class="easyui-combobox" name="zypxkey" multiple="true" style="width:500px;height:32px;" validType="notQuotes" data-options="panelHeight:'auto',editable:true,valueField:'text',textField:'text',data: WhgComm.getTrainKey(), multiple:true"/>
+			<input id="zypxkey" class="easyui-combobox" id="zypxkey" multiple="true" style="width:500px;height:32px;" validType="notQuotes" data-options="panelHeight:'auto',editable:true,valueField:'text',textField:'text',data: WhgComm.getTrainKey(), multiple:true"/>
 		</div>
 	</div>
 	
@@ -124,6 +124,7 @@
                     //失败时再注册提交事件
                     $('#whgwin-add-btn-save').off('click').one('click', function () { $('#whgff').submit(); });
                 }
+                param.zypxkey = $("#zypxkey").combobox("getText");
                 return _valid;
             },
             success : function(data) {

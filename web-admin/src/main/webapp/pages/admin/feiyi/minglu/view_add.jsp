@@ -65,7 +65,7 @@
     </div>
     <div class="whgff-row">
         <div class="whgff-row-label"><label style="color: red"></label>关键字：</div>
-        <div class="whgff-row-input"><input class="easyui-combobox" name="mlprokey" multiple="true" style="width:600px;height:32px;" validType="notQuotes" data-options="required:false,missingMessage:'请用英文逗号分隔', panelHeight:'auto',editable:true,valueField:'text',textField:'text',data: WhgComm.getZxKey(), multiple:true"/>
+        <div class="whgff-row-input"><input class="easyui-combobox" id="mlprokey" multiple="true" style="width:600px;height:32px;" validType="notQuotes" data-options="required:false,missingMessage:'请用英文逗号分隔', panelHeight:'auto',editable:true,valueField:'text',textField:'text',data: WhgComm.getZxKey(), multiple:true"/>
             <span>（如需输入多个，请用英文逗号隔开！）</span>
         </div>
     </div>
@@ -149,6 +149,7 @@
                     $.messager.progress('close');
                     $('#whgwin-add-btn-save').off('click').one('click', function () { $('#whgff').submit(); });
                 }
+                param.mlprokey = $("#mlprokey").combobox("getText");
                 return _valid;
             },
             success : function(data) {
