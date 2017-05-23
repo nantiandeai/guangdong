@@ -40,7 +40,7 @@
     <div class="whgff-row">
 		<div class="whgff-row-label">关键字：</div>
 		<div class="whgff-row-input">
-			<select id="zypxkey" class="easyui-combobox" name="zypxkey" style="width:500px;height:32px;" validType="notQuotes" data-options="panelHeight:'auto', editable:true,valueField:'text',value:'${fn:replace(fn:replace(train.zypxkey,'"',"''"),"'","\\'")}',textField:'text',data: WhgComm.getTrainKey(), multiple:true"></select>
+			<select id="zypxkey" class="easyui-combobox" id="zypxkey" style="width:500px;height:32px;" validType="notQuotes" data-options="panelHeight:'auto', editable:true,valueField:'text',textField:'text',data: WhgComm.getTrainKey(), multiple:true"></select>
 		</div>
 	</div>
 	
@@ -108,6 +108,7 @@
 <!-- script -->
 <script type="text/javascript">
     $(function () {
+		$("#zypxkey").combobox("setValue","${train.zypxkey}");
         //图片初始化
         WhgUploadImg.init({basePath: '${basePath}', uploadBtnId: 'imgUploadBtn1', hiddenFieldId: 'zypxpic_pic', previewImgId: 'previewImg1'});
 
@@ -130,6 +131,7 @@
                     //失败时再注册提交事件
                     $('#whgwin-add-btn-save').off('click').one('click', function () { $('#whgff').submit(); });
                 }
+				param.zypxkey = $("#zypxkey").combobox("getText");
                 return _valid;
             },
             success : function(data) {

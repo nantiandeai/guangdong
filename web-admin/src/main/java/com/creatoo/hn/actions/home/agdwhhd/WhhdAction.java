@@ -363,7 +363,7 @@ public class WhhdAction {
 			view.addObject("loadlist", whup);
 			
 			//活动推荐
-			List<WhActivity> acttj = this.WhhdService.acttjian(request);
+			List<WhActivity> acttj = this.WhhdService.acttjian(actvid,request);
 			view.addObject("acttj", acttj);
 
             //相关资讯

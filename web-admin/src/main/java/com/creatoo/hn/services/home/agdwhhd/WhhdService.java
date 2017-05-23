@@ -354,9 +354,12 @@ public class WhhdService {
 	 * @return
 	 * @throws Exception
 	 */
-	public List<WhActivity> acttjian(WebRequest request)throws Exception{
+	public List<WhActivity> acttjian(String actvid,WebRequest request)throws Exception{
+		WhgActActivity act = activityMapper.selectByPrimaryKey(actvid);
+
 		Map<String, Object> params = ReqParamsUtil.parseRequest(request);
 		params.put("isrecommend", 1);
+		params.put("ekey", act.getEkey());
 		PageHelper.startPage(1, 3);
 		@SuppressWarnings("rawtypes")
 		List<Map> actlist = this.aMapper.selectlistAct(params);

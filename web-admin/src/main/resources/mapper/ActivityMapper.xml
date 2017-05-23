@@ -449,6 +449,9 @@
 		<if test="etype !=null"> <!-- 分类 -->
 			and t.etyp like #{etype} 
 		</if>
+		<if test="ekey !=null"> <!-- 关键字 -->
+			and t.ekey like #{ekey}
+		</if>
 		<if test="areaid !=null"> <!-- 区域 -->
 			and t.areaid = #{areaid}
 		</if>

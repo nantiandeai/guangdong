@@ -211,7 +211,7 @@
         <div class="whgff-row-label"><label style="color: red"></label>关键字：</div>
         <div class="whgff-row-input">
             <%--<div class="checkbox checkbox-primary whg-js-data" value="${whgTra.ekey}" name="ekey" js-data="WhgComm.getTrainKey"></div>--%>
-            <input class="easyui-combobox" name="ekey" style="width:500px; height:32px" validType="notQuotes" data-options="multiple:true,editable:true,value:'${fn:replace(fn:replace(whgTra.ekey,'"',"''"),"'","\\'")}',valueField:'text',textField:'text', data:WhgComm.getTrainKey()"/>
+            <input class="easyui-combobox" id="ekey" style="width:500px; height:32px" validType="notQuotes" data-options="multiple:true,editable:true,valueField:'text',textField:'text', data:WhgComm.getTrainKey()"/>
             <span>（如需手动输入，请用英文逗号隔开！）</span>
         </div>
     </div>
@@ -556,6 +556,7 @@
 
 
     $(function () {
+        $("#ekey").combobox("setValue","${whgTra.ekey}");
 
         //根据地址取坐标
         WhgMap.init({basePath:'${basePath}', addrFieldId:'address', xpointFieldId:'longitude', ypointFieldId:'latitude', getPointBtnId:'getXYPointBtn'});
@@ -724,7 +725,7 @@
                         frm.submit();
                     });
                 }
-
+                param.ekey = $("#ekey").combobox("getText");
                 return isValid;
 
             },
