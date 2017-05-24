@@ -132,7 +132,7 @@
                 <menu id="M_TRA_MGE_ADD" type="1" state="1" text="添加培训"  href="/admin/train/view/add" opts="view"/>
                 <menu id="M_TRA_MGE_EDIT" type="1" state="1" text="培训编辑列表"  href="/admin/train/view/edit" opts="view, edit, checkgo, del, kecheng, info"/>
                 <menu id="M_TRA_MGE_CHK" type="1" state="1" text="培训审核列表"  href="/admin/train/view/check" opts="view, edit, checkon, del, back, kecheng, info, info"/>
-                <menu id="M_TRA_MGE_PUB" type="1" state="1" text="培训发布列表"  href="/admin/train/view/publish" opts="view, edit, del, publish, publishoff, back, baoming,kecheng, info, upindex,upindexoff"/>
+                <menu id="M_TRA_MGE_PUB" type="1" state="1" text="培训发布列表"  href="/admin/train/view/publish" opts="view, edit, del, publish, publishoff, back, baoming,kecheng, info, upindex,upindexoff,recommend,recommendoff"/>
                 <menu id="M_TRA_MGE_REC" type="1" state="1" text="回收站"  href="/admin/train/view/del" opts="view, undel, del"/>
             </menu>
             <menu id="M_TRA_TEA" type="0" state="1" text="培训师资管理">

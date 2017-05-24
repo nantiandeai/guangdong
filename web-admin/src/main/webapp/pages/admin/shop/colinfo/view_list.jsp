@@ -71,8 +71,8 @@
         <shiro:hasPermission name="${resourceid}:checkoff"><a href="javascript:void(0)" validKey="clnfstata" validVal="2" method="whgListTool.uncheckinfo">取消审核</a></shiro:hasPermission>
         <shiro:hasPermission name="${resourceid}:publish"><a href="javascript:void(0)" validKey="clnfstata" validVal="2" method="whgListTool.pubinfo">发布</a></shiro:hasPermission>
         <shiro:hasPermission name="${resourceid}:publishoff"><a href="javascript:void(0)" validKey="clnfstata" validVal="3" method="whgListTool.unpubinfo">取消发布</a></shiro:hasPermission>
-        <shiro:hasPermission name="${resourceid}:upindex"><a href="javascript:void(0)" class="easyui-linkbutton" validFun="_upindexon" plain="true" method="whgListTool.upindex">上首页</a></shiro:hasPermission>
-        <shiro:hasPermission name="${resourceid}:upindexoff"><a href="javascript:void(0)" class="easyui-linkbutton" validFun="_upindexoff" plain="true" method="whgListTool.noupindex">取消上首页</a></shiro:hasPermission>
+        <shiro:hasPermission name="${resourceid}:upindex"><a href="javascript:void(0)" class="easyui-linkbutton upindex" validFun="_upindexon" plain="true" method="whgListTool.upindex">上首页</a></shiro:hasPermission>
+        <shiro:hasPermission name="${resourceid}:upindexoff"><a href="javascript:void(0)" class="easyui-linkbutton upindex" validFun="_upindexoff" plain="true" method="whgListTool.noupindex">取消上首页</a></shiro:hasPermission>
         <shiro:hasPermission name="${resourceid}:order"><a href="javascript:void(0)" validKey="clnfstata" validVal="3" method="whgListTool.goindex">排序</a></shiro:hasPermission>
         <shiro:hasPermission name="${resourceid}:edit"><a href="javascript:void(0)" validFun="whgListTool.top" method="whgListTool.toTop">置顶</a></shiro:hasPermission>
         <shiro:hasPermission name="${resourceid}:edit"><a href="javascript:void(0)" validKey="totop" validVal="1" method="whgListTool.cancelToTop">取消置顶</a></shiro:hasPermission>
@@ -129,6 +129,13 @@
                     if (!param.clnftype) return false;
                 }
             });
+
+            var arridx = $.inArray(nowColid, ['2016111900000014','2016111900000015','2016111900000016','2016111900000017']);
+            if (arridx != -1){
+                $(".upindex").show();
+            }else{
+                $(".upindex").hide();
+            }
         }
 
         function treeOnbeforeSelect(node){
