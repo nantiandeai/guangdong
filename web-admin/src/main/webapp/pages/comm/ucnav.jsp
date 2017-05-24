@@ -7,6 +7,7 @@
 	request.setAttribute("reqPath", reqPath); 
 %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <script src="${basePath }/pages/comm/agdtop.js"></script>
 <%-- <link href="${basePath }/static/assets/css/userCenter/userCenter.css" rel="stylesheet"> --%>
 <%-- <script src="${basePath }/static/assets/js/userCenter/public.js"></script> --%>
@@ -83,3 +84,6 @@ $(function(){
 >
 	<a href="${basePath }/center/safely" refuid="refuid" reftype="6"><em class="ico i-5"></em>安全设置</a>
 </li>
+<!--
+<li <c:if test="${fn:startsWith(reqPath, 'center/help')}"> class="active"</c:if>><a href="${basePath }/center/help"><em class="ico i-9"></em>帮助中心</a></li>
+-->
