@@ -1,11 +1,9 @@
 package com.creatoo.hn.services.admin.shop;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
+import com.creatoo.hn.ext.bean.ResponseBean;
+import com.creatoo.hn.model.WhgSysCult;
 import com.creatoo.hn.model.WhgSysUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -34,6 +32,7 @@ public class MusInfoService {
     public void t_add(WhZxColinfo info, WhgSysUser user) throws Exception{
         info.setClnfid(commService.getKey("whzxcolinfo"));
 		info.setTotop(0);//默认不置顶
+		info.setUpindex(0); //默认不上首页
 		info.setClnfopttime(new Date());
         this.whZxColinfoMapper.insert(info);
     }
@@ -166,5 +165,29 @@ public class MusInfoService {
 //			}
 //		}
 		this.whZxColinfoMapper.updateByPrimaryKeySelective(whz);
+	}
+
+	/**
+	 * 上首页
+	 * @param ids
+	 * @param formupindex
+	 * @param toupindex
+	 * @return
+	 */
+	public ResponseBean t_upindex(String ids, String formupindex, int toupindex) {
+		ResponseBean res = new ResponseBean();
+		if(ids == null){
+			res.setSuccess(ResponseBean.FAIL);
+			res.setErrormsg("资讯主键丢失");
+			return res;
+		}
+		Example example = new Example(WhZxColinfo.class);
+		Example.Criteria c = example.createCriteria();
+		c.andIn("clnfid", Arrays.asList( ids.split("\\s*,\\s*") ));
+		c.andIn("upindex", Arrays.asList( formupindex.split("\\s*,\\s*") ));
+		WhZxColinfo zx = new WhZxColinfo();
+		zx.setUpindex(toupindex);
+		this.whZxColinfoMapper.updateByExampleSelective(zx,example);
+		return res;
 	}
 }

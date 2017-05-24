@@ -1,5 +1,6 @@
 package com.creatoo.hn.services.admin.activity;
 
+import com.creatoo.hn.ext.bean.ResponseBean;
 import com.creatoo.hn.ext.emun.EnumDelState;
 import com.creatoo.hn.ext.emun.EnumState;
 import com.creatoo.hn.mapper.WhgActActivityMapper;
@@ -197,6 +198,7 @@ public class WhgActivityActService {
         act.setState(EnumState.STATE_YES.getValue());
         act.setCrtdate(now);
         act.setCrtuser(user.getId());
+        act.setUpindex(0);  //上首页
         //act.setCultid(user.getCultid());    //文化馆
         act.setDeptid(user.getDeptid());    //部门
         act.setDelstate(EnumDelState.STATE_DEL_NO.getValue());
@@ -385,5 +387,29 @@ public class WhgActivityActService {
         }
 
         return rest;
+    }
+
+    /**
+     * 上首页
+     * @param ids
+     * @param formupindex
+     * @param toupindex
+     * @return
+     */
+    public ResponseBean t_upindex(String ids, String formupindex, int toupindex) {
+        ResponseBean res = new ResponseBean();
+        if(ids == null){
+            res.setSuccess(ResponseBean.FAIL);
+            res.setErrormsg("活动主键丢失");
+            return res;
+        }
+        Example example = new Example(WhgActActivity.class);
+        Example.Criteria c = example.createCriteria();
+        c.andIn("id", Arrays.asList( ids.split("\\s*,\\s*") ));
+        c.andIn("upindex", Arrays.asList( formupindex.split("\\s*,\\s*") ));
+        WhgActActivity act = new WhgActActivity();
+        act.setUpindex(toupindex);
+        this.whgActActivityMapper.updateByExampleSelective(act,example);
+        return res;
     }
 }
