@@ -4,6 +4,8 @@ import java.util.*;
 
 import javax.servlet.http.HttpServletRequest;
 
+import com.creatoo.hn.ext.bean.ResponseBean;
+import com.creatoo.hn.model.WhgTra;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -332,5 +334,29 @@ public class WhgSystemCultService {
             record.setStatemdfuser(user.getId());
             this.whgSysCultMapper.updateByExampleSelective(record, example);
         }
+    }
+
+    /**
+     * 上首页
+     * @param ids
+     * @param formupindex
+     * @param toupindex
+     * @return
+     */
+    public ResponseBean t_upindex(String ids, String formupindex, int toupindex) {
+        ResponseBean res = new ResponseBean();
+        if(ids == null){
+            res.setSuccess(ResponseBean.FAIL);
+            res.setErrormsg("培训主键丢失");
+            return res;
+        }
+        Example example = new Example(WhgSysCult.class);
+        Example.Criteria c = example.createCriteria();
+        c.andIn("id", Arrays.asList( ids.split("\\s*,\\s*") ));
+        c.andIn("upindex", Arrays.asList( formupindex.split("\\s*,\\s*") ));
+        WhgSysCult cult = new WhgSysCult();
+        cult.setUpindex(toupindex);
+        this.whgSysCultMapper.updateByExampleSelective(cult,example);
+        return res;
     }
 }

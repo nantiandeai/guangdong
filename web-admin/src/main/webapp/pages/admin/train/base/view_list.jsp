@@ -80,8 +80,10 @@
     <shiro:hasPermission name="${resourceid}:edit"><a href="javascript:void(0)" class="easyui-linkbutton" plain="true" method="resource">资源管理</a></shiro:hasPermission>
     <shiro:hasPermission name="${resourceid}:baoming"><a href="javascript:void(0)" class="easyui-linkbutton" validKey="state" validVal="6" plain="true" method="enroll">报名管理</a></shiro:hasPermission>
     <shiro:hasPermission name="${resourceid}:info"><a href="javascript:void(0)" class="easyui-linkbutton" plain="true" method="info">资讯公告管理</a></shiro:hasPermission>
-    <shiro:hasPermission name="${resourceid}:publishoff"><a href="javascript:void(0)" class="easyui-linkbutton" validFun="_recommend" plain="true" method="recommend">推荐</a></shiro:hasPermission>
-    <shiro:hasPermission name="${resourceid}:publishoff"><a href="javascript:void(0)" class="easyui-linkbutton" validFun="_recommendoff" plain="true" method="recommendoff">取消推荐</a></shiro:hasPermission>
+    <shiro:hasPermission name="${resourceid}:upindex"><a href="javascript:void(0)" class="easyui-linkbutton" validFun="_upindexon" plain="true" method="upindex">上首页</a></shiro:hasPermission>
+    <shiro:hasPermission name="${resourceid}:upindexoff"><a href="javascript:void(0)" class="easyui-linkbutton" validFun="_upindexoff" plain="true" method="noupindex">取消上首页</a></shiro:hasPermission>
+    <shiro:hasPermission name="${resourceid}:recommend"><a href="javascript:void(0)" class="easyui-linkbutton" validFun="_recommend" plain="true" method="recommend">推荐</a></shiro:hasPermission>
+    <shiro:hasPermission name="${resourceid}:recommendoff"><a href="javascript:void(0)" class="easyui-linkbutton" validFun="_recommendoff" plain="true" method="recommendoff">取消推荐</a></shiro:hasPermission>
 
     <shiro:hasPermission name="${resourceid}:undel"><a href="javascript:void(0)" class="easyui-linkbutton" validFun="_undel" plain="true" method="undel">还原</a></shiro:hasPermission>
     <shiro:hasPermission name="${resourceid}:del"> <a href="javascript:void(0)" class="easyui-linkbutton" validFun="_del" plain="true" method="del">${type == 'del'?'删除':'回收'}</a></shiro:hasPermission>
@@ -155,6 +157,14 @@
         var row = $("#whgdg").datagrid("getRows")[idx];
         return row.state == 6 && row.recommend == 1;
     }
+    function _upindexon(idx){
+        var row = $("#whgdg").datagrid("getRows")[idx];
+        return row.state == 6 && row.upindex == 0;
+    }
+    function _upindexoff(idx){
+        var row = $("#whgdg").datagrid("getRows")[idx];
+        return row.state == 6 && row.upindex == 1;
+    }
     function _recommend(idx){
         var row = $("#whgdg").datagrid("getRows")[idx];
         return row.state == 6 && row.recommend == 0;
@@ -223,8 +233,46 @@
             }
             $.messager.progress('close');
         }, 'json');
-    }    
+    }
 
+    /**
+     * 上首页
+     * @param idx
+     */
+    function upindex(idx){
+        var row = $("#whgdg").datagrid("getRows")[idx];
+        $.messager.confirm("确认信息", "确定要将选中的项推上首页吗？", function(r){
+            if (r){
+                __upindex(row.id, 0, 1);
+            }
+        })
+    }
+    /**
+     * 取消上首页
+     * @param idx
+     */
+    function noupindex(idx){
+        var row = $("#whgdg").datagrid("getRows")[idx];
+        $.messager.confirm("确认信息", "确定要将选中的项取消推上首页吗？", function(r){
+            if (r){
+                __upindex(row.id, 1, 0);
+            }
+        })
+    }
+    /**
+     * 上首页提交
+     */
+    function __upindex(ids, formupindex, toupindex) {
+        $.messager.progress();
+        var params = {ids: ids, formupindex: formupindex, toupindex: toupindex};
+        $.post('${basePath}/admin/train/upindex', params, function(data){
+            $("#whgdg").datagrid('reload');
+            if (!data.success || data.success != "1"){
+                $.messager.alert("错误", data.errormsg||'操作失败', 'error');
+            }
+            $.messager.progress('close');
+        }, 'json');
+    }
     /**
      * 课程
      * @param idx

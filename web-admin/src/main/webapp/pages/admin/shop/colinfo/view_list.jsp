@@ -71,6 +71,8 @@
         <shiro:hasPermission name="${resourceid}:checkoff"><a href="javascript:void(0)" validKey="clnfstata" validVal="2" method="whgListTool.uncheckinfo">取消审核</a></shiro:hasPermission>
         <shiro:hasPermission name="${resourceid}:publish"><a href="javascript:void(0)" validKey="clnfstata" validVal="2" method="whgListTool.pubinfo">发布</a></shiro:hasPermission>
         <shiro:hasPermission name="${resourceid}:publishoff"><a href="javascript:void(0)" validKey="clnfstata" validVal="3" method="whgListTool.unpubinfo">取消发布</a></shiro:hasPermission>
+        <shiro:hasPermission name="${resourceid}:upindex"><a href="javascript:void(0)" class="easyui-linkbutton" validFun="_upindexon" plain="true" method="whgListTool.upindex">上首页</a></shiro:hasPermission>
+        <shiro:hasPermission name="${resourceid}:upindexoff"><a href="javascript:void(0)" class="easyui-linkbutton" validFun="_upindexoff" plain="true" method="whgListTool.noupindex">取消上首页</a></shiro:hasPermission>
         <shiro:hasPermission name="${resourceid}:order"><a href="javascript:void(0)" validKey="clnfstata" validVal="3" method="whgListTool.goindex">排序</a></shiro:hasPermission>
         <shiro:hasPermission name="${resourceid}:edit"><a href="javascript:void(0)" validFun="whgListTool.top" method="whgListTool.toTop">置顶</a></shiro:hasPermission>
         <shiro:hasPermission name="${resourceid}:edit"><a href="javascript:void(0)" validKey="totop" validVal="1" method="whgListTool.cancelToTop">取消置顶</a></shiro:hasPermission>
@@ -83,6 +85,14 @@
     <!-- 编辑表单 END -->
 
 <script>
+    function _upindexon(idx){
+        var row = $("#whgdg").datagrid("getRows")[idx];
+        return row.clnfstata == 3 && row.upindex == 0;
+    }
+    function _upindexoff(idx){
+        var row = $("#whgdg").datagrid("getRows")[idx];
+        return row.clnfstata == 3 && row.upindex == 1;
+    }
 
     $(function () {
         tool.init();
@@ -307,6 +317,48 @@
                 }
             })
         },
+        /**
+         * 上首页提交
+         */
+        __upindex:function(ids, formupindex, toupindex) {
+            $.messager.progress();
+            var params = {ids: ids, formupindex: formupindex, toupindex: toupindex};
+            $.post('${basePath}/admin/shop/upindex', params, function(data){
+                $("#whgdg").datagrid('reload');
+                if (!data.success || data.success != "1"){
+                    $.messager.alert("错误", data.errormsg||'操作失败', 'error');
+                }
+                $.messager.progress('close');
+            }, 'json');
+        },
+
+        /**
+         * 上首页
+         * @param idx
+         */
+        upindex:function(idx){
+            var row = this.__getGridRow(idx);
+            var that = this;
+            $.messager.confirm("确认信息", "确定要将选中的项推上首页吗？", function(r){
+                if (r){
+                    that.__upindex(row.clnfid, 0, 1);
+                }
+            })
+        },
+        /**
+         * 取消上首页
+         * @param idx
+         */
+        noupindex: function(idx){
+            var row = this.__getGridRow(idx);
+            var that = this;
+            $.messager.confirm("确认信息", "确定要将选中的项取消推上首页吗？", function(r){
+                if (r){
+                    that.__upindex(row.clnfid, 1, 0);
+                }
+            })
+        },
+
 
         //审核
         checkinfo: function(idx){
