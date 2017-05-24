@@ -45,7 +45,7 @@
         <th data-options="field:'crtdate', width:100, formatter:WhgComm.FMTDateTime">创建时间</th>
         <th data-options="field:'state', width:100, formatter:WhgComm.FMTBizState" >状态</th>
             <th data-options="width:100, sortable: true, field:'statemdfdate', formatter:WhgComm.FMTDateTime ">操作时间</th>
-        <th data-options="field:'_opt', width:${type == "publish"?"650" : "400"}, formatter:WhgComm.FMTOpt,fixed:true, optDivId:'whgdg-opt'">操作</th>
+        <th data-options="field:'_opt', width:${type == "publish"?"750" : "400"}, formatter:WhgComm.FMTOpt,fixed:true, optDivId:'whgdg-opt'">操作</th>
     </tr>
     </thead>
 </table>
