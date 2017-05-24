@@ -8,6 +8,7 @@ import com.creatoo.hn.ext.bean.UploadFileBean;
 import com.creatoo.hn.ext.emun.EnumUploadType;
 import net.coobird.thumbnailator.Thumbnails;
 import net.coobird.thumbnailator.geometry.Positions;
+import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -102,11 +103,13 @@ public class CommUploadService {
             //生成新的文件名
             String uuid = UUID.randomUUID().toString().replaceAll("-", "");
             String newFileName;
+            String newFileName_bak = null;
 //            String file = suffix.toLowerCase();
             if (".doc".equals(suffix)||".zip".equals(suffix)||".docx".equals(suffix)||".xls".equals(suffix)||".pdf".equals(suffix)||".xlsx".equals(suffix)){
                 newFileName = oldFileName;
             }else{
                 newFileName = uuid+suffix;
+                newFileName_bak = uuid+"_bak"+suffix;
             }
 
             // img/2017/201701/a.jpg  video/2017/201701/  audio/2017/201701/  file/2017/201701/
@@ -131,6 +134,11 @@ public class CommUploadService {
                 if(EnumUploadType.TYPE_IMG.getValue().equals(uploadFileType)){
                     //如果不是人工裁剪图片,此时默认生成[3:2(750*500 300*200)] [4:3(740*555)],人工裁剪时需要根据裁剪后的图片生成,全系统图片最小尺寸为750*500
                     if(!needCut){
+                        if (newFileName_bak!=null){
+                            File uploadFile_bak = new File(dir, newFileName_bak);
+                            FileUtils.copyFile(uploadFile, uploadFile_bak);
+                        }
+
                         //水印图片
                         File waterPic = new File(waterFilePath);
                         BufferedImage waterbi = ImageIO.read(waterPic);
@@ -276,6 +284,10 @@ public class CommUploadService {
                 newImgFile.createNewFile();
             }
 
+            String newimgurl_bak =  imgurl.substring(0,idx+1)+uuid+"_bak"+imgurl.substring(idx2);
+            String newFilePath_bak = newimgurl_bak.replaceAll("/", "\\" + File.separator);
+            File newImgFile_bak = new File(rootPath, newFilePath_bak);
+
             //根据原始文件裁剪
             File imgFile = new File(rootPath, filePath);
             if(imgFile.exists()){
@@ -288,6 +300,8 @@ public class CommUploadService {
                         .sourceRegion(_x, _y, _w, _h)
                         .size(_w, _h).outputQuality(1f)
                         .toFile(newImgFile);
+
+                FileUtils.copyFile(newImgFile, newImgFile_bak);
 
                 //750_500
                 //if(_w>750 && _h>500){
