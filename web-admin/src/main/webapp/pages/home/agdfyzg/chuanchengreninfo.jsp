@@ -159,6 +159,9 @@ $(function() {
 		                <c:if test="${not empty ypin}">
 		                	<li>传承人音频</li>
 		                </c:if>
+						<c:if test="${not empty doc}">
+							<li>传承人文档</li>
+						</c:if>
                 	</ul>
                   
 	                <c:if test="${not empty tup}">
@@ -206,6 +209,21 @@ $(function() {
 	                    	</div>
 	                	</div>
 					</c:if>
+					<!-- 下载 -->
+					<c:if test="${not empty doc }">
+						<div class="list1">
+							<div class="file-download-cont">
+								<ul>
+									<c:forEach items="${doc}" var="loadlists" varStatus="s">
+										<li>
+											<a href="${basePath }/whtools/downFile?filePath=${loadlists.enturl}"><i></i>${loadlists.entname}</a>
+										</li>
+									</c:forEach>
+								</ul>
+							</div>
+						</div>
+					</c:if>
+					<!-- 下载 -->
             	</div>
 			</div>
 		</div>

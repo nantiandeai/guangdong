@@ -101,6 +101,9 @@ $(document).ready(function(e) {
                   <c:if test="${not empty musci}">
                       <li class="${not empty pic || not empty vido ? '' : 'active' }">项目音频</li>
                   </c:if>
+                  <c:if test="${not empty doc}">
+                      <li class="${not empty pic || not empty vido || not empty musci ? '' : 'active' }">项目文档</li>
+                  </c:if>
                   </ul>
                   
                  <c:if test="${not empty pic}">
@@ -149,7 +152,22 @@ $(document).ready(function(e) {
                      </c:forEach> 
                     </div>
                 </div>
-               </c:if> 
+               </c:if>
+                <!-- 下载 -->
+                <c:if test="${not empty doc }">
+                    <div class="list1">
+                        <div class="file-download-cont">
+                            <ul>
+                                <c:forEach items="${doc}" var="loadlists" varStatus="s">
+                                    <li>
+                                        <a href="${basePath }/whtools/downFile?filePath=${loadlists.enturl}"><i></i>${loadlists.entname}</a>
+                                    </li>
+                                </c:forEach>
+                            </ul>
+                        </div>
+                    </div>
+                </c:if>
+                <!-- 下载 -->
               </div>
               <!-- 资源展示 - END --> 
                 <%-- <div class="site clearfix">

@@ -199,6 +199,9 @@
 					<c:if test="${not empty audio }">
 						<li class="${not empty pic || not empty video ? '' : 'active' }">培训音频</li>
 					</c:if>
+					<c:if test="${not empty doc }">
+						<li class="${not empty pic || not empty video || not empty audio ? '' : 'active' }">培训文档</li>
+					</c:if>
 				</ul>
 				<!-- 图片 -->
 				<c:if test="${not empty pic }">
@@ -251,6 +254,21 @@
 					</div>
 				</c:if>
 				<!-- 音频 END -->
+				<!-- 下载 -->
+				<c:if test="${not empty doc }">
+					<div class="list1 ${not empty pic || not empty video || not empty audio ? '':'on'}">
+						<div class="file-download-cont">
+							<ul>
+								<c:forEach items="${doc}" var="loadlists" varStatus="s">
+									<li>
+										<a href="${basePath }/whtools/downFile?filePath=${loadlists.enturl}"><i></i>${loadlists.entname}</a>
+									</li>
+								</c:forEach>
+							</ul>
+						</div>
+					</div>
+				</c:if>
+				<!-- 下载 -->
 			</div>
 			<%--<div class="public-share">
                 <span class="btn qq"><a href="http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?"

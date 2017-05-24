@@ -128,6 +128,8 @@ public class CgfwAction {
             view.addObject("venVideoList", this.commservice.findRescource("2","3", venid) );
             //场馆音频
             view.addObject("venAudioList", this.commservice.findRescource("3","3", venid) );
+            //场馆音频
+            view.addObject("doc", this.commservice.findRescource("4","3", venid) );
 
 		} catch (Exception e) {
 			log.error(e.getMessage(), e);
