@@ -370,6 +370,9 @@ public class ZyfwAction {
 			//音频
 			List<WhgComResource> musci = this.commservice.findRescource("3","7", zyhdid);
 			view.addObject("musci",musci );
+			//文档
+			List<WhgComResource> doc = this.commservice.findRescource("4","7", zyhdid);
+			view.addObject("doc",doc );
 
 //			String enttype = "2016101400000055";
 //			String reftype = "2016112800000002";
@@ -536,6 +539,9 @@ public class ZyfwAction {
 			//音频
 			List<WhgComResource> musci = this.commservice.findRescource("3","9", zyfcxmid);
 			view.addObject("musci",musci );
+			//文档
+			List<WhgComResource> doc = this.commservice.findRescource("4","9", zyfcxmid);
+			view.addObject("doc",doc );
 
 			//带条件查询项目信息
 			List<WhZyfcXiangmu> whxm = this.service.selectlistxm(zyfcxmid);
@@ -626,6 +632,10 @@ public class ZyfwAction {
 			//音频
 			List<WhgComResource> musci = this.commservice.findRescource("3","8", zyfczzid);
 			view.addObject("audio",musci );
+
+			//文档
+			List<WhgComResource> doc = this.commservice.findRescource("4","8", zyfczzid);
+			view.addObject("doc",doc );
 			
 		} catch (Exception e) {
 			log.error(e.getMessage(), e);
@@ -988,6 +998,9 @@ public class ZyfwAction {
 			//音频
 			List<WhgComResource> musci = this.commservice.findRescource("3","10", zyfcxmid);
 			mav.addObject("musci",musci );
+			//文档
+			List<WhgComResource> doc = this.commservice.findRescource("4","10", zyfcxmid);
+			mav.addObject("doc",doc );
 			//先进个人推荐
 			List<WhZyfcGeren> whGrList = this.service.gerenTJ(zyfcgrid);
 			mav.addObject("whGrList", whGrList);

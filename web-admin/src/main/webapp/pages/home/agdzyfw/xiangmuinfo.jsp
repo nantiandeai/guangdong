@@ -90,6 +90,9 @@
                   <c:if test="${not empty musci}">
                       <li>项目音频</li>
                   </c:if>
+                  <c:if test="${not empty doc}">
+                      <li>项目文档</li>
+                  </c:if>
                   </ul>
                   
                   <c:if test="${not empty pic}">
@@ -139,7 +142,22 @@
                      
                       </div>
                   </div>
-                 </c:if>  
+                 </c:if>
+                <!-- 下载 -->
+                <c:if test="${not empty doc }">
+                    <div class="list1">
+                        <div class="file-download-cont">
+                            <ul>
+                                <c:forEach items="${doc}" var="loadlists" varStatus="s">
+                                    <li>
+                                        <a href="${basePath }/whtools/downFile?filePath=${loadlists.enturl}"><i></i>${loadlists.entname}</a>
+                                    </li>
+                                </c:forEach>
+                            </ul>
+                        </div>
+                    </div>
+                </c:if>
+                <!-- 下载 -->
                    <!-- <div class="public-share">
 		                <span class="btn qq"><a href="http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?" target="_blank"></a></span>
 		                <span class="btn weixin"><a href="javascript:void(0)" target="_blank"></a></span>
