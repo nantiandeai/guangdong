@@ -233,7 +233,7 @@
     top:0px;
     left:0px;
 }
-.sshd-main .detail ul li .img{width:276px; height:207px; text-align: center;
+.sshd-main .detail ul li .img{width:276px; height:207px; text-align: center;position: relative;
     overflow: hidden;}
 .sshd-main .detail ul li .img img{
     width:276px;
@@ -243,8 +243,10 @@
     overflow: hidden; width:236px; margin:15px 20px 10px 20px; border-bottom:1px #ddd dashed; padding-bottom:10px;}
 .sshd-main .detail ul li p{width:236px; margin:auto 20px; font-size:14px; line-height:24px; height:24px;
     overflow: hidden; color:#999}
-.sshd-main .detail ul li p.info1 {
-    height: 48px;
-    overflow: hidden;
-    margin-bottom: 15px;
+.sshd-main .detail ul li div.info1 {
+    height: 72px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    margin: 0px 20px 15px 20px;
+    font-size:14px; line-height:24px; color:#999;
 }
