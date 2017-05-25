@@ -37,22 +37,22 @@
 <body>
     <table id="whgdg" class="easyui-datagrid" title="${pageTitle}" style="display: none;"
            toolbar="#tb" pagination=true pageSize=30 pageList="[10,20,30,50,100,200]" loadMsg="数据加载中，请稍候。。。"
-           data-options="fit:true, striped:true, rownumbers:true, fitColumns:true, singleSelect:false, checkOnSelect:true, selectOnCheck:true,
+           data-options="fit:true, striped:true, rownumbers:true, fitColumns:false, singleSelect:false, checkOnSelect:true, selectOnCheck:true,
            url:'${basePath}/admin/venue/srchList4p?__pageType=${type}'">
         <thead>
             <tr>
-                <th data-options="width: 30, checkbox: true, field:'checkbox' ">全选</th>
-                <th data-options="width:100, sortable:false, field:'title' ">名称</th>
-                <th data-options="width:100, sortable:false, field:'area',formatter:WhgComm.FMTAreaType ">区域</th>
-                <th data-options="width:100, sortable:false, field:'address' ">地址</th>
-                <th data-options="width:100, sortable: true, field:'etype',formatter:WhgComm.FMTVenueType ">分类</th>
-                <th data-options="width:100, sortable:false, field:'contacts' ">联系人</th>
-                <th data-options="width:100, sortable:false, field:'phone' ">联系电话</th>
+                <th data-options="<%--width: 30,--%> checkbox: true, field:'checkbox' ">全选</th>
+                <th data-options="<%--width:100,--%> sortable:false, field:'title' ">名称</th>
+                <th data-options="<%--width:100,--%> sortable:false, field:'area',formatter:WhgComm.FMTAreaType ">区域</th>
+                <th data-options="<%--width:100,--%> sortable:false, field:'address' ">地址</th>
+                <th data-options="<%--width:100,--%> sortable: true, field:'etype',formatter:WhgComm.FMTVenueType ">分类</th>
+                <th data-options="<%--width:100,--%> sortable:false, field:'contacts' ">联系人</th>
+                <th data-options="<%--width:100,--%> sortable:false, field:'phone' ">联系电话</th>
                 <%--<th data-options="width:100, sortable: true, field:'level' ">星级</th>--%>
                 <%--<th data-options="width:100, sortable: true, field:'datebuild', formatter:WhgComm.FMTDate ">建馆时间</th>--%>
-                <th data-options="width:100, sortable: true, field:'state', formatter:WhgComm.FMTBizState ">状态</th>
-                <th data-options="width:120, sortable: true, field:'statemdfdate', formatter:WhgComm.FMTDateTime ">状态变更时间</th>
-                <th data-options="width:'${type eq 'publish'?'430':'300'}', field:'id', fixed:true, formatter:WhgComm.FMTOpt, optDivId:'whgdg-opt'">操作</th>
+                <th data-options="<%--width:100,--%> sortable: true, field:'state', formatter:WhgComm.FMTBizState ">状态</th>
+                <th data-options="<%--width:120,--%> sortable: true, field:'statemdfdate', formatter:WhgComm.FMTDateTime ">状态变更时间</th>
+                <th data-options="<%--width:'${type eq 'publish'?'430':'300'}', fixed:true,--%> field:'id', formatter:WhgComm.FMTOpt, optDivId:'whgdg-opt'">操作</th>
             </tr>
         </thead>
     </table>
