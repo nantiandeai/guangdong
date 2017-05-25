@@ -71,7 +71,7 @@ RoomOrderTool.prototype = {
                 if (data.success){
                     window.location.href = that.settings.basePath+'/agdcgfw/roomOrder1?roomtimeid='+that.selectValue.id;
                 }else {
-                    rongAlertDialog({ title: '错误信息', desc: data.errmsg, closeBtn: true, closeIco:false, icoType:3});
+                    rongAlertDialog({ title: '提示信息', desc: data.errmsg, closeBtn: true, closeIco:false, icoType:3});
                 }
             }
         });

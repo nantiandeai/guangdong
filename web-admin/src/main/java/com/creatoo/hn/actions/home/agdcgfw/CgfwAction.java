@@ -224,12 +224,17 @@ public class CgfwAction {
      * @return
      */
     @RequestMapping("/roomOrder1")
-    public Object roomOrder1(String roomtimeid,
+    public Object roomOrder1(HttpSession session, String roomtimeid,
                              @RequestParam(required = false) String userphone,
                              @RequestParam(required = false) String purpose,
                              @RequestParam(required = false) String username){
         ModelAndView view = new ModelAndView("home/agdcgfw/venroomorder1");
         try {
+            Object user = session.getAttribute(WhConstance.SESS_USER_KEY);
+            if (user == null){
+                return new ModelAndView("redirect:/login");
+            }
+
             this.roomOrderDate(view, roomtimeid, userphone, username, purpose);
         } catch (Exception e) {
             log.error("roomOrder1 error", e);
@@ -238,9 +243,14 @@ public class CgfwAction {
         return view;
     }
     @RequestMapping("/roomOrder2")
-    public Object roomOrder2(String roomtimeid, String userphone, String username, String purpose){
+    public Object roomOrder2(HttpSession session, String roomtimeid, String userphone, String username, String purpose){
         ModelAndView view = new ModelAndView("home/agdcgfw/venroomorder2");
         try {
+            Object user = session.getAttribute(WhConstance.SESS_USER_KEY);
+            if (user == null){
+                return new ModelAndView("redirect:/login");
+            }
+
             this.roomOrderDate(view, roomtimeid, userphone, username, purpose);
         } catch (Exception e) {
             log.error("roomOrder2 error", e);
@@ -248,9 +258,14 @@ public class CgfwAction {
         return view;
     }
     @RequestMapping("/roomOrder3")
-    public Object roomOrder3(String roomtimeid, String userphone, String username, String purpose){
+    public Object roomOrder3(HttpSession session, String roomtimeid, String userphone, String username, String purpose){
         ModelAndView view = new ModelAndView("home/agdcgfw/venroomorder3");
         try {
+            Object user = session.getAttribute(WhConstance.SESS_USER_KEY);
+            if (user == null){
+                return new ModelAndView("redirect:/login");
+            }
+
             this.roomOrderDate(view, roomtimeid, userphone, username, purpose);
         } catch (Exception e) {
             log.error("roomOrder3 error", e);
