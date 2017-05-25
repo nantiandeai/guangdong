@@ -173,6 +173,7 @@ public class WhgTrainService {
                     }else{
                         res.setSuccess(ResponseBean.FAIL);
                         res.setErrormsg("您选择的周几在时段内没有,请重新选择.");
+                        this.whgTraMapper.deleteByPrimaryKey(tra.getId());
                         return res;
                     }
 

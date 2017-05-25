@@ -89,7 +89,7 @@ public class PxbmService {
         }
         //获取普及班分类ID
         List<WhgTraEnrol> list = new ArrayList();
-        String etype = "";
+        /*String etype = "";
         List<WhgYwiType> wyts = this.commService.findYwiType(EnumTypeClazz.TYPE_TRAIN.getValue());
         if(wyts != null){
             for(WhgYwiType wyt : wyts){
@@ -98,10 +98,10 @@ public class PxbmService {
                     break;
                 }
             }
-        }
-        if(train.getEtype().equals(etype)){
+        }*/
+        /*if(train.getEtype().equals(etype)){
             //普及班验证
-            if(!"".equals(etype)) {
+            if(!"".equals(etype)) {*/
                 //String uid = enrol.getUserid();
                 Example example = new Example(WhgTraEnrol.class);
                 example.createCriteria().andEqualTo("userid", userId).andIn("state", Arrays.asList(1, 6, 4));
@@ -111,7 +111,7 @@ public class PxbmService {
                     for (int i = 0; i < list.size(); i++) {
                         String traid = list.get(i).getTraid();
                         Example example1 = new Example(WhgTra.class);
-                        example1.createCriteria().andEqualTo("id", traid).andEqualTo("etype", etype).andEqualTo("state", 6);
+                        example1.createCriteria().andEqualTo("id", traid).andEqualTo("state", 6);
                         int count = this.whTrainMapper.selectCountByExample(example1);
                         listSize += count;
                         if (listSize >= 2) {
@@ -120,8 +120,8 @@ public class PxbmService {
 
                     }
                 }
-            }
-        }
+      /*      }
+        }*/
         return SUCCESS;
     }
 
