@@ -17,20 +17,20 @@
 <body>
     <table id="whgdg" class="easyui-datagrid" title="预定管理-${roomtitle}" style="display: none;"
            toolbar="#tb" pagination=true pageSize=30 pageList="[10,20,30,50,100,200]" loadMsg="数据加载中，请稍候。。。"
-           data-options="fit:true, striped:true, rownumbers:true, fitColumns:true, singleSelect:false, checkOnSelect:true, selectOnCheck:true,
+           data-options="fit:true, striped:true, rownumbers:true, fitColumns:false, singleSelect:false, checkOnSelect:true, selectOnCheck:true,
            url:'${basePath}/admin/venue/roomorder/srchList4p?roomid=${roomid}'">
         <thead>
             <tr>
-                <th data-options="width: 30, checkbox: true, field:'checkbox' ">全选</th>
-                <th data-options="width:100, sortable:false, field:'orderid'">订单号</th>
-                <th data-options="width:100, sortable:false, field:'roomid', formatter:function(){return '${roomtitle}';} ">活动室</th>
-                <th data-options="width:100, sortable: true, field:'timeday', formatter:WhgComm.FMTDate ">日期</th>
-                <th data-options="width:100, sortable: true, field:'timestart', formatter:WhgComm.FMTTime ">时段开始</th>
-                <th data-options="width:100, sortable: true, field:'timeend', formatter:WhgComm.FMTTime ">时段结束</th>
-                <th data-options="width:100, sortable: true, field:'ordercontact'">联系人</th>
-                <th data-options="width:100, sortable: true, field:'ordercontactphone' ">联系电话</th>
-                <th data-options="width:100, sortable: true, field:'state', formatter:orderState ">状态</th>
-                <th data-options="width:200, field:'id', fixed:true, formatter:WhgComm.FMTOpt, optDivId:'whgdg-opt'">操作</th>
+                <th data-options="<%--width: 30,--%> checkbox: true, field:'checkbox' ">全选</th>
+                <th data-options="<%--width:100,--%> sortable:false, field:'orderid'">订单号</th>
+                <th data-options="<%--width:100,--%> sortable:false, field:'roomid', formatter:function(){return '${roomtitle}';} ">活动室</th>
+                <th data-options="<%--width:100,--%> sortable: true, field:'timeday', formatter:WhgComm.FMTDate ">日期</th>
+                <th data-options="<%--width:100,--%> sortable: true, field:'timestart', formatter:WhgComm.FMTTime ">时段开始</th>
+                <th data-options="<%--width:100,--%> sortable: true, field:'timeend', formatter:WhgComm.FMTTime ">时段结束</th>
+                <th data-options="<%--width:100,--%> sortable: true, field:'ordercontact'">联系人</th>
+                <th data-options="<%--width:100,--%> sortable: true, field:'ordercontactphone' ">联系电话</th>
+                <th data-options="<%--width:100,--%> sortable: true, field:'state', formatter:orderState ">状态</th>
+                <th data-options="<%--width:200, fixed:true,--%> field:'id', formatter:WhgComm.FMTOpt, optDivId:'whgdg-opt'">操作</th>
             </tr>
         </thead>
     </table>
