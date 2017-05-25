@@ -6,7 +6,13 @@ $(document).ready(function(e) {
     var li_width = [];
     $("li", dom).each(function (idx) {
         var _img = $(this).get(0).style.background;
-        _img = _img.substring(5, _img.length-2);
+        //_img = _img.substring(5, _img.length-2);
+        var imgarr = /.*url\((.*)\).*/.exec(_img);
+        if (imgarr){
+            _img = String(imgarr[1]);
+            _img = _img.replace(/\"/g,"");
+        }
+
         var _text = $('a', this).attr('title');
         li_width[idx] = {};
         li_width[idx].img = _img;
