@@ -68,7 +68,7 @@
         <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-undo" onclick="WhgComm.editDialogClose();">返 回</a>
         <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-search" onclick="WhgComm.search('#whgdg', '#whgdg-tb');">查 询</a>
         <a href="javascript:void(0)" class="easyui-linkbutton checkon" iconCls="icon-add" onclick="allcheckon();">批量审核</a>
-        <%--<a href="${basePath}/admin/train/enrol/exportExcel" class="easyui-linkbutton checkon" iconCls="icon-add">导出</a>--%>
+        <a id="exportLink" href="javascript:;" class="easyui-linkbutton checkon" iconCls="icon-add" style="float: right;margin-right: 20px">导出Excel</a>
         <c:if test="${isbasicclass == 1}">
             <a href="javascript:void(0)" class="easyui-linkbutton " iconCls="icon-add" onclick="ramEnroll();">随机录取</a>
         </c:if>
@@ -89,6 +89,8 @@
         <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-undo" onclick="WhgComm.editDialogClose();">返 回</a>
         <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-search" onclick="WhgComm.search('#whgdg1', '#whgdg-tb1');">查 询</a>
         <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-add" onclick="allpublishon();">批量面试</a>
+        <a id="exportExcel" href="javascript:;" class="easyui-linkbutton checkon" iconCls="icon-add" style="float: right;margin-right: 20px">导出Excel</a>
+
     </div>
 </div>
 <!-- 表格操作工具栏-END -->
@@ -147,7 +149,17 @@
 <!-- 添加表单 END -->
 
 <script>
+    $(function () {
+        $("#exportLink").click(function () {
+            var href = "${basePath}/admin/train/enrol/exportExcel?tab=0&traid=${id}&type=${isbasicclass}&contactphone="+$("[name=contactphone]").val()+"&state="+$("[name=state]").val();
+            $(this).attr("href", href);
+        })
+        $("#exportExcel").click(function () {
+            var href = "${basePath}/admin/train/enrol/exportExcel?tab=1&traid=${id}&type=${isbasicclass}&contactphone="+$("[name=contactphone]").eq(1).val()+"&state="+$("[name=state]").eq(1).val();
+            $(this).attr("href", href);
+        })
 
+    })
 
     /**显示取消功能*/
     function _valid(idx){

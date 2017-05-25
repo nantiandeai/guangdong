@@ -67,7 +67,7 @@
     </div>
     <div class="whgff-row">
         <div class="whgff-row-label"><label style="color: red"></label>关键字：</div>
-        <div class="whgff-row-input"><input class="easyui-combobox" name="mlprokey" multiple="true" style="width:600px;height:32px;" data-options="required:true,missingMessage:'请用英文逗号分隔', panelHeight:'auto',editable:true,value:'${fn:replace(fn:replace(ml.mlprokey,'"',"''"),"'","\\'")}',valueField:'text',textField:'text',data: WhgComm.getZxKey(), multiple:true"/>
+        <div class="whgff-row-input"><input class="easyui-combobox" id="mlprokey" multiple="true" style="width:600px;height:32px;" data-options="required:true,missingMessage:'请用英文逗号分隔', panelHeight:'auto',editable:true,valueField:'text',textField:'text',data: WhgComm.getZxKey(), multiple:true"/>
             <span>（如需输入多个，请用英文逗号隔开！）</span>
         </div>
     </div>
@@ -142,6 +142,8 @@
      * 名录添加表单js
      */
     $(function () {
+        $("#mlprokey").combobox("setValue","${ml.mlprokey}");
+
         WhgUploadImg.init({basePath: '${basePath}', uploadBtnId: 'imgUploadBtn1', hiddenFieldId: 'cult_picture1', previewImgId: 'previewImg1', needCut:true,cutWidth:380, cutHeight:240 });
         WhgUploadImg.init({basePath: '${basePath}', uploadBtnId: 'imgUploadBtn2', hiddenFieldId: 'cult_picture2', previewImgId: 'previewImg2', needCut:false});
 
@@ -164,6 +166,7 @@
                     $.messager.progress('close');
                     $('#whgwin-add-btn-save').off('click').one('click', function () { $('#whgff').submit(); });
                 }
+                param.mlprokey = $("#mlprokey").combobox("getText");
                 return _valid;
             },
             success : function(data) {

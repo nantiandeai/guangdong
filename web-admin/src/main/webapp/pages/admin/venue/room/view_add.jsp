@@ -96,8 +96,8 @@
             <%--<div class="checkbox checkbox-primary whg-js-data" name="ekey" value="${whgVenRoom.ekey}"
                  js-data="WhgComm.getRoomKey">
             </div>--%>
-            <select class="easyui-combobox" name="ekey" style="width:600px; height:32px" validType="notQuotes"
-                    data-options="multiple:true, valueField:'text', textField:'text',value:'${fn:replace(fn:replace(whgVenRoom.ekey,'"',"''"),"'","\\'")}', data:WhgComm.getRoomKey()" ></select>
+            <select class="easyui-combobox" id="ekey" style="width:600px; height:32px" validType="notQuotes"
+                    data-options="multiple:true, valueField:'text', textField:'text', data:WhgComm.getRoomKey()" ></select>
                 (多于2个关键字之间用半角逗号分隔)
         </div>
     </div>
@@ -215,6 +215,8 @@
 
 
     $(function(){
+        $("#ekey").combobox('setValue', "${whgVenRoom.ekey}");
+
         var id = '${id}';
         var targetShow = '${targetShow}';
         var frm = $("#whgff");
@@ -325,6 +327,8 @@
                     $.messager.progress('close');
                     oneSubmit();
                 }
+
+                param.ekey = $("#ekey").combobox('getText');
                 return isValid;
             },
             success: function (data) {

@@ -321,4 +321,25 @@ public class MusInfoAction {
 		res.put("errmsg", errmsg);
 		return res;
 	}
+
+	/**
+	 * 是否上首页
+	 * @param ids
+	 * @param formupindex
+	 * @param toupindex
+	 * @return
+	 */
+	@RequestMapping("/upindex")
+	@WhgOPT(optType = EnumOptType.NOTICE, optDesc = {"上首页","取消上首页"}, valid = {"formupindex=1","formupindex=0"})
+	public ResponseBean upindex(String ids, String formupindex, int toupindex){
+		ResponseBean res = new ResponseBean();
+		try {
+			res = this.musInfoService.t_upindex(ids,formupindex,toupindex);
+		} catch (Exception e) {
+			res.setSuccess(ResponseBean.FAIL);
+			res.setErrormsg("上首页失败！");
+			log.error(res.getErrormsg()+" formupindex: "+formupindex+" toupindex:"+toupindex+" ids: "+ids, e);
+		}
+		return res;
+	}
 }

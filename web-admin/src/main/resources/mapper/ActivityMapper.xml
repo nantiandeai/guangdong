@@ -449,6 +449,12 @@
 		<if test="etype !=null"> <!-- 分类 -->
 			and t.etyp like #{etype} 
 		</if>
+		<if test="ekey !=null"> <!-- 关键字 -->
+			and
+			<foreach collection="ekey" item="item" index="index" open="( " separator=" or " close=" )">
+				t.ekey like "%"#{item}"%"
+			</foreach>
+		</if>
 		<if test="areaid !=null"> <!-- 区域 -->
 			and t.areaid = #{areaid}
 		</if>

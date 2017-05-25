@@ -135,7 +135,7 @@
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3. 都从人对家居空间的讨论和思考中衍生而来家是营造情感、审美、兴趣、修养的空间，也是建立个体和群体间感情关系的空间。家以一个最基本的社会组成单位的形态与所处时代互视和对话；在飞速的城市化进程中，家居缓慢了生活的物化节奏；本展共有十二位来自世界不同区域的艺术家创作关于“家”的作品（部分艺术家作品首次在中国展出）。
                     </div>--%>
 
-                    <c:if test="${not empty venImgList or not empty venVideoList or not empty venAudioList}">
+                    <c:if test="${not empty venImgList or not empty venVideoList or not empty venAudioList or not empty doc}">
                     <div class="site clearfix">
                         <ul class="tab clearfix">
                             <c:if test="${not empty venImgList}">
@@ -146,6 +146,9 @@
                             </c:if>
                             <c:if test="${not empty venAudioList}">
                                 <li>场馆音频</li>
+                            </c:if>
+                            <c:if test="${not empty doc}">
+                                <li>场馆文件</li>
                             </c:if>
                         </ul>
                         <script>
@@ -199,6 +202,21 @@
                                 </div>
                             </div>
                         </c:if>
+                        <!-- 下载 -->
+                        <c:if test="${not empty doc }">
+                            <div class="list1">
+                                <div class="file-download-cont">
+                                    <ul>
+                                        <c:forEach items="${doc}" var="loadlists" varStatus="s">
+                                            <li>
+                                                <a href="${basePath }/whtools/downFile?filePath=${loadlists.enturl}"><i></i>${loadlists.entname}</a>
+                                            </li>
+                                        </c:forEach>
+                                    </ul>
+                                </div>
+                            </div>
+                        </c:if>
+                        <!-- 下载 -->
 
                     </div>
                     </c:if>

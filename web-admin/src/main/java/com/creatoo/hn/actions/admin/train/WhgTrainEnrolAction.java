@@ -1,11 +1,13 @@
 package com.creatoo.hn.actions.admin.train;
 
+import com.creatoo.hn.actions.comm.ExcelTransformer;
 import com.creatoo.hn.ext.annotation.WhgOPT;
 import com.creatoo.hn.ext.bean.ResponseBean;
 import com.creatoo.hn.ext.emun.EnumOptType;
 import com.creatoo.hn.model.WhgSysUser;
 import com.creatoo.hn.model.WhgTraEnrol;
 import com.creatoo.hn.services.admin.train.WhgTrainEnrolService;
+import com.creatoo.hn.utils.ReqParamsUtil;
 import com.github.pagehelper.PageInfo;
 import org.apache.log4j.Logger;
 import org.jxls.area.Area;
@@ -152,22 +154,28 @@ public class WhgTrainEnrolAction {
     }
 
     /**
-     * 下载
+     * 培训报名管理导出
      * @param response
      * @return
      */
     @RequestMapping("/exportExcel")
-    public ResponseBean exportExcel(HttpServletResponse response){
+    public ResponseBean exportExcel(HttpServletRequest request, HttpServletResponse response, String tab) {
         ResponseBean res = new ResponseBean();
+        ExcelTransformer excelTransformer = new ExcelTransformer();
         try {
-            preProcessing(response, "报名管理清单");
+            if (tab != null && "0".equals(tab)) {
+                excelTransformer.preProcessing(response, "面试通知列表清单");
+            } else {
+                excelTransformer.preProcessing(response, "录取列表清单");
+            }
             InputStream is = this.getClass().getClassLoader().getResourceAsStream("template" + File.separator + "报名管理清单.xls");
             OutputStream os = response.getOutputStream();
             Transformer transformer = TransformerFactory.createTransformer(is, os);
             JexlExpressionEvaluator evaluator = (JexlExpressionEvaluator) transformer.getTransformationConfig().getExpressionEvaluator();
             Map<String, Object> functionMap = new HashMap<>();
+            functionMap.put("et", excelTransformer);
             evaluator.getJexlEngine().setFunctions(functionMap);
-            List<WhgTraEnrol> detailList =whgTrainEnrolService.serch();
+            List<WhgTraEnrol> detailList = whgTrainEnrolService.serch(request);
             Context context = new Context();
             context.putVar("detailList", detailList);
             AreaBuilder areaBuilder = new XlsCommentAreaBuilder(transformer);
@@ -181,12 +189,5 @@ public class WhgTrainEnrolAction {
         return res;
     }
 
-    //公用导出方法
-    public void preProcessing(HttpServletResponse response, String fileName) throws Exception {
-        response.setContentType("application/x-download");
-        SimpleDateFormat t = new SimpleDateFormat("yyyyMMddHHmmss");
-        response.setContentType("application/vnd.ms-excel");
-        response.setHeader("content-disposition", "attachment;filename=" + new String(fileName.getBytes("gb2312"), "ISO8859-1") + t.format(new Date()) + ".xls");
-        response.setBufferSize(2048);
-    }
+
 }

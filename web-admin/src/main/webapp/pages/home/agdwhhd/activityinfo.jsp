@@ -164,12 +164,13 @@ $(function(){
                          <a href="javascript:void(0)" class="dianzan" reftyp="${enumtypeAct}" refid="${actdetail.id }" id="good"></a>
                      </span>
                  </div>
-    		<c:if test="${not empty tsource or not empty tsource or not empty ssource}">
+    		<c:if test="${not empty tsource or not empty tsource or not empty ssource or not empty loadlists}">
 	           <div class="site clearfix sourceinfo">
                   <ul class="tab clearfix source">
                       <li class="active">活动图片</li>
                       <li>活动视频</li>
                       <li>活动音频</li>
+					  <li>活动文档</li>
                   </ul>
                   <c:if test="${not empty tsource}">
 	                  <div class="list1">
@@ -226,6 +227,25 @@ $(function(){
                   	 <div class="list1">
                   	 </div>
                   </c:if>
+
+				   <!-- 下载 -->
+				   <c:if test="${not empty loadlists }">
+					   <div class="list1">
+						   <div class="file-download-cont">
+							   <ul>
+								   <c:forEach items="${loadlists}" var="loadlists" varStatus="s">
+									   <li>
+										   <a href="${basePath }/whtools/downFile?filePath=${loadlists.enturl}"><i></i>${loadlists.entname}</a>
+									   </li>
+								   </c:forEach>
+							   </ul>
+						   </div>
+					   </div>
+				   </c:if>
+				   <c:if test="${empty loadlists}">
+					   <div class="list1">
+					   </div>
+				   </c:if>
               </div>
 			</c:if>
 				<!-- 动态包含评论 -->

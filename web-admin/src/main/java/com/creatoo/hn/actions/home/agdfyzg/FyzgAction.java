@@ -370,6 +370,9 @@ public class FyzgAction {
 			 //音频
 			 List<WhgComResource> ypin = this.commservice.findRescource("3","5", mlproid);
 			 map.addAttribute("ypin",ypin );
+			//文件
+			List<WhgComResource> doc = this.commservice.findRescource("4","5", mlproid);
+			map.addAttribute("doc",doc );
 			 
 			List<WhKey> keylist = new ArrayList<>();
 			//处理活动标签
@@ -474,6 +477,10 @@ public class FyzgAction {
 			//音频
 			List<WhgComResource> ypin = this.commservice.findRescource("3","6", suorid);
 			map.addAttribute("ypin",ypin );
+			//文档
+			List<WhgComResource> doc = this.commservice.findRescource("4","6", suorid);
+			map.addAttribute("doc",doc );
+
 
 			//传承人推荐
 			List<Map> tjsuor = this.feiyiService.tuijiansuor(suorid);
