@@ -112,7 +112,7 @@
                 }else if ("107" == resultCode) {
                     rongDialog({ type : true, title : "您选择的培训年龄段不符合", time : 3*1000 });
                 }else if ("106" == resultCode) {
-                    rongDialog({ type : true, title : "您已经报名了两场普及班，不可以再报名普及班", time : 3*1000 });
+                    rongDialog({ type : true, title : "您已经报名了两场培训，不可以再报名", time : 3*1000 });
                 }
                 else{
                     rongDialog({ type : true, title : "保存失败,请联系管理员", time : 3*1000 });

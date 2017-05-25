@@ -37,7 +37,7 @@ $(document).ready(function () {
                 }else if ("104" == resultCode) {
                     rongDialog({ type : true, title : "您还未进行实名制验证,请先实名制", time : 3*1000 });
                 }else if ("106" == resultCode) {
-                    rongDialog({ type : true, title : "您已经报了两次普及班，不可再报普及班", time : 3*1000 });
+                    rongDialog({ type : true, title : "您已经报名了两场培训，不可以再报名", time : 3*1000 });
                 }else{
                     window.location.href=basePath+"/agdpxyz/toTrainApply.do?trainId="+trainId;
 				}
