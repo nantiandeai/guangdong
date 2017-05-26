@@ -88,6 +88,11 @@ public class WhgActActivity {
     private String imgurl;
 
     /**
+     * 是否上首页
+     */
+    private Integer upindex;
+
+    /**
      *  场馆Id
      */
     private String venueid;
@@ -1159,5 +1164,13 @@ public class WhgActActivity {
         }
         whgActActivity.setDelstate(0);
         return whgActActivity;
+    }
+
+    public Integer getUpindex() {
+        return upindex;
+    }
+
+    public void setUpindex(Integer upindex) {
+        this.upindex = upindex;
     }
 }

@@ -151,7 +151,15 @@
                 if (row.state==1){
                     infoCont.find("a.orderKick").text("删除").show().on("click", {orderid: row.id}, delOrder)
                 }
-                if (row.state==0 && row.hasfees != 1){
+
+                var day = new Date(row.timeday);
+                var hm = new Date(row.timestart);
+                day.setHours(hm.getHours());
+                day.setMinutes(hm.getMinutes());
+
+                var twodaytime = new Date(data.twodaytime);
+
+                if (row.state==0 && row.hasfees != 1 && twodaytime<day){
                     infoCont.find("a.orderKick").text("取消预订").show().on("click", {orderid: row.id}, unOrder)
                 }
 

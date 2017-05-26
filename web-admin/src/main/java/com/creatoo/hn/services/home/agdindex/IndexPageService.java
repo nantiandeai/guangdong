@@ -27,6 +27,7 @@ import java.util.*;
 /**
  * PC首页服务
  */
+@SuppressWarnings("ALL")
 @Service
 public class IndexPageService {
 	/**
@@ -124,13 +125,20 @@ public class IndexPageService {
 	 * @throws Exception
 	 */
 	public List<WhZxColinfo> findZX(String type, int size) throws Exception{
+        //处理上首页空值为0
+        WhZxColinfo recode = new WhZxColinfo();
+        recode.setUpindex(0);
+        Example upexample = new Example(WhZxColinfo.class);
+        upexample.or().andIsNull("upindex");
+        this.whZxColinfoMapper.updateByExampleSelective(recode, upexample);
+
 		List<WhZxColinfo> retList = new ArrayList<WhZxColinfo>();
 
 		Example example = new Example(WhZxColinfo.class);
 		Example.Criteria criteria = example.createCriteria();
 		criteria.andEqualTo("clnfstata", 3);//已发布
 		criteria.andEqualTo("clnftype", type);//栏目类型为政策法规
-		example.setOrderByClause("clnfcrttime desc, clnfopttime desc");//发布时间排序
+		example.setOrderByClause("upindex desc, clnfcrttime desc, clnfopttime desc");//发布时间排序
 		PageHelper.startPage(1, size);
 		List<WhZxColinfo> list = this.whZxColinfoMapper.selectByExample(example);
 		PageInfo<WhZxColinfo> info = new PageInfo<WhZxColinfo>(list);
@@ -146,12 +154,19 @@ public class IndexPageService {
 	 * @throws Exception
 	 */
 	public List<WhgActActivity> findActivity(int size)throws Exception{
+        //处理上首页空值为0
+        WhgActActivity recode = new WhgActActivity();
+        recode.setUpindex(0);
+        Example upexample = new Example(WhgActActivity.class);
+        upexample.or().andIsNull("upindex");
+        this.whgActActivityMapper.updateByExampleSelective(recode, upexample);
+
 		List<WhgActActivity> retList = new ArrayList<WhgActActivity>();
 
 		Example example = new Example(WhgActActivity.class);
 		Example.Criteria criteria = example.createCriteria();
 		criteria.andEqualTo("state", EnumBizState.STATE_PUB.getValue());//已发布
-		example.setOrderByClause("isrecommend desc, statemdfdate desc");//发布时间排序
+		example.setOrderByClause("upindex desc, isrecommend desc, statemdfdate desc");//发布时间排序
 		PageHelper.startPage(1, size);
 		List<WhgActActivity> list = this.whgActActivityMapper.selectByExample(example);
 		PageInfo<WhgActActivity> info = new PageInfo<WhgActActivity>(list);
@@ -167,12 +182,19 @@ public class IndexPageService {
 	 * @throws Exception
 	 */
 	public List<WhgTra> findTrain(int size)throws Exception{
+        //处理上首页空值为0
+        WhgTra recode = new WhgTra();
+        recode.setUpindex(0);
+        Example upexample = new Example(WhgTra.class);
+        upexample.or().andIsNull("upindex");
+        this.whgTraMapper.updateByExampleSelective(recode, upexample);
+
 		List<WhgTra> retList = new ArrayList<WhgTra>();
 
 		Example example = new Example(WhgTra.class);
 		Example.Criteria criteria = example.createCriteria();
 		criteria.andEqualTo("state", EnumBizState.STATE_PUB.getValue());//已发布
-		example.setOrderByClause("recommend desc, statemdfdate desc");//发布时间排序
+		example.setOrderByClause("upindex desc, recommend desc, statemdfdate desc");//发布时间排序
 		PageHelper.startPage(1, size);
 		List<WhgTra> list = this.whgTraMapper.selectByExample(example);
 		PageInfo<WhgTra> info = new PageInfo<WhgTra>(list);
@@ -256,12 +278,19 @@ public class IndexPageService {
 	 * @throws Exception
 	 */
 	public List<WhgSysCult> findCult(int size)throws Exception{
+        //处理上首页空值为0
+        WhgSysCult recode = new WhgSysCult();
+        recode.setUpindex(0);
+        Example upexample = new Example(WhgSysCult.class);
+        upexample.or().andIsNull("upindex");
+        this.whgSysCultMapper.updateByExampleSelective(recode, upexample);
+
 		List<WhgSysCult> retList = new ArrayList<WhgSysCult>();
 
 		Example example = new Example(WhgSysCult.class);
 		Example.Criteria criteria = example.createCriteria();
 		criteria.andEqualTo("state", EnumState.STATE_YES.getValue());//已发布
-		example.setOrderByClause("idx");//发布时间排序
+		example.setOrderByClause("upindex desc, idx");//发布时间排序
 		PageHelper.startPage(1, size);
 		List<WhgSysCult> list = this.whgSysCultMapper.selectByExample(example);
 		PageInfo<WhgSysCult> info = new PageInfo<WhgSysCult>(list);

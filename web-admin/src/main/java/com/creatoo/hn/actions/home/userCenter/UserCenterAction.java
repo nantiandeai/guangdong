@@ -14,6 +14,7 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.ModelAndView;
@@ -1348,6 +1349,18 @@ public class UserCenterAction {
 		}
 		return "home/center/activityExamine";
 	}
+
+
+    @RequestMapping("/center/help")
+    public String userHelp(HttpSession session, @RequestParam(required = false, defaultValue = "helppage") String helppage){
+        try {
+            isLogin(session);
+        } catch (Exception e) {
+            log.error(e.getMessage(),e);
+        }
+
+        return "home/center/help/"+helppage;
+    }
 	
 	/**-----------------------------个人中心结束--------------------------------*/
 

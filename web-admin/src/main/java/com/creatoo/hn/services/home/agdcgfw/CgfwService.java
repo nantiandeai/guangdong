@@ -354,7 +354,7 @@ public class CgfwService {
         ubl.setState(1);
         int ublcount = this.whgUsrBacklistMapper.selectCount(ubl);
         if (ublcount>0){
-            throw new Exception("errcode1111 ### 您已经被系统限制执行操作，如需了解详细情况，请联系管理员！");
+            throw new Exception("errcode1111 ### 非常抱歉！您的操作行为已被列入黑名单，如需了解详细情况，请与管理员联系！");
         }
 
         //是否有不存在的或不可用的关连

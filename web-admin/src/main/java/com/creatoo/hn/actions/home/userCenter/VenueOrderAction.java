@@ -1,6 +1,7 @@
 package com.creatoo.hn.actions.home.userCenter;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -53,6 +54,10 @@ public class VenueOrderAction {
             param.put("userid", user.getId());
 
 			rtnMap = this.service.findOrder(param);
+
+            Calendar c = Calendar.getInstance();
+            c.add(Calendar.DAY_OF_YEAR, 2);
+            rtnMap.put("twodaytime", c.getTime());
 			
 		} catch (Exception e) {
 			log.error(e.getMessage(), e);

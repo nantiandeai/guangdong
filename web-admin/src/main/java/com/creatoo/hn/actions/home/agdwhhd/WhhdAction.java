@@ -358,6 +358,10 @@ public class WhhdAction {
 			List<WhgComResource> ssource = this.WhhdService.selectactSource(actvid,"2","2");
 			view.addObject("ssource", ssource);
 
+			//活动资源 文档
+			List<WhgComResource> loadlists = this.WhhdService.selectactSource(actvid,"4","2");
+			view.addObject("loadlists", loadlists);
+
 			//上传
 			List whup =  this.WhhdService.serch(actvid);
 			view.addObject("loadlist", whup);

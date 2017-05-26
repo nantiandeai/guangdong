@@ -505,8 +505,14 @@ public class CommService {
 		if(Info.size() > 0){
 			for(int i = 0; i < Info.size(); i++){
 				String clnfid = Info.get(i).getClnfid();
-				colinfo = whZxColinfoMapper.selectByPrimaryKey(clnfid);
-				list.add(colinfo);
+				Example example1 = new Example(WhZxColinfo.class);
+				Criteria c1 = example1.createCriteria();
+				c1.andEqualTo("clnfid",clnfid);
+				example1.setOrderByClause("clnfcrttime desc");
+				List<WhZxColinfo> colinfoList = whZxColinfoMapper.selectByExample(example1);
+				if(colinfoList.size() > 0){
+					list.add(colinfoList.get(0));
+				}
 			}
 		}
 		return list;

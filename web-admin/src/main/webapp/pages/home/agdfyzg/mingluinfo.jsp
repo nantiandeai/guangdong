@@ -119,6 +119,9 @@ $(function() {
                      <c:if test="${not empty ypin}">
                       <li>项目音频</li>
                      </c:if>
+					<c:if test="${not empty doc}">
+						<li>项目文档</li>
+					</c:if>
                   </ul>
                 <c:if test="${not empty tup}">
                   <div class="list1">
@@ -150,7 +153,7 @@ $(function() {
                       </div>
                   </div>
                  </c:if>
-                  <c:if test="${not empty ypin}">
+				 <c:if test="${not empty ypin}">
                   <div class="list1">
                       <div class="demo-list list-mp3 clearfix">
                           <c:forEach items="${ypin}" var="item" varStatus="stut">
@@ -164,6 +167,22 @@ $(function() {
                       </div>
                   </div>
                </c:if>
+
+				<!-- 下载 -->
+				<c:if test="${not empty doc }">
+					<div class="list1">
+						<div class="file-download-cont">
+							<ul>
+								<c:forEach items="${doc}" var="loadlists" varStatus="s">
+									<li>
+										<a href="${basePath }/whtools/downFile?filePath=${loadlists.enturl}"><i></i>${loadlists.entname}</a>
+									</li>
+								</c:forEach>
+							</ul>
+						</div>
+					</div>
+				</c:if>
+				<!-- 下载 -->
             </div>
             <!--<div class="next-notice">-->
             	<!--<a href="#">下一篇<span>广东省文化馆中心</span></a>-->

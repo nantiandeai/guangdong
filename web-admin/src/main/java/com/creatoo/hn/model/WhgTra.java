@@ -227,6 +227,11 @@ public class WhgTra {
     private Integer recommend;
 
     /**
+     * 是否上首页
+     */
+    private Integer upindex;
+
+    /**
      * 培训课程描述
      */
     private String coursedesc;
@@ -1025,5 +1030,13 @@ public class WhgTra {
 
     public void setIsmoney(Integer ismoney) {
         this.ismoney = ismoney;
+    }
+
+    public Integer getUpindex() {
+        return upindex;
+    }
+
+    public void setUpindex(Integer upindex) {
+        this.upindex = upindex;
     }
 }

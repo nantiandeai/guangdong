@@ -45,6 +45,11 @@ public class WhgSysCult {
     private String memo;
 
     /**
+     * 是否上首页
+     */
+    private Integer upindex;
+
+    /**
      * 文化馆地址
      */
     private String address;
@@ -343,5 +348,13 @@ public class WhgSysCult {
      */
     public void setIdx(Integer idx) {
         this.idx = idx;
+    }
+
+    public Integer getUpindex() {
+        return upindex;
+    }
+
+    public void setUpindex(Integer upindex) {
+        this.upindex = upindex;
     }
 }

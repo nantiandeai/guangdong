@@ -57,14 +57,15 @@
                 <c:if test="${not empty whgExhArt}">
                     <c:forEach items="${whgExhArt}" var="row" varStatus="s" begin="0" end="11">
                         <li ${s.count%4==0?"class='last'":''}>
-                            <a href="javascript:void(0)" onclick="show_img(this,{url:'${imgServerAddr}/${row.artpic}',zoomin:'ture',title:'我是标题'})"></a>
                             <div class="img">
-                                <img src="${imgServerAddr}/${row.artpic}">
+                                <a href="javascript:void(0)" onclick="show_img(this,{url:'${imgServerAddr}/${row.artpic}',zoomin:'ture',title:'我是标题'})">
+                                    <img src="${imgServerAddr}/${row.artpic}">
+                                </a>
                             </div>
                             <h2>${row.arttitle}</h2>
                             <p>责任者：${row.artauthor}</p>
                             <p>时间：<fmt:formatDate value="${row.artcrttime}" pattern="yyyy-MM-dd"/></p>
-                            <p class="info1">描述：${row.artcontent}</p>
+                            <div class="info1">描述：${row.artcontent}</div>
                         </li>
                     </c:forEach>
                 </c:if>

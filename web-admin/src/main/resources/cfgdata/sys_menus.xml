@@ -24,6 +24,8 @@
         <opt id="kecheng">课程管理</opt>
         <opt id="ccmanager">场次管理</opt>
         <opt id="info">场次管理</opt>
+        <opt id="upindex">上首页</opt>
+        <opt id="upindexoff">取消上首页</opt>
     </opts>
     
 
@@ -31,7 +33,7 @@
     <menus>
         <!-- 系统管理 -->
         <menu id="M_SYS" type="0" state="1" text="系统管理" iconcls="p-1">
-            <menu type="1" state="1"  href="/admin/system/cult/view/list" id="M_SYS_CULT" text="分馆管理" opts="view, add, edit, del, off, on" />
+            <menu type="1" state="1"  href="/admin/system/cult/view/list" id="M_SYS_CULT" text="分馆管理" opts="view, add, edit, del, off, on, upindex,upindexoff" />
             <menu type="1" state="1"  href="/admin/system/dept/view/list" id="M_SYS_DEPT" text="部门管理" opts="view, add, edit, del" />
             <menu type="1" state="1"  href="/admin/system/role/view/list" id="M_SYS_ROLE" text="岗位管理" opts="view, add, edit, del, off, on" />
             <menu type="1" state="1"  href="/admin/system/user/view/list" id="M_SYS_USER" text="管理员管理" opts="view, add, edit, del, off, on" />
@@ -130,7 +132,7 @@
                 <menu id="M_TRA_MGE_ADD" type="1" state="1" text="添加培训"  href="/admin/train/view/add" opts="view"/>
                 <menu id="M_TRA_MGE_EDIT" type="1" state="1" text="培训编辑列表"  href="/admin/train/view/edit" opts="view, edit, checkgo, del, kecheng, info"/>
                 <menu id="M_TRA_MGE_CHK" type="1" state="1" text="培训审核列表"  href="/admin/train/view/check" opts="view, edit, checkon, del, back, kecheng, info, info"/>
-                <menu id="M_TRA_MGE_PUB" type="1" state="1" text="培训发布列表"  href="/admin/train/view/publish" opts="view, edit, del, publish, publishoff, back, baoming,kecheng, info"/>
+                <menu id="M_TRA_MGE_PUB" type="1" state="1" text="培训发布列表"  href="/admin/train/view/publish" opts="view, edit, del, publish, publishoff, back, baoming,kecheng, info, upindex,upindexoff,recommend,recommendoff"/>
                 <menu id="M_TRA_MGE_REC" type="1" state="1" text="回收站"  href="/admin/train/view/del" opts="view, undel, del"/>
             </menu>
             <menu id="M_TRA_TEA" type="0" state="1" text="培训师资管理">
@@ -157,7 +159,7 @@
             <menu id="M_ACT_ADD" type="1" state="1" text="添加活动"  href="/admin/activity/act/view/add" opts="view,add"/> 
             <menu id="M_ACT_EDIT" type="1" state="1" text="活动编辑列表"  href="/admin/activity/act/view/editList" opts="view, edit, ccmanager, checkgo, del, info"/>
             <menu id="M_ACT_CHK" type="1" state="1" text="活动审核列表"  href="/admin/activity/act/view/check" opts="view, edit, ccmanager, checkon, back, del, info"/>
-            <menu id="M_ACT_PUB" type="1" state="1" text="活动发布列表"  href="/admin/activity/act/view/publish" opts="view, edit,ccmanager,publish, publishoff,back,order,recommend,recommendoff,del, info"/>
+            <menu id="M_ACT_PUB" type="1" state="1" text="活动发布列表"  href="/admin/activity/act/view/publish" opts="view, edit,ccmanager,publish, publishoff,back,order,recommend,recommendoff,del, info, upindex,upindexoff"/>
             <menu id="M_ACT_REC" type="1" state="1" text="回收站"  href="/admin/activity/act/view/del" opts="view,undel,del"/>
         </menu>
         <!-- 文化活动 END -->
@@ -214,7 +216,7 @@
         <menu id="DIR600" type="0" state="1" text="资讯公告" iconcls="p-4">
             <menu id="DIR600_L001" type="1" state="1" text="栏目设置"  href="/admin/shop/muse" opts="view, add, edit, del, publish, publishoff"/>
             <!--<menu id="DIR600_L002" type="1" state="1" text="资讯公告管理"  href="/admin/shop/colinfo" opts="view, add, edit, del, checkon, checkoff, publish, publishoff"/>-->
-            <menu id="DIR600_L002_new" type="1" state="1" text="资讯公告管理"  href="/admin/shop/view/list" opts="view, add, edit, del, checkon, checkoff, publish, publishoff"/>
+            <menu id="DIR600_L002_new" type="1" state="1" text="资讯公告管理"  href="/admin/shop/view/list" opts="view, add, edit, del, checkon, checkoff, publish, publishoff, upindex,upindexoff"/>
             <menu id="DIR600_L003" type="1" state="1" text="馆办团队管理"  href="/admin/arts/whtroupe" opts="view, add, edit, del, checkon, checkoff, publish, publishoff"/>
             <!--<menu id="DIR600_L004" type="1" state="1" text="馆办团成员管理"  href="/admin/arts/troupeUser" opts="view, add, edit, del, checkon, checkoff, publish, publishoff"/>-->
             <menu id="DIR600_L005" type="1" state="1" text="意见反馈管理"  href="/admin/shop/feed" opts="view, add, edit, del, checkon, checkoff, publish, publishoff"/>

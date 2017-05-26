@@ -28,21 +28,21 @@
 <body>
     <table id="whgdg" class="easyui-datagrid" title="${pageTitle}" style="display: none;"
            toolbar="#tb" pagination=true pageSize=30 pageList="[10,20,30,50,100,200]" loadMsg="数据加载中，请稍候。。。"
-           data-options="fit:true, striped:true, rownumbers:true, fitColumns:true, singleSelect:false, checkOnSelect:true, selectOnCheck:true,
+           data-options="fit:true, striped:true, rownumbers:true, fitColumns:false, singleSelect:false, checkOnSelect:true, selectOnCheck:true,
            url:'${basePath}/admin/venue/room/srchList4p?__pageType=${type}'">
         <thead>
             <tr>
-                <th data-options="width: 30, checkbox: true, field:'checkbox' ">全选</th>
-                <th data-options="width:100, sortable:false, field:'title' ">名称</th>
-                <th data-options="width:100, sortable: true, field:'etype',formatter:WhgComm.FMTRoomType ">类型</th>
-                <th data-options="width:100, sortable:false, field:'ventitle' ">所属场馆</th>
-                <th data-options="width:100, sortable:false, field:'location' ">位置</th>
-                <th data-options="width:100, sortable: true, field:'sizearea' ">面积大小</th>
-                <th data-options="width:100, sortable: true, field:'sizepeople' ">可容人数</th>
-                <th data-options="width:100, sortable: true, field:'hasfees', formatter:FMThasfees ">收费</th>
-                <th data-options="width:100, sortable: true, field:'state', formatter:WhgComm.FMTBizState ">状态</th>
-                <th data-options="width:120, sortable: true, field:'statemdfdate', formatter:WhgComm.FMTDateTime ">状态变更时间</th>
-                <th data-options="width:'${type eq 'publish'?'540':'350'}', field:'id', fixed:true, formatter:WhgComm.FMTOpt, optDivId:'whgdg-opt'">操作</th>
+                <th data-options="<%--width: 30,--%> checkbox: true, field:'checkbox' ">全选</th>
+                <th data-options="<%--width:100,--%> sortable:false, field:'title' ">名称</th>
+                <th data-options="<%--width:100,--%> sortable: true, field:'etype',formatter:WhgComm.FMTRoomType ">类型</th>
+                <th data-options="<%--width:100,--%> sortable:false, field:'ventitle' ">所属场馆</th>
+                <th data-options="<%--width:100,--%> sortable:false, field:'location' ">位置</th>
+                <th data-options="<%--width:100,--%> sortable: true, field:'sizearea' ">面积大小</th>
+                <th data-options="<%--width:100,--%> sortable: true, field:'sizepeople' ">可容人数</th>
+                <th data-options="<%--width:100,--%> sortable: true, field:'hasfees', formatter:FMThasfees ">收费</th>
+                <th data-options="<%--width:100,--%> sortable: true, field:'state', formatter:WhgComm.FMTBizState ">状态</th>
+                <th data-options="<%--width:120,--%> sortable: true, field:'statemdfdate', formatter:WhgComm.FMTDateTime ">状态变更时间</th>
+                <th data-options="<%--width:'${type eq 'publish'?'540':'350'}', fixed:true,--%> field:'id', formatter:WhgComm.FMTOpt, optDivId:'whgdg-opt'">操作</th>
             </tr>
         </thead>
     </table>

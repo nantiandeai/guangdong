@@ -75,8 +75,36 @@ public class WhgTrainEnrolService {
         return pageInfo;
     }
 
-    public List<WhgTraEnrol> serch(){
-       return this.whgTraEnrolMapper.selectAll();
+    /**
+     * 导出带条件查询
+     * @param request
+     * @return
+     */
+    public List<WhgTraEnrol> serch(HttpServletRequest request){
+
+        Example example = new Example(WhgTraEnrol.class);
+        Example.Criteria c = example.createCriteria();
+        String traid = request.getParameter("traid");
+        int type = Integer.parseInt(request.getParameter("type"));
+        int tab = Integer.parseInt(request.getParameter("tab"));
+        if(type == 0 && tab == 0){
+            c.andIn("state", Arrays.asList(1,2,3));
+        }
+        if(tab == 1){
+            c.andIn("state", Arrays.asList(4,5,6));
+        }
+        c.andEqualTo("traid",traid);
+        if(request.getParameter("state") != null&&!"".equals(request.getParameter("state"))){
+            int state = Integer.parseInt(request.getParameter("state"));
+            c.andEqualTo("state", state);
+        }
+        if(request.getParameter("contactphone") != null){
+            String contactphone = request.getParameter("contactphone");
+            c.andLike("contactphone", "%"+contactphone+"%");
+        }
+        example.setOrderByClause("crttime desc");
+        List<WhgTraEnrol> list = this.whgTraEnrolMapper.selectByExample(example);
+        return list;
     }
 
     /**

@@ -23,7 +23,10 @@ public class WhZxColinfo {
      */
     @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private Date clnfcrttime;
-
+    /**
+     * 是否上首页
+     */
+    private Integer upindex;
     /**
      * 来源
      */
@@ -395,5 +398,13 @@ public class WhZxColinfo {
 
     public void setTotop(Integer totop) {
         this.totop = totop;
+    }
+
+    public Integer getUpindex() {
+        return upindex;
+    }
+
+    public void setUpindex(Integer upindex) {
+        this.upindex = upindex;
     }
 }

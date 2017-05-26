@@ -125,6 +125,7 @@ public class WhgTrainService {
         Date now = new Date();
         tra.setId(commService.getKey("whgtra"));  //id
         tra.setCrtdate(now);  //创建时间
+        tra.setUpindex(0);   //上首页
         tra.setCrtuser(user.getId());   //创建人
         //tra.setCultid(user.getCultid());
         tra.setDeptid(user.getDeptid());
@@ -172,6 +173,7 @@ public class WhgTrainService {
                     }else{
                         res.setSuccess(ResponseBean.FAIL);
                         res.setErrormsg("您选择的周几在时段内没有,请重新选择.");
+                        this.whgTraMapper.deleteByPrimaryKey(tra.getId());
                         return res;
                     }
 
@@ -371,5 +373,29 @@ public class WhgTrainService {
         tra.setId(id);
         tra.setDelstate(0);
         this.whgTraMapper.updateByPrimaryKeySelective(tra);
+    }
+
+    /**
+     * 上首页
+     * @param ids
+     * @param formupindex
+     * @param toupindex
+     * @return
+     */
+    public ResponseBean t_upindex(String ids, String formupindex, int toupindex) {
+        ResponseBean res = new ResponseBean();
+        if(ids == null){
+            res.setSuccess(ResponseBean.FAIL);
+            res.setErrormsg("培训主键丢失");
+            return res;
+        }
+        Example example = new Example(WhgTra.class);
+        Example.Criteria c = example.createCriteria();
+        c.andIn("id", Arrays.asList( ids.split("\\s*,\\s*") ));
+        c.andIn("upindex", Arrays.asList( formupindex.split("\\s*,\\s*") ));
+        WhgTra tra = new WhgTra();
+        tra.setUpindex(toupindex);
+        this.whgTraMapper.updateByExampleSelective(tra,example);
+        return res;
     }
 }
