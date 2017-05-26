@@ -60,8 +60,17 @@ public class PxbmAction {
     @ResponseBody
     public ModelAndView toApply(HttpServletRequest req, String trainId, HttpSession session){
         ModelAndView view = new ModelAndView( "home/agdpxyz/trainApply" );
-        view.addObject("train",service.getTrainById(trainId));
-        view.addObject("user",session.getAttribute(WhConstance.SESS_USER_KEY));
+        try {
+            if("".equals(session.getAttribute(WhConstance.SESS_USER_KEY)) || session.getAttribute(WhConstance.SESS_USER_KEY) == null){
+                view.setViewName("/login");
+                return view;
+            }
+            view.addObject("train",service.getTrainById(trainId));
+            view.addObject("user",session.getAttribute(WhConstance.SESS_USER_KEY));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
         return view;
     }
 
@@ -75,7 +84,11 @@ public class PxbmAction {
     @ResponseBody
     public ModelAndView toApplySuccess(HttpServletRequest req,String trainId){
         ModelAndView view = new ModelAndView( "home/agdpxyz/trainApplySuccess" );
-        view.addObject("train",service.getTrainById(trainId));
+        try {
+            view.addObject("train",service.getTrainById(trainId));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         return view;
     }
 

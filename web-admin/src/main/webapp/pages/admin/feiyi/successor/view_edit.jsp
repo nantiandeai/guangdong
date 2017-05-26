@@ -55,7 +55,7 @@
     <div class="whgff-row">
         <div class="whgff-row-label"><label style="color: red"></label>名录项目：</div>
         <div class="whgff-row-input"><input class="easyui-combobox" name="mlproid" value="${sc.proid}" style="height:35px;width: 600px"
-                                            data-options="editable:false,required:false,prompt:'请选择名录项目',valueField:'mlproid',textField:'mlproshortitel',url:'${basePath}/admin/feiyi/selMingLu'"/></div>
+                                            data-options="multiple:true,editable:false,required:false,prompt:'请选择名录项目',valueField:'mlproid',textField:'mlproshortitel',url:'${basePath}/admin/feiyi/selMingLu'"/></div>
     </div>
     <div class="whgff-row">
         <div class="whgff-row-label"><i>*</i>传承人图片：</div>

@@ -25,16 +25,16 @@
 <body>
 <!-- 表格 -->
 <table id="whgdg" title="名录项目管理" class="easyui-datagrid" style="display: none"
-       data-options="fit:true, striped:true, rownumbers:true, fitColumns:true, singleSelect:false, checkOnSelect:true, selectOnCheck:true, pagination:true, toolbar:'#whgdg-tb', url:'${basePath}/admin/feiyi/loadMinglu'">
+       data-options="fit:true, striped:true, rownumbers:true, fitColumns:false, singleSelect:false, checkOnSelect:true, selectOnCheck:true, pagination:true, toolbar:'#whgdg-tb', url:'${basePath}/admin/feiyi/loadMinglu'">
     <thead>
     <tr>
-        <th data-options="field:'mlprotailtitle', width:60">名录详情标题</th>
-        <th data-options="field:'mlprosmpic', width:60, sortable:true,formatter:WhgComm.FMTImg">名录项目列表图</th>
-        <th data-options="field:'mlprotype', width:60 ,formatter:function(val,row,index){ return WhgSysData.FMT(val, WhgSysData.getTypeData('8'));}">名录类型</th>
-        <th data-options="field:'mlprolevel', width:60 ,formatter:function(val,row,index){ return WhgSysData.FMT(val, WhgSysData.getTypeData('10'));}">名录级别</th>
-        <th data-options="field:'mlproitem', width:60,sortable:true,width:80,formatter:function(val,row,index){ return WhgSysData.FMT(val, WhgSysData.getTypeData('9'));}">名录批次</th>
-        <th data-options="field:'mlprotime', width:60 ,formatter:datetimeFMT">名录项目修改时间</th>
-        <th data-options="field:'mlprostate', width:60, sortable:true,formatter:WhgComm.FMTBizState">名录状态</th>
+        <th data-options="field:'mlprotailtitle'<%--, width:60--%>">名录详情标题</th>
+        <th data-options="field:'mlprosmpic', <%--width:60,--%> sortable:true,formatter:WhgComm.FMTImg">名录项目列表图</th>
+        <th data-options="field:'mlprotype', <%--width:60 ,--%>formatter:function(val,row,index){ return WhgSysData.FMT(val, WhgSysData.getTypeData('8'));}">名录类型</th>
+        <th data-options="field:'mlprolevel', <%--width:60 ,--%>formatter:function(val,row,index){ return WhgSysData.FMT(val, WhgSysData.getTypeData('10'));}">名录级别</th>
+        <th data-options="field:'mlproitem', <%--width:60,--%>sortable:true,width:80,formatter:function(val,row,index){ return WhgSysData.FMT(val, WhgSysData.getTypeData('9'));}">名录批次</th>
+        <th data-options="field:'mlprotime', <%--width:60 ,--%>formatter:datetimeFMT">名录项目修改时间</th>
+        <th data-options="field:'mlprostate',<%-- width:60,--%> sortable:true,formatter:WhgComm.FMTBizState">名录状态</th>
         <th data-options="field:'_opt', formatter:WhgComm.FMTOpt, optDivId:'whgdg-opt'">操作</th>
     </tr>
     </thead>

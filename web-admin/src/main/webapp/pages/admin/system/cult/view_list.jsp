@@ -16,16 +16,16 @@
 
 <!-- 表格 -->
 <table id="whgdg" title="分馆管理" class="easyui-datagrid" style="display: none"
-       data-options="fit:true, striped:true, rownumbers:true, fitColumns:true, singleSelect:false, checkOnSelect:true, selectOnCheck:true, pagination:true, toolbar:'#whgdg-tb', url:'${basePath}/admin/system/cult/srchList4p'">
+       data-options="fit:true, striped:true, rownumbers:true, fitColumns:false, singleSelect:false, checkOnSelect:true, selectOnCheck:true, pagination:true, toolbar:'#whgdg-tb', url:'${basePath}/admin/system/cult/srchList4p'">
     <thead>
     <tr>
         <th data-options="field:'ck', checkbox:true"></th>
-        <th data-options="field:'name', width:160">名称</th>
-        <th data-options="field:'picture', width:160, formatter:WhgComm.FMTImg">图片</th>
-        <th data-options="field:'contact', width:160">联系人</th>
-        <th data-options="field:'contactnum', width:160">联系手机</th>
-        <th data-options="field:'state', width:160, formatter:WhgComm.FMTState">状态</th>
-        <th data-options="field:'_opt', width:280, formatter:WhgComm.FMTOpt, optDivId:'whgdg-opt'">操作</th>
+        <th data-options="field:'name'<%--, width:160--%>">名称</th>
+        <th data-options="field:'picture', <%--width:160,--%> formatter:WhgComm.FMTImg">图片</th>
+        <th data-options="field:'contact'<%--, width:160--%>">联系人</th>
+        <th data-options="field:'contactnum'<%--, width:160--%>">联系手机</th>
+        <th data-options="field:'state', <%--width:160,--%> formatter:WhgComm.FMTState">状态</th>
+        <th data-options="field:'_opt',<%-- width:280,--%> formatter:WhgComm.FMTOpt, optDivId:'whgdg-opt'">操作</th>
     </tr>
     </thead>
 </table>

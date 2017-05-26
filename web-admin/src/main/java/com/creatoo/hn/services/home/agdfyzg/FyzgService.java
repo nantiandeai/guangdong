@@ -164,10 +164,31 @@ public class FyzgService {
 	 * @return
 	 */
 	public Object protosuccessor(String mlproid)throws Exception{
+		List<String> list = new ArrayList<>();
 		Example example = new Example(WhSuccessor.class);
 		Example.Criteria c = example.createCriteria();
-		c.andEqualTo("proid", mlproid);
+		c.andLike("proid", "%"+mlproid+"%").andEqualTo("suorstate",6);
 		List<WhSuccessor> listsp = this.successorMapper.selectByExample(example);
+
+		if(listsp != null && listsp.size() >0 ){
+			/*for (int j = 0; j < listsp.size(); j++) {*/
+			for(int j =0; j<listsp.get(0).getProid().split(",").length; j++){
+				list.add(listsp.get(0).getProid().split(",")[j]);
+			}
+
+			/*}*/
+		}
+
+		Example example2 = new Example(WhSuccessor.class);
+		if(list != null && list.size()>0){
+			example2.or().andIn("suorid", list);
+			PageHelper.startPage(1, 6);
+			List<WhSuccessor> listsuor = this.successorMapper.selectByExample(example2);
+			PageInfo pinfo = new PageInfo(listsp);
+			return pinfo.getList();
+		}else{
+			return list;
+		}
 
 //		List<String> list = new ArrayList<>();
 // 		if(listsp != null && listsp.size() >0 ){
@@ -178,10 +199,10 @@ public class FyzgService {
 // 		Example example2 = new Example(WhSuccessor.class);
 //		if(list != null && list.size()>0){
 //			example2.or().andIn("suorid", list);
-			PageHelper.startPage(1, 6);
+//			PageHelper.startPage(1, 6);
 //			List<WhSuccessor> listsuor = this.successorMapper.selectByExample(example2);
-			PageInfo pinfo = new PageInfo(listsp);
-			return pinfo.getList();
+//			PageInfo pinfo = new PageInfo(listsp);
+//			return pinfo.getList();
 //		}else{
 //			return list;
 //		}
@@ -250,9 +271,12 @@ public class FyzgService {
 		List<WhSuccessor> listsp = this.amapper.successor(suorid);
 		List<String> list = new ArrayList<>();
  		if(listsp != null && listsp.size() >0 ){
-			for (int j = 0; j < listsp.size(); j++) {
-				list.add(listsp.get(j).getProid());
+			/*for (int j = 0; j < listsp.size(); j++) {*/
+			for(int j =0; j<listsp.get(0).getProid().split(",").length; j++){
+				list.add(listsp.get(0).getProid().split(",")[j]);
 			}
+
+			/*}*/
 		}
  		
 		if(list != null && list.size()>0){

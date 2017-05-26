@@ -37,17 +37,17 @@
 
 <!-- 表格 -->
 <table id="whgdg" title="${pageTitle}" class="easyui-datagrid" style="display: none"
-       data-options="fit:true, striped:true, rownumbers:true, fitColumns:true, singleSelect:true, checkOnSelect:true, selectOnCheck:true, pagination:true, toolbar:'#whgdg-tb', url:'${basePath}/admin/activity/act/srchList4p?__pageType=${type}'">
+       data-options="fit:true, striped:true, rownumbers:true, fitColumns:false, singleSelect:true, checkOnSelect:true, selectOnCheck:true, pagination:true, toolbar:'#whgdg-tb', url:'${basePath}/admin/activity/act/srchList4p?__pageType=${type}'">
     <thead>
     <tr>
-        <th data-options="field:'name', sortable: true,width:80">名称</th>
-        <th data-options="field:'starttime', width:80,sortable: true, formatter:WhgComm.FMTDate ">开始时间</th>
-        <th data-options="field:'endtime', width:80,sortable: true, formatter:WhgComm.FMTDate ">结束时间</th>
-        <th data-options="field:'telphone', width:80">联系手机</th>
-        <th data-options="field:'address', width:120">地址</th>
-         <th data-options="field:'statemdfdate',sortable: true, width:80, formatter:WhgComm.FMTDateTime ">操作时间</th>
-        <th data-options="field:'state', width:60, formatter:WhgComm.FMTBizState">状态</th>
-        <th data-options="field:'_opt', width:${type eq 'publish'?'750':'430'}, fixed:true, formatter:WhgComm.FMTOpt, optDivId:'whgdg-opt'">操作</th>
+        <th data-options="field:'name', sortable: true<%--,width:80--%>">名称</th>
+        <th data-options="field:'starttime', <%--width:80,--%>sortable: true, formatter:WhgComm.FMTDate ">开始时间</th>
+        <th data-options="field:'endtime', <%--width:80,--%>sortable: true, formatter:WhgComm.FMTDate ">结束时间</th>
+        <th data-options="field:'telphone'<%--, width:80--%>">联系手机</th>
+        <th data-options="field:'address'<%--, width:120--%>">地址</th>
+         <th data-options="field:'statemdfdate',sortable: true,<%-- width:80,--%> formatter:WhgComm.FMTDateTime ">操作时间</th>
+        <th data-options="field:'state', <%--width:60,--%> formatter:WhgComm.FMTBizState">状态</th>
+        <th data-options="field:'_opt', <%--width:${type eq 'publish'?'750':'430'}, --%>fixed:true, formatter:WhgComm.FMTOpt, optDivId:'whgdg-opt'">操作</th>
     </tr>
     </thead>
 </table>

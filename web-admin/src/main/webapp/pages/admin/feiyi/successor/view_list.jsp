@@ -25,16 +25,16 @@
 <body>
 <!-- 表格 -->
 <table id="whgdg" title="传承人管理" class="easyui-datagrid" style="display: none"
-       data-options="fit:true, striped:true, rownumbers:true, fitColumns:true, singleSelect:false, checkOnSelect:true, selectOnCheck:true, pagination:true, toolbar:'#whgdg-tb', url:'${basePath}/admin/feiyi/loadSuccessor'">
+       data-options="fit:true, striped:true, rownumbers:true, fitColumns:false, singleSelect:false, checkOnSelect:true, selectOnCheck:true, pagination:true, toolbar:'#whgdg-tb', url:'${basePath}/admin/feiyi/loadSuccessor'">
     <thead>
     <tr>
-        <th data-options="field:'suorname', width:60">传承人姓名</th>
-        <th data-options="field:'suorpic', width:60, sortable:true,formatter:WhgComm.FMTImg">传承人图片</th>
-        <th data-options="field:'suorqy', width:60 ,formatter:function(val,row,index){ return WhgSysData.FMT(val, WhgSysData.getTypeData('6'));}">传承人区域</th>
-        <th data-options="field:'suorlevel', width:60 ,formatter:function(val,row,index){ return WhgSysData.FMT(val, WhgSysData.getTypeData('10'));}">传承人级别</th>
-        <th data-options="field:'suoritem', width:60 ,formatter:function(val,row,index){ return WhgSysData.FMT(val, WhgSysData.getTypeData('9'));}">传承人批次</th>
-        <th data-options="field:'suortype', width:60,sortable:true,width:80,formatter:function(val,row,index){ return WhgSysData.FMT(val, WhgSysData.getTypeData('8'));}">传承人类别</th>
-        <th data-options="field:'suorstate', width:60, sortable:true,formatter:WhgComm.FMTBizState">传承人状态</th>
+        <th data-options="field:'suorname'<%--, width:60--%>">传承人姓名</th>
+        <th data-options="field:'suorpic', <%--width:60, --%>sortable:true,formatter:WhgComm.FMTImg">传承人图片</th>
+        <th data-options="field:'suorqy', <%--width:60 ,--%>formatter:function(val,row,index){ return WhgSysData.FMT(val, WhgSysData.getTypeData('6'));}">传承人区域</th>
+        <th data-options="field:'suorlevel', <%--width:60 ,--%>formatter:function(val,row,index){ return WhgSysData.FMT(val, WhgSysData.getTypeData('10'));}">传承人级别</th>
+        <th data-options="field:'suoritem',<%-- width:60 ,--%>formatter:function(val,row,index){ return WhgSysData.FMT(val, WhgSysData.getTypeData('9'));}">传承人批次</th>
+        <th data-options="field:'suortype', <%--width:60,--%>sortable:true,width:80,formatter:function(val,row,index){ return WhgSysData.FMT(val, WhgSysData.getTypeData('8'));}">传承人类别</th>
+        <th data-options="field:'suorstate',<%-- width:60,--%> sortable:true,formatter:WhgComm.FMTBizState">传承人状态</th>
         <th data-options="field:'_opt', formatter:WhgComm.FMTOpt, optDivId:'whgdg-opt'">操作</th>
     </tr>
     </thead>

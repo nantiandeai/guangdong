@@ -325,19 +325,30 @@ public class FeiyiService {
 	
 	public void addOrEditsuccessor(WhSuccessor successor,HttpServletRequest req,MultipartFile file_image) throws Exception {
 		Map<String, Object> paramMap = ReqParamsUtil.parseRequest(req);
+		String a = "";
+		String b = "";
+		if(!"".equals(req.getParameterValues("mlproid")) && req.getParameterValues("mlproid") != null){
+			for(int i = 0; i<req.getParameterValues("mlproid").length; i++){
+				//a = req.getParameterValues("mlproid")[i];
+				a += b+req.getParameterValues("mlproid")[i];
+				b = ",";
+			}
+		}
+
 		String mlproid = (String) paramMap.get("mlproid");
 		// 保存记录
 		String id = null;
 
 		if (successor.getSuorid() != null && !"".equals(successor.getSuorid())) {
 			id = successor.getSuorid();
+			successor.setProid(a);
 			successor.setSuoroptime(new Date());
 			this.successorMapper.updateByPrimaryKeySelective(successor);
 		} else {
 			id=this.commService.getKey("whsuccessor");
 			successor.setRecommend(0);
 			successor.setSuorid(id);
-			successor.setProid(mlproid);
+			successor.setProid(a);
 			successor.setSuorstate(1);
 			successor.setSuoroptime(new Date());
 			this.successorMapper.insert(successor);

@@ -130,7 +130,7 @@ public class PxbmService {
      * @param trainId
      * @return
      */
-    public WhgTra getTrainById(String trainId){
+    public WhgTra getTrainById(String trainId) throws Exception{
         return whTrainMapper.selectByPrimaryKey(trainId);
     }
 

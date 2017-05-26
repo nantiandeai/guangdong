@@ -15,15 +15,15 @@
 <body>
 <!-- 表格 -->
 <table id="whgdg" title="数字展览作品管理" class="easyui-datagrid" style="display: none"
-       data-options="fit:true, striped:true, rownumbers:true, fitColumns:true, singleSelect:false, checkOnSelect:true, selectOnCheck:true, pagination:true, toolbar:'#whgdg-tb', url:'${basePath}/admin/exhi/exhiart/srchList4p?artexhid='+'${exhid}'">
+       data-options="fit:true, striped:true, rownumbers:true, fitColumns:false, singleSelect:false, checkOnSelect:true, selectOnCheck:true, pagination:true, toolbar:'#whgdg-tb', url:'${basePath}/admin/exhi/exhiart/srchList4p?artexhid='+'${exhid}'">
     <thead>
     <tr>
         <th data-options="field:'ck', checkbox:true"></th>
-        <th data-options="field:'arttitle', width:100">标题</th>
-        <th data-options="field:'artauthor', width:100">作者</th>
-        <th data-options="field:'artpic', width:100 , formatter:WhgComm.FMTImg">作品图片</th>
-        <th data-options="field:'artcrttime', width:100,formatter:WhgComm.FMTDateTime">创建时间</th>
-        <th data-options="field:'artstate', width:100, formatter:WhgComm.FMTState">状态</th>
+        <th data-options="field:'arttitle'<%--, width:100--%>">标题</th>
+        <th data-options="field:'artauthor'<%--, width:100--%>">作者</th>
+        <th data-options="field:'artpic',<%-- width:100 ,--%> formatter:WhgComm.FMTImg">作品图片</th>
+        <th data-options="field:'artcrttime', <%--width:100,--%>formatter:WhgComm.FMTDateTime">创建时间</th>
+        <th data-options="field:'artstate', <%--width:100,--%> formatter:WhgComm.FMTState">状态</th>
         <th data-options="field:'_opt', formatter:WhgComm.FMTOpt, optDivId:'whgdg-opt'">操作</th>
     </tr>
     </thead>

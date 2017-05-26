@@ -32,20 +32,20 @@
 <body>
 <!-- 表格 -->
 <table id="whgdg" title="${pageTitle}" class="easyui-datagrid" style="display: none"
-       data-options="fit:true, striped:true, rownumbers:true, fitColumns:true, singleSelect:false, checkOnSelect:true, selectOnCheck:true, pagination:true, toolbar:'#whgdg-tb', url:'${basePath}/admin/train/srchList4p?type=${type}'">
+       data-options="fit:true, striped:true, rownumbers:true, fitColumns:false, singleSelect:false, checkOnSelect:true, selectOnCheck:true, pagination:true, toolbar:'#whgdg-tb', url:'${basePath}/admin/train/srchList4p?type=${type}'">
     <thead>
     <tr>
         <%--<th data-options="width: 30, checkbox: true, field:'checkbox' ">全选</th>--%>
-        <th data-options="field:'title', width:100">培训标题</th>
+        <th data-options="field:'title'<%--, width:100--%>">培训标题</th>
         <%--<th data-options="field:'venue', width:160">所属场馆</th>--%>
-        <th data-options="field:'etype', width:100, formatter:WhgComm.FMTTrainType">培训类型</th>
-        <th data-options="field:'isterm', width:100, formatter:yesNoFMT">学期制</th>
-        <th data-options="field:'ismultisite', width:100, formatter:typeFMT">场次类别</th>
+        <th data-options="field:'etype', <%--width:100, --%>formatter:WhgComm.FMTTrainType">培训类型</th>
+        <th data-options="field:'isterm', <%--width:100,--%> formatter:yesNoFMT">学期制</th>
+        <th data-options="field:'ismultisite',<%-- width:100, --%>formatter:typeFMT">场次类别</th>
         <%--<th data-options="field:'maxnumber', width:160">报名人数上限</th>--%>
-        <th data-options="field:'crtdate', width:100, formatter:WhgComm.FMTDateTime">创建时间</th>
-        <th data-options="field:'state', width:100, formatter:WhgComm.FMTBizState" >状态</th>
-            <th data-options="width:100, sortable: true, field:'statemdfdate', formatter:WhgComm.FMTDateTime ">操作时间</th>
-        <th data-options="field:'_opt', width:${type == "publish"?"750" : "400"}, formatter:WhgComm.FMTOpt,fixed:true, optDivId:'whgdg-opt'">操作</th>
+        <th data-options="field:'crtdate',<%-- width:100,--%> formatter:WhgComm.FMTDateTime">创建时间</th>
+        <th data-options="field:'state',<%-- width:100,--%> formatter:WhgComm.FMTBizState" >状态</th>
+            <th data-options="<%--width:100, --%>sortable: true, field:'statemdfdate', formatter:WhgComm.FMTDateTime ">操作时间</th>
+        <th data-options="field:'_opt', <%--width:${type == "publish"?"750" : "400"}, --%>formatter:WhgComm.FMTOpt,fixed:true, optDivId:'whgdg-opt'">操作</th>
     </tr>
     </thead>
 </table>

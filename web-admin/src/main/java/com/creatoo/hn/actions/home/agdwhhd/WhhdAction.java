@@ -434,9 +434,16 @@ public class WhhdAction {
 	 * @return
 	 */
 	@RequestMapping("/actBaoMing")
-	public ModelAndView actBaoMing(String actvid,WebRequest request){
+	public ModelAndView actBaoMing(String actvid,WebRequest request,HttpSession session, HttpServletResponse resp){
 		ModelAndView view = new ModelAndView( "home/agdwhhd/act_baoming_step1" );
 		try {
+
+			if("".equals(session.getAttribute(WhConstance.SESS_USER_KEY)) || session.getAttribute(WhConstance.SESS_USER_KEY) == null){
+				view.setViewName("/login");
+				return view;
+			}
+
+
 			//活动详情
 			WhgActActivity actdetail = this.WhhdService.getActDetail(actvid);
 			view.addObject("actdetail",actdetail);

@@ -15,16 +15,16 @@
 <body>
 <!-- 表格 -->
 <table id="whgdg" title="数字展览管理" class="easyui-datagrid" style="display: none"
-       data-options="fit:true, striped:true, rownumbers:true, fitColumns:true, singleSelect:false, checkOnSelect:true, selectOnCheck:true, pagination:true, toolbar:'#whgdg-tb', url:'${basePath}/admin/exhi/exhi/srchList4p'">
+       data-options="fit:true, striped:true, rownumbers:true, fitColumns:false, singleSelect:false, checkOnSelect:true, selectOnCheck:true, pagination:true, toolbar:'#whgdg-tb', url:'${basePath}/admin/exhi/exhi/srchList4p'">
     <thead>
     <tr>
         <th data-options="field:'ck', checkbox:true"></th>
-        <th data-options="field:'exhtitle', width:100">标题</th>
-        <th data-options="field:'exharttyp', width:100,formatter:function(val,row,index){ return WhgSysData.FMT(val, WhgSysData.getTypeData('1'));}">艺术分类</th>
-        <th data-options="field:'exhpic', width:100 , formatter:WhgComm.FMTImg">封面图片</th>
-        <th data-options="field:'exhstime', width:100,formatter:WhgComm.FMTDateTime">开始时间</th>
-        <th data-options="field:'exhetime', width:100,formatter:WhgComm.FMTDateTime">结束时间</th>
-        <th data-options="field:'exhstate', width:100, formatter:WhgComm.FMTState">状态</th>
+        <th data-options="field:'exhtitle'<%--, width:100--%>">标题</th>
+        <th data-options="field:'exharttyp'<%--, width:100--%>,formatter:function(val,row,index){ return WhgSysData.FMT(val, WhgSysData.getTypeData('1'));}">艺术分类</th>
+        <th data-options="field:'exhpic', <%--width:100 ,--%> formatter:WhgComm.FMTImg">封面图片</th>
+        <th data-options="field:'exhstime', <%--width:100,--%>formatter:WhgComm.FMTDateTime">开始时间</th>
+        <th data-options="field:'exhetime', <%--width:100,--%>formatter:WhgComm.FMTDateTime">结束时间</th>
+        <th data-options="field:'exhstate', <%--width:100, --%>formatter:WhgComm.FMTState">状态</th>
         <th data-options="field:'_opt', formatter:WhgComm.FMTOpt, optDivId:'whgdg-opt'">操作</th>
     </tr>
     </thead>
