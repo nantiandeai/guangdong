@@ -53,13 +53,13 @@
             ${whgExh.exhdesc}
         </div>
         <div class="detail none">
-            <ul class="clearfix">
+            <ul class="clearfix" id="imgContent">
                 <c:if test="${not empty whgExhArt}">
                     <c:forEach items="${whgExhArt}" var="row" varStatus="s" begin="0" end="11">
                         <li ${s.count%4==0?"class='last'":''}>
                             <div class="img">
                                 <a href="javascript:void(0)" onclick="show_img(this,{url:'${imgServerAddr}/${row.artpic}',zoomin:'ture',title:'我是标题'})">
-                                    <img src="${imgServerAddr}/${row.artpic}">
+                                    <img src="${imgServerAddr}/${row.artpic}" class="image">
                                 </a>
                             </div>
                             <h2>${row.arttitle}</h2>
@@ -74,6 +74,24 @@
         </div>
     </div>
     <script type="text/javascript">
+//        var imgContent = document.getElementById("imgContent");
+//        var aImgs = imgContent.getElementsByTagName("img");
+//        var wrapRate = $("#imgContent .img").eq(0).outerWidth()/$("#imgContent .img").eq(0).outerHeight();
+//        console.log(wrapRate);
+//        for (var i=0;i<aImgs.length;i++) {
+//            var fn = function (i) {
+//                var naturalWidth = aImgs[i].naturalWidth;
+//                var naturalHeight = aImgs[i].naturalHeight;
+//                var naturalRate = naturalWidth/naturalHeight;
+//                console.log(naturalWidth,naturalHeight,naturalRate);
+//                if (naturalRate - wrapRate > 0) { //图片宽大些
+//                    $(aImgs[i]).css("width","276px")
+//                } else {
+//                    $(aImgs[i]).css("height","207px")
+//                }
+//            }(i);
+//        }
+
         $(".nav-ul span").on("click", function () {
             $(this).addClass("active").siblings().removeClass("active");
             $(".detail").eq($(".nav-ul span").index(this)).removeClass("none").siblings().addClass('none');
