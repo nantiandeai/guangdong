@@ -40,7 +40,7 @@
     <div class="whgff-row video_wrap">
         <div class="whgff-row-label"><i>*</i>资源地址：</div>
         <div class="whgff-row-input">
-            <input class="easyui-combobox" name="entdir" id="video_entdir" style="height:35px;width:190px" data-options="prompt:'请选择目录',editable:true,limitToList:true,valueField:'text',textField:'text',url:'${basePath}/admin/video/srchPagging?srchDir=1'"/>
+            <input class="easyui-combobox" name="entdir" id="video_entdir" style="height:35px;width:190px" data-options="prompt:'请选择目录',editable:true,limitToList:true,valueField:'id',textField:'text',url:'${basePath}/admin/video/srchPagging?srchDir=1'"/>
             <input class="easyui-combobox" name="enturl" id="video_enturl" style="height:35px;width:400px" data-options="editable:true,limitToList:true"/>
         </div>
     </div>

@@ -119,7 +119,8 @@ body{background-color: #f5f6f8}
 .main .rightPanel .group .item .msgInfoCont .openThis:hover{text-decoration: underline}
 .main .rightPanel .safe-row-1{margin-top: 33px;}
 .main .rightPanel .safe-row{height: 50px;background-color: #f9f6f5;margin-bottom: 8px;line-height: 50px;font-size: 14px;position: relative;}
-.main .rightPanel .safe-row a{position: absolute;width: 100%;height: 100%;}
+.main .rightPanel .safe-row a{position: absolute;width: 100%;height: 100%;left: 0px;
+    top:0px;}
 .main .rightPanel .safe-row:hover{background-color: #f0f0f0;}
 .main .rightPanel .safe-row .ico{height: 18px;width: 18px;background: url(../../../assets/img/userCenter/safeIco.png) no-repeat;float: left;margin: 16px 0px 0px 16px}
 .main .rightPanel .safe-row .sucess{background-position: 0px 0px;}

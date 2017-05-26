@@ -879,6 +879,8 @@ public class UserCenterAction {
 			isLogin(session);
 			//获取会话
 			WhUser userSess = (WhUser) session.getAttribute(WhConstance.SESS_USER_KEY);
+            userSess = (WhUser)this.userCenterService.getList(userSess.getId());
+            session.setAttribute(WhConstance.SESS_USER_KEY, userSess);
 			String phone = userSess.getPhone();
 			String email = userSess.getEmail();
 			//判断手机与邮箱均为空

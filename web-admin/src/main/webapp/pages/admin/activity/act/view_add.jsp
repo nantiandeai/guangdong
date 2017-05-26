@@ -101,17 +101,24 @@
 	        </div>
     	</div>
 
-        <div class="whgff-row">
-            <div class="whgff-row-label">文化品牌：</div>
-            <div class="whgff-row-input">
-               <%--<div class="checkbox checkbox-primary whg-js-data" name="ebrand"
-					js-data="WhgComm.getBrand" >
-				</div>--%>
-				<div class="whgff-row-input">
-					<div class="radio radio-primary whg-js-data"  name="ebrand"  js-data="WhgComm.getBrand"></div>
-				</div>
-            </div>
-        </div>
+
+		<div class="whgff-row">
+			<div class="whgff-row-label">文化品牌：</div>
+			<div class="whgff-row-input"><input class="easyui-combobox" name="ebrand" style="height:35px;width: 500px"
+												data-options="editable:true,required:false, valueField:'id',textField:'text',prompt:'请选择文化品牌', data:WhgComm.getBrand()"/></div>
+		</div>
+
+        <%--<div class="whgff-row">--%>
+            <%--<div class="whgff-row-label">文化品牌：</div>--%>
+            <%--<div class="whgff-row-input">--%>
+               <%--&lt;%&ndash;<div class="checkbox checkbox-primary whg-js-data" name="ebrand"--%>
+					<%--js-data="WhgComm.getBrand" >--%>
+				<%--</div>&ndash;%&gt;--%>
+				<%--<div class="whgff-row-input">--%>
+					<%--<div class="radio radio-primary whg-js-data"  name="ebrand"  js-data="WhgComm.getBrand"></div>--%>
+				<%--</div>--%>
+            <%--</div>--%>
+        <%--</div>--%>
 	
 		<div class="whgff-row">
 	       <div class="whgff-row-label">场馆：</div>
